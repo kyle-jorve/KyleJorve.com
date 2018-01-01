@@ -1,0 +1,198 @@
+﻿/*==========----------==========*/
+/*         ILLUSTRATIONS        */
+/*==========----------==========*/
+
+.illoWrp.blank{
+    @include sbFlexWrap(column, nowrap, center, center);
+    padding:2em;
+    height:60vh;
+    max-height:800px;
+    min-height:400px;
+    background:map-get($bgColors, medContentBg);
+    box-shadow:$mediumShadow;
+
+    h2{
+        text-align:center;
+        margin:0;
+    }
+}
+
+/*==========----------==========*/
+/*       CONTENT SECTION        */
+/*==========----------==========*/
+
+.landingContent .flexItem{
+    padding:0 2em;
+    &:first-child{
+        padding-left:0;
+    }
+    &:last-child{
+        padding-right:0;
+    }
+}
+
+/*==========----------==========*/
+/*       BENEFITS SECTION       */
+/*==========----------==========*/
+.benefitItem{
+    box-shadow:$mediumShadow;
+    @include sbFlexWrap(row, nowrap, space-between, stretch, stretch, false){
+        //Responds at 750px width
+        @media only screen and (max-width:750px){
+            display:block;
+        }
+    }
+
+    &:nth-child(even){
+        text-align:right;
+        @include sbFlexWrap(row-reverse, nowrap, space-between, stretch, stretch, false){
+            //Responds at 750px width
+            @media only screen and (max-width:750px){
+                display:block;
+                text-align:left;
+            }
+        }
+    }
+
+
+    & + .benefitItem{
+        margin-top:2em;
+    }
+
+    .benefitContent{
+        padding:3em;
+        background:map-get($bgColors, bodyBg);
+        color:$lightTextColor;
+    }
+
+    .benefitIcon{
+        width:100%;
+        padding:2em;
+        max-width:240px;
+        background:map-get($colorScheme, accentColor);
+
+        svg{
+            fill:$darkTextColor;
+            width:auto;
+            height:auto;
+            max-height:160px;
+            margin:0 auto;
+        }
+
+        @include sbFlexWrap(column, nowrap, center, stretch, stretch, false){
+            //Responds at 750px width
+            @media only screen and (max-width:750px){
+                @include sbFlexWrap(row, nowrap, center);
+                max-width:none;
+                padding:1.5em;
+
+                svg{
+                    width:100%;
+                    max-height:120px;
+                }
+            }
+        }
+    } 
+}
+
+/*==========----------==========*/
+/*           SLIDESHOW          */
+/*==========----------==========*/
+.slideSection{
+    .section-wrapper,
+    .landingSlideshow{
+        position:relative;
+        z-index:1;
+    }
+
+    .slick-track{
+        @include sbFlexWrap(row, nowrap, initial, center);
+    }
+}
+
+/*---------- SLIDES ----------*/
+.slideItem{
+    .slideInnerWrp{
+        @include sbFlexWrap(row, nowrap, center, center, stretch, false);
+        width:100%;
+
+        & > *{
+            width:50%;
+            padding:0 2em;
+
+            &:first-child{
+                padding-left:0;
+            }
+
+            &:last-child{
+                padding-right:0;
+            }
+        }
+    }
+
+    .illoWrp{
+        @include transition(all, .5s, ease);
+        position:relative;
+    }
+
+    .numIcon{
+        display:none;
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        background:map-get($colorScheme, accentColor);
+        position:absolute;
+        top:0;
+        left:.5em;
+        @include transform("translateY(-50%)");
+
+        &:before{
+            display:block;
+            content:'';
+            border:$borderThickness solid map-get($colorScheme, accentColor);
+            border-radius:50%;
+            box-shadow:$mediumShadow;
+            position:absolute;
+            top:$borderThickness * -2;
+            right:$borderThickness * -2;
+            bottom:$borderThickness * -2;
+            left:$borderThickness * -2;
+        }
+
+        .number{
+            @extend h4;
+            margin:0;
+            line-height:1;
+            @extend %absolute-center;
+        }
+    }
+
+    .slideContent{
+        @include transition(all, 1s, ease);
+    }
+
+
+    &.prevSlide{
+        .illoWrp,
+        .slideContent{
+            opacity:0;
+            @include transform("translateY(-60px)");
+        }
+    }
+
+    &.nextSlide{
+        .illoWrp,
+        .slideContent{
+            opacity:0;
+            @include transform("translateY(60px)");
+        }
+    }
+
+    &.slick-active{
+        .illoWrp,
+        .slideContent{
+            opacity:1;
+            @include transform("translateY(0)");
+        }
+    }
+}

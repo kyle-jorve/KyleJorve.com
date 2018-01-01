@@ -1,0 +1,61 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Master>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = null;
+    var hasMetaImage = CurrentPage.HasValue("metaImage");
+
+    //Redirect URLs
+    var redirectUrl = string.Empty;
+    if (!string.IsNullOrWhiteSpace(CurrentPage.forwardingPg.ToString()))
+    {
+        redirectUrl = CurrentPage.forwardingPg;
+    }
+    if (!string.IsNullOrEmpty(redirectUrl))
+    {
+        Response.Redirect(redirectUrl);
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Umbraco.Field("metaTitle")</title>
+    <link rel="canonical" href="@Umbraco.NiceUrlWithDomain(CurrentPage.id)" />
+    <meta property="og:title" content="@Umbraco.Field("metaTitle")" />
+    <meta name="description" content="@Umbraco.Field("metaDescription")" />
+    @if (hasMetaImage)
+    {
+        <meta property="og:image" content="@Umbraco.Media(CurrentPage.metaImage).Url" />
+    }
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Kyle Jorve Illustration and Design" />
+    <meta property="og:description" content="@Umbraco.Field("metaDescription")" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+    <link href="/Styles/bundle.min.css" rel="stylesheet" />
+    <link href="/css/umbracostyles.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="/Scripts/bundle.min.js"></script>
+
+    @Umbraco.Field("head")
+</head>
+<body class="preload showLoader allowHover @Umbraco.Field("bodyClass")">
+
+    <div class="loadScreen">
+        <div class="loadingGraphic">
+
+        </div>
+    </div>
+
+    @{ Html.RenderPartial("Header");}
+
+    @RenderBody()
+
+    @{ Html.RenderPartial("Footer");}
+</body>
+</html>

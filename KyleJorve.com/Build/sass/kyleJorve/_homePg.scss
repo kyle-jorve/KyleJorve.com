@@ -1,0 +1,14 @@
+﻿/*==========----------==========*/
+/*         ABOUT SECTION        */
+/*==========----------==========*/
+.aboutContent{
+    .flexContainer{
+        @include sbFlexWrap(row, nowrap, space-between, flex-start){
+
+            /*----- GRID BREAKPOINT -----*/
+            @media only screen and (max-width:$gridBreakpoint){
+                @include sbFlexWrap(column-reverse, nowrap, flex-start, stretch);
+            }
+        }
+    }
+}

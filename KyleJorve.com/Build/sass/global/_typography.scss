@@ -1,0 +1,148 @@
+﻿/*===========================
+    General
+===========================*/
+
+body{
+    color: $lightTextColor;
+    font-family: $primaryFont;
+    font-weight: $primaryFontWeight;
+    letter-spacing:$primaryLetterSpacing;
+    text-transform:$primaryTextTransform;
+}
+.lightContentBg {
+    color: $darkTextColor;
+}
+
+/*===========================
+    Type Scale
+===========================*/
+
+@include type-scale($baseFontSize, $typeScaleMultiplier, $typeBreakpoint1, $typeBreakpoint2, $typeBreakpoint3);
+
+/*===========================
+    Weights
+===========================*/
+strong {
+    font-weight: $primaryBold;
+}
+
+/*===========================
+    Styles
+===========================*/
+em{
+    font-style:$primaryItalic;
+}
+
+/*===========================
+    Headings
+===========================*/
+
+h1, h2, h3, h4 {
+    margin: $headingTypeMargin;
+    line-height: $headingLineHeight;
+    font-family: $headingFont;
+    font-weight: $headingFontWeight;
+    letter-spacing: $headingLetterSpacing;
+    position: relative;
+
+    .smallText,
+    small{
+        display:block;
+        margin-top:.25em;
+        font-size:$smallFontSize;
+        font-family:$headingFont2;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    strong {
+        font-weight: $headingBold;
+    }
+}
+
+/*===========================
+    Paragraphs
+===========================*/
+p {
+    margin: $primaryTypeMargin;
+}
+
+/*===========================
+    Lists
+===========================*/
+.list-style-none{
+    list-style:none;
+    padding:0;
+    margin:0;
+    & > li{
+        @extend .list-style-none;
+    }
+}
+li {
+    margin: $listTypeMargin;
+}
+
+/*===========================
+    Alignments
+===========================*/
+
+@each $align in $alignments{
+    .align-#{$align},
+    .align-#{$align} h1,
+    .align-#{$align} h2,
+    .align-#{$align} h3,
+    .align-#{$align} h4,
+    .align-#{$align} p,
+    .align-#{$align} ul{
+        text-align:$align;
+    }
+    @media only screen and (max-width:$gridBreakpoint){
+        .align-#{$align}.respond,
+        .align-#{$align}.respond h1,
+        .align-#{$align}.respond h2,
+        .align-#{$align}.respond h3,
+        .align-#{$align}.respond h4,
+        .align-#{$align}.respond p,
+        .align-#{$align}.respond ul{
+            text-align:center;
+        }
+    }
+}
+
+/*===========================
+    Colors
+===========================*/
+
+@each $colorName, $color in $colorScheme{
+    .#{$colorName}Text{
+        color:$color;
+    }
+}
+
+/*===========================
+    Links
+===========================*/
+a,
+a:visited {
+    color: $linkColor;
+    text-decoration: $linkTextDecoration;
+    font-weight: $linkFontWeight;
+
+    &,
+    &:before,
+    &:after {
+        @include transition;
+    }
+}
+/*---------- HOVER EFFECTS ----------*/
+@include hover("a, a:visited") {
+    color: $linkHoverColor;
+    text-decoration: $linkHoverTextDecoration;
+
+    &:before,
+    &:after {
+        color: $linkHoverColor;
+    }
+}

@@ -1,0 +1,52 @@
+﻿.box {
+    max-width: $contentWidth;
+    margin: 0 auto;
+    padding: 2em;
+    background: rgba(map-get($coolGrays, coolGray9), .75);
+    box-shadow: $longShadow;
+    position: relative;
+    z-index:1;
+
+    @media only screen and (max-width:900px),
+    only screen and (max-height:1000px){
+        padding:1em;
+    }
+}
+
+.quoteBlock {
+    text-align: center;
+    font-style: italic;
+
+    .author,
+    strong{
+        font-family: $headingFont;
+        font-style: normal;
+        font-size: 1.1em;
+        color: map-get($colorScheme, accentColor);
+    }
+}
+.contentBlock .quoteBlock {
+    padding:2em 2em 1em 2em;
+    margin:1em 0 0 0;
+    background:map-get($grays, gray80);
+    border-left:3px solid $defaultBorderColor;
+    color: $lightTextColor;
+    text-align:left;
+    font-size:.9em;
+
+    .author,
+    strong {
+        font-family: $primaryFont;
+        font-style: italic;
+        font-size: 1em;
+        color: $lightTextColor;
+    }
+    & + .quoteBlock{
+        padding-top:0;
+        margin-top:0;
+    }
+    &:last-of-type{
+        padding-bottom:2em;
+        margin-bottom:1em;
+    }
+}

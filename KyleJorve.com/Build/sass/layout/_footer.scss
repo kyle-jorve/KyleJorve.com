@@ -1,0 +1,38 @@
+﻿footer {
+    padding:0 !important;
+    margin:0 !important;
+    background:map-get($bgColors, medContentBg);
+    position:relative;
+    z-index:3;
+
+    h2{
+        @extend h4;
+        padding-bottom:.65em;
+        margin-bottom:.75em;
+
+        &:before{
+            display:block;
+            content:'';
+            width:75px;
+            height:3px;
+            background:$lightTextColor;
+            position:absolute;
+            bottom:0;
+            left:0;
+        }
+    }
+    .subFooter{
+        @include sbFlexWrap(row, nowrap, flex-end, center);
+        background:map-get($bgColors, bodyBg);
+        padding:2em 4em;
+        .copyright {
+            margin-right:2em;
+            p {
+                text-align:right;
+                font-size: $smallFontSize;
+                font-weight:$primaryBold;
+                margin: 0;
+            }
+        }
+    }
+}

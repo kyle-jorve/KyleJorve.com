@@ -1,0 +1,152 @@
+﻿@media print{
+    body{
+        padding-left:1em !important;
+        padding-right:1em !important;
+        font-size:12px;
+    }
+
+    body,
+    *{
+        background:none !important;
+        box-shadow:none !important;
+        color:$black !important;
+        text-align:left !important;
+    }
+
+    body *{
+        padding-left:0 !important;
+        padding-right:0 !important;
+        margin-left:0 !important;
+        margin-right:0 !important;
+        max-width:none !important;
+        @include transform("none !important");
+        position:static !important;
+
+        &:before,
+        &:after{
+            display:none !important;
+        }
+    }
+
+    section,
+    footer{
+        border-top:1px solid rgba($black, .35);
+        padding:2em 0 !important;
+    }
+
+    section *{
+        padding:0 !important;
+    }
+
+    hr{
+        background:$black !important;
+    }
+
+    img{
+        max-width:400px !important;
+        margin:0 auto !important;
+    }
+
+    .heroWrp,
+    .homePg .heroWrp,
+    .contentHero,
+    .landingHero{
+        min-height:0 !important;
+        padding:2em 0 !important;
+    }
+
+    .navBtn,
+    .navWrp.topNav,
+    .footerNavWrp .footerNav,
+    .contactSection,
+    .contactForm,
+    .demoSection,
+    .buttonWrp,
+    .button,
+    button,
+    input[type="submit"],
+    a.button,
+    .toTopBtn,
+    .spotlightBg .spotlightBottom,
+    .spotlightBg .spotlightTop,
+    .sysFeatContentWrp .topBorders,
+    .sysFeatContentWrp .bottomBorders,
+    .sysFeaturesWrp .sysFeatContentInnerWrp .closeBtn,
+    .sysFeaturesWrp .sysFeatures,
+    .featuresWrp .featureIconWrp,
+    .spotlightBg:before,
+    .spotlightBg:after,
+    .icon:before,
+    .icon:after,
+    .contentBlock:before,
+    h2:after,
+    h2:before,
+    footer h2:before,
+    h3:before,
+    .contentMain .textColumnWrp h3:before,
+    .sysFeaturesWrp .sysFeatContentWrp .sysFeatIconWrp,
+    .socialWrp,
+    .parallaxBg,
+    .heroWrp .parallaxBg,
+    .illoWrp.blank,
+    .landingHero .scrollGraphicWrp,
+    .contentHero .ttGraphicWrp,
+    .quoteIcon{
+        display:none !important;
+    }
+
+    header .logo svg{
+        fill:map-get($colorScheme, primaryColor);
+    }
+
+    .animatedEl{
+        opacity:1;
+        visibility:visible;
+        top:0;
+    }
+
+    .contentBlock.introContent{
+        margin: 0 !important;
+    }
+
+    .featuresWrp{
+        margin-top:0;
+        margin-bottom:2em;
+    }
+
+    .sysFeaturesWrp{
+        .sysFeatContentWrp{
+            opacity:1;
+            visibility:visible;
+            position:static !important;
+        }
+        .sysFeatContentInnerWrp{
+            position:static !important;
+        }
+        .sysFeatContent + .sysFeatContent{
+            border-top:1px solid rgba($black, .15);
+        }
+    }
+
+    .testimonialSection{
+        .testimonialItem{
+            border-top:1px solid rgba($black, .15);
+        }
+
+        .testimonial{
+            border:none !important;
+        }
+
+        .testimonialContent{
+            *{
+                display:inline !important;
+            }
+
+            &:before,
+            &:after{
+                display:inline !important;
+                content:"''";
+            }
+        }
+    }
+}

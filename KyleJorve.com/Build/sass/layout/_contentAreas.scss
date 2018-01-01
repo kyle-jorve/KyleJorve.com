@@ -1,0 +1,48 @@
+﻿.contentBlock {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    .button,
+    button,
+    input[type="submit"],
+    a.button{
+        margin-top:2em;
+    }
+
+    img {
+        display: inline-block;
+        max-width:300px;
+
+        & + img {
+            margin-left: 1em;
+        }
+    }
+
+    &:before{
+        display:block;
+        content:'';
+        width:50%;
+        max-width:200px;
+        height:$borderThickness;
+        margin-bottom:1em;        
+        background:$lightTextColor;
+    }
+
+    &.introContent{
+        max-width:$contentWidth;
+        margin:0 auto 6em auto;
+        text-align:center;
+
+        &:before{
+            margin:1em auto;
+        }
+    }
+}
+
+.lightContentBg{
+    .contentBlock:before{
+        background:$darkTextColor;
+    }
+}

@@ -1,0 +1,49 @@
+﻿/**umb_name:Align Left*/
+.align-left{
+    display:block;
+    text-align:left;
+}
+/**umb_name:Align Right*/
+.align-right{
+    display:block;
+    text-align:right;
+}
+/**umb_name:Align Center*/
+.align-center{
+    display:block;
+    text-align:center;
+}
+/**umb_name:Large Text*/
+.largeText{
+
+}
+/**umb_name:Small Text*/
+.smallText{
+
+}
+/**umb_name:Horizontal Line*/
+hr{
+
+}
+/**umb_name:Heading 2*/
+h2{
+
+}
+/**umb_name:Heading 3*/
+h3{
+
+}
+/**umb_name:Heading 4*/
+h4{
+
+}
+
+/**umb_name:Button Wrapper*/
+.buttonWrp{
+
+}
+
+/**umb_name:Button*/
+.button{
+
+}

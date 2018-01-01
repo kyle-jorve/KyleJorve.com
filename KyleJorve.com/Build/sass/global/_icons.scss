@@ -1,0 +1,129 @@
+﻿/*===========================
+    Icons
+===========================*/
+
+//These are in alphabetical order -- PLEASE keep them that way
+$icons:(
+    angle-double-down:"\f103",
+    angle-double-left: "\f100",
+    angle-double-right: "\f101",
+    angle-double-up: "\f102",
+    angle-down: "\f107",
+    angle-left: "\f104",
+    angle-right:"\f105",
+    angle-up:"\f106",
+    arrow-down: "\f063",
+    arrow-left: "\f060",
+    arrow-right: "\f061",
+    arrow-up: "\f062",
+    at: "\f1fa",
+    briefcase: "\f0b1",
+    calendar: "\f133",
+    caret-down: "\f0d7",
+    caret-left: "\f0d9",
+    caret-right: "\f0da",
+    caret-up: "\f0d8",
+    check-circle:"\f058",
+    clock: "\f017",
+    credit-card:"\f09d",
+    comment-bubble: "\f27a",
+    comments: "\f0e6",
+    dot: "\f111",
+    email: "\f003",
+    facebook: "\f09a",
+    fax: "\f1ac",
+    film:"\f008",
+    foursquare: "\f180",
+    fullscreen: "\f0b2",
+    gift:"\f06b",
+    google: "\f1a0",
+    google-plus: "\f0d5",
+    grid: "\f00a",
+    home: "\f015",
+    info:"\f129",
+    instagram: "\f16d",
+    leaf:"\f06c",
+    list: "\f00b",
+    location: "\f041",
+    pencil-square: "\f044",
+    people: "\f0c0",
+    person: "\f007",
+    phone: "\f095",
+    play:"\f04b",
+    play-circle: "\f144",
+    question-mark: "\f128",
+    reply: "\f112",
+    search: "\f002",
+    share:"\f064",
+    shopping-bag: "\f290",
+    shopping-cart: "\f07a",
+    smile-face: "\f118",
+    star:"\f006",
+    ticket: "\f145",
+    times: "\f00d",
+    twitter: "\f099",
+    video-camera: "\f03d",
+    wheelchair: "\f193",
+    yelp: "\f1e9",
+    youtube: "\f16a",
+    zoom:"\f00e"
+);
+
+[class*="icon"]{
+    position:relative;
+}
+    [class*="icon"]:before,
+    [class*="icon"]:after{
+        @include icon;
+    }
+    .icon-before:before{
+        margin-right: .5em;
+    }
+    .icon-after:after{
+        margin-left: .5em;
+    }
+    .icon-after:before{
+        display:none;
+    }
+    .icon-block:before,
+    .icon-block:after{
+        display:block !important;
+    }
+    .icon-block:before{
+        margin-bottom:1em;
+    }
+    .icon-block:after{
+        margin-top:1em;
+    }
+
+@each $position in $absolute-positions{
+    @if $position != center{
+        .icon-absolute-#{$position}{
+            display:block;
+            padding-#{$position}:30px !important;
+            &:before{
+                #{$position}:0;
+                @extend %absolute-center-vertical;
+                @include icon(block, inherit, 100%);
+            }
+        }
+    }
+    @else{
+        .icon-absolute-#{$position}{
+            display:block;
+            padding:15px !important;
+            &:before{
+                @extend %absolute-center;
+                @include icon(block, inherit, 100%);
+            }
+        }
+    }
+}
+@each $icon, $char in $icons{
+    [class*="icon"].#{$icon}{
+        @include icon-before($char);
+    }
+    .icon-after.#{$icon}{
+        @include icon-after($char);
+    }
+}

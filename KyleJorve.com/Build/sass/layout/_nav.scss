@@ -1,0 +1,437 @@
+﻿/*==========----------==========*/
+/*          HEADER NAV          */
+/*==========----------==========*/
+
+/*---------- TOP LEVEL ----------*/
+.topNav.navWrp {
+    opacity: 0;
+    visibility: hidden;
+    max-height:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding:1.5em 2em;
+    background:$navBg;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:9;
+    @include transition(all, .5s);
+
+    nav {
+        width: 100%;
+        padding:4em 0 6em 0;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+
+        ul,
+        li{
+            list-style: none;
+            padding: 0;
+        }
+
+        ul{
+            margin: 0;
+        }
+
+        a,
+        a:visited {
+            display: inline-block;
+            padding: 1em;
+            font-size: $largeFontSize;
+            font-family: $headingFont;
+            font-weight: $headingFontWeight;
+            text-transform: $headingTextTransform;
+            color: $medTextColor;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            @include transition;
+
+            &:before{
+                display:block;
+                content:'';
+                height:3px;
+                width:0;
+                background:$medTextColor;
+                @extend %absolute-center-horizontal;
+                bottom:0;
+                @include transition;
+            }
+        }
+
+        li {
+            opacity: 0;
+            visibility: hidden;
+            display: block;
+            margin:1em 0;
+            text-align: center;
+            position: relative;
+            top: -2em;
+            @include transition;
+
+            &.current {
+                & > a,
+                & > a:visited {
+                    pointer-events: none;
+                    color:lighten($medTextColor, 15%);
+                    &:before{
+                        background:lighten($medTextColor, 15%);
+                        width:76px;
+                    }
+                }
+            }
+        }
+    }
+}
+/*---------- SCROLL BARS ----------*/
+@include scrollBar(".topNav.navWrp", vertical);
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover(".topNav.navWrp nav li a,.topNav.navWrp nav li a:visited") {
+    color: lighten($medTextColor, 15%);
+    &:before{
+        background:lighten($medTextColor, 15%);
+        width:76px;
+    }
+}
+@include hover(".topNav.navWrp .logo svg"){
+    fill:lighten($medTextColor, 15%);
+}
+
+/*==========----------==========*/
+/*          FOOTER NAV          */
+/*==========----------==========*/
+.footerNavWrp{
+    @include sbFlexWrap(row, nowrap, space-between, stretch, stretch, true);
+    [class*="flexItem"]{
+        margin:0;
+        padding:0;
+    }
+    .contactInfoWrp{
+        padding:4em;
+        background:map-get($colorScheme, accentColor);
+    }
+    .contactInfo{
+        padding:1em 0;
+        font-weight:$primaryBold;
+        a,
+        a:visited{
+            color:$lightTextColor;
+            font-weight:$primaryBold;
+        }
+        p:first-child{
+            margin-top:0;
+        }
+        p:last-child{
+            margin-bottom:0;
+        }
+        .icon{
+            padding-left:40px;
+            position:relative;
+            &:before{
+                @include icon(block, $largeFontSize, 1, inherit);
+                font-weight:normal;
+                @extend %absolute-center-vertical;
+                left:0;
+            }
+        }
+    }
+    .footerNav{
+        @include sbFlexWrap(column, nowrap, space-between, stretch);
+
+        nav{
+            @include sbFlexWrap(row, nowrap, space-between, flex-start, stretch, true);
+            padding:4em;
+        }
+
+        .navCat{
+            padding:0 2em;
+            &:first-child{
+                padding-left:0;
+            }
+            &:last-child{
+                padding-right:0;
+            }
+        }
+
+        ul,
+        li{
+            display:block;
+            padding:0;
+            list-style:none;
+        }
+        ul{
+            margin:0;
+        }
+        li{
+            margin:.25em 0;
+            a,
+            a:visited{
+                display:block;
+                padding:.5em 0;
+                font-weight:$primaryBold;
+                color:$lightTextColor;
+                @include transform("translateX(0)");
+                @include transition;
+            }
+
+            &.current{
+                a,
+                a:visited{
+                    pointer-events:none;
+                    color:lighten($medTextColor, 35%);
+                }
+            }
+        }
+    }
+}
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover("footer nav a,footer nav a:visited") {
+    color: $linkColor;
+    @include transform("translateX(.5em)");
+}
+
+/*==========----------==========*/
+/*         TO TOP BUTTON        */
+/*==========----------==========*/
+.toTopBtn {
+    display: block;
+    cursor: pointer;
+    width: 40px;
+    min-width:40px;
+    height: 40px;
+    @include border-radius(2px);
+    background: $linkColor;
+    position:relative;
+    @include transition;
+
+    svg{
+        width:50%;
+        height:auto;
+        fill:map-get($bgColors, bodyBg);
+        @extend .absolute-center;
+        @include transition;
+    }
+}
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover(".toTopBtn") {
+    background: $linkHoverColor;
+}
+
+/*==========----------==========*/
+/*         SOCIAL MEDIA         */
+/*==========----------==========*/
+
+/*---------- GENERAL ----------*/
+.socialWrp {
+    padding:2em;
+    ul,
+    li {
+        list-style:none;
+        padding: 0;
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    li {
+        display: block;
+        margin: 0 1.5em;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .socialIcon {
+        display:block;
+        text-decoration: none !important;
+        border-radius:6px;
+        position:relative;
+        @include transition;
+
+        &:before {
+            @include icon(block, $socialIconFontSize, 1);
+            @include transition;
+            @extend %absolute-center
+        }
+    }
+}
+
+/*---------- MAIN NAV ----------*/
+.topNav.navWrp .socialWrp{
+    /*@include gradient(rgba($navBg, .25), rgba($navBg, 1), vertical);*/
+    /*background:$navBg;*/
+    background:rgba($navBg, .85);
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:3;
+    ul{
+        @include sbFlexWrap(row, nowrap, center, center);
+    }
+    .socialIcon{
+        width: $socialIconDiam;
+        height: $socialIconDiam;
+        background: $medTextColor;
+        &:before{
+            color: $lightTextColor;
+        }
+    }
+}
+
+/*---------- FOOTER NAV ----------*/
+footer .socialWrp{
+    padding-bottom:0;
+    padding-left:0;
+    padding-right:0;
+    ul{
+        @include sbFlexWrap(row, nowrap, flex-start, center);
+    }
+    .socialIcon{
+        width:$footerSocialIconDiam;
+        height:$footerSocialIconDiam;
+        background:$lightTextColor;
+        color:map-get($colorScheme, accentColor);
+        &:before{
+            font-size:$footerSocialIconFontSize;
+        }
+    }
+}
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover(".topNav.navWrp .socialWrp .socialIcon") {
+    background: lighten($medTextColor, 15%);
+    &:before {
+        color: $lightTextColor;
+    }
+}
+
+/*==========----------==========*/
+/*          NAV BUTTON          */
+/*==========----------==========*/
+.navBtn {
+    cursor: pointer;
+    width: $navBtnDiam;
+    height: $navBtnDiam;
+    border:$navBtnBorder;
+    border-color:$navBtnColor;
+    border-radius: 50%;
+    position: fixed;
+    right: 2em;
+    top: 1.5em;
+    z-index: 100;
+    @include transition(all, .5s);
+
+    .sandwich {
+        width: $sandwichWidth;
+        height: $sandwichHeight;
+        position:absolute;
+        top:50%;
+        left:50%;
+        @include transform("translate(-50%, -50%)");
+        @include transition(all, .5s);
+
+        hr {
+            visibility: visible;
+            opacity: 1;
+            margin: 0;
+            padding: 0;
+            width: $navBtnLineWidth;
+            height: $navBtnLineThickness;
+            border: none;
+            background: $navBtnColor;
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include transform("none");
+            @include transition(all, .5s);
+
+            & + hr {
+                width: $navBtnLineWidth / 2;
+                top: 50%;
+                @include transform("translateY(-50%)");
+
+                & + hr {
+                    width: $navBtnLineWidth * .66;
+                    top: auto;
+                    bottom: 0;
+                    @include transform("none");
+                }
+            }
+        }
+    }
+    /*---------- ACTIVE ----------*/
+    &.active {
+        border-color:$activeNavBtnColor;
+        .sandwich {
+            @include transform("translate(-50%,-50%) rotate(135deg)");
+
+            hr {
+                width:$navBtnLineWidth !important;
+                background: $activeNavBtnColor;
+                position: absolute;
+                top: 50%;
+                @include transform("translateY(-50%)");
+
+                & + hr {
+                    visibility: hidden;
+                    opacity: 0;
+
+                    & + hr {
+                        visibility: visible;
+                        opacity: 1;
+                        top: auto;
+                        bottom: 50%;
+                        @include transform("translateY(50%) rotate(90deg)");
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*---------- SCROLLED STYLES ----------*/
+.scrolled{
+    .navBtn {
+        top:.75em
+    }
+}
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover(".navBtn"){
+    border-color:$navBtnHoverColor;
+    hr{
+        background: $navBtnHoverColor;
+    }
+}
+
+/*==========----------==========*/
+/*         NAV REVEALED         */
+/*==========----------==========*/
+.showMobileNav,
+.showMobileNav.scrolled{
+    header .logo{
+        width:$logoWidth;
+
+        svg{
+            fill:$medTextColor;
+        }
+    } 
+
+    .topNav.navWrp{
+        opacity:1;
+        visibility:visible;
+    }
+}

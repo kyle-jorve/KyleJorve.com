@@ -1,0 +1,432 @@
+﻿$typeScales:(
+    perfect-fifth: 1.5,
+    augmented-fourth: 1.414,
+    perfect-fourth: 1.333,
+    major-third: 1.25,
+    minor-third: 1.2,
+    major-second: 1.125,
+    minor-second: 1.067
+);
+
+@function pow($number, $exponent) {
+    $value: 1;
+
+    @if $exponent > 0 {
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
+    }
+
+    @return $value;
+}
+
+@mixin type-scale($base, $multiplier, $breakpoint1, $breakpoint2, $breakpoint3) {
+    /*===========================
+        Responsive Type Scales
+    ===========================*/
+    html {
+        font-size: $base;
+        line-height: $primaryLineHeight;
+    }
+
+    /*===========================
+        Size Variations
+    ===========================*/
+
+    .largeText{
+        font-size:$largeFontSize;
+        font-weight:$primaryBold;
+    }
+    small,
+    .smallText {
+        font-size: $smallFontSize;
+    }
+
+    @media only screen and (max-width:$breakpoint1),
+    only screen and (max-height:$breakpoint1) {
+        .largeText {
+            /*font-size:1.1em;*/
+            font-size: $largeFontSize * .85;
+        }
+    }
+
+    @media only screen and (max-width:$breakpoint2),
+    only screen and (max-height:$breakpoint2),
+    print{
+        .largeText {
+            /*font-size:1.05em;*/
+            font-size: $largeFontSize * .8;
+        }
+    }
+
+    @media only screen and (max-width:$breakpoint3),
+    only screen and (max-height:$breakpoint3) {
+        .largeText {
+            /*font-size:1.025em;*/
+            font-size: $largeFontSize * .785;
+        }
+    }
+
+    /*===========================
+        Headings
+    ===========================*/
+
+    h1 {
+        font-size: $base * pow($multiplier, 4);
+    }
+
+    h2 {
+        font-size: $base * pow($multiplier, 3);
+    }
+
+    h3 {
+        font-size: $base * pow($multiplier, 2);
+    }
+
+    h4 {
+        font-size: $base * pow($multiplier, 1);
+    }
+    /*---------- RESPONSIVE ----------*/
+    @media only screen and (max-width:$breakpoint1),
+    only screen and (max-height:$breakpoint1) {
+        $multiplier1: $multiplier / pow($responsiveTypeScaler, 1);
+
+        h1 {
+            font-size: $base * pow($multiplier1, 4);
+        }
+
+        h2 {
+            font-size: $base * pow($multiplier1, 3);
+        }
+
+        h3 {
+            font-size: $base * pow($multiplier1, 2);
+        }
+
+        h4 {
+            font-size: $base * pow($multiplier1, 1);
+        }
+    }
+
+    @media only screen and (max-width:$breakpoint2),
+    only screen and (max-height:$breakpoint2),
+    print{
+        $multiplier1: $multiplier / pow($responsiveTypeScaler, 2);
+
+        h1 {
+            font-size: $base * pow($multiplier1, 4);
+        }
+
+        h2 {
+            font-size: $base * pow($multiplier1, 3);
+        }
+
+        h3 {
+            font-size: $base * pow($multiplier1, 2);
+        }
+
+        h4 {
+            font-size: $base * pow($multiplier1, 1);
+        }
+    }
+
+    @media only screen and (max-width:$breakpoint3),
+    only screen and (max-height:$breakpoint3) {
+        $multiplier1: $multiplier / pow($responsiveTypeScaler, 3);
+
+        h1 {
+            font-size: $base * pow($multiplier1, 4);
+        }
+
+        h2 {
+            font-size: $base * pow($multiplier1, 3);
+        }
+
+        h3 {
+            font-size: $base * pow($multiplier1, 2);
+        }
+
+        h4 {
+            font-size: $base * pow($multiplier1, 1);
+        }
+    }
+}
+
+@mixin columnCount($count){
+    -webkit-column-count:#{$count};
+       -moz-column-count:#{$count};
+            column-count:#{$count};
+
+    /*Print Styles*/
+    @media print{
+        -webkit-column-count:1;
+           -moz-column-count:1;
+                column-count:1;
+    }
+}
+
+@mixin columnGap($gap){
+    -webkit-column-gap:#{$gap};
+       -moz-column-gap:#{$gap};
+            column-gap:#{$gap};
+            
+    /*Print Styles*/
+    @media print{
+        -webkit-column-gap:0;
+           -moz-column-gap:0;
+                column-gap:0;
+    }
+}
+
+@mixin columnSpan($span){
+    -webkit-column-span:#{$span};
+       -moz-column-span:#{$span};
+            column-span:#{$span};
+
+    /*Print Styles*/
+    @media print{
+        -webkit-column-span:all;
+           -moz-column-span:all;
+                column-span:all;
+    }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+@mixin gradient($start-color, $end-color, $orientation)
+ {
+     background: $start-color;
+     @if $orientation == vertical
+     {
+         // vertical
+         background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+         background: -webkit-linear-gradient(top,  $start-color 0%,$end-color 100%);
+         background: -o-linear-gradient(top,  $start-color 0%,$end-color 100%);
+         background: -ms-linear-gradient(top,  $start-color 0%,$end-color 100%);
+         background: linear-gradient(to bottom,  $start-color 0%,$end-color 100%);
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );
+     }
+     @else if $orientation == horizontal
+     {
+         // horizontal
+         background: -moz-linear-gradient(left,  $start-color 0%, $end-color 100%);
+         background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));
+         background: -webkit-linear-gradient(left,  $start-color 0%,$end-color 100%);
+         background: -o-linear-gradient(left,  $start-color 0%,$end-color 100%);
+         background: -ms-linear-gradient(left,  $start-color 0%,$end-color 100%);
+         background: linear-gradient(to right,  $start-color 0%,$end-color 100%);
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+     }
+     @else if $orientation == diagonal-up {
+        //diagonal up
+        background: -moz-linear-gradient(45deg, $start-color 0%, $end-color 100%);
+        background: -webkit-linear-gradient(45deg, $start-color 0%,$end-color 100%);
+        background: linear-gradient(45deg, $start-color 0%,$end-color 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+     }
+     @else if $orientation == diagonal-down {
+        //diagonal up
+        background: -moz-linear-gradient(135deg, $start-color 0%, $end-color 100%);
+        background: -webkit-linear-gradient(135deg, $start-color 0%,$end-color 100%);
+        background: linear-gradient(135deg, $start-color 0%,$end-color 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+     }
+     @else if $orientation == radial
+     {
+         // radial
+         background: -moz-radial-gradient(center, ellipse cover,  $start-color 0%, $end-color 100%);
+         background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$start-color), color-stop(100%,$end-color));
+         background: -webkit-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+         background: -o-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+         background: -ms-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+         background: radial-gradient(ellipse at center,  $start-color 0%,$end-color 100%);
+         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+     }
+ }
+
+@mixin icon($display: inline-block, $size: inherit, $lineHeight: inherit, $color: inherit){
+    display:$display;
+    vertical-align:baseline;
+    text-decoration:none !important;
+    font-family:FontAwesome !important;
+    line-height:$lineHeight;
+    font-size:$size;
+    color:$color;
+}
+
+@mixin icon-before($content){
+    &:before{
+        content:$content;
+    }
+}
+
+@mixin icon-after($content){
+    &:after{
+        content:$content;
+    }
+}
+
+@mixin transition($property: all, $time: .3s, $ease: ease, $important: null){
+    @if $property != none{
+        -webkit-transition:#{$property} $time $ease #{$important};
+           -moz-transition:#{$property} $time $ease #{$important};
+             -o-transition:#{$property} $time $ease #{$important};
+                transition:#{$property} $time $ease #{$important};
+    }
+    @else{
+         -webkit-transition:#{$property};
+            -moz-transition:#{$property};
+              -o-transition:#{$property};
+                 transition:#{$property};   
+    }
+}
+
+@mixin transform($transform){
+    -webkit-transform:#{$transform};
+       -moz-transform:#{$transform};
+        -ms-transform:#{$transform};
+         -o-transform:#{$transform};
+            transform:#{$transform};
+}
+
+@mixin transform-origin($origin){
+    -webkit-transform-origin:#{$origin};
+       -moz-transform-origin:#{$origin};
+        -ms-transform-origin:#{$origin};
+         -o-transform-origin:#{$origin};
+            transform-origin:#{$origin};
+}
+
+@mixin filter($property){
+    -webkit-filter:#{$property};
+            filter:#{$property};
+}
+
+@mixin perspective($depth){
+    -webkit-perspective:$depth;
+       -moz-perspective:$depth;
+            perspective:$depth;
+}
+
+@mixin appearance($appearance){
+    -webkit-appearance:$appearance;
+    -moz-appearance:$appearance;
+    appearance:$appearance;
+}
+
+@mixin clip-path($clipPath) {
+    -webkit-clip-path: #{$clipPath};
+            clip-path: #{$clipPath};
+}
+
+@mixin animation($name, $duration, $timing-function:ease, $delay:0s, $direction:normal, $iteration-count:1, $fill-mode:none, $play-state:running) {
+    -webkit-animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
+       -moz-animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
+         -o-animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
+            animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
+
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-o-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation-fill-mode($fillMode) {
+    -webkit-animation-fill-mode: $fillMode;
+       -moz-animation-fill-mode: $fillMode;
+         -o-animation-fill-mode: $fillMode;
+            animation-fill-mode: $fillMode;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin hover($el) {
+    .allowHover {
+        #{$el}{
+            &:hover {
+                @content;
+            }
+        }
+    }
+
+    #{$el} {
+        &.hover {
+            @content;
+        }
+    }
+}
+
+@mixin scrollBar($el, $orientation){
+    #{$el}{
+        -webkit-overflow-scrolling: touch;
+    }
+    body:not(.touchDevice){
+        #{$el}{
+            &::-webkit-scrollbar {
+                background: none;
+            }
+
+            &::-webkit-scrollbar-button,
+            &::-webkit-scrollbar-track,
+            &::-webkit-scrollbar-track-piece,
+            &::-webkit-scrollbar-corner,
+            &::-webkit-resizer {
+                display: none;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $defaultBorderColor;
+            }
+            @if $orientation == horizontal {
+                &::-webkit-scrollbar{
+                    height:10px;
+                }
+            }
+            @else if $orientation == vertical {
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+            }
+        }
+    }
+}

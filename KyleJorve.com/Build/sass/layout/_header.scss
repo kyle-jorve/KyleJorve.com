@@ -1,0 +1,77 @@
+﻿header{
+    opacity:1;
+    visibility:visible;
+    padding:1.5em 2em;
+    box-shadow:none;
+    background:transparent;
+    /*@include gradient(rgba(map-get($bgColors, darkContentBg), .35), rgba(map-get($bgColors, darkContentBg), 0), vertical);*/
+    color:$medTextColor;
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    z-index:10;
+    @include transition;
+    p{
+        margin:0;
+    }
+    
+    .logo{
+        width:$logoWidth;
+        height:$logoHeight;
+        svg{
+            fill:map-get($bgColors, lightContentBg);
+        }
+    } 
+
+    .flexContainer{
+        @include sbFlexWrap(row, nowrap, space-between, center);
+        padding:0;
+        .flexItem{
+            margin:0;
+        }
+    }
+}
+
+.logoWrp{
+    text-align:left;
+}
+.logo{
+    display:block;
+    overflow:hidden;
+    .logoTitle{
+        display:none;
+    }
+    svg{
+        width:auto;
+        max-width:none;
+        height:100%;
+        display:block;
+        @include transition;
+    }
+}
+
+/*---------- Scroll Effects ----------*/
+.scrolled {
+    header {
+        padding:1em 2em;
+        background:rgba(map-get($bgColors, bodyBg), .65);
+        .logo{
+            width:$logoScrolledWidth;
+        }
+    }
+}
+
+/*---------- Nav Revealed Effects ----------*/
+.showMobileNav {
+    header{
+        background:$navBg;
+    }
+}
+
+/*---------- Hover Effects ----------*/
+@include hover(".logo"){
+    svg{
+        fill:$linkColor;
+    }
+}

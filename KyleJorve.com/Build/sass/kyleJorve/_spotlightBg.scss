@@ -1,0 +1,98 @@
+﻿section.spotlightBg{
+    padding:6em 2em;
+}
+
+.spotlightBg{
+    background:map-get($bgColors, lightContentBg);
+    color:$darkTextColor;
+    position:relative;
+    z-index:2;
+
+    & > *{
+        position:relative;
+        z-index:2;
+    }
+
+    &:before,
+    &:after{
+        display:block;
+        content:'';
+        width:100%;
+        max-width:400px;
+        height:200px;
+        background:url('/images/sparklies.svg') no-repeat center center / contain;
+        position:absolute;
+        z-index:1;
+    }
+    &:before{
+        top:2em;
+        left:2em;
+    }
+    &:after{
+        bottom:2em;
+        right:2em;
+    }
+
+    .spotlightTop,
+    .spotlightBottom{
+        width:100%;
+        overflow:hidden;
+        position:absolute;
+        left:0;
+        right:0;
+        z-index:1;
+
+        img{
+            width:110%;
+            max-width:none;
+            position:relative;
+            left:-5%;
+            z-index:1;
+        }
+
+        .spotlightAngle{
+            position:absolute;
+            bottom:0;
+            right:-5%;
+            z-index:2;
+        }
+
+        &:before{
+            display:block;
+            content:'';
+            @extend %absolute-cover;
+        }
+    }
+
+    .spotlightTop{
+        top:1px;
+        @include transform("translateY(-100%)");
+    }
+    .spotlightBottom{
+        bottom:1px;
+        @include transform("rotateX(180deg) translateY(-100%)");
+    }
+
+    &.spotlightRight{
+        .spotlightTop{
+            top:1px;
+            @include transform("rotateY(180deg) translateY(-100%)");
+        }
+        .spotlightBottom{
+            bottom:1px;
+            @include transform("rotateX(180deg) rotateY(180deg) translateY(-100%)");
+        }
+    }
+
+    & + *{
+        padding-top:300px;
+    }
+
+    .contentBlock:before{
+        background:$darkTextColor;
+    }
+}
+
+.preSpotlight{
+    padding-bottom:300px;
+}

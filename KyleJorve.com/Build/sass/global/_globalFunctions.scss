@@ -1,0 +1,10 @@
+﻿@function color($bgColor) {
+    @if(lightness($bgColor) > 60) {
+        //if background is light
+        @return $darkTextColor;
+    }
+    @else {
+        //if background is dark
+        @return $lightTextColor;
+    }
+}

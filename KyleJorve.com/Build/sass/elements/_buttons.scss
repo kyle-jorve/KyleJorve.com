@@ -1,0 +1,211 @@
+﻿.buttonWrp{
+    margin:0;
+    padding:2em 0;
+    text-align:right;
+}
+
+.button,
+button,
+input[type="submit"],
+a.button {
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    display: inline-block;
+    padding: $buttonPadding;
+    margin: 1em 0;
+    vertical-align: middle;
+    border:none;
+    border-radius:#{$buttonBorderRadius};
+    font-family: $buttonFont;
+    text-align: center;
+    text-transform: $buttonTextTrans;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    letter-spacing: $buttonLetterSpacing;
+    font-size: $buttonFontSize;
+    font-weight: $buttonFontWeight !important;
+    line-height: $buttonLineHeight;
+    white-space:nowrap;
+    position: relative;
+    @include transition(all, .5s);
+    @include appearance(none);
+
+    &:before{
+        display:block;
+        content:'';
+        border: $buttonBorder;
+        border-radius:#{$buttonOuterBorderRadius};
+        position:absolute;
+        top:$buttonOuterBorderDistance * -1;
+        right:$buttonOuterBorderDistance * -1;
+        bottom:$buttonOuterBorderDistance * -1;
+        left:$buttonOuterBorderDistance * -1;
+        @include transition;
+    }
+
+    & + .button {
+        margin-left: 2em;
+    }
+
+    &:disabled,
+    &.disabled {
+        cursor: default;
+        pointer-events: none;
+        @include filter("grayscale(100%)");
+        @include opacity(.35);
+        color: map-get($coolGrays, coolGray1);
+    }
+
+    &:focus {
+        outline: 0;
+    }
+    /*---------- PRIMARY BUTTON ----------*/
+    &.prime {
+        color: $primeBtnTextColor;
+        background: $primeBtnBg;
+        &:before{
+            border-color: $primeBtnBorderColor;
+        }
+    }
+    /*---------- SECONDARY BUTTON ----------*/
+    &.secondary {
+        background: $secondaryBtnBg;
+        color: $secondaryBtnTextColor;
+        &:before{
+            border-color: $secondaryBtnBorderColor;
+        }
+    }
+    /*---------- TERTIARY BUTTON ----------*/
+    &.tertiary{
+        background: $tertiaryBtnBg;
+        color: $tertiaryBtnTextColor;
+        &:before{
+            border-color: $tertiaryBtnBorderColor;
+        }
+    }
+
+    /*---------- QUATERNARY BUTTON ----------*/
+    &.quaternary{
+        background: $quatBtnBg;
+        color: $quatBtnTextColor;
+        &:before{
+            border-color: $quatBtnBorderColor;
+        }
+    }
+
+    /*---------- INFO BUTTON ----------*/
+    &.infoBtn {
+        padding: .5em 1em;
+        background: map-get($coolGrays, coolGray1);
+        color: $linkColor;
+
+        &:before {
+            @include icon;
+            content: map-get($icons, info);
+            margin-right: .5em;
+            vertical-align: bottom;
+        }
+    }
+    /*---------- SEARCH BUTTON ----------*/
+    &.searchBtn {
+        width:$inputHeight;
+        height: $inputHeight;
+        padding: $inputPadding;
+        margin:0;
+        font-weight:$primaryFontWeight !important;
+        position: relative;
+        &:before{
+            @include icon(block, 16px, 1, $lightTextColor);
+            content:map-get($icons, search);
+            @extend %absolute-center;
+            z-index:1;
+        }
+        button,
+        input[type="submit"] {
+            display: block;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            @extend %absolute-cover;
+            z-index: 2;
+        }
+    }
+}
+
+/*---------- CLOSE BUTTON ----------*/
+.closeBtn{
+    cursor:pointer;
+    width:60px;
+    height:60px;
+    background:$linkColor;
+    position:relative;
+    @include transition;
+
+    hr{
+        width:50%;
+        margin:0;
+        background:$darkTextColor;
+        position:absolute;
+        top:50%;
+        left:50%;
+        @include transform("translate(-50%, -50%) rotate(45deg)");
+
+        & + hr{
+            @include transform("translate(-50%, -50%) rotate(-45deg)");
+        }
+    }
+}
+
+input {
+    & + .button,
+    & + button,
+    & + input[type="submit"],
+    & + a.button{
+        padding:$inputPadding;
+        height:$inputHeight;
+        margin:0;
+    }
+}
+/*---------- HOVER EFFECTS ----------*/
+@include hover(".button, button, input[type='submit'],a.button") {
+    /*Primary Button*/
+    &.prime {
+        color: $primeBtnHoverColor;
+        background: $primeBtnHoverBg;
+        &:before{
+            border-color:$primeBtnHoverBg;
+        }
+    }
+    /*Secondary Button*/
+    &.secondary {
+        color: $secondaryBtnHoverColor;
+        background: $secondaryBtnHoverBg;
+        &:before{
+            border-color:$secondaryBtnHoverBg;
+        }
+    }
+    /*Tertiary Button*/
+    &.tertiary{
+        color: $teritaryBtnHoverColor;
+        background: $tertiaryBtnHoverBg;
+        &:before{
+            border-color:$tertiaryBtnHoverBg;
+        }
+    }
+    /*Quaternary Button*/
+    &.quaternary{
+        background:$quatBtnHoverBg;
+        color:$quatBtnHoverColor;
+        &:before{
+            border-color:$quatBtnHoverBg;
+        }
+    }
+    /*Info Button*/
+    &.infoBtn {
+        color: $linkHoverColor;
+    }
+}
+@include hover(".closeBtn"){
+    background:$linkHoverColor;
+}

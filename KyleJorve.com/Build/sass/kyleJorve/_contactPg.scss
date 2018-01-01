@@ -1,0 +1,35 @@
+﻿.contactMain{
+    .wide-wrapper{
+        @include sbFlexWrap(row, nowrap, space-between, flex-start){
+
+            /*----- 1200PX WIDTH -----*/
+            @media only screen and (max-width:1200px){
+                display:block;
+
+                & > *{
+                    padding:1em 0 !important;
+
+                    &:first-child{
+                        padding-top:0 !important;
+                    }
+
+                    &:last-child{
+                        padding-bottom:0 !important;
+                    }
+                }
+            }
+        }
+
+        & > *{
+            padding:0 2em;
+
+            &:first-child{
+                padding-left:0;
+            }
+
+            &:last-child{
+                padding-right:0;
+            }
+        }
+    }
+}

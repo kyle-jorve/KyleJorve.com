@@ -1,0 +1,106 @@
+﻿/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                 SUBHERO FEATURES                 //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+.featuresWrp{
+    /*==========----------==========*/
+    /*         1200PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:1200px){
+        .featureItem{
+            width:calc((100% / 3) - 1em);
+            margin:0 .5em;
+        }
+    }
+
+    /*==========----------==========*/
+    /*        GRID BREAKPOINT       */
+    /*==========----------==========*/
+    @media only screen and (max-width:$gridBreakpoint){
+        margin-top:-8em;
+        margin-bottom:2em;
+
+        .featureItem{
+            width:100%;
+            margin:1em auto;
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                 SYSTEM FEATURES                  //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+.sysFeaturesSection{
+    /*==========----------==========*/
+    /*        GRID BREAKPOINT       */
+    /*==========----------==========*/
+    @media only screen and (max-width:$gridBreakpoint){
+        .sysFeaturesWrp{
+            .sysFeatures{
+                @include filter("none");
+            }
+
+            .sysFeatureItem{
+                min-height:300px;
+            }
+
+            .sysFeatContentWrp{
+                position:fixed !important;
+                z-index:102;
+
+                .sysFeatOverlay{
+                    display:block;
+                }
+            }
+
+            .sysFeatContentInnerWrp{
+                top:2em;
+                right:2em;
+                bottom:2em;
+                left:2em;
+            }
+
+            .sysFeatContent{
+                padding:6em 2em 2em 2em;
+            }
+        }
+        
+        /*---------- Content Revealed ----------*/
+        &.revealFeatContent{
+            z-index:101;
+
+            .sysFeaturesWrp .sysFeatures{
+                opacity:1;
+                @include filter("none");
+            }
+        }
+    }
+
+    /*==========----------==========*/
+    /*         600PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:600px){
+        .sysFeaturesWrp{
+            .sysFeatContentInnerWrp{
+                top:0;
+                right:0;
+                bottom:0;
+                left:0;
+            }
+        }
+    }
+
+    /*==========----------==========*/
+    /*         400PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:400px){
+        .sysFeaturesWrp{
+            .sysFeatContent{
+                padding:4em 1.5em 1.5em 1.5em;
+            }
+        }
+    }
+}

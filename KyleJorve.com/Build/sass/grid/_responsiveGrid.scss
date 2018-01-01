@@ -1,0 +1,64 @@
+﻿/*===========================
+    SB Responsive Grid
+===========================*/
+.sbRow{
+    @extend %clearfix;
+    display:block;
+    width:100%;
+    padding:1em 0;
+}
+[class*="sbCol"]{
+    @include sbCol;
+}
+.sbCol-100{
+    @include sbColWidth(12, 12);
+}
+.sbCol-75{
+    @include sbColWidth(9, 12);
+}
+.sbCol-66{
+    @include sbColWidth(8, 12);
+}
+.sbCol-50{
+    @include sbColWidth(6, 12);
+}
+.sbCol-40{ 
+    @include sbColWidth(2, 5);
+}
+.sbCol-33{
+    @include sbColWidth(4, 12);
+}
+.sbCol-25{
+    @include sbColWidth(3, 12);
+}
+
+@media only screen and (max-width:$gridBreakpoint){
+    .sbRow:not(.noRespond){ 
+        padding:0;
+        &:before,
+        &:after{ 
+            display:none;
+        }
+    }
+    .sbRow:not(.noRespond) > [class*="sbCol"]:not(.padding-0){
+        width:100%;
+        float:none;
+        padding:1em 0;
+    }
+}
+
+@media print{
+    .sbRow{ 
+        padding:0 !important;
+        &:before,
+        &:after{ 
+            display:none !important;
+        }
+    }
+    .sbRow > [class*="sbCol"]{
+        width:100% !important;
+        max-width:none !important;
+        float:none !important;
+        padding:1em 0 !important;
+    }
+}

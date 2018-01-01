@@ -1,0 +1,205 @@
+﻿/*===========================
+    Colors
+===========================*/
+/*Basic*/
+$white: #ffffff;
+$black: #000000;
+
+/*Grays*/
+$grays:(
+    gray05: #f2f2f2,
+    gray10: #e6e6e6,
+    gray15: #d9d9d9,
+    gray20: #cccccc,
+    gray25: #bfbfbf,
+    gray30: #b3b3b3,
+    gray35: #a6a6a6,
+    gray40: #999999,
+    gray45: #8c8c8c,
+    gray50: #808080,
+    gray55: #737373,
+    gray60: #666666,
+    gray65: #595959,
+    gray70: #4d4d4d,
+    gray75: #404040,
+    gray80: #333333,
+    gray85: #262626,
+    gray90: #1a1a1a,
+    gray95: #0d0d0d
+);
+
+/*Cool Grays*/
+$coolGrays:(
+    coolGray1: #f2f3f4,
+    coolGray2: #dadedf,
+    coolGray3: #c1c7c9,
+    coolGray4: #a7afb2,
+    coolGray5: #8c979a,
+    coolGray6: #6f7c80,
+    coolGray7: #555f61,
+    coolGray8: #373d3f,
+    coolGray9: #131516 
+);
+
+/*Warm Grays*/
+$warmGrays:(
+    warmGray1: #f2f0ef,
+    warmGray2: #d8d4d1,
+    warmGray3: #bfb8b4,
+    warmGray4: #a59994,
+    warmGray5: #8a7d79,
+    warmGray6: #6e635f,
+    warmGray7: #524947,
+    warmGray8: #332d2b,
+    warmGray9: #17110f
+);
+
+/*Color Scheme*/
+$colorScheme:(
+    primaryColor: #3f292d,
+    secondaryColor: #f7e8da,
+    tertiaryColor:#6b3943,
+    quaternaryColor: #1a110f,
+    accentColor: #d68b4d,
+    ambientColor: #3f292d
+);
+
+/*Background Colors*/
+$bgColors:(
+    bodyBg: map-get($colorScheme, ambientColor),
+    lightContentBg: map-get($colorScheme, secondaryColor),
+    darkContentBg: map-get($colorScheme, quaternaryColor),
+    medContentBg: map-get($colorScheme, tertiaryColor)
+);
+
+/*===========================
+    Borders
+===========================*/
+$borderThickness: 3px;
+
+/*Border Colors*/
+$defaultBorderColor: map-get($colorScheme, quaternaryColor);
+$lightBorderColor: map-get($colorScheme, secondaryColor);
+
+/*===========================
+    Wrappers
+===========================*/
+$wideWidth:1660px;
+$sectionWidth: 1400px;
+$smallSectionWidth: 1200px;
+$contentWidth: 950px;
+$narrowWidth:600px;
+
+$sectionPadding: 8em 2em;
+
+/*===========================
+    Type
+===========================*/
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,600');
+@font-face {
+    font-family: 'Big John';
+    src: url('../fonts/BIG JOHN.eot'),
+        url('../fonts/BIG JOHN.otf') format('opentype'),
+        url('../fonts/BIG JOHN.woff2') format('woff2'),
+        url('../fonts/BIG JOHN.woff') format('woff');
+}
+@font-face {
+    font-family: 'Slim Joe';
+    src: url('../fonts/Slim Joe.eot'),
+        url('../fonts/Slim Joe.otf') format('opentype'),
+        url('../fonts/Slim Joe.woff2') format('woff2'),
+        url('../fonts/Slim Joe.woff') format('woff');
+}
+
+/*Heading Font*/
+$headingFont: 'Big John', Helvetica, Arial, sans-serif;
+$headingFont2: 'Slim Joe', Helvetica, Arial, sans-serif;
+$headingTextTransform: uppercase;
+$headingFontWeight:normal;
+$headingBold:normal;
+$headingLetterSpacing:0;
+$headingLineHeight:1.15;
+$headingTypeMargin:1.5em 0 .85em;
+
+/*Main Font*/
+$primaryFont: 'Raleway', sans-serif;
+$primaryTextTransform: none;
+$primaryFontWeight:300;
+$primaryBold: 600;
+$primaryItalic: normal;
+$primaryLetterSpacing:.015em;
+$primaryLineHeight:1.5;
+$primaryTypeMargin:1em 0;
+
+$listTypeMargin: .5em 0;
+
+/*General Type Settings*/
+$baseFontSize:1em;
+$smallFontSize:.8em;
+$largeFontSize:1.2em;
+
+$typeScaleMultiplier: 1.4;
+
+$lightTextColor: map-get($colorScheme, secondaryColor);
+$darkTextColor: map-get($colorScheme, primaryColor);
+$medTextColor: map-get($colorScheme, tertiaryColor);
+
+$lightHeadingColor: $lightTextColor;
+$darkHeadingColor: $darkTextColor;
+
+$textShadow: 1px 1px rgba($black, .5);
+$whiteTextShadow: 1px 1px rgba($white, .5);
+
+/*Responsive*/
+$responsiveTypeScaler: 1.06;
+$typeBreakpoint1: 1000px;
+$typeBreakpoint2: 800px;
+$typeBreakpoint3: 600px;
+
+/*Links*/
+$linkColor:map-get($colorScheme, accentColor);
+$linkHoverColor:darken($linkColor, 15%);
+$linkTextDecoration:none;
+$linkHoverTextDecoration:none;
+$linkFontWeight: $primaryBold;
+
+/*----- Alignments -----*/
+$alignments:(
+    right,
+    left,
+    center
+);
+
+/*===========================
+    Shadows
+===========================*/
+$shadowColor:rgba($black, .15);
+$mediumShadowColor:rgba($black, .25);
+$darkShadowColor: rgba($black,0.5);
+
+$boxShadow: 0 3px 6px $shadowColor;
+$mediumShadow: 0 6px 12px $mediumShadowColor;
+$longShadow: 0 12px 30px 2px $darkShadowColor;
+
+$boxShadowLeft: -3px 0 3px $shadowColor;
+$boxShadowRight: 3px 0 3px $shadowColor;
+
+$insetShadowRight:inset -3px 0 3px $shadowColor;
+$insetShadowLeft: 3px 0 3px $shadowColor;
+
+$longShadowLeft: -4px 0 8px $darkShadowColor;
+$longShadowRight: 4px 0 8px $darkShadowColor;
+
+/*===========================
+    Margin and Padding
+===========================*/
+
+$gaps: 0, 1em, 2em;
+$edges: top, right, bottom, left;
+
+/*===========================
+    Positions
+===========================*/
+
+$positions:static, relative, absolute, fixed;
+$absolute-positions:left, right, top, bottom, center;

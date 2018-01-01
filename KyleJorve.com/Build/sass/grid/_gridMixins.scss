@@ -1,0 +1,135 @@
+﻿/*=====================================================
+
+    Mixins specific for the grid settings.
+
+=====================================================*/
+
+@mixin box-sizing($box-type){
+    -webkit-box-sizing:$box-type;
+       -moz-box-sizing:$box-type;
+            box-sizing:$box-type;
+}
+/*===========================
+    Responsive Grid
+===========================*/
+@mixin sbCol($gap: 1em){
+    display:block;
+    float:left;
+    padding: 0 $gap;
+    &:first-child{
+        padding-left:0;
+    }
+    &:last-child{
+        padding-right:0;
+    }
+}
+@mixin sbColWidth($col, $sum){
+    width: percentage($col/$sum);
+}
+
+/*===========================
+    Flex Mixins
+===========================*/
+
+@mixin sbFlexWrap($direction, $wrap, $justify: center, $alignItems: stretch, $alignContent: stretch, $respond: false){
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;    
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-direction:$direction;
+       -moz-flex-direction:$direction;
+        -ms-flex-direction:$direction;
+            flex-direction:$direction;
+
+    -webkit-flex-wrap: $wrap;
+       -moz-flex-wrap: $wrap;
+        -ms-flex-wrap: $wrap;
+            flex-wrap: $wrap;
+
+    -webkit-justify-content: $justify;
+       -moz-justify-content: $justify;
+        -ms-justify-content: $justify;
+            justify-content: $justify;
+    
+    -webkit-align-items: $alignItems;
+       -moz-align-items: $alignItems;
+        -ms-align-items: $alignItems;
+            align-items: $alignItems;
+
+    -webkit-align-content: $alignContent;
+       -moz-align-content: $alignContent;
+        -ms-align-content: $alignContent;
+            align-content: $alignContent;
+
+    @if $respond == false {
+        //Custom responsive styles
+        @content
+    }
+    @else {
+        @media only screen and (max-width:$gridBreakpoint){
+            //Default responsive styles
+            display:block;
+            padding:0;
+            
+            & > *{
+                width:100%;
+            }
+
+            & > [class*="flexItem"]{
+                width:100%;
+                padding:1em 0;
+            }
+        }
+    }
+
+    @media print{
+        padding:0 !important;
+        display:block !important;
+        & > *{
+            width:100% !important;
+            max-width:none !important;
+            display:block !important;
+            padding:1em 0 !important;
+        }
+    }
+}
+@mixin sbFlexItem($grow: 0, $shrink: 1, $basis: auto, $important: null){
+    -webkit-box-flex: $grow $shrink $basis #{$important};
+       -moz-box-flex: $grow $shrink $basis #{$important};
+        -webkit-flex: $grow $shrink $basis #{$important};
+            -ms-flex: $grow $shrink $basis #{$important};
+                flex: $grow $shrink $basis #{$important};
+}
+
+@mixin sbFlexOrder($order) {
+    -webkit-box-ordinal-group: $order;  
+       -moz-box-ordinal-group: $order;     
+               -ms-flex-order: $order;     
+                -webkit-order: $order;  
+                        order: $order;
+}
+
+@mixin sbFlexGrow($grow){
+    -webkit-flex-grow:$grow;
+       -moz-flex-grow:$grow;
+        -ms-flex-grow:$grow;
+         -o-flex-grow:$grow;
+            flex-grow:$grow;
+}
+
+@mixin flexJustify($justify) {
+    -webkit-justify-content: $justify;
+       -moz-justify-content: $justify;
+        -ms-justify-content: $justify;
+            justify-content: $justify;
+}
+
+@mixin alignSelf($alignment) {
+    -webkit-align-self: $alignment;
+       -moz-align-self: $alignment;
+        -ms-align-self: $alignment;
+            align-self: $alignment;
+}

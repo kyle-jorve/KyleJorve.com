@@ -1,0 +1,77 @@
+﻿/*---------- Button Variables ----------*/
+/*General*/
+$buttonBorder:$borderThickness solid;
+$buttonBorderRadius:"24px / 50%";
+$buttonOuterBorderDistance: 6px;
+$buttonOuterBorderRadius:"30px / 50%";
+$buttonPadding: 1.25em 2.5em;
+$buttonTextTrans:uppercase;
+$buttonLineHeight: $primaryLineHeight;
+$buttonFontSize:$smallFontSize;
+$buttonFont: $headingFont;
+$buttonLetterSpacing: $headingLetterSpacing;
+$buttonFontWeight: $headingBold;
+
+/*Primary Button*/
+$primeBtnBg: map-get($colorScheme, accentColor);
+$primeBtnTextColor: $lightTextColor;
+$primeBtnBorderColor: $primeBtnBg;
+
+$primeBtnHoverBg:darken($primeBtnBg, 15%);
+$primeBtnHoverColor: $primeBtnTextColor;
+
+/*Secondary Button*/
+$secondaryBtnBg: transparent;
+$secondaryBtnTextColor: $darkTextColor;
+$secondaryBtnBorderColor: $darkTextColor;
+
+$secondaryBtnHoverBg: map-get($bgColors, darkContentBg);
+$secondaryBtnHoverColor: $lightTextColor;
+
+/*Tertiary Button*/
+$tertiaryBtnBg: transparent;
+$tertiaryBtnTextColor: $lightTextColor;
+$tertiaryBtnBorderColor: $lightTextColor;
+
+$tertiaryBtnHoverBg: map-get($bgColors, lightContentBg);
+$teritaryBtnHoverColor: $darkTextColor;
+
+/*Quaternary Button*/
+$quatBtnBg: map-get($bgColors, darkContentBg);
+$quatBtnTextColor: $lightTextColor;
+$quatBtnBorderColor: map-get($bgColors, darkContentBg);
+
+$quatBtnHoverBg: lighten($quatBtnBg, 15%);
+$quatBtnHoverColor: $lightTextColor;
+
+/*---------- Input Variables ----------*/
+/*Inputs*/
+$inputBg: transparent;
+$inputPadding: .5em 1em;
+$inputHeight: 45px;
+$inputFont:$primaryFont;
+$inputTextColor:$darkTextColor;
+$inputTextWeight:$primaryBold;
+$inputLetterSpacing:$primaryLetterSpacing;
+$inputBorder: 3px solid $defaultBorderColor;
+$inputBorderRadius:"34px / 50%";
+$textAreaBorderRadius: 34px;
+
+/*Dynamic Inputs*/
+$dynamicInputPadding: 1.5em 24px .5em 24px;
+$dynamicTextAreaPadding: 36px 24px 1em 24px;
+
+/*Labels*/
+$inputLabelTextTrans: none;
+$inputLabelFont: $primaryFont;
+$inputLabelWeight: $primaryBold;
+$inputLabelFontSize:1em;
+
+/*For dark backgrounds*/
+$inputLightBorder: 3px solid $lightBorderColor;
+$inputLightTextColor:$lightTextColor;
+
+/*---------- Input Error Variables ----------*/
+$errorBg:rgba(206, 19, 19, .25);
+$errorBorder:3px solid rgb(206,19,19);
+$errorTextColor:rgb(206,19,19);

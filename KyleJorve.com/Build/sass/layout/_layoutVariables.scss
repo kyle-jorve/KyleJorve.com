@@ -1,0 +1,72 @@
+﻿/*===========================
+    Header
+===========================*/
+$headerHeight: auto;
+$headerScrolledHeight: auto;
+
+/*===========================
+    Hero
+===========================*/
+$heroHeight: calc((100vw / 16 ) * 9);
+$shortHeroHeight: calc((100vw / 16 ) * 4);
+
+/*===========================
+    Logo
+===========================*/
+$logo: url('/images/logo-horizontal.svg');
+$vertLogo: url('/images/logo-vertical.svg');
+
+$logoWidth: 240px;
+$logoHeight: $logoWidth * .18;
+
+$logoScrolledWidth:88px;
+
+/*===========================
+    Load Screen
+===========================*/
+$loadingCircleDiam: 30px;
+
+/*===========================
+    Nav
+===========================*/
+
+$navBg: map-get($bgColors, lightContentBg);
+
+/*----- Nav Button -----*/
+$navBtnDiam:54px;
+
+$sandwichWidth: 50%;
+$sandwichHeight: 40%;
+
+$navBtnLineWidth: 100%;
+$navBtnLineThickness: 3px;
+
+$navBtnColor:$lightTextColor;
+$navBtnBorder: 3px solid;
+
+/*----- Hovered Button -----*/
+$navBtnHoverColor: $linkColor;
+
+/*----- Social Icons -----*/
+$socialIconDiam: 60px;
+$socialIconFontSize: 28px;
+$footerSocialIconDiam: 30px;
+$footerSocialIconFontSize: 20px;
+
+/*----- Active Nav -----*/
+$activeNavBtnColor: $medTextColor;
+
+/*===========================
+    Responsive
+===========================*/
+$navBreakpoint: 1100px;
+
+$navBtnDiamMobile: 44px;
+
+$headerMobileHeight:auto;
+$headerMobileScrolledHeight:auto;
+
+$logoMobileWidth: 88px;
+
+$socialIconMobileDiam: 44px; 
+$socialIconMobileFontSize: 24px;

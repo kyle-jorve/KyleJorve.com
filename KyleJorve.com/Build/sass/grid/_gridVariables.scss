@@ -1,0 +1,46 @@
+﻿/*===========================
+    Flex Grid Variables
+===========================*/
+
+$gridBreakpoint: 900px;
+
+$flex-alignments:(
+    top: flex-start,
+    center: center,
+    bottom: flex-end,
+    stretch: stretch,
+    baseline: baseline
+);
+
+$flex-content-alignments:(
+    top: flex-start,
+    bottom: flex-end,
+    center: center,
+    stretch: stretch,
+    between: space-between,
+    around: space-around
+);
+
+$flex-justifications:(
+    left: flex-start,
+    center: center,
+    right: flex-end,
+    between: space-between,
+    around: space-around,
+    initial: initial
+);
+
+$flex-growths:(
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+);

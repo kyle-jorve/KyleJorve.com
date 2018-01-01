@@ -1,0 +1,27 @@
+﻿/*====================----------====================*/
+/*                    600PX WIDTH                   */
+/*====================----------====================*/
+@media only screen and (max-width:600px) {
+    header,
+    .scrolled header{
+        padding:1em;
+        .logo{
+            width:$logoMobileWidth;
+        }
+    }
+}
+
+/*====================----------====================*/
+/*                    350PX WIDTH                   */
+/*====================----------====================*/
+@media only screen and (max-width:350px){
+    header,
+    .scrolled header{
+        padding:.75em;
+
+        .logo{
+            width:80px;
+            height:39px;
+        }
+    }
+}

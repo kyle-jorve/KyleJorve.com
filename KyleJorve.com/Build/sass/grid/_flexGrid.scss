@@ -1,0 +1,122 @@
+﻿/*===========================
+    Flex Grid
+===========================*/
+
+/*==========----------==========*/
+/*        GENERIC CLASSES       */
+/*==========----------==========*/
+
+.flex{
+    display:-webkit-flex !important;
+       display:-moz-flex !important;
+        display:-ms-flex !important;
+            display:flex !important;
+}
+
+/*==========----------==========*/
+/*         ROW SETTINGS         */
+/*==========----------==========*/
+.flexContainer{
+    padding:1em 0;
+    width:100%;
+    @include sbFlexWrap(row, wrap, space-between, flex-start, stretch, true);
+    &.vert{
+        @include sbFlexWrap(column, nowrap, flex-start, center, stretch, true);
+    }
+    &.noWrap{
+        @include sbFlexWrap(row, nowrap, space-between, flex-start, stretch, true);
+    }
+    &.noRespond{
+        @include sbFlexWrap(row, wrap, space-bewteen, flex-start);
+    }
+}
+
+
+/*---------- Alignments ----------*/
+@each $alignment, $align in $flex-alignments{
+    .flex-align-#{$alignment}{
+        -webkit-align-items: $align !important;
+           -moz-align-items: $align !important;
+            -ms-align-items: $align !important;
+                align-items: $align !important;
+    }
+}
+@each $contentAlignment, $align in $flex-content-alignments{
+    .flex-align-content-#{$contentAlignment}{
+        -webkit-align-content: $align !important;
+           -moz-align-content: $align !important;
+            -ms-align-content: $align !important;
+                align-content: $align !important;
+    }
+}
+/*---------- Justifications ----------*/
+@each $justification, $just in $flex-justifications{
+    .flex-justify-#{$justification}{
+        -webkit-justify-content: $just !important;
+           -moz-justify-content: $just !important;
+            -ms-justify-content: $just !important;
+                justify-content: $just !important;
+    }
+}
+
+.flexContainer[class*="flex-align"] > [class*="flexItem"],
+.flexContainer[class*="flex-justify"] > [class*="flexItem"]{
+    margin:0;
+}
+
+/*==========----------==========*/
+/*       COLUMN SETTINGS        */
+/*==========----------==========*/
+.flexItem{
+    padding:0 1em;
+    margin:auto;
+    @include sbFlexItem;
+    &:first-child{
+        padding-left:0;
+    }
+    &:last-child{
+        padding-right:0;
+    }
+}
+@each $grow in $flex-growths{
+    .flexItem-#{$grow}{
+        -webkit-box-flex: $grow;
+           -moz-box-flex: $grow;
+            -webkit-flex: $grow;
+                -ms-flex: $grow;
+                    flex: $grow;
+    }
+}
+[class*="flexItem-"]{
+    padding:0 1em;
+    margin:0;
+    &:first-child{
+        padding-left:0;
+    }
+    &:last-child{
+        padding-right:0
+    }
+}
+.flexContainer.equalCols > [class*="flexItem"]{
+    margin:0;
+    -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+}
+
+/*==========----------==========*/
+/*         MEDIA QUERIES        */
+/*==========----------==========*/
+@media only screen and (max-width:$gridBreakpoint){
+    .flex{
+        display:block;
+    }
+}
+
+@media print{
+    .flex{
+        display:block !important;
+    }
+}

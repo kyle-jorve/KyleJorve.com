@@ -1,0 +1,272 @@
+﻿*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+html,
+body{
+    width:100%;
+    padding:0;
+    margin:0;
+    /*overflow-x:hidden;*/
+}
+body{
+    background:map-get($bgColors, bodyBg);
+    position:relative;
+}
+.preload *{
+    @include transition(none, null, null, !important);
+}
+section{
+    padding:$sectionPadding;
+    position:relative;
+    z-index:1;
+}
+main,
+.main{
+    padding:1em 0;
+    @include transition(all, .5s);
+}
+.mainArea{
+    position:relative;
+    z-index:1;
+    @include filter("blur(0)");
+    @include transition(all, .6s);
+}
+img,
+svg{
+    display:block;
+    width: auto;
+    max-width: 100%;
+    height: auto; 
+    /*object-fit:cover;*/
+}
+iframe{
+    display:block;
+}
+
+/*===========================
+    Content Wrappers
+===========================*/
+[class*="-wrapper"]{
+    width:100%;
+    margin:0 auto;
+}
+
+.wide-wrapper{
+    max-width:$wideWidth;
+}
+.section-wrapper{
+    max-width:$sectionWidth;
+}
+.smallSection-wrapper{
+    max-width:$smallSectionWidth;
+}
+.content-wrapper{
+    max-width:$contentWidth;
+}
+.narrow-wrapper{
+    max-width: $narrowWidth;
+}
+
+/*===========================
+    Backgrounds
+===========================*/
+@each $color, $code in $grays{
+    .#{$color}Bg{
+        background:$code;
+        color:color($code);
+        hr{
+            background:color($code);
+        }
+    }
+}
+@each $color, $code in $coolGrays{
+    .#{$color}Bg {
+        background: $code;
+        color:color($code);
+        hr{
+            background:color($code);
+        }
+    }
+}
+@each $color, $code in $warmGrays{
+    .#{$color}Bg {
+        background: $code;
+        color:color($code);
+        hr{
+            background:color($code);
+        }
+    }
+}
+@each $color, $code in $colorScheme{
+    .#{$color}Bg {
+        background: $code;
+        color:color($code);
+        hr{
+            background:color($code);
+        }
+    }
+}
+@each $bg, $color in $bgColors{
+    .#{$bg} {
+        background: $color;
+        color:color($color);
+        hr{
+            background:color($color);
+        }
+    }
+}
+.darkBgOverlay{
+    color:$lightTextColor;
+    & > *{
+        position:relative;
+        z-index:3;
+    }
+    &:before{
+        display:block;
+        content:'';
+        background:rgba(map-get($bgColors, darkContentBg), .8);
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:2;
+    }
+}
+
+/*===========================
+    Parallax
+===========================*/
+
+.parallaxBg {
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:center center;
+}
+@supports (-ms-ime-align: auto) {
+    //Edge fixes
+    .parallaxBg.heroSlide {
+        background-position: center center !important;
+        background-attachment: scroll !important;
+    }
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    //IE fixes
+    .parallaxBg.heroSlide {
+        background-position: center center !important;
+        background-attachment: scroll !important;
+    }
+}
+.parallaxBgContainer{
+    @extend %absolute-cover;
+    overflow:hidden;
+}
+.hasParallaxBg{
+    overflow:hidden;
+}
+
+/*===========================
+    Margin and Padding
+===========================*/
+.margin-auto {
+    margin: auto;
+}
+.margin-0-auto{
+    margin:0 auto;
+}
+
+@each $gap in $gaps{
+    .margin-#{$gap}{
+        margin: $gap !important;
+    }
+    .padding-#{$gap}{
+        padding: $gap !important;
+    }
+    @each $edge in $edges{
+        .margin-#{$edge}-#{$gap}{
+            margin-#{$edge}: $gap !important;
+        }
+        .padding-#{$edge}-#{$gap}{
+            padding-#{$edge}: $gap !important;
+        }
+    }
+}
+
+/*===========================
+    Positions
+===========================*/
+@each $position in $positions{
+    .#{$position}{
+        position: $position;
+    }
+}
+.absolute-center {
+    display: block;
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    z-index: 1;
+    @include transform("translate(-50%,-50%) !important");
+}
+.absolute-center-vertical {
+    display: block;
+    position: absolute !important;
+    top: 50% !important;
+    z-index: 1;
+    @include transform("translateY(-50%) !important");
+}
+.absolute-center-horizontal {
+    display: block;
+    position: absolute !important;
+    left: 50% !important;
+    z-index: 1;
+    @include transform("translateX(-50%) !important");
+}
+.absolute-cover {
+    display: block;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 1;
+}
+
+/*===========================
+    Borders
+===========================*/
+
+.border{
+    border:1px solid $defaultBorderColor;
+}
+
+hr{
+    margin:.625em 0;
+    width:40%;
+    max-width:240px;
+    height:$borderThickness;
+    border:none;
+    background:$lightBorderColor;
+}
+
+/*===========================
+    Animated Elements
+===========================*/
+.animatedEl{
+    opacity:0;
+    visibility:hidden;
+    position:relative;
+    top:40px;
+    @include transition(all, .75s, ease);
+
+    &.animate{
+        opacity:1;
+        visibility:visible;
+        top:0;
+    }
+}
