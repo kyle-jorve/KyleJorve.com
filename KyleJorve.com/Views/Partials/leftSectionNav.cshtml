@@ -1,0 +1,46 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var portfolioItemTypes = umbraco.cms.businesslogic.datatype.PreValues.GetPreValues(Umbraco.Content(1082).portfolioItemType).Values;
+    var enumerator = portfolioItemTypes.GetEnumerator();
+}
+
+<nav class="leftNavWrp">
+    @if (CurrentPage.Id == 1081)
+    {
+        <ul>
+            <li>
+                <a href="#@(Umbraco.Field("portfolioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("portfolioHeading")</span></a>
+            </li>
+            <li>
+                <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
+            </li>
+        </ul>
+    }
+    else if (CurrentPage.Id == 1082)
+    {
+        <ul>
+            <li>
+                <a href="#all"><span>All</span></a>
+            </li>
+            @while (enumerator.MoveNext())
+            {
+                var curVal = (PreValue)enumerator.Current;
+                <li>
+                    <a href="#@(curVal.Value.ToString().ToLower().Replace(" ","-"))"><span>@curVal.Value</span></a>
+                </li>
+            }
+        </ul>
+    }
+    else if (CurrentPage.Id == 1083)
+    {
+        <ul>
+            <li>
+                <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
+            </li>
+            <li>
+                <a href="#@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("resumeHeading")</span></a>
+            </li>
+        </ul>
+    }
+</nav>

@@ -4,3 +4,22 @@
 	Layout = "Master.cshtml";
 }
 
+<section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
+    <div class="heroContent content-wrapper">
+        @Umbraco.Field("heading")
+    </div>
+</section>
+
+<div class="leftBuffer">
+    <section class="recentWorkSection">
+
+    </section>
+
+    <section class="bioSection" style="background-image:url('@(CurrentPage.bioBg.Url)')">
+        <div class="section-wrapper">
+            <div class="contentBox">
+                @Umbraco.Field("bioContent")
+            </div>
+        </div>
+    </section>
+</div>

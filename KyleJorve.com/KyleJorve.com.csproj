@@ -282,6 +282,9 @@
     <Content Include="css\umbracostyles.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\logo-cool.svg" />
+    <Content Include="images\logo-solid.svg" />
+    <Content Include="images\logo-warm.svg" />
     <Content Include="Scripts\bundle.min.js" />
     <Content Include="Scripts\homePg.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -392,6 +395,8 @@
     <Content Include="Views\IntroScreen.cshtml" />
     <Content Include="Views\Partials\lightbox.cshtml" />
     <Content Include="Views\PortfolioPage.cshtml" />
+    <Content Include="Views\Partials\leftSectionNav.cshtml" />
+    <Content Include="Views\Partials\SVGs\logoColor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

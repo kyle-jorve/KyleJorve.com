@@ -1,1 +1,37 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{ 
+    var socialIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("socMedIcons");
+    var comIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("commerceIcons");
+}
+
+<footer>
+    <div class="iconContainer flexContainer">
+        <div class="iconsWrp social">
+            <ul>
+                @foreach (var item in socialIcons)
+                {
+                    <li>
+                        <a class="icon @(Umbraco.Field(item, "socMedType").ToString().ToLower())" href="@(Umbraco.Field(item, "socMedLink"))"></a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="iconsWrp commerce">
+            <ul>
+                @foreach (var item in comIcons)
+                {
+                    <li>
+                        <a class="icon @(Umbraco.Field(item, "socMedType").ToString().ToLower())" href="@(Umbraco.Field(item, "socMedLink"))"></a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="copyrightWrp">
+        <div class="content-wrapper">
+            @Umbraco.Field("copyright", recursive: true);
+        </div>
+    </div>
+</footer>
