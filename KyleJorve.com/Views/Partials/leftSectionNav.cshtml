@@ -6,41 +6,53 @@
 }
 
 <nav class="leftNavWrp">
-    @if (CurrentPage.Id == 1081)
-    {
-        <ul>
+    <ul>
+        @if (CurrentPage.Id == 1081)
+        {
             <li>
                 <a href="#@(Umbraco.Field("portfolioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("portfolioHeading")</span></a>
             </li>
             <li>
                 <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
             </li>
-        </ul>
-    }
-    else if (CurrentPage.Id == 1082)
-    {
-        <ul>
+        }
+        else if (CurrentPage.Id == 1082)
+        {
             <li>
-                <a href="#all"><span>All</span></a>
+                <div data-filter="all"><span>All</span></div>
             </li>
             @while (enumerator.MoveNext())
             {
                 var curVal = (PreValue)enumerator.Current;
                 <li>
-                    <a href="#@(curVal.Value.ToString().ToLower().Replace(" ","-"))"><span>@curVal.Value</span></a>
+                    <div data-filter="@(curVal.Value.ToString().ToLower().Replace(" ","-"))"><span>@curVal.Value</span></div>
                 </li>
             }
-        </ul>
-    }
-    else if (CurrentPage.Id == 1083)
-    {
-        <ul>
+        }
+        else if (CurrentPage.Id == 1083)
+        {
             <li>
                 <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
             </li>
             <li>
                 <a href="#@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("resumeHeading")</span></a>
             </li>
-        </ul>
-    }
+        }
+        else if (CurrentPage.Parent.Id == 1082)
+        {
+            if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
+            {
+                <li>
+                    <a href="@Umbraco.Field("portfolioItemPurchaseLink")"><span>Purchase</span></a>
+                </li>
+            }
+
+            <li>
+                <div id="description"><span>Description</span></div>
+            </li>
+            <li>
+                <div id="full-screen"><span>Full Screen</span></div>
+            </li>
+        }
+    </ul>
 </nav>

@@ -397,6 +397,7 @@
     <Content Include="Views\PortfolioPage.cshtml" />
     <Content Include="Views\Partials\leftSectionNav.cshtml" />
     <Content Include="Views\Partials\SVGs\logoColor.cshtml" />
+    <Content Include="Views\PortfolioItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

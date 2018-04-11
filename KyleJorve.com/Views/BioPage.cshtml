@@ -2,4 +2,38 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
 	Layout = "Master.cshtml";
+    var resumeItems = CurrentPage.GetPropertyValue<IEnumerable<IPublishedContent>>("resumeMain");
 }
+
+<div class="leftBuffer">
+    <section class="heroWrp">
+        <div class="photoBg" style="background-image:url('@(CurrentPage.heroPhoto.Url)');"></div>
+        <div class="narrow-wrapper">
+            <div class="portrait" style="background-image:url('@(CurrentPage.heroPhoto.Url)');"></div>
+        </div>
+    </section>
+
+    <section class="bioSection">
+        <div class="content-wrapper">
+            @Umbraco.Field("bio")
+        </div>
+        <div class="logoIcon">
+            @{ Html.RenderPartial("SVGs/logoColor");}
+        </div>
+    </section>
+
+    <section class="resumeSection">
+        <div class="content-wrapper">
+            @foreach (var item in resumeItems)
+            {
+                <div class="resumeSegment">
+                    <h3>@Umbraco.Field(item, "resumeSectionHeading")</h3>
+                    @Umbraco.Field(item, "resumeSectionContent")
+                </div>
+            }
+        </div>
+        <div class="logoIcon">
+            @{ Html.RenderPartial("SVGs/logoColor");}
+        </div>
+    </section>
+</div>

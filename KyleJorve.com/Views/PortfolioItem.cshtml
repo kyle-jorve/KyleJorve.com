@@ -1,0 +1,77 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.PortfolioItem>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+    var imgs = CurrentPage.GetProperty("portfolioItemImages").Value.Split(',');
+    var i = 0;
+}
+
+<div class="leftBuffer">
+    <div class="itemShowcase">
+        <section class="imgSection">
+            @if (imgs.Length > 1)
+            {
+                <div class="imgSlider">
+                    @foreach (var img in imgs)
+                    {
+                        <div class="imgSlide">
+                            <img src="img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + "Image" + i + 1)" />
+                            <div class="iconCol">
+                                <div class="icon share"></div>
+                                <div class="icon full-screen"></div>
+                            </div>
+                        </div>
+                    }
+                    @i++
+                </div>
+            }
+            else
+            {
+                <div class="imgSlide">
+                    <img src="img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + "Image" + i + 1)" />
+                    <div class="iconCol">
+                        <div class="icon share"></div>
+                        <div class="icon full-screen"></div>
+                    </div>
+                </div>
+            }
+
+            @foreach (var img in imgs)
+            {
+                <div class="imgBgWrp">
+                    <div class="imgBg" style="background:url('@img.Url') no-repeat center center / cover"></div>
+                </div>
+            }
+        </section>
+
+        <section class="descSection">
+            <div class="itemContent">
+                <h1>@Umbraco.Field("portfolioItemTitle")</h1>
+                @Umbraco.Field("portfolioItemDesc")
+                <div class="buttonWrp">
+                    <a href="" class="button secondary"><span>Share</span></a>
+                    @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
+                    {
+                        <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime"><span>Purchase</span></a>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="lightboxWrp">
+    <div class="closeBtn" id="closeLightbox">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="lightbox">
+        @foreach (var img in imgs)
+        {
+            <div class="imgSlide">
+                <img src="img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + "Image" + i + 1)" />
+            </div>
+        }
+         </div>
+    <div class="lightoxOverlay"></div>
+</div>

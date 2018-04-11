@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b22a5f883ccd3b53")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "23c57fb25427e406")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -236,6 +236,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Mobile Hero Background
+		///</summary>
+		[ImplementPropertyType("mobileHeroBg")]
+		public IPublishedContent MobileHeroBg
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("mobileHeroBg"); }
+		}
+
+		///<summary>
 		/// Portfolio Heading: Appears in left nav in desktop view
 		///</summary>
 		[ImplementPropertyType("portfolioHeading")]
@@ -342,7 +351,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Item Purchase Link
+		/// Item Purchase Link: Leave blank if none applies.
 		///</summary>
 		[ImplementPropertyType("portfolioItemPurchaseLink")]
 		public string PortfolioItemPurchaseLink
@@ -439,12 +448,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Portfolio Main
+		/// Heading
 		///</summary>
-		[ImplementPropertyType("portfolioMain")]
-		public IEnumerable<IPublishedContent> PortfolioMain
+		[ImplementPropertyType("heading")]
+		public string Heading
 		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioMain"); }
+			get { return this.GetPropertyValue<string>("heading"); }
 		}
 	}
 
@@ -560,6 +569,77 @@ namespace Umbraco.Web.PublishedContentModels
 		public string ResumeSectionHeading
 		{
 			get { return this.GetPropertyValue<string>("resumeSectionHeading"); }
+		}
+	}
+
+	/// <summary>Portfolio Item</summary>
+	[PublishedContentModel("portfolioItem")]
+	public partial class PortfolioItem : Master
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "portfolioItem";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public PortfolioItem(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PortfolioItem, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Item Description
+		///</summary>
+		[ImplementPropertyType("portfolioItemDesc")]
+		public IHtmlString PortfolioItemDesc
+		{
+			get { return this.GetPropertyValue<IHtmlString>("portfolioItemDesc"); }
+		}
+
+		///<summary>
+		/// Item Images
+		///</summary>
+		[ImplementPropertyType("portfolioItemImages")]
+		public IEnumerable<IPublishedContent> PortfolioItemImages
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages"); }
+		}
+
+		///<summary>
+		/// Item Purchase Link: Leave blank if none applies.
+		///</summary>
+		[ImplementPropertyType("portfolioItemPurchaseLink")]
+		public string PortfolioItemPurchaseLink
+		{
+			get { return this.GetPropertyValue<string>("portfolioItemPurchaseLink"); }
+		}
+
+		///<summary>
+		/// Item Title
+		///</summary>
+		[ImplementPropertyType("portfolioItemTitle")]
+		public string PortfolioItemTitle
+		{
+			get { return this.GetPropertyValue<string>("portfolioItemTitle"); }
+		}
+
+		///<summary>
+		/// Item Type
+		///</summary>
+		[ImplementPropertyType("portfolioItemType")]
+		public string PortfolioItemType
+		{
+			get { return this.GetPropertyValue<string>("portfolioItemType"); }
 		}
 	}
 

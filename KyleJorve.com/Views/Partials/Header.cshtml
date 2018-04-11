@@ -1,31 +1,50 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
+@{ 
+    var closeLink = Request.UrlReferrer.AbsolutePath;
+}
+
 <header>
     <div class="flexContainer">
-        <div id="navBtn" class="navBtn">
-            <div class="blocksWrp">
-                <div class="blockRow">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                </div>
-                <div class="blockRow">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
-                </div>
-                <div class="blockRow">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
+        @if (CurrentPage.Parent.Id == 1082)
+        {
+            <div class="logoWrp">
+                <a class="logo" href="/">
+                    @{ Html.RenderPartial("SVGs/logoColor");}
+                </a>
+            </div>
+            <a href="@closeLink" class="closeBtn">
+                <span></span>
+                <span></span>
+            </a>
+        }
+        else
+        {
+            <div id="navBtn" class="navBtn">
+                <div class="blocksWrp">
+                    <div class="blockRow">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="blockRow">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="blockRow">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="logoWrp">
-            <a class="logo" href="/">
-                @{ Html.RenderPartial("SVGs/logoColor");}
-            </a>
-        </div>
+            <div class="logoWrp">
+                <a class="logo" href="/">
+                    @{ Html.RenderPartial("SVGs/logoColor");}
+                </a>
+            </div>
+        }
     </div>
 </header>
 
