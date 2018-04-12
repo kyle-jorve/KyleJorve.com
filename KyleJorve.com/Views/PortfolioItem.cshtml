@@ -52,7 +52,7 @@
                     <a href="" class="button secondary"><span>Share</span></a>
                     @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
                     {
-                        <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime"><span>Purchase</span></a>
+                        <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime" target="_blank"><span>Purchase</span></a>
                     }
                 </div>
             </div>
