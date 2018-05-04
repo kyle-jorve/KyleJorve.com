@@ -17,28 +17,16 @@
 <div class="leftBuffer">
     <section class="portfolioSection">
         <div class="portfolioGrid">
-            @*@foreach (var item in portfolioItems)
+            @for (var i = 0; i < 5; i++)
             {
-                if (count < 5)
+                var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
+                if (imgCollection != null)
                 {
-                    var img = item.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").First();
-
+                    var img = imgCollection.ToArray()[0];
                     <script>
                         console.log('@img.Url');
                     </script>
                 }
-                count++;
-            }*@
-
-
-            @for (var i = 0; i < 5; i++)
-            {
-                var img = portfolioItems[i].Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").First();
-                var data = portfolioItems[i].Id.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
-
-                <script>
-                    console.log('@img.Url');
-                </script>
 
 
                 //var img = Umbraco.Content(portfolioItems[i].Id).GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").First();
