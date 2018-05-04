@@ -5,7 +5,7 @@
     var bioLink = Umbraco.Content(1083).Url;
     var portfolioLink = Umbraco.Content(1082).Url;
     var portfolioItems = Umbraco.Content(1082).Children.OrderBy("createDate");
-    var i = 0;
+    var count = 0;
 }
 
 <section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
@@ -17,23 +17,40 @@
 <div class="leftBuffer">
     <section class="portfolioSection">
         <div class="portfolioGrid">
-            @foreach (var item in portfolioItems)
+            @*@foreach (var item in portfolioItems)
             {
-                if (i < 5)
+                if (count < 5)
                 {
-                    var imgs = item.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").ToList();
-                    var firstImg = imgs[0];
-                    var imgWidth = firstImg.GetPropertyValue("umbracoWidth");
-                    var imgHeight = firstImg.GetPropertyValue("umbracoHeight");
+                    var img = item.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").First();
 
-                    <div class="portfolioItem @(imgWidth > imgHeight ? "wide" : imgWidth / imgHeight > 0.875 ? "tall" : null)" style="background-image:url('@(firstImg.Url)');">
-                        <div class="iconRow">
-                            <div class="icon description"></div>
-                            <div class="icon full-screen"></div>
-                        </div>
-                    </div>
+                    <script>
+                        console.log('@img.Url');
+                    </script>
                 }
-                i++;
+                count++;
+            }*@
+
+
+            @for (var i = 0; i < 5; i++)
+            {
+                var img = portfolioItems[i].Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").First();
+                var data = portfolioItems[i].Id.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
+
+                <script>
+                    console.log('@img.Url');
+                </script>
+
+
+                //var img = Umbraco.Content(portfolioItems[i].Id).GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").First();
+                //var imgWidth = imgs[0].GetPropertyValue("umbracoWidth");
+                //var imgHeight = imgs[0].GetPropertyValue("umbracoHeight");
+
+                @*<div class="portfolioItem @(imgWidth > imgHeight ? "wide" : imgWidth / imgHeight > 0.875 ? "tall" : null)" style="background-image:url('@(imgs[0].Url)');">
+                    <div class="iconRow">
+                        <div class="icon description"></div>
+                        <div class="icon full-screen"></div>
+                    </div>
+                </div>*@
             }
         </div>
         <div class="buttonWrp">

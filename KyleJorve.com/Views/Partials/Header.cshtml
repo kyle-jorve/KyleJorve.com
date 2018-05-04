@@ -1,22 +1,22 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{ 
-    var closeLink = Request.UrlReferrer.AbsolutePath;
+//var closeLink = Request.UrlReferrer.AbsolutePath;
 }
 
 <header>
     <div class="flexContainer">
-        @if (CurrentPage.Parent.Id == 1082)
+        @if (CurrentPage.Parent != null && CurrentPage.Parent.Id == 1082)
         {
             <div class="logoWrp">
                 <a class="logo" href="/">
                     @{ Html.RenderPartial("SVGs/logoColor");}
                 </a>
             </div>
-            <a href="@closeLink" class="closeBtn">
+            @*<a href="@closeLink" class="closeBtn">
                 <span></span>
                 <span></span>
-            </a>
+            </a>*@
         }
         else
         {

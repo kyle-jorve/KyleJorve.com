@@ -38,15 +38,15 @@
     //                COPYRIGHT INFO                  //
     //========------------------------------==========//
     //What's the start year?
-    var startYear = parseInt($('#startYear').html().replace(/ \-/g, ''));
-    var curYear = new Date().getFullYear();
+    //var startYear = parseInt($('#startYear').html().replace(/ \-/g, ''));
+    //var curYear = new Date().getFullYear();
 
-    //Put current year in copyright message
-    $('#curYear').html(curYear);
-    //If the start year is same as current year, hide start year
-    if (startYear == curYear) {
-        $('#startYear').hide();
-    };
+    ////Put current year in copyright message
+    //$('#curYear').html(curYear);
+    ////If the start year is same as current year, hide start year
+    //if (startYear == curYear) {
+    //    $('#startYear').hide();
+    //};
 
     //========------------------------------==========//
     //                 SCROLL STUFF                   //
