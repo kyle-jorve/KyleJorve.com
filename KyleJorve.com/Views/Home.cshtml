@@ -4,8 +4,7 @@
 	Layout = "Master.cshtml";
     var bioLink = Umbraco.Content(1083).Url;
     var portfolioLink = Umbraco.Content(1082).Url;
-    var portfolioItems = Umbraco.Content(1082).Children.OrderBy("createDate");
-    var count = 0;
+    var portfolioItems = Umbraco.Content(1082).Children.OrderBy("pubDate desc");
 }
 
 <section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
@@ -22,10 +21,18 @@
                 var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
                 if (imgCollection != null)
                 {
-                    var img = imgCollection.ToArray()[0];
-                    <script>
-                        console.log('@img.Url');
-                    </script>
+                    //var img = imgCollection.ToArray()[0];
+                    var img = Umbraco.Media(imgCollection.ToArray()[0].Id);
+                    var imgWidth = img.GetPropertyValue<int>("umbracoWidth");
+                    var imgHeight = img.GetPropertyValue<int>("umbracoHeight");
+
+                    <div class="portfolioItem @(imgWidth > imgHeight ? "wide" : imgWidth / imgHeight > 0.875 ? "tall" : null)" style="background-image:url('@(img.Url)');">
+                        <div class="iconRow">
+                            <div class="icon description"></div>
+                            <div class="icon full-screen"></div>
+                        </div>
+                    </div>
+
                 }
 
 

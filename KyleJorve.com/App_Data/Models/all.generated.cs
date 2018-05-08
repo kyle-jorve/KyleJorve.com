@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "23c57fb25427e406")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d4beb7598e543634")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -307,77 +307,6 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
-	/// <summary>Portfolio List</summary>
-	[PublishedContentModel("portfolioList")]
-	public partial class PortfolioList : PublishedContentModel
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "portfolioList";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public PortfolioList(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PortfolioList, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Item Description
-		///</summary>
-		[ImplementPropertyType("portfolioItemDesc")]
-		public IHtmlString PortfolioItemDesc
-		{
-			get { return this.GetPropertyValue<IHtmlString>("portfolioItemDesc"); }
-		}
-
-		///<summary>
-		/// Item Images
-		///</summary>
-		[ImplementPropertyType("portfolioItemImages")]
-		public IEnumerable<IPublishedContent> PortfolioItemImages
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages"); }
-		}
-
-		///<summary>
-		/// Item Purchase Link: Leave blank if none applies.
-		///</summary>
-		[ImplementPropertyType("portfolioItemPurchaseLink")]
-		public string PortfolioItemPurchaseLink
-		{
-			get { return this.GetPropertyValue<string>("portfolioItemPurchaseLink"); }
-		}
-
-		///<summary>
-		/// Item Title
-		///</summary>
-		[ImplementPropertyType("portfolioItemTitle")]
-		public string PortfolioItemTitle
-		{
-			get { return this.GetPropertyValue<string>("portfolioItemTitle"); }
-		}
-
-		///<summary>
-		/// Item Type
-		///</summary>
-		[ImplementPropertyType("portfolioItemType")]
-		public string PortfolioItemType
-		{
-			get { return this.GetPropertyValue<string>("portfolioItemType"); }
-		}
-	}
-
 	/// <summary>Intro Screen</summary>
 	[PublishedContentModel("introScreen")]
 	public partial class IntroScreen : Master
@@ -640,6 +569,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string PortfolioItemType
 		{
 			get { return this.GetPropertyValue<string>("portfolioItemType"); }
+		}
+
+		///<summary>
+		/// Publication Date
+		///</summary>
+		[ImplementPropertyType("pubDate")]
+		public DateTime PubDate
+		{
+			get { return this.GetPropertyValue<DateTime>("pubDate"); }
 		}
 	}
 
