@@ -49,7 +49,7 @@
 
     h2{
         margin-top:.25em;
-        font-family:$headingFont2;
+        font-family:$headingFont;
     }
 }
 
@@ -78,7 +78,7 @@
         h2{
             display:block;
             margin-top:.25em;
-            font-family:$headingFont2;
+            font-family:$headingFont;
             font-weight:$headingFontWeight;
 
             &:after{
@@ -167,7 +167,7 @@
 
         h2{
             margin-top:.25em;
-            font-family:$headingFont2;
+            font-family:$headingFont;
 
             &:after{
                 display:block;

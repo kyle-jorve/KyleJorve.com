@@ -53,7 +53,7 @@ $inputFont:$primaryFont;
 $inputTextColor:$darkTextColor;
 $inputTextWeight:$primaryBold;
 $inputLetterSpacing:$primaryLetterSpacing;
-$inputBorder: 3px solid $defaultBorderColor;
+$inputBorder: $borderThickness solid $darkBorderColor;
 $inputBorderRadius:"34px / 50%";
 $textAreaBorderRadius: 34px;
 

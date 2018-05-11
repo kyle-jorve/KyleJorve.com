@@ -1,10 +1,13 @@
-﻿header{
+﻿/*==========----------==========*/
+/*           GENERAL            */
+/*==========----------==========*/
+
+header{
     opacity:1;
     visibility:visible;
-    padding:1.5em 2em;
+    padding:0;
     box-shadow:none;
     background:transparent;
-    /*@include gradient(rgba(map-get($bgColors, darkContentBg), .35), rgba(map-get($bgColors, darkContentBg), 0), vertical);*/
     color:$medTextColor;
     position:fixed;
     top:0;
@@ -15,47 +18,36 @@
     p{
         margin:0;
     }
-    
-    .logo{
-        width:$logoWidth;
-        height:$logoHeight;
-        svg{
-            fill:map-get($bgColors, lightContentBg);
-        }
-    } 
 
     .flexContainer{
-        @include sbFlexWrap(row, nowrap, space-between, center);
+        @include sbFlexWrap(row, nowrap, space-between, flex-start);
         padding:0;
-        .flexItem{
-            margin:0;
-        }
     }
 }
 
 .logoWrp{
-    text-align:left;
+    padding:1em;
 }
+
 .logo{
     display:block;
-    overflow:hidden;
-    .logoTitle{
-        display:none;
-    }
+    width:$logoWidth;
+    height:$logoHeight;
     svg{
-        width:auto;
-        max-width:none;
+        width:100%;
         height:100%;
         display:block;
         @include transition;
+
+        *{
+            @include transition;
+        }
     }
 }
 
 /*---------- Scroll Effects ----------*/
 .scrolled {
     header {
-        padding:1em 2em;
-        background:rgba(map-get($bgColors, bodyBg), .65);
         .logo{
             width:$logoScrolledWidth;
         }
@@ -65,7 +57,7 @@
 /*---------- Nav Revealed Effects ----------*/
 .showMobileNav {
     header{
-        background:$navBg;
+        
     }
 }
 
@@ -73,5 +65,37 @@
 @include hover(".logo"){
     svg{
         fill:$linkColor;
+
+        *{
+            fill:$linkColor;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*          HOME PAGE           */
+/*==========----------==========*/
+
+.homePg{
+    header{
+        .logo svg{
+            opacity:.25;
+            fill:map-get($bgColors, whiteBg);
+
+            *{
+                fill:map-get($bgColors, whiteBg);
+            }
+        }
+    }
+
+    /*---------- Scroll Effects ----------*/
+
+    &.scrolled header .logo svg{
+        opacity:1;
+        fill:none;
+
+        *{
+            fill:none;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{ 
-//var closeLink = Request.UrlReferrer.AbsolutePath;
+    var closeLink = Umbraco.Content(1082).Url;
 }
 
 <header>
@@ -13,10 +13,10 @@
                     @{ Html.RenderPartial("SVGs/logoColor");}
                 </a>
             </div>
-            @*<a href="@closeLink" class="closeBtn">
+            <a href="@closeLink" class="closeBtn">
                 <span></span>
                 <span></span>
-            </a>*@
+            </a>
         }
         else
         {

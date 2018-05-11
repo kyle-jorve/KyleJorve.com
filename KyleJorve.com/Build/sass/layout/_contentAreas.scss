@@ -20,16 +20,6 @@
         }
     }
 
-    &:before{
-        display:block;
-        content:'';
-        width:50%;
-        max-width:200px;
-        height:$borderThickness;
-        margin-bottom:1em;        
-        background:$lightTextColor;
-    }
-
     &.introContent{
         max-width:$contentWidth;
         margin:0 auto 6em auto;

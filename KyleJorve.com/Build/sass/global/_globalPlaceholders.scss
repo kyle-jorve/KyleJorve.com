@@ -48,5 +48,5 @@
 
 %underlineText {
     padding-bottom: .25em;
-    border-bottom: 1px solid $defaultBorderColor;
+    border-bottom: $borderThickness solid $darkBorderColor;
 }

@@ -31,19 +31,6 @@ a.button {
     @include transition(all, .5s);
     @include appearance(none);
 
-    &:before{
-        display:block;
-        content:'';
-        border: $buttonBorder;
-        border-radius:#{$buttonOuterBorderRadius};
-        position:absolute;
-        top:$buttonOuterBorderDistance * -1;
-        right:$buttonOuterBorderDistance * -1;
-        bottom:$buttonOuterBorderDistance * -1;
-        left:$buttonOuterBorderDistance * -1;
-        @include transition;
-    }
-
     & + .button {
         margin-left: 2em;
     }
@@ -64,34 +51,22 @@ a.button {
     &.prime {
         color: $primeBtnTextColor;
         background: $primeBtnBg;
-        &:before{
-            border-color: $primeBtnBorderColor;
-        }
     }
     /*---------- SECONDARY BUTTON ----------*/
     &.secondary {
         background: $secondaryBtnBg;
         color: $secondaryBtnTextColor;
-        &:before{
-            border-color: $secondaryBtnBorderColor;
-        }
     }
     /*---------- TERTIARY BUTTON ----------*/
     &.tertiary{
         background: $tertiaryBtnBg;
         color: $tertiaryBtnTextColor;
-        &:before{
-            border-color: $tertiaryBtnBorderColor;
-        }
     }
 
     /*---------- QUATERNARY BUTTON ----------*/
     &.quaternary{
         background: $quatBtnBg;
         color: $quatBtnTextColor;
-        &:before{
-            border-color: $quatBtnBorderColor;
-        }
     }
 
     /*---------- INFO BUTTON ----------*/

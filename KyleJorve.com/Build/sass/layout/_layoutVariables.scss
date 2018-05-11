@@ -7,59 +7,57 @@ $headerScrolledHeight: auto;
 /*===========================
     Hero
 ===========================*/
-$heroHeight: calc((100vw / 16 ) * 9);
-$shortHeroHeight: calc((100vw / 16 ) * 4);
+$heroHeight: 100vh;
+$shortHeroHeight: 400px;
 
 /*===========================
     Logo
 ===========================*/
-$logo: url('/images/logo-horizontal.svg');
-$vertLogo: url('/images/logo-vertical.svg');
+$logo: url('/images/logo-warm.svg');
+$solidLogo: url('/images/logo-solid.svg');
 
-$logoWidth: 240px;
-$logoHeight: $logoWidth * .18;
+$logoWidth: 100px;
+$logoHeight: $logoWidth * 0.6115;
 
-$logoScrolledWidth:88px;
-
-/*===========================
-    Load Screen
-===========================*/
-$loadingCircleDiam: 30px;
+$logoScrolledWidth:100px;
 
 /*===========================
     Nav
 ===========================*/
 
-$navBg: map-get($bgColors, lightContentBg);
+$navBg: map-get($colorScheme, accentColor);
+$navLinkColor: $lightTextColor;
 
 /*----- Nav Button -----*/
-$navBtnDiam:54px;
+$navBtnDiam:70px;
 
 $sandwichWidth: 50%;
-$sandwichHeight: 40%;
+$sandwichHeight: 50%;
 
-$navBtnLineWidth: 100%;
-$navBtnLineThickness: 3px;
+$navBtnLineWidth: 7px;
+$navBtnLineThickness: 7px;
+$navBtnLineColor: $lightTextColor;
 
-$navBtnColor:$lightTextColor;
-$navBtnBorder: 3px solid;
+$navBtnColor:map-get($colorScheme, accentColor);
+$navBtnBorder: none;
 
 /*----- Hovered Button -----*/
-$navBtnHoverColor: $linkColor;
+$navBtnHoverColor: $linkHoverColor;
 
 /*----- Social Icons -----*/
-$socialIconDiam: 60px;
-$socialIconFontSize: 28px;
-$footerSocialIconDiam: 30px;
-$footerSocialIconFontSize: 20px;
+$socialIconDiam: 40px;
+$socialIconFontSize: 27px;
+
+$footerSocialIconDiam: $socialIconDiam;
+$footerSocialIconFontSize: $socialIconFontSize;
 
 /*----- Active Nav -----*/
-$activeNavBtnColor: $medTextColor;
+$activeNavBtnColor: $lightTextColor;
 
 /*===========================
     Responsive
 ===========================*/
-$navBreakpoint: 1100px;
+$navBreakpoint: 600;
 
 $navBtnDiamMobile: 44px;
 

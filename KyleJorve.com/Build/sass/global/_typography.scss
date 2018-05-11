@@ -9,7 +9,8 @@ body{
     letter-spacing:$primaryLetterSpacing;
     text-transform:$primaryTextTransform;
 }
-.lightContentBg {
+.lightContentBg,
+.whiteBg{
     color: $darkTextColor;
 }
 
@@ -43,6 +44,7 @@ h1, h2, h3, h4 {
     font-family: $headingFont;
     font-weight: $headingFontWeight;
     letter-spacing: $headingLetterSpacing;
+    text-transform:$headingTextTransform;
     position: relative;
 
     .smallText,
@@ -50,7 +52,7 @@ h1, h2, h3, h4 {
         display:block;
         margin-top:.25em;
         font-size:$smallFontSize;
-        font-family:$headingFont2;
+        font-weight:$headingThin;
     }
 
     &:first-child {

@@ -56,30 +56,28 @@ $warmGrays:(
 
 /*Color Scheme*/
 $colorScheme:(
-    primaryColor: #3f292d,
-    secondaryColor: #f7e8da,
-    tertiaryColor:#6b3943,
-    quaternaryColor: #1a110f,
-    accentColor: #d68b4d,
-    ambientColor: #3f292d
+    primaryColor: map-get($coolGrays, coolGray1),
+    secondaryColor: map-get($coolGrays, coolGray9),
+    accentColor: #ff5652
 );
 
 /*Background Colors*/
 $bgColors:(
-    bodyBg: map-get($colorScheme, ambientColor),
-    lightContentBg: map-get($colorScheme, secondaryColor),
-    darkContentBg: map-get($colorScheme, quaternaryColor),
-    medContentBg: map-get($colorScheme, tertiaryColor)
+    bodyBg: map-get($colorScheme, secondaryColor),
+    lightContentBg: map-get($colorScheme, primaryColor),
+    darkContentBg: map-get($colorScheme, secondaryColor),
+    whiteBg: $white
 );
 
 /*===========================
     Borders
 ===========================*/
-$borderThickness: 3px;
+$borderThickness: 1px;
+$thickBorderThickness: 1em;
 
 /*Border Colors*/
-$defaultBorderColor: map-get($colorScheme, quaternaryColor);
-$lightBorderColor: map-get($colorScheme, secondaryColor);
+$darkBorderColor: map-get($colorScheme, accentColor);
+$lightBorderColor: map-get($colorScheme, primaryColor);
 
 /*===========================
     Wrappers
@@ -90,42 +88,28 @@ $smallSectionWidth: 1200px;
 $contentWidth: 950px;
 $narrowWidth:600px;
 
-$sectionPadding: 8em 2em;
+$sectionPadding: 4em 2em;
 
 /*===========================
     Type
 ===========================*/
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,600');
-@font-face {
-    font-family: 'Big John';
-    src: url('../fonts/BIG JOHN.eot'),
-        url('../fonts/BIG JOHN.otf') format('opentype'),
-        url('../fonts/BIG JOHN.woff2') format('woff2'),
-        url('../fonts/BIG JOHN.woff') format('woff');
-}
-@font-face {
-    font-family: 'Slim Joe';
-    src: url('../fonts/Slim Joe.eot'),
-        url('../fonts/Slim Joe.otf') format('opentype'),
-        url('../fonts/Slim Joe.woff2') format('woff2'),
-        url('../fonts/Slim Joe.woff') format('woff');
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400,700');
 
 /*Heading Font*/
-$headingFont: 'Big John', Helvetica, Arial, sans-serif;
-$headingFont2: 'Slim Joe', Helvetica, Arial, sans-serif;
+$headingFont: 'Montserrat', Helvetica, Arial, sans-serif;
 $headingTextTransform: uppercase;
-$headingFontWeight:normal;
-$headingBold:normal;
-$headingLetterSpacing:0;
-$headingLineHeight:1.15;
+$headingFontWeight:700;
+$headingBold:700;
+$headingThin:200;
+$headingLetterSpacing:.05em;
+$headingLineHeight:1.5;
 $headingTypeMargin:1.5em 0 .85em;
 
 /*Main Font*/
-$primaryFont: 'Raleway', sans-serif;
+$primaryFont: 'Montserrat', sans-serif;
 $primaryTextTransform: none;
-$primaryFontWeight:300;
-$primaryBold: 600;
+$primaryFontWeight:200;
+$primaryBold: 400;
 $primaryItalic: normal;
 $primaryLetterSpacing:.015em;
 $primaryLineHeight:1.5;
@@ -135,14 +119,14 @@ $listTypeMargin: .5em 0;
 
 /*General Type Settings*/
 $baseFontSize:1em;
-$smallFontSize:.8em;
-$largeFontSize:1.2em;
+$smallFontSize:.75em;
+$largeFontSize:1.25em;
 
-$typeScaleMultiplier: 1.4;
+$typeScaleMultiplier: 1.5;
 
-$lightTextColor: map-get($colorScheme, secondaryColor);
-$darkTextColor: map-get($colorScheme, primaryColor);
-$medTextColor: map-get($colorScheme, tertiaryColor);
+$lightTextColor: $white;
+$darkTextColor: $black;
+$medTextColor: map-get($coolGrays, coolGray6);
 
 $lightHeadingColor: $lightTextColor;
 $darkHeadingColor: $darkTextColor;
@@ -158,10 +142,10 @@ $typeBreakpoint3: 600px;
 
 /*Links*/
 $linkColor:map-get($colorScheme, accentColor);
-$linkHoverColor:darken($linkColor, 15%);
+$linkHoverColor:lighten($linkColor, 15%);
 $linkTextDecoration:none;
 $linkHoverTextDecoration:none;
-$linkFontWeight: $primaryBold;
+$linkFontWeight: $primaryFontWeight;
 
 /*----- Alignments -----*/
 $alignments:(

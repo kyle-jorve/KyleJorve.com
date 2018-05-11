@@ -25,28 +25,3 @@
         color: map-get($colorScheme, accentColor);
     }
 }
-.contentBlock .quoteBlock {
-    padding:2em 2em 1em 2em;
-    margin:1em 0 0 0;
-    background:map-get($grays, gray80);
-    border-left:3px solid $defaultBorderColor;
-    color: $lightTextColor;
-    text-align:left;
-    font-size:.9em;
-
-    .author,
-    strong {
-        font-family: $primaryFont;
-        font-style: italic;
-        font-size: 1em;
-        color: $lightTextColor;
-    }
-    & + .quoteBlock{
-        padding-top:0;
-        margin-top:0;
-    }
-    &:last-of-type{
-        padding-bottom:2em;
-        margin-bottom:1em;
-    }
-}

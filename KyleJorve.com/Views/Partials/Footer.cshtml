@@ -7,13 +7,36 @@
 }
 
 <footer>
-    <div class="iconContainer flexContainer">
+    <div class="iconContainer">
         <div class="iconsWrp social">
             <ul>
                 @foreach (var item in socialIcons)
                 {
+                    var socMedType = Umbraco.Field(item, "socMedType").ToString().ToLower();
+
                     <li>
-                        <a class="icon @(Umbraco.Field(item, "socMedType").ToString().ToLower())" href="@(Umbraco.Field(item, "socMedLink"))"></a>
+                        <a href="@(Umbraco.Field(item, "socMedLink"))">
+                            @if (socMedType == "facebook")
+                            {
+                                <i class="fab fa-facebook-f"></i>
+                            }
+                            else if (socMedType == "instagram")
+                            {
+                                <i class="fab fa-instagram"></i>
+                            }
+                            else if (socMedType == "tumblr")
+                            {
+                                <i class="fab fa-tumblr"></i>
+                            }
+                            else if (socMedType == "deviantart")
+                            {
+                                <i class="fab fa-deviantart"></i>
+                            }
+                            else if (socMedType == "email")
+                            {
+                                <i class="fas fa-at"></i>
+                            }
+                        </a>
                     </li>
                 }
             </ul>
@@ -22,8 +45,19 @@
             <ul>
                 @foreach (var item in comIcons)
                 {
+                    var socMedType = Umbraco.Field(item, "socMedType").ToString().ToLower();
+
                     <li>
-                        <a class="icon @(Umbraco.Field(item, "socMedType").ToString().ToLower())" href="@(Umbraco.Field(item, "socMedLink"))"></a>
+                        <a href="@(Umbraco.Field(item, "socMedLink"))">
+                            @if (socMedType == "patreon")
+                            {
+                                <i class="fab fa-patreon"></i>
+                            }
+                            else if (socMedType == "society6")
+                            {
+                                { Html.RenderPartial("SVGs/cartIcon"); }
+                            }
+                        </a>
                     </li>
                 }
             </ul>
