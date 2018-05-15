@@ -75,6 +75,8 @@ $bgColors:(
 $borderThickness: 1px;
 $thickBorderThickness: 1em;
 
+$borderRadius:12px;
+
 /*Border Colors*/
 $darkBorderColor: map-get($colorScheme, accentColor);
 $lightBorderColor: map-get($colorScheme, primaryColor);
@@ -101,7 +103,7 @@ $headingTextTransform: uppercase;
 $headingFontWeight:700;
 $headingBold:700;
 $headingThin:200;
-$headingLetterSpacing:.05em;
+$headingLetterSpacing:.3em;
 $headingLineHeight:1.5;
 $headingTypeMargin:1.5em 0 .85em;
 
@@ -122,7 +124,7 @@ $baseFontSize:1em;
 $smallFontSize:.75em;
 $largeFontSize:1.25em;
 
-$typeScaleMultiplier: 1.5;
+$typeScaleMultiplier: 1.4;
 
 $lightTextColor: $white;
 $darkTextColor: $black;

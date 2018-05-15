@@ -8,16 +8,17 @@
 }
 
 <section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
-    <div class="heroContent content-wrapper">
+    <div class="heroContent">
         @Umbraco.Field("heading")
     </div>
 </section>
 
 <div class="leftBuffer">
-    <section class="portfolioSection">
+    <section class="portfolioSection lightContentBg" id="@(Umbraco.Field("portfolioHeading").ToString().ToLower().Replace(" ", "-"))">
         <div class="portfolioGrid">
             @for (var i = 0; i < 5; i++)
             {
+                var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
                 var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
                 if (imgCollection != null)
                 {
@@ -26,7 +27,7 @@
                     var imgWidth = img.GetPropertyValue<int>("umbracoWidth");
                     var imgHeight = img.GetPropertyValue<int>("umbracoHeight");
 
-                    <div class="portfolioItem @(imgWidth > imgHeight ? "wide" : imgWidth / imgHeight > 0.875 ? "tall" : null)" style="background-image:url('@(img.Url)');">
+                    <div class="portfolioItem @itemType @(imgWidth > imgHeight ? "wide" : imgWidth / imgHeight > 0.875 ? "tall" : null)" style="background-image:url('@(img.Url)');">
                         <div class="iconRow">
                             <div class="icon description"></div>
                             <div class="icon full-screen"></div>
@@ -43,7 +44,7 @@
         </div>
     </section>
 
-    <section class="bioSection lightContentBg" style="background-image:url('@(CurrentPage.bioBg.Url)')">
+    <section class="bioSection lightContentBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))" style="background-image:url('@(CurrentPage.bioBg.Url)')">
         <div class="section-wrapper">
             <div class="contentWrp">
                 <div class="contentBox">

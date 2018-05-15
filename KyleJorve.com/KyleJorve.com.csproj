@@ -424,6 +424,7 @@
     <Content Include="config\404handlers.config" />
     <Content Include="Build\sass\kyleJorve\_homePg.scss" />
     <Content Include="Build\sass\kyleJorve\_KJVariables.scss" />
+    <Content Include="Build\sass\kyleJorve\_portfolioGrid.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />

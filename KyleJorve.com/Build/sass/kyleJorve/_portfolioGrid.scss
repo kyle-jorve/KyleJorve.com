@@ -1,0 +1,31 @@
+﻿.portfolioGrid{
+    @include sbFlexWrap(row, wrap, inherit, stretch);
+}
+
+.portfolioItem{
+    height:20vh;
+    min-height:400px;
+    max-height:600px;
+    margin:1em;
+    border-radius:$borderRadius;
+    box-shadow:$mediumShadow;
+    background-repeat:no-repeat;
+    background-size:cover;
+    @include sbFlexItem(2, 1, calc(38.2% - 2em));
+
+    &.illustration{
+        background-position:center center;
+    }
+
+    &.design{
+        background-position:center top;
+    }
+
+    &.wide{
+        @include sbFlexItem(3, 1, calc(61.8% - 2em));
+    }
+
+    &.tall{
+        @include sbFlexItem(1, 1, calc(23.6% - 2em));
+    }
+}

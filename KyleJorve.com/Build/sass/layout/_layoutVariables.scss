@@ -29,13 +29,13 @@ $navBg: map-get($colorScheme, accentColor);
 $navLinkColor: $lightTextColor;
 
 /*----- Nav Button -----*/
-$navBtnDiam:70px;
+$navBtnDiam:60px;
 
 $sandwichWidth: 50%;
 $sandwichHeight: 50%;
 
-$navBtnLineWidth: 7px;
-$navBtnLineThickness: 7px;
+$navBtnLineWidth: 6px;
+$navBtnLineThickness: 6px;
 $navBtnLineColor: $lightTextColor;
 
 $navBtnColor:map-get($colorScheme, accentColor);
@@ -53,6 +53,12 @@ $footerSocialIconFontSize: $socialIconFontSize;
 
 /*----- Active Nav -----*/
 $activeNavBtnColor: $lightTextColor;
+
+/*===========================
+    Left Section Nav
+===========================*/
+
+
 
 /*===========================
     Responsive

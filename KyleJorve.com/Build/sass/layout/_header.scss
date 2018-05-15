@@ -79,7 +79,7 @@ header{
 .homePg{
     header{
         .logo svg{
-            opacity:.25;
+            opacity:.5;
             fill:map-get($bgColors, whiteBg);
 
             *{
@@ -91,11 +91,18 @@ header{
     /*---------- Scroll Effects ----------*/
 
     &.scrolled header .logo svg{
+        opacity:.25;
+    }
+}
+
+/*---------- Hover Effects ----------*/
+@include hover("&.homePg .logo"){
+    svg{
         opacity:1;
-        fill:none;
+        fill:map-get($bgColors, whiteBg);
 
         *{
-            fill:none;
+            fill:map-get($bgColors, whiteBg);
         }
     }
 }

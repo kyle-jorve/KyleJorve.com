@@ -1,12 +1,11 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-@using ContentModels = Umbraco.Web.PublishedContentModels;
 
 @{ 
     var socialIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("socMedIcons");
     var comIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("commerceIcons");
 }
 
-<footer>
+<footer class="leftBuffer">
     <div class="iconContainer">
         <div class="iconsWrp social">
             <ul>
@@ -65,7 +64,7 @@
     </div>
     <div class="copyrightWrp">
         <div class="content-wrapper">
-            @Umbraco.Field("copyright", recursive: true);
+            @Umbraco.Field("copyright", recursive: true)
         </div>
     </div>
 </footer>

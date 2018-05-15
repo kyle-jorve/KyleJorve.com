@@ -10,8 +10,7 @@
     position: relative;
     z-index: 2;    
 
-    .heroContentWrp{
-        padding:2em;
+    .heroContent{
         position:relative;
         z-index:3;
     }
@@ -21,217 +20,38 @@
 /*          HOME PAGE           */
 /*==========----------==========*/
 .homePg .heroWrp{
-    @include sbFlexWrap(column, nowrap, center, flex-start);
-    background-position:right top;
+    @include sbFlexWrap(column, nowrap, flex-end, stretch);
+    position:relative;
+    z-index:5;
 
-    .heroContentWrp {
-        width:50%;
-        max-width:900px;
-    }
-
-    .parallaxBg{
-        background-position:right top;
-        @extend %absolute-cover;
-        z-index:1;
-    }
-
-    .mobileHeroImg{
-        display:none;
-        background-size:cover;
-        background-repeat:no-repeat;
-        @extend %absolute-cover;
-        z-index:1;
-    }
-
-    h1{
-        margin-bottom:0;
-    }
-
-    h2{
-        margin-top:.25em;
-        font-family:$headingFont;
-    }
-}
-
-/*==========----------==========*/
-/*       LANDING TEMPLATE       */
-/*==========----------==========*/
-.landingHero{
-    @include sbFlexWrap(column, nowrap, center, center);
-    min-height:100vh;
-    overflow:hidden;
-    @include gradient(#50212d, #945554, diagonal-down);
-
-    .wide-wrapper{
-        @include sbFlexWrap(row, nowrap, space-between, center);
-        & > *{
-            width:50%;
-        }
-    }
-
-    h1{
-        margin:0;
-    }
-
-    .heroContentWrp{
-        text-align:right;
-        h2{
-            display:block;
-            margin-top:.25em;
-            font-family:$headingFont;
-            font-weight:$headingFontWeight;
-
-            &:after{
-                display:block;
-                content:'';
-                width:50%;
-                max-width:200px;
-                height:$borderThickness;
-                margin-top:.65em;
-                margin-left:auto;
-                background:$lightTextColor;
-            }
-        }
-    }
-
-    .illoWrp{
-        margin:2em 0;
-        padding:2em;
-        position:relative;
-        z-index:3;
-    }
-
-    .scrollGraphicWrp{
+    &:before,
+    &:after{
         display:block;
-        width:120px;
-        height:auto;
-        @extend %absolute-center-horizontal;
-        bottom:-1px;
-        z-index:4;
-        
-        .scrollIconWrp{
-            width:24px;
-            height:36px;
-            border-radius:13px;
-            border:2px solid map-get($colorScheme, accentColor);
-            @extend %absolute-center;
-        }
-
-        .scrollTrack{
-            height:10px;
-            border-radius:1px;
-            top:6px;
-            @extend %absolute-center-horizontal;
-        }
-
-        .scrollBall{
-            width:6px;
-            height:6px;
-            border-radius:50%;
-            background:map-get($bgColors, lightContentBg);
-            top:0;
-            @extend %absolute-center-horizontal;
-            @include animation(slideDown, 1s, ease, 0s, normal, infinite){
-                0%{
-                    top:0;
-                }
-                100%{
-                    top:6px;
-                }
-            }
-        }
+        content:'';
+        position:absolute;
+        left:0;
+        right:0;
+        z-index:1;
     }
-}
 
-/*----- TOUCH DEVICE -----*/
-.touchDevice .scrollGraphicWrp{
-    display:none;
-}
+    &:before{
+        height:$navBtnDiam;
+        @include gradient(rgba(map-get($bgColors, darkContentBg), .35), rgba(map-get($bgColors, darkContentBg), 0), vertical);
+        top:0;
+    }
 
-/*==========----------==========*/
-/*       CONTENT TEMPLATE       */
-/*==========----------==========*/
-.contentHero{
-    @include sbFlexWrap(column, nowrap, center, center);
-    @include gradient(#945554, #50212d, diagonal-up);
-    min-height:$shortHeroHeight;
-    padding-top:8em;
-    /*@include gradient(lighten(map-get($bgColors, medContentBg), 15%), map-get($bgColors, medContentBg), diagonal-up);*/
+    &:after{
+        height:200px;
+        @include gradient(rgba(map-get($bgColors, darkContentBg), 0), rgba(map-get($bgColors, darkContentBg), .65), vertical);
+        bottom:0;
+    }
 
-    .heroContentWrp{
+    .heroContent{
         text-align:center;
 
         h1{
-            margin-bottom:0;
-        }
-
-        h2{
-            margin-top:.25em;
-            font-family:$headingFont;
-
-            &:after{
-                display:block;
-                content:'';
-                width:50%;
-                max-width:200px;
-                height:$borderThickness;
-                margin:.65em auto 0 auto;
-                background:$lightTextColor;
-            }
-        }
-    }
-
-    .ttGraphicWrp{
-        @extend %absolute-center-horizontal;
-        bottom:-1px;
-        z-index:4;
-
-        .ttGraphic{
-            @include sbFlexWrap(row, nowrap, space-between);
-            width:180px;
-            height:54px;
-        }
-
-        .person{
-            @include sbFlexWrap(column, nowrap, space-between, center);
-            width:27.5%;
-            min-width:27.5%;
-            height:100%;
-        }
-
-        .body,
-        .head{
-            background:map-get($bgColors, bodyBg);
-        }
-
-        .body{
-            width:100%;
-            height:26px;
-            border-radius:12px 12px 0 0;
-        }
-        
-        .head{
-            width:22px;
-            height:22px;
-            border-radius:50%;
-        }
-    }
-}
-
-/*==========----------==========*/
-/*         FEATURES PAGE        */
-/*==========----------==========*/
-.sysFeaturesPg{
-    .landingHero{
-        .wide-wrapper{
-            @include sbFlexWrap(row-reverse, nowrap, space-between, center);
-        }
-        .heroContentWrp{
-            text-align:left;
-
-            h2:after{
-                margin-left:0;
-            }
+            margin:0;
+            font-size:2.4em;
         }
     }
 }

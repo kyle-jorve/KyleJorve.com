@@ -302,6 +302,13 @@ footer .iconContainer{
     
 }
 
+/*---------- HOME PAGE ----------*/
+
+.homePg .navBtn{
+    border-radius:0 0 $borderRadius 0;
+    box-shadow:$mediumShadow;
+}
+
 /*==========----------==========*/
 /*         NAV REVEALED         */
 /*==========----------==========*/
@@ -318,5 +325,83 @@ footer .iconContainer{
     .topNav.navWrp{
         opacity:1;
         visibility:visible;
+    }
+}
+
+/*==========----------==========*/
+/*       LEFT SECTION NAV       */
+/*==========----------==========*/
+
+.leftBuffer{
+    margin-left:$navBtnDiam;
+    position:relative;
+    z-index:1;
+}
+
+.leftNavWrp{
+    @include sbFlexWrap(column, nowrap, center, center);
+    width:$navBtnDiam;
+    background:map-get($bgColors, darkCOntentBg);
+    overflow:hidden;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    z-index:4;
+
+    ul,
+    li{
+        padding:0;
+        margin:0;
+        list-style:none;
+    }
+
+    ul{
+        @include sbFlexWrap(row-reverse, nowrap, center, center);
+        writing-mode:vertical-rl;
+        @include transform("rotate(180deg)");
+    }
+
+    li{
+        display:block;
+        margin-top:4em;
+
+        &:last-child{
+            margin-top:0;
+        }
+    }
+
+    a,
+    a:visited{
+        display:block;
+        padding:.25em;
+        text-transform:$headingTextTransform;
+        letter-spacing:$headingLetterSpacing;
+        font-weight:$primaryBold;
+        color:$medTextColor;
+        position:relative;
+
+        &:before{
+            display:block;
+            content:'';
+            width:0;
+            height:1px;
+            background:$lightTextColor;
+            position:absolute;
+            right:100%;
+            top:50%;
+            @include transform("translateY(-50%)");
+            @include transition;
+        }
+
+        /*---------- ACTIVE ----------*/
+
+        &.active{
+            color:$lightTextColor;
+
+            &:before{
+                width:16px;
+            }
+        }
     }
 }
