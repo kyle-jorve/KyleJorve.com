@@ -16,10 +16,8 @@ $shortHeroHeight: 400px;
 $logo: url('/images/logo-warm.svg');
 $solidLogo: url('/images/logo-solid.svg');
 
-$logoWidth: 100px;
+$logoWidth: 80px;
 $logoHeight: $logoWidth * 0.6115;
-
-$logoScrolledWidth:100px;
 
 /*===========================
     Nav
@@ -53,12 +51,6 @@ $footerSocialIconFontSize: $socialIconFontSize;
 
 /*----- Active Nav -----*/
 $activeNavBtnColor: $lightTextColor;
-
-/*===========================
-    Left Section Nav
-===========================*/
-
-
 
 /*===========================
     Responsive

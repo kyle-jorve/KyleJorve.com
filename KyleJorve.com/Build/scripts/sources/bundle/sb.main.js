@@ -35,31 +35,17 @@
     $('img').removeAttr('style');
 
     //========------------------------------==========//
-    //                COPYRIGHT INFO                  //
-    //========------------------------------==========//
-    //What's the start year?
-    //var startYear = parseInt($('#startYear').html().replace(/ \-/g, ''));
-    //var curYear = new Date().getFullYear();
-
-    ////Put current year in copyright message
-    //$('#curYear').html(curYear);
-    ////If the start year is same as current year, hide start year
-    //if (startYear == curYear) {
-    //    $('#startYear').hide();
-    //};
-
-    //========------------------------------==========//
     //                 SCROLL STUFF                   //
     //========------------------------------==========//
     $(window).scroll(function () {
-        bodyScroll();
+        bodyScroll(200);
     });
 });
 
 $(window).on('load', function () {
-    bodyScroll();
+    bodyScroll(200);
 
-    $.ready.then(function () {
+    setTimeout(function () {
         //Allow CSS transitions after page has loaded
         $('body').removeClass('preload');
         //Transition load screen out
@@ -67,56 +53,18 @@ $(window).on('load', function () {
         $('.loadScreen').fadeOut(300, 'swing', function () {
             $('body').removeClass('showLoader');
         });
-    });
+    }, 150);
 });
 
-function bodyScroll() {
-    detectScrollPos();
+function bodyScroll(limit) {
+    var scrollPos = $(window).scrollTop();
 
-    if (window.curScrollPos > 40) {
+    if (scrollPos >= limit) {
         $('body').addClass('scrolled');
+        $('body').removeClass('unscrolled');
     }
     else {
         $('body').removeClass('scrolled');
+        $('body').addClass('unscrolled');
     }
-};
-
-function detectScrollPos() {
-    //Is browser IE?
-    detectIE();
-
-    //--------Detect scroll position-------//
-    // IF RUNNING IE (ignore the confusing double-negative (Yes it's necessary))
-    if (detectIE()) {
-        window.curScrollPos = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-    }
-    else {
-        window.curScrollPos = $("html").scrollTop() > $("body").scrollTop() ? $("html").scrollTop() : $("body").scrollTop();
-    }
-};
-
-function detectIE() {
-    var ua = window.navigator.userAgent;
-
-    var msie = ua.indexOf('MSIE ');
-    if (msie > 0) {
-        // IE 10 or older => return version number
-        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-    }
-
-    var trident = ua.indexOf('Trident/');
-    if (trident > 0) {
-        // IE 11 => return version number
-        var rv = ua.indexOf('rv:');
-        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-    }
-
-    var edge = ua.indexOf('Edge/');
-    if (edge > 0) {
-        // Edge (IE 12+) => return version number
-        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
-    }
-
-    // other browser
-    return false;
 };
