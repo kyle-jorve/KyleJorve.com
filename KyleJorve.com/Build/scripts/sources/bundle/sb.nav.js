@@ -1,4 +1,80 @@
-﻿$(document).ready(function () {
+﻿var leftNavController = (function () {
+    //========------------------------------==========//
+    //                LEFT NAVIGATION                 //
+    //========------------------------------==========//
+    var leftNavLinks = $('#leftNav a'),
+        leftNavTargets = [],
+        vpMid = $(window).scrollTop() + ($(window).outerHeight() / 2),
+        targetOffsets = {},
+        breakpoint = 800;
+
+    leftNavLinks.each(function () {
+        leftNavTargets.push($(this).attr('href'));
+    });
+
+    var setVPMid = function () {
+        vpMid = $(window).scrollTop() + ($(window).outerHeight() / 2);
+    };
+
+    var setOffsets = function () {
+        for (var i = 0; i < leftNavTargets.length; i++) {
+            targetOffsets[i] = {
+                top: $(leftNavTargets[i]).offset().top,
+                bottom: $(leftNavTargets[i]).offset().top + $(leftNavTargets[i]).outerHeight()
+            };
+        }
+    };
+
+    var scrollFn = function () {
+        for (var i = 0; i < leftNavTargets.length; i++) {
+            var thisOffsetTop = targetOffsets[i].top,
+                thisOffsetBottom = targetOffsets[i].bottom;
+
+            if ($(window).outerWidth() > breakpoint && vpMid > thisOffsetTop && vpMid < thisOffsetBottom) {
+                leftNavLinks[i].classList.add('active');
+            }
+            else if ($(window).outerWidth() > breakpoint && vpMid > thisOffsetTop && vpMid >= thisOffsetBottom) {
+                leftNavLinks[i].classList.remove('active');
+            }
+            else if ($(window).outerWidth() > breakpoint && vpMid <= thisOffsetTop && vpMid < thisOffsetBottom) {
+                leftNavLinks[i].classList.remove('active');
+            }
+        }
+    };
+
+    return {
+        init: function () {
+            $(document).ready(function () {
+                setOffsets();
+                $(window).scroll(scrollFn);
+            });
+
+            $(window).on('resize orientationchange', function () {
+                setOffsets();
+                setVPMid();
+                scrollFn();
+            });
+        }
+    }
+})();
+
+leftNavController.init();
+
+$(document).ready(function () {
+    //========------------------------------==========//
+    //                   ID LINKS                     //
+    //========------------------------------==========//
+    $('a[href^="#"]').on('click', function (event) {
+        var thisTarget = $(this).attr('href'),
+            targetOffset = $(thisTarget).offset().top - $('header').outerHeight();
+
+        $('html, body').animate({
+            scrollTop: targetOffset
+        }, 1000, 'swing');
+
+        event.preventDefault();
+    });
+
     //========------------------------------==========//
     //             MOBILE TOP NAVIGATION              //
     //========------------------------------==========//
@@ -6,10 +82,6 @@
         navItems = topNav.find('nav li');
 
     $('#navBtn').on('click tap', function () {
-        //Open/Close the mobile nav
-        //$('body').toggleClass('showMobileNav');
-        //$(this).toggleClass('active');
-
         //Open the mobile nav
         if (!$('body').hasClass('showMobileNav')) {
             $('body').addClass('showMobileNav');
@@ -53,30 +125,5 @@
         $('body').removeClass('showMobileNav');
         $('#navBtn').removeClass('active');
         $('header nav').hide(300);
-    });
-
-    //========------------------------------==========//
-    //             SCROLL TO TOP BUTTON               //
-    //========------------------------------==========//
-    //--------Detect scroll position-------//    
-    $('.toTopBtn').click(function () {
-        curScrollAnchor = $("html").scrollTop() > $("body").scrollTop() ? $("html") : $("body");
-        curScrollAnchor.animate({ scrollTop: 0 }, 1000, 'swing');
-    });
-
-    //Scroll to content areas
-    $('a[href*="#"]:not([href^="index.html#"])').on('click tap', function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash),
-                headerBuffer = $('header').outerHeight() + 16;
-
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: (target.offset().top - headerBuffer)
-                }, 1000);
-                return false;
-            }
-        }
     });
 });

@@ -16,7 +16,7 @@
     right:0;
     bottom:0;
     left:0;
-    z-index:9;
+    z-index:99;
     @include transition(all, .5s);
 
     nav {
@@ -257,7 +257,7 @@ footer .iconContainer{
     border:$navBtnBorder;
     background:$navBtnColor;
     border-radius: 0;
-    @include transition(all, .5s);
+    @include transition;
     position:relative;
 
     .blocksWrp {
@@ -299,14 +299,22 @@ footer .iconContainer{
 
 /*---------- HOVER EFFECTS ----------*/
 @include hover(".navBtn"){
-    
+    background:$linkHoverColor;
 }
 
 /*---------- HOME PAGE ----------*/
 
-.homePg .navBtn{
-    border-radius:0 0 $borderRadius 0;
-    box-shadow:$mediumShadow;
+.homePg{
+    .navBtn{
+        border-radius:0 0 $borderRadius 0;
+        box-shadow:$mediumShadow;
+    }
+
+    /*----- LEFT NAV REVEALED -----*/
+    &.revealLeftNav .navBtn{
+        border-radius:0;
+        box-shadow:none;
+    }
 }
 
 /*==========----------==========*/
@@ -335,7 +343,7 @@ footer .iconContainer{
 .leftBuffer{
     margin-left:$navBtnDiam;
     position:relative;
-    z-index:6;
+    z-index:1;
 }
 
 .leftNavWrp{
@@ -347,7 +355,7 @@ footer .iconContainer{
     left:0;
     top:0;
     bottom:0;
-    z-index:4;
+    z-index:10;
 
     ul,
     li{
@@ -402,6 +410,29 @@ footer .iconContainer{
             &:before{
                 width:16px;
             }
+        }
+    }
+}
+
+/*---------- HOME PAGE ----------*/
+
+.homePg{
+    .leftBuffer{
+        margin-left:0;
+        @include transition;
+    }
+    .leftNavWrp{
+        width:0;
+        @include transition;
+    }
+
+    /*----- REVEAL LEFT NAV -----*/
+    &.revealLeftNav{
+        .leftBuffer{
+            margin-left:$navBtnDiam;
+        }
+        .leftNavWrp{
+            width:$navBtnDiam;
         }
     }
 }

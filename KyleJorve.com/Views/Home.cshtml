@@ -7,15 +7,15 @@
     var portfolioItems = Umbraco.Content(1082).Children.OrderBy("pubDate desc");
 }
 
-<section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
-    <div class="heroContent">
-        @Umbraco.Field("heading")
-    </div>
-</section>
-
 <div class="leftBuffer">
-    <section class="portfolioSection lightContentBg" id="@(Umbraco.Field("portfolioHeading").ToString().ToLower().Replace(" ", "-"))">
-        <div class="portfolioGrid">
+    <section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
+        <div class="heroContent">
+            @Umbraco.Field("heading")
+        </div>
+    </section>
+
+    <section class="portfolioSection lightContentBg">
+        <div class="portfolioGrid" id="@(Umbraco.Field("portfolioHeading").ToString().ToLower().Replace(" ", "-"))">
             @for (var i = 0; i < 5; i++)
             {
                 var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
@@ -24,12 +24,12 @@
                 {
                     //var img = imgCollection.ToArray()[0];
                     var img = Umbraco.Media(imgCollection.ToArray()[0].Id);
-                    var imgWidth = img.GetPropertyValue<decimal>("umbracoWidth");
-                    var imgHeight = img.GetPropertyValue<decimal>("umbracoHeight");
-                    var aspect = Decimal.Divide(imgWidth, imgHeight);
+                    decimal imgWidth = img.GetPropertyValue<decimal>("umbracoWidth");
+                    decimal imgHeight = img.GetPropertyValue<decimal>("umbracoHeight");
+                    var aspect = imgWidth / imgHeight;
                     string itemClass = string.Empty;
 
-                    ////define itemClass
+                    //define itemClass
                     if (aspect > 1.333M)
                     {
                         itemClass = "wide";
@@ -70,3 +70,5 @@
         </div>
     </section>
 </div>
+
+<script src="/Scripts/homePg.js"></script>

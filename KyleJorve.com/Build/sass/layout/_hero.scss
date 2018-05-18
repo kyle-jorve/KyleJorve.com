@@ -22,7 +22,7 @@
 .homePg .heroWrp{
     @include sbFlexWrap(column, nowrap, flex-end, stretch);
     position:relative;
-    z-index:5;
+    z-index:1;
 
     &:before,
     &:after{

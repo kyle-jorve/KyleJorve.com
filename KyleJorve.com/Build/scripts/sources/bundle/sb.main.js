@@ -61,10 +61,8 @@ function bodyScroll(limit) {
 
     if (scrollPos >= limit) {
         $('body').addClass('scrolled');
-        $('body').removeClass('unscrolled');
     }
     else {
         $('body').removeClass('scrolled');
-        $('body').addClass('unscrolled');
     }
 };
