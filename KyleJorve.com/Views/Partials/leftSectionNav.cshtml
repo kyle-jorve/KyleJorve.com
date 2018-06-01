@@ -1,8 +1,8 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
-//var portfolioItemTypes = umbraco.cms.businesslogic.datatype.PreValues.GetPreValues(Umbraco.Content(1082).portfolioItemType).Values;
-//var enumerator = portfolioItemTypes.GetEnumerator();
+    //var portfolioItemTypes = umbraco.cms.businesslogic.datatype.PreValues.GetPreValues(Umbraco.Content(1082).portfolioItemType).Values;
+    //var enumerator = portfolioItemTypes.GetEnumerator();
 }
 
 <nav class="leftNavWrp" id="leftNav">
@@ -22,12 +22,12 @@
                 <div data-filter="all"><span>All</span></div>
             </li>
             @*@while (enumerator.MoveNext())
-            {
-                var curVal = (PreValue)enumerator.Current;
-                <li>
-                    <div data-filter="@(curVal.Value.ToString().ToLower().Replace(" ","-"))"><span>@curVal.Value</span></div>
-                </li>
-            }*@
+                {
+                    var curVal = (PreValue)enumerator.Current;
+                    <li>
+                        <div data-filter="@(curVal.Value.ToString().ToLower().Replace(" ","-"))"><span>@curVal.Value</span></div>
+                    </li>
+                }*@
         }
         else if (CurrentPage.Id == 1083)
         {
@@ -56,3 +56,5 @@
         }
     </ul>
 </nav>
+@*<script src="/Scripts/leftNav.js"></script>*@
+<script src="/Build/scripts/sources/leftNav.js"></script>
