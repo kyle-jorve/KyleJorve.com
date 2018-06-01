@@ -21,6 +21,9 @@
 /*==========----------==========*/
 .homePg .heroWrp{
     @include sbFlexWrap(column, nowrap, flex-end, stretch);
+    background-size:cover;
+    background-position:center center;
+    background-repeat: no-repeat;
     position:relative;
     z-index:1;
 

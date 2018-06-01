@@ -13,8 +13,6 @@
         leftNavTargets.push(cur.getAttribute('href').toString());
     });
 
-    console.log(leftNavTargets);
-
     //set variables
     var setVars = function () {
         for (var i = 0; i < leftNavTargets.length; i++) {
@@ -45,25 +43,16 @@
         }
     };
 
-    var eventListeners = function () {
-        window.addEventListener('scroll', scrollFn);
+    // Init
+    window.addEventListener('scroll', scrollFn);    
+    window.addEventListener('resize', function () {
+        setVars();
+        scrollFn();
+    });
 
-        window.addEventListener('resize', function () {
-            setVars();
-            scrollFn();
-        });
+    window.addEventListener('orientationchange', function () {
+        setVars();
+        scrollFn();
+    });
 
-        window.addEventListener('orientationchange', function () {
-            setVars();
-            scrollFn();
-        });
-    };
-
-    return {
-        init: function () {
-            eventListeners();            
-        }
-    }
 })();
-
-leftNavController.init();
