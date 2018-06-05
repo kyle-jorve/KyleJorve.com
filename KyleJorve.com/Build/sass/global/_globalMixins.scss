@@ -46,7 +46,7 @@
     only screen and (max-height:$breakpoint1) {
         .largeText {
             /*font-size:1.1em;*/
-            font-size: $largeFontSize * .85;
+            font-size: $largeFontSize * .9;
         }
     }
 
@@ -55,7 +55,7 @@
     print{
         .largeText {
             /*font-size:1.05em;*/
-            font-size: $largeFontSize * .8;
+            font-size: $largeFontSize * .85;
         }
     }
 
@@ -63,7 +63,7 @@
     only screen and (max-height:$breakpoint3) {
         .largeText {
             /*font-size:1.025em;*/
-            font-size: $largeFontSize * .785;
+            font-size: $largeFontSize * .8;
         }
     }
 

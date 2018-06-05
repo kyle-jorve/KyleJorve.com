@@ -2,7 +2,30 @@
     /*==========----------==========*/
     /*       PORTFOLIO SECTION      */
     /*==========----------==========*/
-    .portfolioGrid{
-        margin-top:-8em;
+    .portfolioSection{
+        border-bottom:$borderThickness solid $lightBorderColor;
+
+        .portfolioGrid{
+            margin-top:-8em;
+        }
+    }
+    /*==========----------==========*/
+    /*          BIO SECTION         */
+    /*==========----------==========*/
+    .bioSection{
+        .contentBox{
+            text-align:right;
+
+            h1,
+            h2{
+                &:before{
+                    left:auto;
+                    right:$headingLetterSpacing;
+                }
+            }
+        }
+        .buttonWrp{
+            max-width:$contentBoxWidth;
+        }
     }
 }

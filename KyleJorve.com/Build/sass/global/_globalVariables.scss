@@ -58,6 +58,7 @@ $warmGrays:(
 $colorScheme:(
     primaryColor: map-get($coolGrays, coolGray1),
     secondaryColor: map-get($coolGrays, coolGray9),
+    tertiaryColor: #f4ce56,
     accentColor: #ff5652
 );
 
@@ -79,7 +80,7 @@ $borderRadius:12px;
 
 /*Border Colors*/
 $darkBorderColor: map-get($colorScheme, accentColor);
-$lightBorderColor: map-get($colorScheme, primaryColor);
+$lightBorderColor: map-get($coolGrays, coolGray3);
 
 /*===========================
     Wrappers
@@ -91,6 +92,7 @@ $contentWidth: 950px;
 $narrowWidth:600px;
 
 $sectionPadding: 4em 2em;
+$contentSectionPadding: 6em 2em;
 
 /*===========================
     Type

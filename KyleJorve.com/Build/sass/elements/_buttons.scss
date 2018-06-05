@@ -50,7 +50,9 @@ a.button {
     /*---------- PRIMARY BUTTON ----------*/
     &.prime {
         color: $primeBtnTextColor;
-        background: $primeBtnBg;
+        @include gradient(map-get($colorScheme, accentColor), map-get($colorScheme, tertiaryColor), horizontal);
+        background-size:200% 100%;
+        background-position:0 center;
     }
     /*---------- SECONDARY BUTTON ----------*/
     &.secondary {
@@ -147,34 +149,22 @@ input {
     /*Primary Button*/
     &.prime {
         color: $primeBtnHoverColor;
-        background: $primeBtnHoverBg;
-        &:before{
-            border-color:$primeBtnHoverBg;
-        }
+        background-position:100% center;
     }
     /*Secondary Button*/
     &.secondary {
         color: $secondaryBtnHoverColor;
         background: $secondaryBtnHoverBg;
-        &:before{
-            border-color:$secondaryBtnHoverBg;
-        }
     }
     /*Tertiary Button*/
     &.tertiary{
         color: $teritaryBtnHoverColor;
         background: $tertiaryBtnHoverBg;
-        &:before{
-            border-color:$tertiaryBtnHoverBg;
-        }
     }
     /*Quaternary Button*/
     &.quaternary{
         background:$quatBtnHoverBg;
         color:$quatBtnHoverColor;
-        &:before{
-            border-color:$quatBtnHoverBg;
-        }
     }
     /*Info Button*/
     &.infoBtn {

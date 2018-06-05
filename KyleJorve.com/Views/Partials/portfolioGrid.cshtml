@@ -1,0 +1,78 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{ 
+    var portfolioItems = Umbraco.Content(1082).Children.OrderBy("pubDate desc");
+    var homePgID = 1081;
+}
+
+<div class="portfolioGrid" id="@(CurrentPage.Id == homePgID ? Umbraco.Content(homePgID).portfolioHeading.ToString().ToLower().Replace(" ", "-") : null)">
+    @if (CurrentPage.Id == homePgID)
+    {
+        for (var i = 0; i < 5; i++)
+        {
+            var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
+            var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
+            if (imgCollection != null)
+            {
+                //var img = imgCollection.ToArray()[0];
+                var img = Umbraco.Media(imgCollection.ToArray()[0].Id);
+                decimal imgWidth = img.GetPropertyValue<decimal>("umbracoWidth");
+                decimal imgHeight = img.GetPropertyValue<decimal>("umbracoHeight");
+                var aspect = imgWidth / imgHeight;
+                string itemClass = string.Empty;
+
+                //define itemClass
+                if (aspect > 1.333M)
+                {
+                    itemClass = "wide";
+                }
+                else if (aspect < 0.875M)
+                {
+                    itemClass = "tall";
+                }
+
+                <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)');" data-width="@imgWidth" data-height="@imgHeight" data-aspect="@aspect">
+                    <div class="iconRow">
+                        <div class="icon description"></div>
+                        <div class="icon full-screen"></div>
+                    </div>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        for (var i = 0; i < 18; i++)
+        {
+            var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
+            var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
+            if (imgCollection != null)
+            {
+                //var img = imgCollection.ToArray()[0];
+                var img = Umbraco.Media(imgCollection.ToArray()[0].Id);
+                decimal imgWidth = img.GetPropertyValue<decimal>("umbracoWidth");
+                decimal imgHeight = img.GetPropertyValue<decimal>("umbracoHeight");
+                var aspect = imgWidth / imgHeight;
+                string itemClass = string.Empty;
+
+                //define itemClass
+                if (aspect > 1.333M)
+                {
+                    itemClass = "wide";
+                }
+                else if (aspect < 0.875M)
+                {
+                    itemClass = "tall";
+                }
+
+                <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)');" data-width="@imgWidth" data-height="@imgHeight" data-aspect="@aspect">
+                    <div class="iconRow">
+                        <div class="icon description"></div>
+                        <div class="icon full-screen"></div>
+                    </div>
+                </div>
+            }
+        }
+    }
+
+</div>

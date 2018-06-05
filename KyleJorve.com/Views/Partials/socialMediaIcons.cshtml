@@ -1,0 +1,61 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{ 
+    var socialIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("socMedIcons");
+    var comIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("commerceIcons");
+}
+
+<div class="iconsWrp social">
+    <ul>
+        @foreach (var item in socialIcons)
+        {
+            var socMedType = Umbraco.Field(item, "socMedType").ToString().ToLower();
+
+            <li>
+                <a href="@(Umbraco.Field(item, "socMedLink"))" rel="noreferrer noopener" target="_blank">
+                    @if (socMedType == "facebook")
+                    {
+                        <i class="fab fa-facebook-f"></i>
+                    }
+                    else if (socMedType == "instagram")
+                    {
+                        <i class="fab fa-instagram"></i>
+                    }
+                    else if (socMedType == "tumblr")
+                    {
+                        <i class="fab fa-tumblr"></i>
+                    }
+                    else if (socMedType == "deviantart")
+                    {
+                        <i class="fab fa-deviantart"></i>
+                    }
+                    else if (socMedType == "email")
+                    {
+                        <i class="fas fa-at"></i>
+                    }
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+<div class="iconsWrp commerce">
+    <ul>
+        @foreach (var item in comIcons)
+        {
+            var socMedType = Umbraco.Field(item, "socMedType").ToString().ToLower();
+
+            <li>
+                <a href="@(Umbraco.Field(item, "socMedLink"))" rel="noreferrer noopener" target="_blank">
+                    @if (socMedType == "patreon")
+                    {
+                        <i class="fab fa-patreon"></i>
+                    }
+                    else if (socMedType == "society6")
+                    {
+                        { Html.RenderPartial("SVGs/cartIcon"); }
+                    }
+                </a>
+            </li>
+        }
+    </ul>
+</div>

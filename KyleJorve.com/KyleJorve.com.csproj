@@ -448,6 +448,8 @@
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Views\Partials\SVGs\cartIcon.cshtml" />
+    <Content Include="Views\Partials\portfolioGrid.cshtml" />
+    <Content Include="Views\Partials\socialMediaIcons.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

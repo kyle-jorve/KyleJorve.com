@@ -3,6 +3,7 @@
 }
 
 .portfolioItem{
+    cursor:pointer;
     height:50vh;
     min-height:400px;
     max-height:600px;
@@ -12,6 +13,30 @@
     background-repeat:no-repeat;
     background-size:cover;
     @include sbFlexItem(2, 1, calc(38.2% - 2em));
+    overflow:hidden;
+    position:relative;
+    z-index:1;
+    @include transition;
+    @include transform("none");
+
+    & > *{
+        position:relative;
+        z-index:2;
+    }
+
+    &:before{
+        display:block;
+        content:'';
+        opacity:.2;
+        background:$white;
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:1;
+        @include transition;
+    }
 
     &.illustration{
         background-position:center center;
@@ -27,5 +52,19 @@
 
     &.tall{
         @include sbFlexItem(1, 1, calc(23.6% - 2em));
+    }
+}
+
+/*==========----------==========*/
+/*        HOVER EFFECTS         */
+/*==========----------==========*/
+
+@include hover(".portfolioItem"){
+    box-shadow:$longShadow;
+    z-index:2;
+    @include transform("scale(1.015)");
+
+    &:before{
+        opacity:0;
     }
 }
