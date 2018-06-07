@@ -12,7 +12,7 @@
 
 //-- "element" is the element to be transitioned in.
 
-//-- "delay": amount of time animations should be staggered for.
+//-- "delay": amount of time in milliseconds that animations should be staggered for.
 
 //-- "minViewportWidth": If the window width is smaller than this, the element will not be transitioned. If you always want the element to be transitioned in, set this to 0.
 
@@ -28,9 +28,9 @@ function animateContent(container, element, delay, minViewportWidth, edgeOrienta
 
     var scroll = function () {
         var windowWidth = $(window).outerWidth(),
-            scrollPos = $('html').scrollTop() > $('body').scrollTop() ? $('html').scrollTop() : $('body').scrollTop(),
-            windowOffset = window.curScrollPos + $(window).outerHeight(), // Window bottom
-            elOffset = edgeOr = "top" ? orientEl.offset().top + viewportBuffer : orientEl.offset().top + orientEl.outerHeight() + viewportBuffer; // Where is the oriented edge of the animated element (add a little buffer to the bottom)?
+            scrollPos = $(window).scrollTop(),
+            windowOffset = scrollPos + $(window).outerHeight(), // Window bottom
+            elOffset = edgeOr === "top" ? orientEl.offset().top + viewportBuffer : orientEl.offset().top + orientEl.outerHeight() + viewportBuffer; // Where is the oriented edge of the animated element (add a little buffer to the bottom)?
 
         //Animate elements in
         //If the element to be animated is inside the viewport, has not yet been animated, AND the viewport width is greater than the minimum set width, run the animation.
@@ -52,9 +52,12 @@ function animateContent(container, element, delay, minViewportWidth, edgeOrienta
     };
 
     $(window).on('load', function () {
-        $.ready.then(function () {
+        setTimeout(function () {
             scroll();
-        });
+        }, 300);
     });
-    $(window).on('scroll resize', scroll);
+    $(window).on('resize', scroll);
+    $(document).ready(function () {
+        $(window).on('scroll', scroll);
+    });
 };

@@ -6,11 +6,11 @@
         var thisTarget = $(this).attr('href'),
             targetOffset = $(thisTarget).offset().top - $('header').outerHeight();
 
+        event.preventDefault();
+
         $('html, body').animate({
             scrollTop: targetOffset
         }, 1000, 'swing');
-
-        event.preventDefault();
     });
 
     //========------------------------------==========//

@@ -8,10 +8,12 @@
 }
 
 <div class="leftBuffer">
-    <section class="heroWrp" style="background-image:url('@(CurrentPage.heroBg.Url)');">
+    <section class="heroWrp" >
         <div class="heroContent">
             @Umbraco.Field("heading")
         </div>
+
+        <div class="heroBg parallaxBg" style="background-image:url('@(CurrentPage.heroBg.Url)');"></div>
     </section>
 
     <section class="portfolioSection lightContentBg">

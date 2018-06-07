@@ -4,6 +4,13 @@
     });
 });
 
+//Parallax effects
+parallaxBg('.heroWrp', '.heroBg', -.3, 800, 'center');
+
+//Animated content
+animateContent('#recent-work', '.animatedEl', 100, 800, "top", 200);
+
+//Left nav apparate
 $(window).on('load resize orientationchange',  function() {
     toggleLeftNav();
 });

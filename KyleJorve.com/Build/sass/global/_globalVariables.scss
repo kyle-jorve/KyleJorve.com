@@ -121,13 +121,14 @@ $primaryTypeMargin:1em 0;
 
 $listTypeMargin: .5em 0;
 
-/*General Type Settings*/
+/*Type Scaler Settings*/
 $baseFontSize:1em;
 $smallFontSize:.75em;
 $largeFontSize:1.25em;
 
 $typeScaleMultiplier: 1.4;
 
+/*Text Colors*/
 $lightTextColor: $white;
 $darkTextColor: $black;
 $medTextColor: map-get($coolGrays, coolGray6);
@@ -135,6 +136,7 @@ $medTextColor: map-get($coolGrays, coolGray6);
 $lightHeadingColor: $lightTextColor;
 $darkHeadingColor: $darkTextColor;
 
+/*Text Shadows*/
 $textShadow: 1px 1px rgba($black, .5);
 $whiteTextShadow: 1px 1px rgba($white, .5);
 

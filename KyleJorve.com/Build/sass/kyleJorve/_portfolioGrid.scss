@@ -12,6 +12,7 @@
     box-shadow:$mediumShadow;
     background-repeat:no-repeat;
     background-size:cover;
+    @include sbFlexWrap(column, nowrap, flex-end, stretch);
     @include sbFlexItem(2, 1, calc(38.2% - 2em));
     overflow:hidden;
     position:relative;
@@ -53,6 +54,31 @@
     &.tall{
         @include sbFlexItem(1, 1, calc(23.6% - 2em));
     }
+
+    /*==========----------==========*/
+    /*            ICONS             */
+    /*==========----------==========*/
+    .iconRow{
+        opacity:0;
+        visibility:hidden;
+        @include sbFlexWrap(row, nowrap, space-between, flex-end);
+        @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), vertical);
+        padding:3em 1em 1em 1em;
+        position:relative;
+        z-index:2;
+        @include transform("translateY(100%)");
+        @include transition;
+
+        i{
+            display:block;
+            cursor:pointer;
+            padding:.5em;
+            color:$white;
+            font-size:24px;
+            @include transform("none");
+            @include transition;
+        }
+    }
 }
 
 /*==========----------==========*/
@@ -67,4 +93,15 @@
     &:before{
         opacity:0;
     }
+
+    .iconRow{
+        opacity:1;
+        visibility:visible;
+        @include transform("none");
+    }
+}
+
+@include hover(".iconRow i"){
+    color:$linkHoverColor;
+    @include transform("scale(1.1)");
 }

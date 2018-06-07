@@ -8,11 +8,19 @@
         .portfolioGrid{
             margin-top:-8em;
         }
+
+        .buttonWrp{
+            text-align:center;
+        }
     }
     /*==========----------==========*/
     /*          BIO SECTION         */
     /*==========----------==========*/
     .bioSection{
+        background-repeat:no-repeat;
+        background-position:right center;
+        background-size:cover;
+
         .contentBox{
             text-align:right;
 
