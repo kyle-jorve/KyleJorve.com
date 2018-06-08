@@ -11,7 +11,8 @@ print{
     * {
         background-attachment:scroll;
     }
-    section{
+    section,
+    section.contentSection{
         padding:4em 1em;
     }
 }

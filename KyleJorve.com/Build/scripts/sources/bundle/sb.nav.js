@@ -58,10 +58,4 @@
             }, delayClose);
         }
     });
-    //Close nav if document is clicked / tapped
-    $('.navOverlay').on('click tap', function () {
-        $('body').removeClass('showMobileNav');
-        $('#navBtn').removeClass('active');
-        $('header nav').hide(300);
-    });
 });

@@ -32,6 +32,10 @@ $logoHeight: $logoWidth * 0.6115;
 $navBg: map-get($colorScheme, accentColor);
 $navLinkColor: $lightTextColor;
 
+/*----- Nav Icons -----*/
+$navIconWidth:36px;
+$navIconHeight: $navIconWidth * .8;
+
 /*----- Nav Button -----*/
 $navBtnDiam:60px;
 
@@ -63,7 +67,7 @@ $activeNavBtnColor: $lightTextColor;
 ===========================*/
 $navBreakpoint: 600;
 
-$navBtnDiamMobile: 44px;
+$navBtnDiamMobile: 80px;
 
 $headerMobileHeight:auto;
 $headerMobileScrolledHeight:auto;

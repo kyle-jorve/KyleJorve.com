@@ -1,57 +1,66 @@
-﻿/*//////////////////////////////////////////////////////*/
+﻿.mobileNavContainer{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:101;
+    @include transition;
+}
+
+.mobileNavItem{
+    display:none;
+    opacity:1;
+    visibility:visible;
+    padding:.25em;
+    border-top:$borderThickness solid $lightBorderColor;
+    @include transition(all, .5s);
+
+    & + .mobileNavItem{
+        border-left:$borderThickness solid $lightBorderColor;
+    }
+
+    span{
+        display:block;
+        font-family:$headingFont;
+        font-size:.65em;
+        text-transform:$headingTextTransform;
+        font-weight:$headingThin !important;
+        letter-spacing:$headingLetterSpacing;
+        margin:0;
+        color:$lightTextColor;
+        text-align:center;
+    }
+}
+
+.navItemIcon{
+    padding-bottom:.25em;
+
+    svg{
+        display:block;
+        margin:0 auto;
+        width:auto;
+        height:auto;
+        max-width:$navIconWidth;
+        max-height:$navIconHeight;
+        fill:$lightTextColor;
+
+        *{
+            fill:$lightTextColor;
+        }
+    }
+}
+
+
+/*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
 /*//                   1200PX WIDTH                   //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:1200px){
-    .footerNavWrp{
-       .contactInfoWrp{
-            padding:2.5em;
-        }
-       .footerNav{
-            nav{
-                padding:2.5em;
-            }
-        }
-    }
-    
     footer .socialWrp{
         padding:1.5em 0 0 0;
 
         li{
             margin:0 1em;
-        }
-    }
-}
-
-/*//////////////////////////////////////////////////////*/
-/*//====================----------====================//*/
-/*//                  GRID BREAKPOINT                 //*/
-/*//====================----------====================//*/
-/*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:$gridBreakpoint){
-    .footerNavWrp{
-        text-align:right;
-
-        .contactInfoWrp,
-        .footerNav{
-            @include sbFlexWrap(column, nowrap, flex-between, flex-end);
-        }
-
-        .contactInfo .icon{
-            padding-left:30px;
-        }
-
-        .footerNav{
-            .navCat{
-                padding:1em 0;
-                &:first-child{
-                    padding-top:0;
-                }
-                &:last-child{
-                    padding-bottom:0;
-                }
-            }
         }
     }
 }
@@ -65,11 +74,7 @@
     .socialWrp{
         padding:1em;
     }
-    .navBtn{
-        top:.75em;
-        right:1em;
-    }
-    .topNav.navWrp{
+    .topNavWrp{
         @include sbFlexWrap(column, nowrap, center, stretch);
         padding:1em;
         nav{
@@ -113,18 +118,56 @@
 
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
+/*//                   500PX WIDTH                    //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-width:500px){
+    .leftNavWrp{
+        display:none;
+    }
+
+    .navBtn{
+        border-radius:0 !important;
+        min-width:$navBtnDiam;
+    }
+
+    .mobileNavContainer{
+        @include sbFlexWrap(row, nowrap, inherit, stretch);
+        background:rgba(map-get($bgColors, darkContentBg), .5);
+        top:auto;
+        bottom:0;
+        right:0;
+    }
+
+    .mobileNavItem{
+        @include sbFlexWrap(column, nowrap, center, stretch);
+        @include sbFlexItem(1,1, 50%);
+    }
+
+    /*---------- NAV REVEALED ----------*/
+    .showMobileNav{
+        .navBtn{
+            border-radius:$borderRadius 0 0 0 !important;
+        }
+
+        .mobileNavContainer{
+            background:transparent;
+        }
+
+        .mobileNavItem{
+            opacity:0;
+            visibility:hidden;
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
 /*//                   400PX WIDTH                    //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:400px){
-    .footerNavWrp{
-        .contactInfoWrp,
-        .footerNav nav{
-            padding:2em 1em;
-        }
-    }
-
-    .topNav.navWrp{
+    .topNavWrp{
         nav li{
             a,
             a:visited{
@@ -136,13 +179,6 @@
             }
         }
     }
-
-    .showMobileNav,
-    .showMobileNav.scrolled{
-        header .logo{
-            width:$logoMobileWidth;
-        }
-    }
 }
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
@@ -150,12 +186,6 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:350px){
-    .navBtn{
-        top:.75em;
-        width:$navBtnDiamMobile;
-        height:$navBtnDiamMobile;
-    }
-
     .socialWrp{
         li{
             margin:0 .75em;

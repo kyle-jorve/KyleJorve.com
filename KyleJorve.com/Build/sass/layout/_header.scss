@@ -21,7 +21,7 @@ header {
     }
 
     .flexContainer {
-        @include sbFlexWrap(row, nowrap, space-between, flex-start);
+        @include sbFlexWrap(row, nowrap, flex-end, flex-start, stretch);
         padding: 0;
     }
 }

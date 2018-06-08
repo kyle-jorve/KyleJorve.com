@@ -15,12 +15,17 @@
         z-index:3;
     }
 
-    .heroBg{
+    .heroBg,
+    .mobileHeroBg{
         background-repeat:no-repeat;
         background-size:cover;
         background-position:center center;
         @extend %absolute-cover;
         z-index:1;
+    }
+
+    .mobileHeroBg{
+        display:none;
     }
 }
 

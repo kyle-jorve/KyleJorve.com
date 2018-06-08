@@ -31,7 +31,7 @@
     Flex Mixins
 ===========================*/
 
-@mixin sbFlexWrap($direction, $wrap, $justify: center, $alignItems: stretch, $alignContent: stretch, $respond: false){
+@mixin sbFlexWrap($direction, $wrap, $justify: center, $alignItems: stretch, $alignContent: stretch){
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;    
@@ -63,38 +63,6 @@
        -moz-align-content: $alignContent;
         -ms-align-content: $alignContent;
             align-content: $alignContent;
-
-    @if $respond == false {
-        //Custom responsive styles
-        @content
-    }
-    @else {
-        @media only screen and (max-width:$gridBreakpoint){
-            //Default responsive styles
-            display:block;
-            padding:0;
-            
-            & > *{
-                width:100%;
-            }
-
-            & > [class*="flexItem"]{
-                width:100%;
-                padding:1em 0;
-            }
-        }
-    }
-
-    @media print{
-        padding:0 !important;
-        display:block !important;
-        & > *{
-            width:100% !important;
-            max-width:none !important;
-            display:block !important;
-            padding:1em 0 !important;
-        }
-    }
 }
 @mixin sbFlexItem($grow: 0, $shrink: 1, $basis: auto, $important: null){
     -webkit-box-flex: $grow $shrink $basis #{$important};

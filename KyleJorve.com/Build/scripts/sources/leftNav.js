@@ -6,7 +6,7 @@
         leftNavTargets = [],
         vpMid,
         targetOffsets = {},
-        breakpoint = 800;
+        breakpoint = 600;
 
     //set targets
     leftNavLinks.forEach(function (cur) {

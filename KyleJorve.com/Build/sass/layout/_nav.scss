@@ -38,6 +38,7 @@
 
         a,
         a:visited {
+            opacity:.75;
             display: inline-block;
             padding: 1em;
             font-size: $largeFontSize;
@@ -53,11 +54,11 @@
             &:before{
                 display:block;
                 content:'';
-                height:3px;
+                height:$borderThickness;
                 width:0;
                 background:$navLinkColor;
                 @extend %absolute-center-horizontal;
-                bottom:0;
+                bottom:.5em;
                 @include transition;
             }
         }
@@ -76,10 +77,10 @@
                 & > a,
                 & > a:visited {
                     pointer-events: none;
-                    color:darken($navLinkColor, 15%);
+                    opacity:.5;
+
                     &:before{
-                        background:darken($navLinkColor, 15%);
-                        width:76px;
+                        width:60px;
                     }
                 }
             }
@@ -90,11 +91,12 @@
 @include scrollBar(".topNav.navWrp", vertical);
 
 /*---------- HOVER EFFECTS ----------*/
-@include hover(".topNav.navWrp nav li a,.topNav.navWrp nav li a:visited") {
-    color: darken($navLinkColor, 15%);
+@include hover(".topNavWrp nav li a,.topNavWrp nav li a:visited") {
+    color:$navLinkColor;
+    opacity:1;
+
     &:before{
-        background:darken($navLinkColor, 15%);
-        width:76px;
+        width:60px;
     }
 }
 
@@ -257,7 +259,7 @@ footer .iconContainer{
     border:$navBtnBorder;
     background:$navBtnColor;
     border-radius: 0;
-    @include transition;
+    @include transition(all, .5s);
     position:relative;
 
     .blocksWrp {
@@ -274,6 +276,8 @@ footer .iconContainer{
         height:$navBtnLineThickness;
         width:100%;
         @include sbFlexWrap(row, nowrap, space-between, center);
+        @include transform("none");
+        @include transition(all, .5s);
 
         & + .blockRow{
             margin-top: $navBtnLineThickness;
@@ -281,9 +285,11 @@ footer .iconContainer{
     }
 
     .block{
+        opacity:1;
         width:$navBtnLineWidth;
         height:$navBtnLineThickness;
         background:$navBtnLineColor;
+        @include transition;
     }
 
     /*---------- ACTIVE ----------*/
@@ -300,6 +306,18 @@ footer .iconContainer{
 /*---------- HOVER EFFECTS ----------*/
 @include hover(".navBtn"){
     background:$linkHoverColor;
+
+    .blockRow{
+        @include transform("translateX(-4px)");
+
+        & + .blockRow{
+            @include transform("translateX(4px)");
+
+            & + .blockRow{
+                @include transform("translateX(-4px)");
+            }
+        }
+    }
 }
 
 /*---------- HOME PAGE ----------*/
@@ -322,17 +340,60 @@ footer .iconContainer{
 /*==========----------==========*/
 .showMobileNav,
 .showMobileNav.scrolled{
-    header .logo{
-        width:$logoWidth;
+    header{
+        background:transparent;
 
-        svg{
-            fill:$medTextColor;
+        .logo{
+            opacity:.75;
+
+            svg,
+            svg *{
+                fill:$white;
+            }
         }
-    } 
+    }
 
-    .topNav.navWrp{
+    .navBtn{
+        background:$navLinkColor;
+        border-radius:0 0 $borderRadius 0 !important;
+        box-shadow:none !important;
+
+        .block{
+            background:$navBg;
+        }
+
+        .blockRow:first-child .block:nth-child(2),
+        .blockRow:nth-child(2) .block:first-child,
+        .blockRow:nth-child(2) .block:last-child,
+        .blockRow:last-child .block:nth-child(2){
+            opacity:0;
+        }
+    }
+
+    .topNavWrp{
         opacity:1;
         visibility:visible;
+    }
+}
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover("&.showMobileNav .navBtn"){
+    background:$linkHoverColor;
+
+    .block{
+        background:$navLinkColor;
+    }
+
+    .blockRow{
+        @include transform("none");
+
+        & + .blockRow{
+            @include transform("none");
+
+            & + .blockRow{
+                @include transform("none");
+            }
+        }
     }
 }
 

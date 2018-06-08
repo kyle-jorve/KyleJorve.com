@@ -1,11 +1,19 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
-@{ 
+@{
     var closeLink = Umbraco.Content(1082).Url;
+    var portfolioPg = Umbraco.Content(1082);
+    var bioPg = Umbraco.Content(1083);
+
+    var portfolioIconUrl = portfolioPg.GetPropertyValue<IPublishedContent>("pageIcon").Url;
+    var portfolioIcon = Html.Raw(System.IO.File.ReadAllText(Server.MapPath(portfolioIconUrl)));
+
+    var bioIconUrl = bioPg.GetPropertyValue<IPublishedContent>("pageIcon").Url;
+    var bioIcon = Html.Raw(System.IO.File.ReadAllText(Server.MapPath(bioIconUrl)));
 }
 
 <header>
-    <div class="flexContainer">
+    <div class="flexContainer noRespond">
         @if (CurrentPage.Parent != null && CurrentPage.Parent.Id == 1082)
         {
             <div class="logoWrp">
@@ -21,25 +29,6 @@
         }
         else
         {
-            <div id="navBtn" class="navBtn">
-                <div class="blocksWrp">
-                    <div class="blockRow">
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                    </div>
-                    <div class="blockRow">
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                    </div>
-                    <div class="blockRow">
-                        <div class="block"></div>
-                        <div class="block"></div>
-                        <div class="block"></div>
-                    </div>
-                </div>
-            </div>
             <div class="logoWrp">
                 <a class="logo" href="/">
                     @*<img src="~/images/logo-warm.svg" alt="Kyle Jorve Logo" />*@
@@ -49,6 +38,43 @@
         }
     </div>
 </header>
+
+@if (CurrentPage.Parent == null)
+{
+<div class="mobileNavContainer">
+    <a class="mobileNavItem bioItem" href="@bioPg.Url">
+        <div class="navItemIcon">
+            @bioIcon
+        </div>
+        <span>CV and Bio</span>
+    </a>
+    <a class="mobileNavItem workItem" href="@portfolioPg.Url">
+        <div class="navItemIcon">
+            @portfolioIcon
+        </div>
+        <span>Portfolio</span>
+    </a>
+    <div id="navBtn" class="navBtn">
+        <div class="blocksWrp">
+            <div class="blockRow">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <div class="blockRow">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <div class="blockRow">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+        </div>
+    </div>
+</div>
+}
 
 <div class="topNavWrp" id="topNav">
     @{ Html.RenderPartial("topNavigation");}

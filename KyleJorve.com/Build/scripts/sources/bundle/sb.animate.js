@@ -51,13 +51,9 @@ function animateContent(container, element, delay, minViewportWidth, edgeOrienta
         }
     };
 
-    $(window).on('load', function () {
-        setTimeout(function () {
-            scroll();
-        }, 300);
-    });
     $(window).on('resize', scroll);
     $(document).ready(function () {
+        scroll();
         $(window).on('scroll', scroll);
     });
 };

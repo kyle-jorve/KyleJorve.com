@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "22f5fc402d8a1a74")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d8d28ea7c8793d74")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -384,6 +384,15 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return this.GetPropertyValue<string>("heading"); }
 		}
+
+		///<summary>
+		/// Page Icon: Appears in mobile nav
+		///</summary>
+		[ImplementPropertyType("pageIcon")]
+		public IPublishedContent PageIcon
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("pageIcon"); }
+		}
 	}
 
 	/// <summary>Bio Page</summary>
@@ -436,6 +445,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IPublishedContent HeroPhoto
 		{
 			get { return this.GetPropertyValue<IPublishedContent>("heroPhoto"); }
+		}
+
+		///<summary>
+		/// Page Icon: Appears in mobile nav
+		///</summary>
+		[ImplementPropertyType("pageIcon")]
+		public IPublishedContent PageIcon
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("pageIcon"); }
 		}
 
 		///<summary>

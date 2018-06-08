@@ -31,7 +31,7 @@
                     itemClass = "tall";
                 }
 
-                <div class="portfolioItem @itemType @itemClass animatedEl" style="background-image:url('@(img.Url)');" data-width="@imgWidth" data-height="@imgHeight" data-aspect="@aspect">
+                <a href="@portfolioItems[i].Url" class="portfolioItem @itemType @itemClass animatedEl" style="background-image:url('@(img.Url)');" data-width="@imgWidth" data-height="@imgHeight" data-aspect="@aspect">
                     <div class="iconRow">
                         <div class="icon description">
                             <i class="fas fa-align-left"></i>
@@ -40,7 +40,7 @@
                             <i class="fas fa-expand"></i>
                         </div>
                     </div>
-                </div>
+                </a>
             }
         }
     }

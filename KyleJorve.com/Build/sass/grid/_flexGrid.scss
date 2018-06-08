@@ -19,15 +19,40 @@
 .flexContainer{
     padding:1em 0;
     width:100%;
-    @include sbFlexWrap(row, wrap, space-between, flex-start, stretch, true);
+    @include sbFlexWrap(row, wrap, space-between, flex-start, stretch);
     &.vert{
-        @include sbFlexWrap(column, nowrap, flex-start, center, stretch, true);
+        @include sbFlexWrap(column, nowrap, flex-start, center, stretch);
     }
     &.noWrap{
-        @include sbFlexWrap(row, nowrap, space-between, flex-start, stretch, true);
+        @include sbFlexWrap(row, nowrap, space-between, flex-start, stretch);
     }
-    &.noRespond{
-        @include sbFlexWrap(row, wrap, space-bewteen, flex-start);
+
+    @media only screen and (max-width:$gridBreakpoint){
+        &:not(.noRespond){
+            //Default responsive styles
+            display:block;
+            padding:0;
+            
+            & > *{
+                width:100%;
+            }
+
+            & > [class*="flexItem"]{
+                width:100%;
+                padding:1em 0;
+            }
+        }
+    }
+
+     @media print{
+        padding:0 !important;
+        display:block !important;
+        & > *{
+            width:100% !important;
+            max-width:none !important;
+            display:block !important;
+            padding:1em 0 !important;
+        }
     }
 }
 

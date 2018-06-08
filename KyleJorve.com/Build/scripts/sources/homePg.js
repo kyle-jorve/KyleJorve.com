@@ -8,7 +8,7 @@
 parallaxBg('.heroWrp', '.heroBg', -.3, 800, 'center');
 
 //Animated content
-animateContent('#recent-work', '.animatedEl', 100, 800, "top", 200);
+animateContent('#recent-work', '.animatedEl', 100, 600, "top", 200);
 
 //Left nav apparate
 $(window).on('load resize orientationchange',  function() {
@@ -18,12 +18,13 @@ $(window).on('load resize orientationchange',  function() {
 //Detect when top of window meets bottom of hero
 //toggle "revealLeftNav" class
 function toggleLeftNav() {
-    var heroBottom = ($('.heroWrp').offset().top + $('.heroWrp').outerHeight()) * .5;
+    var heroBottom = ($('.heroWrp').offset().top + $('.heroWrp').outerHeight()) * .5,
+        breakpoint = 600;
 
-    if ($(window).scrollTop() >= heroBottom && !$('body').hasClass('revealLeftNav')) {
+    if ($(window).scrollTop() >= heroBottom && !$('body').hasClass('revealLeftNav') && $(window).outerWidth() > breakpoint) {
         $('body').addClass('revealLeftNav');
     }
-    else if ($(window).scrollTop() < heroBottom && $('body').hasClass('revealLeftNav')) {
+    else if ($(window).scrollTop() < heroBottom && $('body').hasClass('revealLeftNav') && $(window).outerWidth() > breakpoint) {
         $('body').removeClass('revealLeftNav');
     }
 }

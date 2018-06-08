@@ -287,9 +287,11 @@
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\cart-icon.svg" />
+    <Content Include="images\cv-icon.svg" />
     <Content Include="images\logo-cool.svg" />
     <Content Include="images\logo-solid.svg" />
     <Content Include="images\logo-warm.svg" />
+    <Content Include="images\portfolio-icon.svg" />
     <Content Include="Media\1001\mobile-home-hero.jpg" />
     <Content Include="Media\1002\home-hero.jpg" />
     <Content Include="Media\1003\intro-bg.jpg" />
@@ -423,6 +425,7 @@
     <Content Include="Build\sass\kyleJorve\_homePg.scss" />
     <Content Include="Build\sass\kyleJorve\_KJVariables.scss" />
     <Content Include="Build\sass\kyleJorve\_portfolioGrid.scss" />
+    <Content Include="Build\sass\responsive\_mobileHomePg.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />
