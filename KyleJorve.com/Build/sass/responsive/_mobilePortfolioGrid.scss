@@ -1,0 +1,15 @@
+﻿.portfolioGrid{
+    /*==========----------==========*/
+    /*          800PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:800px){
+        .portfolioItem,
+        .portfolioItem.wide,
+        .portfolioItem.tall{
+            @include sbFlexItem(1, 1, calc(50% - 2em));
+            height:300px;
+            min-height:0;
+            max-height:none;
+        }
+    }
+}

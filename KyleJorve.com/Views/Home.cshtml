@@ -28,15 +28,16 @@
 
     <section class="bioSection contentSection lightContentBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))" style="background-image:url('@(CurrentPage.bioBg.Url)')">
         <div class="section-wrapper">
-            <div class="contentWrp">
-                <div class="contentBox">
-                    @Umbraco.Field("bioContent")
-                </div>
-                <div class="buttonWrp">
-                    <a href="@bioLink" class="button prime">
-                        <span>Read More</span>
-                    </a>
-                </div>
+            <div class="mobilePhoto">
+                <img src="@(CurrentPage.bioMobilePhoto.Url)" />
+            </div>
+            <div class="contentBox">
+                @Umbraco.Field("bioContent")
+            </div>
+            <div class="buttonWrp">
+                <a href="@bioLink" class="button prime">
+                    <span>Read More</span>
+                </a>
             </div>
         </div>
     </section>

@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d8d28ea7c8793d74")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "4be50632907a2944")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -197,6 +197,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string BioHeading
 		{
 			get { return this.GetPropertyValue<string>("bioHeading"); }
+		}
+
+		///<summary>
+		/// Bio Mobile Photo
+		///</summary>
+		[ImplementPropertyType("bioMobilePhoto")]
+		public IPublishedContent BioMobilePhoto
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("bioMobilePhoto"); }
 		}
 
 		///<summary>

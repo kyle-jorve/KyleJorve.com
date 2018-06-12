@@ -1,8 +1,11 @@
 ﻿/*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
-/*//                 GRID BREAKPOINT                  //*/
+/*//                   1400PX WIDTH                   //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:$gridBreakpoint){
-    
+@media only screen and (max-width:1400px){
+    .contentBox{
+        max-width:$contentBoxWidthMobile;
+        padding:$contentBoxPaddingMobile;
+    }
 }

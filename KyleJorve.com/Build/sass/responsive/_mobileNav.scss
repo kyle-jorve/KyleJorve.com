@@ -126,6 +126,10 @@
         display:none;
     }
 
+    .leftBuffer{
+        margin-left:0 !important;
+    }
+
     .navBtn{
         border-radius:0 !important;
         min-width:$navBtnDiam;
@@ -133,7 +137,7 @@
 
     .mobileNavContainer{
         @include sbFlexWrap(row, nowrap, inherit, stretch);
-        background:rgba(map-get($bgColors, darkContentBg), .5);
+        background:rgba(map-get($bgColors, darkContentBg), .65);
         top:auto;
         bottom:0;
         right:0;
