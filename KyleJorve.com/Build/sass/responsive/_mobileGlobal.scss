@@ -3,16 +3,20 @@
 /*==========----------==========*/
 @media only screen and (max-width:900px),
 print{
-    .textColumnWrp{
-        @include columnCount("1 !important");
-        @include columnGap("0 !important");
-    }
-
     * {
         background-attachment:scroll;
     }
     section,
     section.contentSection{
         padding:4em 1em;
+    }
+}
+
+/*==========----------==========*/
+/*        NAV BREAKPOINT        */
+/*==========----------==========*/
+@media only screen and (max-width:$navBreakpoint){
+    .mobileHeading{
+        display:block;
     }
 }

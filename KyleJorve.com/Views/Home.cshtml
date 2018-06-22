@@ -4,7 +4,6 @@
 	Layout = "Master.cshtml";
     var bioLink = Umbraco.Content(1083).Url;
     var portfolioLink = Umbraco.Content(1082).Url;
-    var portfolioItems = Umbraco.Content(1082).Children.OrderBy("pubDate desc");
 }
 
 <div class="leftBuffer">
@@ -18,6 +17,7 @@
     </section>
 
     <section class="portfolioSection lightContentBg">
+        <h2 class="mobileHeading">@Umbraco.Field("portfolioHeading")</h2>
         @{ Html.RenderPartial("portfolioGrid");}
         <div class="buttonWrp">
             <a href="@portfolioLink" class="button prime">
@@ -28,6 +28,7 @@
 
     <section class="bioSection contentSection lightContentBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))" style="background-image:url('@(CurrentPage.bioBg.Url)')">
         <div class="section-wrapper">
+            <h2 class="mobileHeading">@Umbraco.Field("bioHeading")</h2>
             <div class="mobilePhoto">
                 <img src="@(CurrentPage.bioMobilePhoto.Url)" />
             </div>
@@ -36,7 +37,7 @@
             </div>
             <div class="buttonWrp">
                 <a href="@bioLink" class="button prime">
-                    <span>Read More</span>
+                    <span>See R&eacute;sum&eacute;</span>
                 </a>
             </div>
         </div>

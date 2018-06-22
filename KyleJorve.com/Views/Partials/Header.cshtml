@@ -1,8 +1,9 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
+    var portfolioPgID = 1082;
     var closeLink = Umbraco.Content(1082).Url;
-    var portfolioPg = Umbraco.Content(1082);
+    var portfolioPg = Umbraco.Content(portfolioPgID);
     var bioPg = Umbraco.Content(1083);
 
     var portfolioIconUrl = portfolioPg.GetPropertyValue<IPublishedContent>("pageIcon").Url;
@@ -14,11 +15,10 @@
 
 <header>
     <div class="flexContainer noRespond">
-        @if (CurrentPage.Parent != null && CurrentPage.Parent.Id == 1082)
+        @if (CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID)
         {
             <div class="logoWrp">
                 <a class="logo" href="/">
-                    @*<img src="~/images/logo-warm.svg" alt="Kyle Jorve Logo" />*@
                     @{ Html.RenderPartial("SVGs/logoColor");}
                 </a>
             </div>
@@ -31,7 +31,6 @@
         {
             <div class="logoWrp">
                 <a class="logo" href="/">
-                    @*<img src="~/images/logo-warm.svg" alt="Kyle Jorve Logo" />*@
                     @{ Html.RenderPartial("SVGs/logoColor");}
                 </a>
             </div>
@@ -39,7 +38,7 @@
     </div>
 </header>
 
-@if (CurrentPage.Parent == null)
+@if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
 {
 <div class="mobileNavContainer">
     <a class="mobileNavItem bioItem" href="@bioPg.Url">

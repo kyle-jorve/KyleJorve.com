@@ -69,9 +69,9 @@
             display: block;
             margin:1em 0;
             text-align: center;
-            position: relative;
-            top: -2em;
-            @include transition;
+            position:relative;
+            top:2em;
+            @include transition(all, .5s, ease);
 
             &.current {
                 & > a,
@@ -84,9 +84,16 @@
                     }
                 }
             }
+
+            &.active{
+                opacity:1;
+                visibility:visible;
+                top:0;
+            }
         }
     }
 }
+
 /*---------- SCROLL BARS ----------*/
 @include scrollBar(".topNav.navWrp", vertical);
 
@@ -177,75 +184,6 @@
         svg *{
             fill:$navLinkColor;
         }
-    }
-}
-
-/*---------- FOOTER NAV ----------*/
-footer .iconContainer{
-    padding:0;
-    @include sbFlexWrap(row, nowrap, inherit, stretch);
-
-    a{
-        width:$footerSocialIconDiam;
-        height:$footerSocialIconDiam;
-
-        i:before{
-            font-size:$footerSocialIconFontSize;
-        }
-    }
-
-    .iconsWrp{
-        padding:4em;
-
-        &.social{
-            @include sbFlexWrap(row, nowrap, flex-end, center);
-            background:map-get($bgColors, whiteBg);
-            border-radius:0 0 0 1em;
-            width:60%;
-
-            a{
-                i:before{
-                    color:$linkColor;
-                }
-                svg,
-                svg *{
-                    fill:$linkColor;
-                }
-            }
-        }
-
-        &.commerce{
-            @include sbFlexWrap(row, nowrap, flex-start, center);
-            background:map-get($colorScheme, accentColor);
-            width:40%;
-
-            a{
-                i:before{
-                    color:$white;
-                }
-
-                svg,
-                svg *{
-                    fill: $white;
-                }
-            }
-        }
-    }
-
-    ul{
-        @include sbFlexWrap(row, nowrap, center, center);
-    }
-}
-
-/*---------- HOVER EFFECTS ----------*/
-@include hover("footer .iconContainer .icon") {
-    &:before {
-        color: $linkHoverColor !important;
-    }
-
-    svg,
-    svg *{
-        fill: $linkHoverColor !important;
     }
 }
 
@@ -376,6 +314,27 @@ footer .iconContainer{
     }
 }
 
+/*---------- TOUCH DEVICE ----------*/
+.touchDevice{
+    .topNavWrp nav li{
+        a,
+        a:visited{
+            opacity:1;
+        }
+
+        &.current{
+            a,
+            a:visited{
+                opacity:.65;
+            }
+        }
+    }
+
+    &.showMobileNav header .logo{
+        opacity:1;
+    }
+}
+
 /*---------- HOVER EFFECTS ----------*/
 @include hover("&.showMobileNav .navBtn"){
     background:$linkHoverColor;
@@ -441,7 +400,8 @@ footer .iconContainer{
     }
 
     a,
-    a:visited{
+    a:visited,
+    div{
         display:block;
         padding:.25em;
         text-transform:$headingTextTransform;

@@ -6,8 +6,6 @@ header {
     opacity: 1;
     visibility: visible;
     padding: 0 0 1em 0;
-    box-shadow: none;
-    @include gradient(rgba(map-get($bgColors, darkContentBg), .5), rgba(map-get($bgColors, darkContentBg), 0), vertical);
     color:$medTextColor;
     position: fixed;
     top: 0;
@@ -74,13 +72,18 @@ header {
 
 .homePg,
 .portfolioItemPg {
-    header .logo {
-        opacity: .25;
+    header{
+        @include gradient(rgba(map-get($bgColors, darkContentBg), .5), rgba(map-get($bgColors, darkContentBg), 0), vertical);
 
-        svg * {
-            fill: map-get($bgColors, whiteBg) !important;
+        .logo{
+            opacity: .25;
+
+            svg * {
+                fill: map-get($bgColors, whiteBg) !important;
+            }
         }
     }
+
     /*---------- Scrolled Effects ----------*/
     &.scrolled header .logo {
         opacity: .65;

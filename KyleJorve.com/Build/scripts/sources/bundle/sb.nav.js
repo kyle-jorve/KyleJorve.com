@@ -16,26 +16,26 @@
     //========------------------------------==========//
     //             MOBILE TOP NAVIGATION              //
     //========------------------------------==========//
-    var topNav = $('#topNav'),
-        navItems = topNav.find('nav li');
+    var topNav = '#topNav',
+        navItems = $(topNav).find('nav li'),
+        navTrans = (parseFloat(window.getComputedStyle(document.querySelector(topNav)).transitionDuration) * 1000) / 2;
 
     $('#navBtn').on('click tap', function () {
         //Open the mobile nav
         if (!$('body').hasClass('showMobileNav')) {
             $('body').addClass('showMobileNav');
             $(this).addClass('active');
-            navItems.each(function () {
-                var animDelay = $(this).index() * 100;
-                var thisItem = $(this);
 
-                setTimeout(function () {
-                    thisItem.css({
-                        'top': '0',
-                        'opacity': '1',
-                        'visibility': 'visible'
-                    });
-                }, animDelay);
-            });
+            setTimeout(function () {
+                navItems.each(function () {
+                    var animDelay = $(this).index() * 100;
+                    var thisItem = $(this);
+
+                    setTimeout(function () {
+                        thisItem.addClass('active');
+                    }, animDelay);
+                });
+            }, navTrans);
         }
         //Close the mobile nav
         else {
@@ -49,7 +49,7 @@
                 var thisItem = $(this);
 
                 setTimeout(function () {
-                    thisItem.removeAttr('style');
+                    thisItem.removeClass('active');
                 }, animDelay);
             });
 

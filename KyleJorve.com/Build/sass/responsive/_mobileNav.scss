@@ -118,10 +118,10 @@
 
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
-/*//                   500PX WIDTH                    //*/
+/*//                  NAV BREAKPOINT                  //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:500px){
+@media only screen and (max-width:$navBreakpoint){
     .leftNavWrp{
         display:none;
     }
@@ -137,7 +137,7 @@
 
     .mobileNavContainer{
         @include sbFlexWrap(row, nowrap, inherit, stretch);
-        background:rgba(map-get($bgColors, darkContentBg), .65);
+        background:rgba(map-get($bgColors, darkContentBg), .85);
         top:auto;
         bottom:0;
         right:0;
@@ -149,7 +149,8 @@
     }
 
     /*---------- NAV REVEALED ----------*/
-    .showMobileNav{
+    .showMobileNav,
+    .showMobileNav.scrolled{
         .navBtn{
             border-radius:$borderRadius 0 0 0 !important;
         }
@@ -181,26 +182,6 @@
                     bottom:.25em;
                 }
             }
-        }
-    }
-}
-/*//////////////////////////////////////////////////////*/
-/*//====================----------====================//*/
-/*//                   350PX WIDTH                    //*/
-/*//====================----------====================//*/
-/*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:350px){
-    .socialWrp{
-        li{
-            margin:0 .75em;
-        }
-    }
-
-    .showMobileNav,
-    .showMobileNav.scrolled{
-        header .logo{
-            width:80px;
-            height:39px;
         }
     }
 }

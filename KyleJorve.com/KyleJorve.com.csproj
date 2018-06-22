@@ -396,12 +396,9 @@
     <Content Include="Build\sass\layout\_loadScreen.scss" />
     <Content Include="Build\sass\layout\_nav.scss" />
     <Content Include="Build\sass\responsive\_base.scss" />
-    <Content Include="Build\sass\responsive\_mobileContentAreas.scss" />
     <Content Include="Build\sass\responsive\_mobileElements.scss" />
-    <Content Include="Build\sass\responsive\_mobileFooter.scss" />
     <Content Include="Build\sass\responsive\_mobileGlobal.scss" />
-    <Content Include="Build\sass\responsive\_mobileHeader.scss" />
-    <Content Include="Build\sass\responsive\_mobileHero.scss" />
+    <Content Include="Build\sass\responsive\_mobileLayout.scss" />
     <Content Include="Build\sass\responsive\_mobileNav.scss" />
     <Content Include="Build\sass\responsive\_print.scss" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />

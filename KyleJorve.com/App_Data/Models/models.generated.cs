@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "4be50632907a2944")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "20453c3ee630f6a4")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -247,6 +247,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Portfolio Items Limit: Sets the limit on the number of portfolio items for this page
+		///</summary>
+		[ImplementPropertyType("portfolioLimit")]
+		public int PortfolioLimit
+		{
+			get { return this.GetPropertyValue<int>("portfolioLimit"); }
+		}
+
+		///<summary>
 		/// Social Media Icons
 		///</summary>
 		[ImplementPropertyType("socMedIcons")]
@@ -385,6 +394,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IPublishedContent PageIcon
 		{
 			get { return this.GetPropertyValue<IPublishedContent>("pageIcon"); }
+		}
+
+		///<summary>
+		/// Portfolio Items Limit: Sets the limit on the number of portfolio items for this page
+		///</summary>
+		[ImplementPropertyType("portfolioLimit")]
+		public int PortfolioLimit
+		{
+			get { return this.GetPropertyValue<int>("portfolioLimit"); }
 		}
 	}
 

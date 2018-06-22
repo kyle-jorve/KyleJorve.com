@@ -3,11 +3,14 @@
 @{
     //var portfolioItemTypes = umbraco.cms.businesslogic.datatype.PreValues.GetPreValues(Umbraco.Content(1082).portfolioItemType).Values;
     //var enumerator = portfolioItemTypes.GetEnumerator();
+    var homePgID = 1081;
+    var portfolioPgID = 1082;
+    var bioPgID = 1083;
 }
 
 <nav class="leftNavWrp" id="leftNav">
     <ul>
-        @if (CurrentPage.Id == 1081)
+        @if (CurrentPage.Id == homePgID)
         {
             <li>
                 <a href="#@(Umbraco.Field("portfolioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("portfolioHeading")</span></a>
@@ -16,7 +19,7 @@
                 <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
             </li>
         }
-        else if (CurrentPage.Id == 1082)
+        else if (CurrentPage.Id == portfolioPgID)
         {
             <li>
                 <div data-filter="all"><span>All</span></div>
@@ -29,7 +32,7 @@
                     </li>
                 }*@
         }
-        else if (CurrentPage.Id == 1083)
+        else if (CurrentPage.Id == bioPgID)
         {
             <li>
                 <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
@@ -38,7 +41,7 @@
                 <a href="#@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("resumeHeading")</span></a>
             </li>
         }
-        else if (CurrentPage.Parent.Id == 1082)
+        else if (CurrentPage.Parent.Id == portfolioPgID)
         {
             if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
             {

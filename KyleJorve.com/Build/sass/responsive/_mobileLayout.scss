@@ -1,0 +1,180 @@
+﻿/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                      FOOTER                      //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+footer{
+    /*==========----------==========*/
+    /*         900PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:900px){
+        .iconContainer .iconsWrp{
+            padding:2em;
+        }
+    }
+
+    /*==========----------==========*/
+    /*         800PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:800px){
+        .iconContainer{
+            li{
+                margin:0 1em;
+
+                &:first-child{
+                    margin-left:0;
+                }
+
+                &:last-child{
+                    margin-right:0;
+                }
+            }
+
+            a{
+                width:$socialIconMobileDiam;
+                height:$socialIconMobileDiam;
+
+                i:before{
+                    font-size:$socialIconMobileFontSize;
+                }
+
+                svg{
+                    height:$socialIconMobileFontSize;
+                }
+            }
+        }
+    }
+
+    /*==========----------==========*/
+    /*         600PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:600px){
+        .iconContainer{
+            display:block;
+
+            .iconsWrp{
+                &.social,
+                &.commerce{
+                    @include sbFlexWrap(row, nowrap, center, center);
+                }
+
+                &.social{
+                    border-radius:0;
+                }
+
+                &.commerce{
+                    border-radius:0 0 0 1em;
+                }
+            }
+        }
+    }
+
+    /*==========----------==========*/
+    /*        NAV BREAKPOINT        */
+    /*==========----------==========*/
+    @media only screen and (max-width:$navBreakpoint){
+        padding-bottom:$navBtnDiam;
+
+        .iconContainer{
+            .iconsWrp.commerce{
+                border-radius:0;
+            }
+        }
+    }
+
+    /*==========----------==========*/
+    /*         400PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:400px){
+        .iconContainer li{
+            margin:0 .75em;
+
+            &:first-child{
+                margin-left:0;
+            }
+
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                  CONTENT AREAS                   //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+
+/*==========----------==========*/
+/*         1400PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:1400px){
+    .contentBox{
+        max-width:$contentBoxWidthMobile;
+        padding:$contentBoxPaddingMobile;
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                       HERO                       //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+
+/*---------- HOME PAGE ----------*/
+.homePg .heroWrp{
+    /*==========----------==========*/
+    /*         1200PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:1200px){
+        .heroContentWrp {
+            padding:2em 0;
+            width:100%;
+            max-width:none;
+        }
+    }
+
+    /*==========----------==========*/
+    /*        GRID BREAKPOINT       */
+    /*==========----------==========*/
+    @media only screen and (max-width:$gridBreakpoint){
+
+        .mobileHeroImg{
+            background-position:center top !important;
+        }
+    }
+
+    /*==========----------==========*/
+    /*          800PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:800px){
+        .heroBg{
+            display:none;
+        }
+
+        .mobileHeroBg{
+            display:block;
+        }
+
+        .heroContent h1{
+            font-size:1.8em;
+        }
+    }
+
+    /*==========----------==========*/
+    /*        NAV BREAKPOINT        */
+    /*==========----------==========*/
+    @media only screen and (max-width:$navBreakpoint){
+        padding:4em 1em calc(#{$navBtnDiam} + 1em) 1em;
+
+        .heroContentWrp{
+            padding:1em 0;
+        }
+    }
+}
+
+/*---------- CONTENT TEMPLATE ----------*/
+.contentHero{
+    
+}

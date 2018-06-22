@@ -1,14 +1,17 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{ 
-    var portfolioItems = Umbraco.Content(1082).Children.OrderBy("pubDate desc");
     var homePgID = 1081;
+    var portfolioPgID = 1082;
+    var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("pubDate desc");
+    int homePgLimit = Umbraco.Content(homePgID).portfolioLimit;
+    int portfolioPgLimit = Umbraco.Content(portfolioPgID).portfolioLimit > portfolioItems.Count() ? portfolioItems.Count() : Umbraco.Content(portfolioPgID).portfolioLimit;
 }
 
 <div class="portfolioGrid" id="@(CurrentPage.Id == homePgID ? Umbraco.Content(homePgID).portfolioHeading.ToString().ToLower().Replace(" ", "-") : null)">
     @if (CurrentPage.Id == homePgID)
     {
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < homePgLimit; i++)
         {
             var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
             var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
@@ -46,7 +49,7 @@
     }
     else
     {
-        for (var i = 0; i < 18; i++)
+        for (var i = 0; i < portfolioPgLimit; i++)
         {
             var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
             var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
@@ -69,12 +72,12 @@
                     itemClass = "tall";
                 }
 
-                <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)');" data-width="@imgWidth" data-height="@imgHeight" data-aspect="@aspect">
+                <a href="@portfolioItems[i].Url" class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)');" data-width="@imgWidth" data-height="@imgHeight" data-aspect="@aspect">
                     <div class="iconRow">
                         <div class="icon description"></div>
                         <div class="icon full-screen"></div>
                     </div>
-                </div>
+                </a>
             }
         }
     }

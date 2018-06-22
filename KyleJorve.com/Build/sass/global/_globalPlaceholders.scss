@@ -47,6 +47,29 @@
 ===========================*/
 
 %underlineText {
-    padding-bottom: .25em;
-    border-bottom: $borderThickness solid $darkBorderColor;
+    padding-bottom:.5em;
+    margin-bottom:.5em;
+    color:map-get($colorScheme, accentColor);
+    position:relative;
+
+    &:before{
+        display:block;
+        content:'';
+        height:$borderThickness * 2;
+        width:100%;
+        max-width:150px;
+        background:map-get($colorScheme, accentColor);
+        position:absolute;
+        bottom:0;
+        left:$headingLetterSpacing;
+    }
+
+    @media only screen and (max-width:$navBreakpoint){
+        margin-bottom:1em;
+
+        &:before{
+            left:0;
+            max-width:60px;
+        }
+    }
 }

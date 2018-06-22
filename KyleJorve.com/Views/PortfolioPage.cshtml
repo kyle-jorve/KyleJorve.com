@@ -2,27 +2,13 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Master.cshtml";
-    var portfolioItems = CurrentPage.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioMain").OrderBy("createDate");
 }
 
 <div class="leftBuffer">
-    <div class="headingContainer">
-        <h1>@Umbraco.Field("heading")</h1>
-    </div>
-
-    <section class="portfolioGrid">
-        @foreach (var item in portfolioItems)
-        {
-            var img = item.GetPropertyValue<IPublishedContent>("portfolioItemImages").First();
-            var imgWidth = img.GetPropertyValue("umbracoWidth");
-            var imgHeight = img.GetPropertyValue("umbracoHeight");
-
-            <div class="portfolioItem @(imgWidth > imgHeight ? "wide" : imgWidth / imgHeight > 0.875 ? "tall" : null)" style="background-image:url('@(img.Url)');">
-                <div class="iconRow">
-                    <div class="icon description"></div>
-                    <div class="icon full-screen"></div>
-                </div>
-            </div>
-        }
+    <section class="portfolioSection lightContentBg">
+        <div class="pageHeading">
+            <h1>@Umbraco.Field("heading")</h1>
+        </div>
+        @{ Html.RenderPartial("portfolioGrid");}
     </section>
 </div>

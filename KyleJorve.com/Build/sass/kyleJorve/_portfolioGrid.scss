@@ -48,11 +48,11 @@
     }
 
     &.wide{
-        @include sbFlexItem(3, 1, calc(61.8% - 2em));
+        @include sbFlexItem(3, 1, calc(61.8% - 1em));
     }
 
     &.tall{
-        @include sbFlexItem(1, 1, calc(23.6% - 2em));
+        @include sbFlexItem(1, 1, calc(23.6% - 1em));
     }
 
     /*==========----------==========*/

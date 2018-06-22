@@ -63,6 +63,32 @@ h1, h2, h3, h4 {
     }
 }
 
+.mobileHeading{
+    display:none;
+    color:$darkTextColor;
+    text-align:center;
+    @extend %underlineText;
+
+    &:before{
+        left:50%;
+        @include transform("translateX(-50%)");
+    }
+}
+
+.pageHeading{
+    h1{
+        @extend h2;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4{
+        @extend %underlineText;
+        color:$darkTextColor;
+    }
+}
+
 /*===========================
     Paragraphs
 ===========================*/

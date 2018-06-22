@@ -6,10 +6,55 @@
         .portfolioItem,
         .portfolioItem.wide,
         .portfolioItem.tall{
-            @include sbFlexItem(1, 1, calc(50% - 2em));
+            @include sbFlexItem(1, 1, calc(50% - 1em));
             height:300px;
             min-height:0;
             max-height:none;
+        }
+    }
+
+    /*==========----------==========*/
+    /*          600PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:600px){
+        .portfolioItem,
+        .portfolioItem.wide,
+        .portfolioItem.tall{
+            height:200px;
+        }
+    }
+
+    /*==========----------==========*/
+    /*          500PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:500px){
+        .portfolioItem,
+        .portfolioItem.wide,
+        .portfolioItem.tall{
+            @include sbFlexItem(1, 1, calc(50% - .5em));
+            margin:.25em;
+        }
+    }
+
+    /*==========----------==========*/
+    /*          400PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:400px){
+        .portfolioItem,
+        .portfolioItem.wide,
+        .portfolioItem.tall{
+            height:160px;
+        }
+    }
+
+    /*==========----------==========*/
+    /*          350PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:350px){
+        .portfolioItem,
+        .portfolioItem.wide,
+        .portfolioItem.tall{
+            height:120px;
         }
     }
 }

@@ -30,22 +30,8 @@
     box-shadow:$mediumShadow;
 
     h1,
-    h2{
-        padding-bottom:.5em;
-        margin-bottom:.5em;
-        color:map-get($colorScheme, accentColor);
-        position:relative;
-
-        &:before{
-            display:block;
-            content:'';
-            height:$borderThickness * 2;
-            width:100%;
-            max-width:150px;
-            background:map-get($colorScheme, accentColor);
-            position:absolute;
-            bottom:0;
-            left:$headingLetterSpacing;
-        }
+    h2,
+    h3{
+        @extend %underlineText;
     }
 }
