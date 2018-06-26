@@ -76,16 +76,16 @@ h1, h2, h3, h4 {
 }
 
 .pageHeading{
-    h1{
-        @extend h2;
-    }
-
     h1,
     h2,
     h3,
     h4{
         @extend %underlineText;
         color:$darkTextColor;
+
+        &:before{
+            left:0;
+        }
     }
 }
 

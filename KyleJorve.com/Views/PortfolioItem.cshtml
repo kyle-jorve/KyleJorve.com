@@ -2,45 +2,50 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Master.cshtml";
-    var imgs = CurrentPage.GetProperty("portfolioItemImages").Value.Split(',');
+    var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
     var i = 0;
 }
 
 <div class="leftBuffer">
     <div class="itemShowcase">
         <section class="imgSection">
-            @if (imgs.Length > 1)
+            @if (imgs != null)
             {
-                <div class="imgSlider">
-                    @foreach (var img in imgs)
+                if (imgs.Count() > 1)
+                {
+                    <div class="imgSlider">
+                        @foreach (var img in imgs)
+                        {
+                            <div class="imgSlide">
+                                <img id="@("img-" + i)" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
+                                <div class="iconCol">
+                                    <div class="icon share"></div>
+                                    <div class="icon full-screen"></div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    foreach (var img in imgs)
                     {
                         <div class="imgSlide">
-                            <img src="img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + "Image" + i + 1)" />
+                            <img id="@("img-" + i)" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
                             <div class="iconCol">
                                 <div class="icon share"></div>
                                 <div class="icon full-screen"></div>
                             </div>
                         </div>
                     }
-                    @i++
-                </div>
-            }
-            else
-            {
-                <div class="imgSlide">
-                    <img src="img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + "Image" + i + 1)" />
-                    <div class="iconCol">
-                        <div class="icon share"></div>
-                        <div class="icon full-screen"></div>
+                }
+                i++;
+                foreach (var img in imgs)
+                {
+                    <div class="imgBgWrp">
+                        <div class="imgBg" style="background:url('@img.Url') no-repeat center center / cover"></div>
                     </div>
-                </div>
-            }
-
-            @foreach (var img in imgs)
-            {
-                <div class="imgBgWrp">
-                    <div class="imgBg" style="background:url('@img.Url') no-repeat center center / cover"></div>
-                </div>
+                }
             }
         </section>
 
@@ -66,12 +71,13 @@
         <span></span>
     </div>
     <div class="lightbox">
-        @foreach (var img in imgs)
+        @if (imgs != null)
         {
-            <div class="imgSlide">
-                <img src="img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + "Image" + i + 1)" />
-            </div>
+            foreach (var img in imgs)
+            {
+                <img class="lightboxImg" id="@("img-" + i + "-full")" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
+            }
         }
-         </div>
+    </div>
     <div class="lightoxOverlay"></div>
 </div>

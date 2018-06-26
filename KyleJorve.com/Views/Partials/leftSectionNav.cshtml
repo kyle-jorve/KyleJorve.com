@@ -1,8 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
-    //var portfolioItemTypes = umbraco.cms.businesslogic.datatype.PreValues.GetPreValues(Umbraco.Content(1082).portfolioItemType).Values;
-    //var enumerator = portfolioItemTypes.GetEnumerator();
     var homePgID = 1081;
     var portfolioPgID = 1082;
     var bioPgID = 1083;
@@ -21,16 +19,18 @@
         }
         else if (CurrentPage.Id == portfolioPgID)
         {
-            <li>
-                <div data-filter="all"><span>All</span></div>
-            </li>
-            @*@while (enumerator.MoveNext())
-                {
-                    var curVal = (PreValue)enumerator.Current;
-                    <li>
-                        <div data-filter="@(curVal.Value.ToString().ToLower().Replace(" ","-"))"><span>@curVal.Value</span></div>
-                    </li>
-                }*@
+            var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("pubDate desc");
+            var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
+            var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
+
+            foreach (var item in cats)
+            {
+                var catHref = "#" + item.Value.ToLower().Replace(' ', '-');
+
+                <li>
+                    <a href="@catHref"><span>@item.Value</span></a>
+                </li>
+            }
         }
         else if (CurrentPage.Id == bioPgID)
         {

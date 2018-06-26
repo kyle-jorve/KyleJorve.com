@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "20453c3ee630f6a4")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "12d665e13bcbe9af")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
 // FILE: models.generated.cs
@@ -411,15 +411,6 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return this.GetPropertyValue<IPublishedContent>("pageIcon"); }
 		}
-
-		///<summary>
-		/// Portfolio Items Limit: Sets the limit on the number of portfolio items for this page
-		///</summary>
-		[ImplementPropertyType("portfolioLimit")]
-		public int PortfolioLimit
-		{
-			get { return this.GetPropertyValue<int>("portfolioLimit"); }
-		}
 	}
 
 	/// <summary>Bio Page</summary>
@@ -569,6 +560,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<PortfolioItem, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Image Vertical Position: Define the y-axis position of the thumbnail preview image. If left blank, image will be centered by default.
+		///</summary>
+		[ImplementPropertyType("imgVertPos")]
+		public object ImgVertPos
+		{
+			get { return this.GetPropertyValue("imgVertPos"); }
 		}
 
 		///<summary>

@@ -168,8 +168,30 @@ footer{
     @media only screen and (max-width:$navBreakpoint){
         padding:4em 1em calc(#{$navBtnDiam} + 1em) 1em;
 
+        &:after{
+            height:400px;
+        }
+
         .heroContentWrp{
             padding:1em 0;
+        }
+    }
+
+    /*==========----------==========*/
+    /*         500PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:500px){
+        .heroContent h1{
+            font-size:1.6em;
+        }
+    }
+
+    /*==========----------==========*/
+    /*         400PX WIDTH          */
+    /*==========----------==========*/
+    @media only screen and (max-width:400px){
+        .heroContent h1{
+            font-size:1.5em;
         }
     }
 }

@@ -1,4 +1,28 @@
-﻿.portfolioGrid{
+﻿/*==========----------==========*/
+/*          CATEGORIES          */
+/*==========----------==========*/
+.portfolioCatWrp{
+    padding-bottom:4em;
+
+    & + .portfolioCatWrp{
+        padding-top:4em;
+        border-top:$borderThickness solid $lightBorderColor;
+    }
+
+    .mobileHeading{
+        padding:0;
+        text-align:left;
+
+        &:before{
+            display:none;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*             GRID             */
+/*==========----------==========*/
+.portfolioGrid{
     @include sbFlexWrap(row, wrap, inherit, stretch);
 }
 
@@ -12,6 +36,7 @@
     box-shadow:$mediumShadow;
     background-repeat:no-repeat;
     background-size:cover;
+    background-position:center center;
     @include sbFlexWrap(column, nowrap, flex-end, stretch);
     @include sbFlexItem(2, 1, calc(38.2% - 2em));
     overflow:hidden;
@@ -37,14 +62,6 @@
         left:0;
         z-index:1;
         @include transition;
-    }
-
-    &.illustration{
-        background-position:center center;
-    }
-
-    &.design{
-        background-position:center top;
     }
 
     &.wide{

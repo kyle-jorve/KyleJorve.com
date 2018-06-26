@@ -7,8 +7,11 @@ print{
         background-attachment:scroll;
     }
     section,
-    section.contentSection{
-        padding:4em 1em;
+    section.contentSection,
+    section.bioSection,
+    section.portfolioSection,
+    .homePg section.bioSection{
+        padding:4em .5em;
     }
 }
 
