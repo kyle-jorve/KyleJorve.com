@@ -66,9 +66,9 @@ header {
 
 }
 
-/*==========----------==========*/
-/*  HOME PAGE, PORTFOLIO PAGE   */
-/*==========----------==========*/
+/*=============----------=============*/
+/*   HOME PAGE, PORTFOLIO ITEM PAGE   */
+/*=============----------=============*/
 
 .homePg,
 .portfolioItemPg {
@@ -97,4 +97,18 @@ header {
 /*---------- Hover Effects ----------*/
 @include hover("&.homePg .logo"){
     opacity:1;
+}
+
+/*==========----------==========*/
+/*     PORTFOLIO ITEM PAGE      */
+/*==========----------==========*/
+.portfolioItemPg{
+    header{
+        margin-left:$navBtnDiam;
+        background:none;
+
+        .flexContainer{
+            @include sbFlexWrap(row, nowrap, space-between, flex-start);
+        }
+    }
 }

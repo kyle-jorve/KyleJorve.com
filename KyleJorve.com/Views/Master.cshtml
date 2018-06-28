@@ -3,6 +3,7 @@
 @{
     Layout = null;
     var hasMetaImage = CurrentPage.HasValue("metaImage");
+    var portfolioPgID = 1082;
 
     //Redirect URLs
     var redirectUrl = string.Empty;
@@ -56,6 +57,14 @@
 
     @{ Html.RenderPartial("Footer");}
 
-    <script src="/Scripts/leftNav.js"></script>
+
+    @if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
+    {
+        <script src="/Scripts/leftNav.js"></script>
+    }
+    else if (CurrentPage.Parent.Id == portfolioPgID)
+    {
+        <script src="/Scripts/leftNav-portfolioItem.js"></script>
+    }
 </body>
 </html>

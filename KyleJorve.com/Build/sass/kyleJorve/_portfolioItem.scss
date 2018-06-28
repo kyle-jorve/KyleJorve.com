@@ -1,0 +1,82 @@
+﻿/*==========----------==========*/
+/*   PORTFOLIO ITEM PAGE GRID   */
+/*==========----------==========*/
+.itemShowcase{
+    @include sbFlexWrap(row, nowrap, inherit, stretch);
+
+    .imgSection,
+    .descSection{
+        min-height:100vh;
+        padding-top:8em;
+        padding-bottom:8em;
+    }
+
+    /*==========----------==========*/
+    /*        IMAGE SECTION         */
+    /*==========----------==========*/
+    .imgSection{
+        @include sbFlexItem(1,1,60%);
+        @include sbFlexWrap(column, nowrap, center, flex-start);
+        padding-left:1em;
+        padding-right:1em;
+        overflow:visible;
+        position:relative;
+        z-index:2;
+    }
+
+    /*---------- SLIDESHOW ----------*/
+    .imgSlider{
+        width:calc(100% + 2.5em);
+        position:relative;
+        z-index:2;
+    }
+    .imgSlide{
+        position:relative;
+        
+        img{
+            border-radius:$borderRadius;
+            box-shadow:$mediumShadow;
+            position:relative;
+            z-index:1;
+        }
+
+        .iconCol{
+            @include sbFlexWrap(column, nowrap, space-between, center);
+            padding:1em;
+            position:absolute;
+            right:0;
+            top:0;
+            bottom:0;
+            z-index:2;
+        }
+    }
+
+    /*-- backgrounds --*/
+    .imgBg{
+        opacity:.2;
+        @extend %absolute-cover;
+        z-index:1;
+    }
+    
+
+    /*==========----------==========*/
+    /*      DESCRIPTION SECTION     */
+    /*==========----------==========*/
+    .descSection{
+        @include sbFlexItem(1,1,40%);
+        @include sbFlexWrap(column, nowrap, center, flex-end);
+        padding-left:4em;
+        padding-right:4em;
+        position:relative;
+        z-index:1;
+
+        h1{
+            @extend %underlineText;
+        }
+
+        .buttonWrp{
+            @include sbFlexWrap(row, nowrap, space-between, center);
+            padding-bottom:0;
+        }
+    }
+}

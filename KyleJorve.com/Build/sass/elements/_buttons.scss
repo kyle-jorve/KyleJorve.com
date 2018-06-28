@@ -58,77 +58,35 @@ a.button {
     &.secondary {
         background: $secondaryBtnBg;
         color: $secondaryBtnTextColor;
-    }
-    /*---------- TERTIARY BUTTON ----------*/
-    &.tertiary{
-        background: $tertiaryBtnBg;
-        color: $tertiaryBtnTextColor;
-    }
-
-    /*---------- QUATERNARY BUTTON ----------*/
-    &.quaternary{
-        background: $quatBtnBg;
-        color: $quatBtnTextColor;
-    }
-
-    /*---------- INFO BUTTON ----------*/
-    &.infoBtn {
-        padding: .5em 1em;
-        background: map-get($coolGrays, coolGray1);
-        color: $linkColor;
-
-        &:before {
-            @include icon;
-            content: map-get($icons, info);
-            margin-right: .5em;
-            vertical-align: bottom;
-        }
-    }
-    /*---------- SEARCH BUTTON ----------*/
-    &.searchBtn {
-        width:$inputHeight;
-        height: $inputHeight;
-        padding: $inputPadding;
-        margin:0;
-        font-weight:$primaryFontWeight !important;
-        position: relative;
-        &:before{
-            @include icon(block, 16px, 1, $lightTextColor);
-            content:map-get($icons, search);
-            @extend %absolute-center;
-            z-index:1;
-        }
-        button,
-        input[type="submit"] {
-            display: block;
-            margin: 0;
-            padding: 0;
-            opacity: 0;
-            @extend %absolute-cover;
-            z-index: 2;
-        }
+        border:$borderThickness solid $secondaryBtnBorderColor;
     }
 }
 
 /*---------- CLOSE BUTTON ----------*/
 .closeBtn{
     cursor:pointer;
-    width:60px;
-    height:60px;
-    background:$linkColor;
+    width:$closeBtnDiam;
+    height:$closeBtnDiam;
+    border-radius:0 0 0 $borderRadius;
+    background:$closeBtnBg;
+    box-shadow:$boxShadow;
     position:relative;
     @include transition;
 
-    hr{
-        width:50%;
+    hr,
+    span{
+        display:block;
+        width:65%;
+        height:2px;
         margin:0;
-        background:$darkTextColor;
+        background:$closeBtnColor;
         position:absolute;
         top:50%;
         left:50%;
         @include transform("translate(-50%, -50%) rotate(45deg)");
 
-        & + hr{
+        & + hr,
+        & + span{
             @include transform("translate(-50%, -50%) rotate(-45deg)");
         }
     }
@@ -156,21 +114,7 @@ input {
         color: $secondaryBtnHoverColor;
         background: $secondaryBtnHoverBg;
     }
-    /*Tertiary Button*/
-    &.tertiary{
-        color: $teritaryBtnHoverColor;
-        background: $tertiaryBtnHoverBg;
-    }
-    /*Quaternary Button*/
-    &.quaternary{
-        background:$quatBtnHoverBg;
-        color:$quatBtnHoverColor;
-    }
-    /*Info Button*/
-    &.infoBtn {
-        color: $linkHoverColor;
-    }
 }
 @include hover(".closeBtn"){
-    background:$linkHoverColor;
+    background:$closeBtnHoverColor;
 }

@@ -256,6 +256,7 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="Build\scripts\sources\leftNav-portfolioItem.js" />
     <Content Include="Build\scripts\sources\leftNav.js" />
     <Content Include="Build\scripts\sources\copyright.js" />
     <Content Include="Build\scripts\sources\bundle\sb.animate.js" />
@@ -349,6 +350,7 @@
     <Content Include="Scripts\bundle.min.js" />
     <Content Include="Scripts\copyright.js" />
     <Content Include="Scripts\homePg.js" />
+    <Content Include="Scripts\leftNav-portfolioItem.js" />
     <Content Include="Scripts\leftNav.js" />
     <Content Include="Styles\bundle.min.css" />
     <Content Include="Web.config" />
@@ -366,13 +368,9 @@
     <Content Include="config\Dashboard.config" />
     <Content Include="Build\sass\bundled.scss" />
     <Content Include="Build\sass\elements\_base.scss" />
-    <Content Include="Build\sass\elements\_boxes.scss" />
     <Content Include="Build\sass\elements\_buttons.scss" />
-    <Content Include="Build\sass\elements\_callouts.scss" />
     <Content Include="Build\sass\elements\_elemVariables.scss" />
     <Content Include="Build\sass\elements\_inputsAndForms.scss" />
-    <Content Include="Build\sass\elements\_maps.scss" />
-    <Content Include="Build\sass\elements\_tables.scss" />
     <Content Include="Build\sass\global\_base.scss" />
     <Content Include="Build\sass\global\_global.scss" />
     <Content Include="Build\sass\global\_globalFunctions.scss" />
@@ -424,6 +422,8 @@
     <Content Include="Build\sass\kyleJorve\_portfolioGrid.scss" />
     <Content Include="Build\sass\responsive\_mobileHomePg.scss" />
     <Content Include="Build\sass\responsive\_mobilePortfolioGrid.scss" />
+    <Content Include="Build\sass\kyleJorve\_portfolioItem.scss" />
+    <Content Include="Build\sass\elements\_lightbox.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />
