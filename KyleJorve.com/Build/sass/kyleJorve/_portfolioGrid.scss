@@ -71,32 +71,44 @@
     &.tall{
         @include sbFlexItem(1, 1, calc(23.6% - 1em));
     }
+}
 
-    /*==========----------==========*/
-    /*            ICONS             */
-    /*==========----------==========*/
-    .iconRow{
-        opacity:0;
-        visibility:hidden;
-        @include sbFlexWrap(row, nowrap, space-between, flex-end);
-        @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), vertical);
-        padding:3em 1em 1em 1em;
-        position:relative;
-        z-index:2;
-        @include transform("translateY(100%)");
-        @include transition;
+/*==========----------==========*/
+/*            ICONS             */
+/*==========----------==========*/
+.portfolioItem .iconRow,
+.itemShowcase .iconCol{
+    opacity:0;
+    visibility:hidden;
+    position:relative;
+    z-index:2;
+    @include transition;
 
-        i{
-            display:block;
-            cursor:pointer;
-            padding:.5em;
-            color:$white;
-            font-size:24px;
-            @include transform("none");
-            @include transition;
-        }
+    i{
+        @extend %portfolioPieceIcon;
     }
 }
+
+/*---------- PORTFOLIO GRID -----------*/
+.portfolioItem .iconRow{
+    @include sbFlexWrap(row, nowrap, space-between, flex-end);
+    @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), vertical);
+    padding:3em 1em 1em 1em;
+    @include transform("translateY(100%)");
+}
+/*---------- PORTFOLIO PAGE -----------*/
+.itemShowcase .iconCol{
+    @include sbFlexWrap(column, nowrap, space-between, center);
+    @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), horizontal);
+    padding:1em 1em 1em 3em;
+    border-radius:0 $borderRadius $borderRadius 0;
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    @include transform("translateX(100%)");
+}
+
 
 /*==========----------==========*/
 /*        HOVER EFFECTS         */
@@ -118,7 +130,26 @@
     }
 }
 
-@include hover(".iconRow i"){
+@include hover(".itemShowcase .imgSlide"){
+    .iconCol{
+        opacity:1;
+        visibility:visible;
+        @include transform("none");
+    }
+}
+
+@include hover(".iconRow i, .iconCol i"){
     color:$linkColor;
     @include transform("scale(1.1)");
+}
+
+/*==========----------==========*/
+/*        TOUCH SCREENS         */
+/*==========----------==========*/
+
+.touchDevice{
+    .portfolioItem .iconRow,
+    .itemShowcase .iconCol{
+        @include transform("none");
+    }
 }

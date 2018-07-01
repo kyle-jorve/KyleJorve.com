@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#imgSlideshow").slick({autoplay:!0,autoplaySpeed:5e3,appendArrows:"#sliderNav",appendDots:"#sliderDots",prevArrow:'<div class="arrowBtn prevArrow"><i class="fas fa-angle-left"></i></div>',nextArrow:'<div class="arrowBtn nextArrow"><i class="fas fa-angle-right"></i></div>',dots:!0,fade:!0,speed:500})});

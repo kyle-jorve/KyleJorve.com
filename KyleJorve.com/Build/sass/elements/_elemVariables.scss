@@ -33,7 +33,14 @@ $closeBtnDiam: 60px;
 $closeBtnBg: $linkColor;
 $closeBtnColor: $lightTextColor;
 
-$closeBtnHoverColor:$linkHoverColor;
+$closeBtnHoverBg:$linkHoverColor;
+
+/*Arrow Button*/
+$arrowBtnDiam: 60px;
+$arrowBtnBg: $linkColor;
+$arrowBtnColor: $lightTextColor;
+
+$arrowBtnHoverBg:$linkHoverColor;
 
 /*---------- Input Variables ----------*/
 /*Inputs*/

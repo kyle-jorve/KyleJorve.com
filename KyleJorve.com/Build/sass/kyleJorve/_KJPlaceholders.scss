@@ -1,0 +1,9 @@
+﻿%portfolioPieceIcon{
+    display:block;
+    cursor:pointer;
+    padding:.5em;
+    color:$white;
+    font-size:24px;
+    @include transform("none");
+    @include transition;
+}

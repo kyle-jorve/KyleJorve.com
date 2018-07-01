@@ -92,6 +92,26 @@ a.button {
     }
 }
 
+/*---------- ARROW BUTTON ----------*/
+.arrowBtn{
+    cursor:pointer;
+    width:$arrowBtnDiam;
+    height:$arrowBtnDiam;
+    border-radius:50%;
+    background:$arrowBtnBg;
+    box-shadow:$mediumShadow;
+    position:relative;
+    @include transition;
+
+    i{
+        @extend %absolute-center;
+        display:block;
+        font-size:24px;
+        line-height:1;
+        color:$arrowBtnColor;
+    }
+}
+
 input {
     & + .button,
     & + button,
@@ -116,5 +136,5 @@ input {
     }
 }
 @include hover(".closeBtn"){
-    background:$closeBtnHoverColor;
+    background:$closeBtnHoverBg;
 }

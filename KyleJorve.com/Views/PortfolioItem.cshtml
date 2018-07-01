@@ -11,7 +11,7 @@
         <section class="imgSection darkContentBg">
             @if (imgs != null)
             {
-                <div class="imgSlider">
+                <div class="imgSlider @(imgs.Count() > 1 ? "imgSlideshow" : null)" id="@(imgs.Count() > 1 ? "imgSlideshow" : null)">
                     @foreach (var img in imgs)
                     {
                         <div class="imgSlide">
@@ -27,6 +27,16 @@
                         </div>
                     }
                 </div>
+                if (imgs.Count() > 1)
+                {
+                    <div class="sliderNav" id="sliderNav">
+                        <!--slideshow arrows go here-->
+                    </div>
+                    <div class="sliderDots" id="sliderDots">
+                        <!--slideshow dots go here-->
+                    </div>
+                }
+
                 i++;
                 foreach (var img in imgs)
                 {
@@ -67,3 +77,9 @@
     </div>
     <div class="lightboxOverlay" style="@(imgs != null ? "background:url('" + imgs.First().Url + "') no-repeat center center / cover;" : null)"></div>
 </div>
+
+@if (imgs.Count() > 1)
+{
+    <script src="/Scripts/slick.js"></script>
+    <script src="/Scripts/imgSlideshow.js"></script>
+}
