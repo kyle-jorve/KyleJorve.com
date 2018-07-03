@@ -20,7 +20,7 @@
                                 <div class="share">
                                     <i class="fas fa-share-alt"></i>
                                 </div>
-                                <div class="full-screen">
+                                <div class="full-screen openLightbox">
                                     <i class="fas fa-expand"></i>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
             <div class="itemContent">
                 <h1>@Umbraco.Field("portfolioItemTitle")</h1>
                 @Umbraco.Field("portfolioItemDesc")
-                <div class="buttonWrp">
+                <div class="buttonWrp @(string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()) ? "flex-justify-right" : null)">
                     <a href="" class="button secondary"><span>Share</span></a>
                     @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
                     {
@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<div class="lightboxWrp">
+<div class="lightboxWrp" id="lightboxWrp">
     <div class="closeBtn" id="closeLightbox">
         <span></span>
         <span></span>
@@ -69,13 +69,29 @@
     <div class="lightbox">
         @if (imgs != null)
         {
-            foreach (var img in imgs)
-            {
-                <img class="lightboxImg" id="@("img-" + i + "-full")" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
-            }
+            <div class="lightboxSlider @(imgs.Count() > 1 ? "lightboxSlideshow" : null)" id="@(imgs.Count() > 1 ? "lightboxSlideshow" : null)">
+                @foreach (var img in imgs)
+                {
+                    <img class="lightboxImg" id="@("img-" + i + "-full")" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
+                }
+            </div>
+        }
+        @if (imgs.Count() > 1)
+        {
+            <div class="sliderNav" id="lightboxSliderNav">
+                <!--slideshow arrows go here-->
+            </div>
         }
     </div>
-    <div class="lightboxOverlay" style="@(imgs != null ? "background:url('" + imgs.First().Url + "') no-repeat center center / cover;" : null)"></div>
+    @if (imgs != null)
+    {
+        <div class="lightboxOverlay">
+            @foreach (var img in imgs)
+            {
+                <div class="lightboxBg" style="@("background:url('" + img.Url + "') no-repeat center center / cover")"></div>
+            }
+        </div>
+    }
 </div>
 
 @if (imgs.Count() > 1)

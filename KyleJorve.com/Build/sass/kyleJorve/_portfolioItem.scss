@@ -56,13 +56,14 @@
     position:relative;
     z-index:2;
 }
+
 .imgSlide{
+    display:block !important;
     position:relative;
     overflow:hidden;
     border-radius:$borderRadius;
     box-shadow:$mediumShadow;
-    background:map-get($bgColors, lightContenBg);
-        
+    
     img{
         border-radius:$borderRadius;
         position:relative;
@@ -70,8 +71,12 @@
     }
 }
 
-.imgSlideshow .imgSlide{
-    box-shadow:none;
+.imgSlideshow{
+    padding-left:1em;
+
+    .imgSlide{
+        box-shadow:none;
+    }
 }
 
 /*---------- NAVIGATION ----------*/
@@ -79,7 +84,7 @@
     @include sbFlexWrap(row, nowrap, space-between, center);
     @extend %absolute-center-vertical;
     left:1em;
-    right:-1.5em;
+    right:-2.5em;
     z-index:3;
 }
 
@@ -152,4 +157,51 @@
     opacity:.2;
     @extend %absolute-cover;
     z-index:1;
+    @include transition;
+
+    &.inactive{
+        opacity:0;
+    }
+}
+
+/*==========----------==========*/
+/*      LIGHTBOX SLIDESHOW      */
+/*==========----------==========*/
+
+.lightboxSlider{
+    width:100%;
+    height:100%;
+
+    .slick-list,
+    .slick-slide,
+    .slick-slide > div{
+        width:100%;
+        height:100%;
+    }
+    .slick-track{
+        height:100%;
+    }
+
+    .slick-slide > div{
+        @include sbFlexWrap(column, nowrap, center, center);
+    }
+    .lightboxImg{
+        display:block !important;
+        width:auto !important;
+        height:auto !important;
+        max-width:100%;
+        max-height:100%;
+        margin:0 auto;
+    }
+
+    &.lightboxSlideshow{
+        padding:0 1em;
+    }
+}
+
+.lightbox{
+    .sliderNav{
+        left:0;
+        right:0;
+    }
 }

@@ -257,7 +257,7 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
     <Content Include="Build\scripts\sources\imgSlideshow.js" />
-    <Content Include="Build\scripts\sources\leftNav-portfolioItem.js" />
+    <Content Include="Build\scripts\sources\portfolioItem.js" />
     <Content Include="Build\scripts\sources\leftNav.js" />
     <Content Include="Build\scripts\sources\copyright.js" />
     <Content Include="Build\scripts\sources\bundle\sb.animate.js" />
@@ -353,8 +353,8 @@
     <Content Include="Scripts\copyright.js" />
     <Content Include="Scripts\homePg.js" />
     <Content Include="Scripts\imgSlideshow.js" />
-    <Content Include="Scripts\leftNav-portfolioItem.js" />
     <Content Include="Scripts\leftNav.js" />
+    <Content Include="Scripts\portfolioItem.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Styles\bundle.min.css" />
     <Content Include="Web.config" />

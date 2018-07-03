@@ -21,9 +21,19 @@
 }
 
 .lightboxOverlay{
-    opacity:.2;
     @extend %absolute-cover;
     z-index:1;
+    
+
+    .lightboxBg{
+        opacity:.2;
+        @extend %absolute-cover;
+        @include transition;
+
+        &.inactive{
+            opacity:0;
+        }
+    }
 }
 
 .lightbox{
