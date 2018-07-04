@@ -52,20 +52,25 @@
 /*          SLIDESHOW           */
 /*==========----------==========*/
 .imgSlider{
+    @include sbFlexWrap(row, nowrap, center, center);
     width:calc(100% + 2.5em);
     position:relative;
     z-index:2;
 }
 
+/*---------- SLIDES ----------*/
+
 .imgSlide{
     display:block !important;
-    position:relative;
+    width: auto !important;
     overflow:hidden;
     border-radius:$borderRadius;
     box-shadow:$mediumShadow;
+    position:relative;
     
     img{
         border-radius:$borderRadius;
+        max-height:1000px;
         position:relative;
         z-index:1;
     }
@@ -76,6 +81,22 @@
 
     .imgSlide{
         box-shadow:none;
+    }
+}
+
+.slick-slide{
+    & > div{
+        @include sbFlexWrap(column, nowrap, center, center);
+        position:relative;
+        top:0;
+        @include transition;
+    }
+
+    &.prevSlide > div{
+        top:-40px;
+    }
+    &.nextSlide > div{
+        top:40px;
     }
 }
 
@@ -154,7 +175,7 @@
 
 /*---------- BACKGROUNDS ----------*/
 .imgBg{
-    opacity:.2;
+    opacity:.15;
     @extend %absolute-cover;
     z-index:1;
     @include transition;

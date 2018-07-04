@@ -71,6 +71,12 @@
     &.tall{
         @include sbFlexItem(1, 1, calc(23.6% - 1em));
     }
+
+    a.portfolioLink{
+        display:block;
+        @extend %absolute-cover;
+        z-index:2;
+    }
 }
 
 /*==========----------==========*/
@@ -81,7 +87,7 @@
     opacity:0;
     visibility:hidden;
     position:relative;
-    z-index:2;
+    z-index:3;
     @include transition;
 
     i{

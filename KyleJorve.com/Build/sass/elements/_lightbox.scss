@@ -24,9 +24,11 @@
     @extend %absolute-cover;
     z-index:1;
     
-
     .lightboxBg{
         opacity:.2;
+        background-repeat:no-repeat;
+        background-position:center center;
+        background-size:cover;
         @extend %absolute-cover;
         @include transition;
 

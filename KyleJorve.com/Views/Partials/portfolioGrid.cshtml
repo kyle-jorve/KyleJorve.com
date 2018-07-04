@@ -35,16 +35,17 @@
                     itemClass = "tall";
                 }
 
-                <a href="@portfolioItems[i].Url" class="portfolioItem @itemType @itemClass animatedEl" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
+                <div class="portfolioItem @itemType @itemClass animatedEl" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
                     <div class="iconRow">
-                        <div class="description">
+                        <a href="@portfolioItems[i].Url" class="description">
                             <i class="fas fa-align-left"></i>
-                        </div>
-                        <div class="full-screen">
+                        </a>
+                        <div class="full-screen openLightbox">
                             <i class="fas fa-expand"></i>
                         </div>
                     </div>
-                </a>
+                    <a class="portfolioLink" href="@portfolioItems[i].Url"></a>
+                </div>
             }
         }
     </div>
@@ -87,16 +88,17 @@ else
                                 itemClass = "tall";
                             }
 
-                            <a href="@portfolioItems[i].Url" class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
+                            <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
                                 <div class="iconRow">
-                                    <div class="icon description">
+                                    <a href="@portfolioItems[i].Url" class="icon description">
                                         <i class="fas fa-align-left"></i>
-                                    </div>
-                                    <div class="icon full-screen">
+                                    </a>
+                                    <div class="icon full-screen openLightbox">
                                         <i class="fas fa-expand"></i>
                                     </div>
                                 </div>
-                            </a>
+                                <a class="portfolioLink" href="@portfolioItems[i].Url"></a>
+                            </div>
                         }
                     }
                 }

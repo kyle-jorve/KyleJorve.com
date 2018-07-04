@@ -1,1 +1,73 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var homePgID = 1081;
+    var portfolioPgID = 1082;
+}
+
+@if (CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID)
+{
+    var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
+    var i = 0;
+
+    if (imgs != null)
+    {
+        <div class="lightboxWrp" id="lightboxWrp">
+            <div class="closeBtn" id="closeLightbox">
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="lightbox">
+                <div class="lightboxSlider @(imgs.Count() > 1 ? "lightboxSlideshow" : null)" id="@(imgs.Count() > 1 ? "lightboxSlideshow" : null)">
+
+                    @foreach (var img in imgs)
+                    {
+                        <img class="lightboxImg" id="@("img-" + i + "-full")" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
+                    }
+                </div>
+
+                @if (imgs.Count() > 1)
+                {
+                    <div class="sliderNav" id="lightboxSliderNav">
+                        <!--slideshow arrows go here-->
+                    </div>
+                }
+            </div>
+
+            <div class="lightboxOverlay">
+                @foreach (var img in imgs)
+                {
+                    <div class="lightboxBg" style="@("background:url('" + img.Url + "') no-repeat center center / cover")"></div>
+                }
+            </div>
+        </div>
+
+        if (imgs.Count() > 1)
+        {
+            <script src="/Scripts/slick.js"></script>
+            <script src="/Scripts/imgSlideshow.js"></script>
+        }
+    }
+}
+else if (CurrentPage.Id == homePgID || CurrentPage.Id == portfolioPgID)
+{
+    <div class="lightboxWrp" id="lightboxWrp">
+        <div class="closeBtn" id="closeLightbox">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="lightbox">
+            <div class="lightboxSlider">
+                <img class="lightboxImg" id="lightboxImg" src="" />
+            </div>
+        </div>
+
+        <div class="lightboxOverlay">
+            <div class="lightboxBg" id="lightboxBg"></div>
+        </div>
+    </div>
+
+    <script src="/Scripts/lightbox.js"></script>
+}

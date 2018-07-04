@@ -1,4 +1,4 @@
-﻿var leftNavPortfolioController = (function () {
+﻿var portfolioItemController = (function () {
     var nodes = {
         lightbox: document.querySelector('#lightboxWrp'),
         buttons: {
@@ -15,7 +15,7 @@
             });
         });
 
-        //closeLightbox
+        //close lightbox
         nodes.buttons.close.addEventListener('click', function () {
             nodes.lightbox.classList.remove('active');
         });
