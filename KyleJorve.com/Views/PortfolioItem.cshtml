@@ -46,7 +46,7 @@
         </section>
 
         <section class="descSection lightContentBg">
-            <div class="itemContent">
+            <div class="content-wrapper">
                 <h1>@Umbraco.Field("portfolioItemTitle")</h1>
                 @Umbraco.Field("portfolioItemDesc")
                 <div class="buttonWrp @(string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()) ? "flex-justify-right" : null)">

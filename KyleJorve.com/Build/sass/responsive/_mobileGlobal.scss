@@ -11,7 +11,7 @@ print{
     section.bioSection,
     section.portfolioSection,
     .homePg section.bioSection{
-        padding:4em .5em;
+        padding:4em 1em;
     }
 }
 
@@ -21,5 +21,12 @@ print{
 @media only screen and (max-width:$navBreakpoint){
     .mobileHeading{
         display:block;
+    }
+    section,
+    section.contentSection,
+    section.bioSection,
+    section.portfolioSection,
+    .homePg section.bioSection{
+        padding:4em .5em;
     }
 }

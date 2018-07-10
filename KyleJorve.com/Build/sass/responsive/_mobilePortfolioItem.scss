@@ -1,0 +1,112 @@
+﻿/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                   1200PX WIDTH                   //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-width:1200px){
+    /*==========----------==========*/
+    /*   PORTFOLIO ITEM PAGE GRID   */
+    /*==========----------==========*/
+    .itemShowcase{
+        display:block;
+
+        .imgSection,
+        .descSection{
+            display:block;
+            max-width:none;
+            min-height:0;
+            padding:$sectionPadding;
+        }
+        .imgSection{
+            display:block;
+            padding-top:6em;
+            padding-bottom:0;
+        }
+        .descSection .buttonWrp{
+            @include sbFlexWrap(row, nowrap, flex-end, center);
+        }
+    }
+
+    /*==========----------==========*/
+    /*          SLIDESHOW           */
+    /*==========----------==========*/
+    .imgSlider{
+        width:100%;
+    }
+    .imgSlide{
+        margin-bottom:-2em;
+    }
+    .imgSlideshow{
+        padding-right:1em;
+
+        .imgSlide{
+            margin-bottom:0;
+        }
+    }
+    .sliderNav{
+        right:1em;
+    }
+    .sliderDots{
+        padding-bottom:4em;
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                   900PX WIDTH                    //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-width:900px){
+    .itemShowcase{
+        .descSection{
+            padding:4em 1em;
+        }
+        .imgSection{
+            padding:6em 1em 0 1em;
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                   700PX WIDTH                    //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-width:700px){
+    .sliderDots{
+        padding-bottom:2em;
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                  NAV BREAKPOINT                  //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-width:$navBreakpoint){
+    .itemShowcase{
+        .descSection{
+            padding:4em .5em;
+        }
+        .imgSection{
+            padding:6em .5em 0 .5em;
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                   400PX WIDTH                    //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-width:400px){
+    .itemShowcase .descSection .buttonWrp{
+        @include sbFlexWrap(column-reverse, nowrap, inherit, stretch);
+
+        .button{
+            display:block;
+            width:100%;
+            margin:1em 0 !important;
+        }
+    }
+}

@@ -362,6 +362,7 @@
     margin-left:$navBtnDiam;
     position:relative;
     z-index:1;
+    @include transition;
 }
 
 .leftNavWrp{
@@ -444,7 +445,6 @@
 .homePg{
     .leftBuffer{
         margin-left:0;
-        @include transition;
     }
     .leftNavWrp{
         width:0;

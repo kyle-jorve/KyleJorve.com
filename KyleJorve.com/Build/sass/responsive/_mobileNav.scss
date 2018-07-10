@@ -67,6 +67,32 @@
 
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
+/*//                   700PX HEIGHT                   //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@media only screen and (max-height:700px){
+    .leftNavWrp{
+        li{
+            margin-top:2em;
+
+            &:last-child{
+                margin-top:0;
+            }
+        }
+        a,
+        a:visited,
+        div{
+            font-size:$smallFontSize;
+
+            &.active:before{
+                width:20px;
+            }
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
 /*//                   600PX WIDTH                    //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
@@ -93,13 +119,25 @@
 
                 a,
                 a:visited{
-                    padding:1em 0;
+                    padding:1em;
 
                     &:before{
+                        top:50%;
                         left:auto !important;
-                        right:0;
-                        bottom:.5em;
-                        @include transform("none !important");
+                        right:-.5em;
+                        bottom:auto !important;
+                        @include transform("translateY(-50%) !important");
+                    }
+                }
+
+                &.current{
+                    a,
+                    a:visited{
+                        padding-right:1em;
+
+                        &:before{
+                            right:0;
+                        }
                     }
                 }
             }
@@ -114,6 +152,15 @@
             }
         }
     }
+
+    /*---------- HOVER EFFECTS ----------*/
+    @include hover(".topNavWrp nav li a,.topNavWrp nav li a:visited"){
+        padding-right:.75em;
+        &:before{
+            bottom:auto;
+            right:0;
+        }
+    }
 }
 
 /*//////////////////////////////////////////////////////*/
@@ -121,7 +168,8 @@
 /*//                  NAV BREAKPOINT                  //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:$navBreakpoint){
+@media only screen and (max-width:$navBreakpoint),
+only screen and (max-height:$navBreakpoint){
     .leftNavWrp{
         display:none;
     }

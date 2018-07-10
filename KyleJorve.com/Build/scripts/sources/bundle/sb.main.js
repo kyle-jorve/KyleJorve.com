@@ -44,16 +44,13 @@
 
 $(window).on('load', function () {
     bodyScroll(200);
+    //Allow CSS transitions after page has loaded
+    $('body').removeClass('preload');
+});
 
-    setTimeout(function () {
-        //Allow CSS transitions after page has loaded
-        $('body').removeClass('preload');
-        //Transition load screen out
-
-        $('.loadScreen').fadeOut(300, 'swing', function () {
-            $('body').removeClass('showLoader');
-        });
-    }, 150);
+window.addEventListener('load', function () {
+    //Transition load screen out
+    document.querySelector('#loadScreen').classList.remove('active');
 });
 
 function bodyScroll(limit) {
