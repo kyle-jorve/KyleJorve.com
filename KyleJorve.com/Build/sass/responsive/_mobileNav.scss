@@ -224,11 +224,8 @@ only screen and (max-height:$navBreakpoint){
         nav li{
             a,
             a:visited{
-                padding:.75em 0;
-                
-                &:before{
-                    bottom:.25em;
-                }
+                padding-top:.75em;
+                padding-bottom:.75em;
             }
         }
     }

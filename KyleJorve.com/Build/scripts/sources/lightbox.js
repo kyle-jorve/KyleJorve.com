@@ -1,15 +1,4 @@
 ﻿var lightboxController = (function () {
-    //OPEN LIGHTBOX
-    //find image
-    //change image source in lightbox
-    //change image source in lightbox background
-    //reveal lightbox
-
-    //CLOSE LIGHTBOX
-    //hide lightbox
-    //remove image source in lightbox
-    //remove image source in lightbox background
-
     var nodes = {
         lightbox: document.querySelector('#lightboxWrp'),
         img: document.querySelector('#lightboxImg'),

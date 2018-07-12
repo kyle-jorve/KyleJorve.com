@@ -184,3 +184,83 @@
         opacity:0;
     }
 }
+
+/*==========----------==========*/
+/*        SOCIAL SHARING        */
+/*==========----------==========*/
+.shareToast{
+    opacity:0;
+    visibility:hidden;
+    padding:2em 1em;
+    box-shadow:$mediumShadowUp;
+    position:fixed;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:151;
+    @include transform("translateY(100%)");
+    @include transition;
+
+    & > *{
+        position:relative;
+        z-index:1;
+    }
+
+    .closeBtn{
+        border-radius:$borderRadius 0 0 0;
+        box-shadow:$boxShadowUp;
+        position:absolute;
+        top:0;
+        right:0;
+        z-index:2;
+        @include transform("translateY(-100%)");
+    }
+
+    /*---------- Icons ----------*/
+    .at-share-btn-elements{
+        @include sbFlexWrap(row, nowrap, center, center);
+
+        a{
+            display:block;
+            width:$socialIconDiam;
+            height:$socialIconDiam;
+            border-radius:50% !important;
+            margin:0 1rem;
+
+            &:first-child{
+                margin-left:0;
+            }
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }
+}
+
+/*---------- Page Overlay ----------*/
+.toastOverlay{
+    opacity:0;
+    visibility:hidden;
+    background:rgba(map-get($bgColors, lightContentBg), .75);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:150;
+    @include transition;
+}
+
+/*---------- ACTIVE TOAST ----------*/
+
+.showSocialShareToast{
+    .shareToast{
+        opacity:1;
+        visibility:visible;
+        @include transform("none");
+    }
+    .toastOverlay{
+        opacity:1;
+        visibility:visible;
+    }
+}

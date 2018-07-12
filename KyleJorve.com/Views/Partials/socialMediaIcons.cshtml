@@ -52,7 +52,7 @@
                     }
                     else if (socMedType == "society6")
                     {
-                        { Html.RenderPartial("SVGs/cartIcon"); }
+                        @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/cart-icon.svg")))
                     }
                 </a>
             </li>

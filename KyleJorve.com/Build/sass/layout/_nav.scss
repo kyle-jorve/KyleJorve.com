@@ -96,6 +96,27 @@
     }
 }
 
+/*---------- TOUCH DEVICE ----------*/
+.touchDevice{
+    .topNavWrp nav li{
+        a,
+        a:visited{
+            opacity:.65;
+        }
+
+        &.current{
+            a,
+            a:visited{
+                opacity:1;
+            }
+        }
+    }
+
+    &.showMobileNav header .logo{
+        opacity:1;
+    }
+}
+
 /*---------- SCROLL BARS ----------*/
 @include scrollBar(".topNav.navWrp", vertical);
 
@@ -309,27 +330,6 @@
     .topNavWrp{
         opacity:1;
         visibility:visible;
-    }
-}
-
-/*---------- TOUCH DEVICE ----------*/
-.touchDevice{
-    .topNavWrp nav li{
-        a,
-        a:visited{
-            opacity:1;
-        }
-
-        &.current{
-            a,
-            a:visited{
-                opacity:.65;
-            }
-        }
-    }
-
-    &.showMobileNav header .logo{
-        opacity:1;
     }
 }
 

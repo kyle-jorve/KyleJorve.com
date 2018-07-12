@@ -4,6 +4,7 @@
     Layout = null;
     var hasMetaImage = CurrentPage.HasValue("metaImage");
     var portfolioPgID = 1082;
+    bool isPortfolioItem = CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID;
 
     //Redirect URLs
     var redirectUrl = string.Empty;
@@ -59,6 +60,11 @@
 
     @{ Html.RenderPartial("lightbox");}
 
+    @if (isPortfolioItem)
+    {
+        { Html.RenderPartial("socialShareToast");}
+    }
+
     @if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
     {
         <script src="/Scripts/leftNav.js"></script>
@@ -67,5 +73,6 @@
     {
         <script src="/Scripts/portfolioItem.js"></script>
     }
+
 </body>
 </html>

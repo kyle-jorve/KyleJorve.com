@@ -29,6 +29,8 @@ $solidLogo: url('/images/logo-solid.svg');
 $logoWidth: 80px;
 $logoHeight: $logoWidth * 0.6115;
 
+$solidLogoColor: $white;
+
 /*===========================
     Nav
 ===========================*/
@@ -57,7 +59,7 @@ $navBtnBorder: none;
 $navBtnHoverColor: $linkHoverColor;
 
 /*----- Social Icons -----*/
-$socialIconDiam: 40px;
+$socialIconDiam: 42px;
 $socialIconFontSize: 27px;
 
 $footerSocialIconDiam: $socialIconDiam;

@@ -173,12 +173,18 @@ $longShadow: 0 12px 30px 2px $darkShadowColor;
 
 $boxShadowLeft: -3px 0 3px $shadowColor;
 $boxShadowRight: 3px 0 3px $shadowColor;
+$boxShadowUp: 0 -3px 3px $shadowColor;
+
+$mediumShadowLeft: -6px 0 12px $mediumShadowColor;
+$mediumShadowRight: 6px 0 12px $mediumShadowColor;
+$mediumShadowUp: 0 -6px 12px $mediumShadowColor;
 
 $insetShadowRight:inset -3px 0 3px $shadowColor;
 $insetShadowLeft: 3px 0 3px $shadowColor;
 
 $longShadowLeft: -4px 0 8px $darkShadowColor;
 $longShadowRight: 4px 0 8px $darkShadowColor;
+$longShadowUp: 0 -4px 8px $darkShadowColor;
 
 /*===========================
     Margin and Padding
