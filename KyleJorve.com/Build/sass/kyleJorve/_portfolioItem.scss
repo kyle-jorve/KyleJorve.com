@@ -82,6 +82,10 @@
     .imgSlide{
         box-shadow:none;
     }
+
+    .slick-track{
+        @include sbFlexWrap(row, nowrap, inherit, center);
+    }
 }
 
 .slick-slide{

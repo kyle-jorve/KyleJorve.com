@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var bodyScrollLim = 100;
+
+$(document).ready(function () {
     //========------------------------------==========//
     //                   GENERAL                      //
     //========------------------------------==========//
@@ -38,12 +40,12 @@
     //                 SCROLL STUFF                   //
     //========------------------------------==========//
     $(window).scroll(function () {
-        bodyScroll(200);
+        bodyScroll(bodyScrollLim);
     });
 });
 
 $(window).on('load', function () {
-    bodyScroll(200);
+    bodyScroll(bodyScrollLim);
     //Allow CSS transitions after page has loaded
     $('body').removeClass('preload');
 });

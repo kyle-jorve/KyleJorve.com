@@ -164,8 +164,8 @@ $alignments:(
     Shadows
 ===========================*/
 $shadowColor:rgba($black, .15);
-$mediumShadowColor:rgba($black, .25);
-$darkShadowColor: rgba($black,0.5);
+$mediumShadowColor:rgba($black, .15);
+$darkShadowColor: rgba($black,0.25);
 
 $boxShadow: 0 3px 6px $shadowColor;
 $mediumShadow: 0 6px 12px $mediumShadowColor;

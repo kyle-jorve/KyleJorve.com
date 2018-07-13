@@ -2,10 +2,11 @@
 
 @{
     var portfolioPgID = 1082;
+    var bioPgID = 1083;
     var homePgID = 1081;
     var closeLink = Umbraco.Content(portfolioPgID).Url;
     var portfolioPg = Umbraco.Content(portfolioPgID);
-    var bioPg = Umbraco.Content(1083);
+    var bioPg = Umbraco.Content(bioPgID);
     bool isPortfolioItem = CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID;
 
     var portfolioIconUrl = portfolioPg.GetPropertyValue<IPublishedContent>("pageIcon").Url;
@@ -19,15 +20,15 @@
     <div class="flexContainer noRespond">
         @if (isPortfolioItem)
         {
+            <a href="@closeLink" class="closeBtn">
+                <span></span>
+                <span></span>
+            </a>
             <div class="logoWrp">
                 <a class="logo" href="/">
                     @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
                 </a>
             </div>
-            <a href="@closeLink" class="closeBtn">
-                <span></span>
-                <span></span>
-            </a>
         }
         else
         {
@@ -51,13 +52,13 @@
 @if (!isPortfolioItem)
 {
 <div class="mobileNavContainer">
-    <a class="mobileNavItem bioItem" href="@bioPg.Url">
+    <a class="mobileNavItem bioItem @(CurrentPage.Id == bioPgID ? "active" : null)" href="@bioPg.Url">
         <div class="navItemIcon">
             @bioIcon
         </div>
         <span>CV and Bio</span>
     </a>
-    <a class="mobileNavItem workItem" href="@portfolioPg.Url">
+    <a class="mobileNavItem workItem @(CurrentPage.Id == portfolioPgID ? "active" : null)" href="@portfolioPg.Url">
         <div class="navItemIcon">
             @portfolioIcon
         </div>

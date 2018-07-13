@@ -10,41 +10,52 @@
     display:none;
     opacity:1;
     visibility:visible;
+    background:none;
     padding:.25em;
-    border-top:$borderThickness solid $lightBorderColor;
     @include transition(all, .5s);
-
-    & + .mobileNavItem{
-        border-left:$borderThickness solid $lightBorderColor;
-    }
 
     span{
         display:block;
         font-family:$headingFont;
         font-size:.65em;
         text-transform:$headingTextTransform;
-        font-weight:$headingThin !important;
+        font-weight:$headingBold;
         letter-spacing:$headingLetterSpacing;
         margin:0;
         color:$lightTextColor;
         text-align:center;
     }
-}
 
-.navItemIcon{
-    padding-bottom:.25em;
+    .navItemIcon{
+        padding-bottom:.25em;
 
-    svg{
-        display:block;
-        margin:0 auto;
-        width:auto;
-        height:auto;
-        max-width:$navIconWidth;
-        max-height:$navIconHeight;
-        fill:$lightTextColor;
+        svg{
+            display:block;
+            margin:0 auto;
+            width:auto;
+            height:auto;
+            max-width:$navIconWidth;
+            max-height:$navIconHeight;
+            fill:color($navIconBg);
 
-        *{
-            fill:$lightTextColor;
+            *{
+                fill:color($navIconBg);
+            }
+        }
+    }
+
+    /*----- Active Nav Item -----*/
+    &.active{
+        pointer-events:none;
+        background:color($navIconBg);
+
+        svg,
+        svg *{
+            fill:$navIconBg;
+        }
+
+        span{
+            color:$navIconBg;
         }
     }
 }
@@ -177,15 +188,21 @@ only screen and (max-height:$navBreakpoint){
     .leftBuffer{
         margin-left:0 !important;
     }
+    .navBtn{
+        border-radius:0 0 $borderRadius 0 !important;
+    }
+}
 
+@media only screen and (max-width:$navBreakpoint){
     .navBtn{
         border-radius:0 !important;
         min-width:$navBtnDiam;
+        box-shadow:none !important;
     }
-
     .mobileNavContainer{
         @include sbFlexWrap(row, nowrap, inherit, stretch);
-        background:rgba(map-get($bgColors, darkContentBg), .85);
+        background:$navIconBg;
+        box-shadow:$mediumShadowUp;
         top:auto;
         bottom:0;
         right:0;
@@ -205,6 +222,7 @@ only screen and (max-height:$navBreakpoint){
 
         .mobileNavContainer{
             background:transparent;
+            box-shadow:none;
         }
 
         .mobileNavItem{

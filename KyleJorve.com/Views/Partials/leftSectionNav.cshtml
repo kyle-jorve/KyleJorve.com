@@ -38,7 +38,7 @@
                 <a href="#@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("bioHeading")</span></a>
             </li>
             <li>
-                <a href="#@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-"))"><span>@Umbraco.Field("resumeHeading")</span></a>
+                <a href="#@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-").Replace("&eacute;", "e"))"><span>@Umbraco.Field("resumeHeading")</span></a>
             </li>
         }
         else if (CurrentPage.Parent.Id == portfolioPgID)

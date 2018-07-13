@@ -18,7 +18,7 @@ $contentBoxPaddingMobile: 2em;
     Hero
 ===========================*/
 $heroHeight: 100vh;
-$shortHeroHeight: 400px;
+$shortHeroHeight: 20em;
 
 /*===========================
     Logo
@@ -41,15 +41,16 @@ $navLinkColor: $lightTextColor;
 /*----- Nav Icons -----*/
 $navIconWidth:36px;
 $navIconHeight: $navIconWidth * .8;
+$navIconBg: desaturate(darken($navBg, 10%), 35%);
 
 /*----- Nav Button -----*/
 $navBtnDiam:60px;
 
-$sandwichWidth: 50%;
-$sandwichHeight: 50%;
+$sandwichWidth: 40%;
+$sandwichHeight: 40%;
 
-$navBtnLineWidth: 6px;
-$navBtnLineThickness: 6px;
+$navBtnLineWidth: 4px;
+$navBtnLineThickness: 4px;
 $navBtnLineColor: $lightTextColor;
 
 $navBtnColor:map-get($colorScheme, accentColor);

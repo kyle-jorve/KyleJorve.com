@@ -6,6 +6,10 @@ header {
     pointer-events:none;
     opacity: 1;
     visibility: visible;
+    @include gradient(rgba(map-get($bgColors, darkContentBg), .5), rgba(map-get($bgColors, darkContentBg), 0), vertical);
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center 0;
     padding: 0 0 1em 0;
     color:$medTextColor;
     position: fixed;
@@ -68,16 +72,82 @@ svg.logo-solid{
     fill:$solidLogoColor;
 }
 
-/*---------- Scrolled/Unscrolled Effects ----------*/
-.scrolled{
-    header .logo{
-        opacity:.65;
+/*==========----------==========*/
+/*   PORTFOLIO PAGE, BIO PAGE   */
+/*==========----------==========*/
+.portfolioPg,
+.bioPg{
+    header{
+        background-position:center -100px;
     }
 }
 
-/*---------- Nav Revealed Effects ----------*/
+/*=============----------=============*/
+/*   HOME PAGE, PORTFOLIO ITEM PAGE   */
+/*=============----------=============*/
+
+.homePg,
+.portfolioItemPg {
+    header .logo{
+        opacity: .35;
+    }
+}
+
+/*==========----------==========*/
+/*     PORTFOLIO ITEM PAGE      */
+/*==========----------==========*/
+.portfolioItemPg{
+    header{
+        .flexContainer{
+            @include sbFlexWrap(row, nowrap, space-between, flex-start);
+        }
+        .closeBtn{
+            border-radius:0;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*         BODY SCROLLED        */
+/*==========----------==========*/
+
+.scrolled{
+    /*---------- PORTFOLIO PAGE, BIO PAGE ----------*/
+    &.portfolioPg,
+    &.bioPg {
+        header{
+            background-position:center 0;
+
+            .logo{
+                opacity:1;
+            }
+        }
+    }
+
+    /*---------- HOME and PORTFOLIO ITEM PAGES ----------*/
+    &.homePg,
+    &.portfolioItemPg{
+        header .logo{
+            opacity: .65;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*         NAV REVEALED         */
+/*==========----------==========*/
 .showMobileNav,
-.showMObleNav.scrolled{
+.showMobileNav.scrolled{
+    /*---------- GENERAL ----------*/
+    header{
+        background-position:center -100px;
+
+        .logo{
+            opacity:.75;
+        }
+    }
+
+    /*---------- BIO and PORTFOLIO PAGES ----------*/
     &.bioPg,
     &.portfolioPg{
         header .logo{
@@ -94,55 +164,10 @@ svg.logo-solid{
     }
 }
 
-/*---------- Hover Effects ----------*/
-@include hover(".logo"){
-    opacity:1;
-
-}
-
-/*=============----------=============*/
-/*   HOME PAGE, PORTFOLIO ITEM PAGE   */
-/*=============----------=============*/
-
-.homePg,
-.portfolioItemPg {
-    header{
-        @include gradient(rgba(map-get($bgColors, darkContentBg), .5), rgba(map-get($bgColors, darkContentBg), 0), vertical);
-
-        .logo{
-            opacity: .25;
-
-            svg * {
-                fill: map-get($bgColors, whiteBg) !important;
-            }
-        }
-    }
-
-    /*---------- Scrolled Effects ----------*/
-    &.scrolled header .logo {
-        opacity: .65;
-
-        svg * {
-            fill: map-get($bgColors, whiteBg) !important;
-        }
-    }
-}
-
-/*---------- Hover Effects ----------*/
-@include hover("&.homePg .logo"){
-    opacity:1;
-}
-
 /*==========----------==========*/
-/*     PORTFOLIO ITEM PAGE      */
+/*         HOVER EFFECTS        */
 /*==========----------==========*/
-.portfolioItemPg{
-    header{
-        margin-left:$navBtnDiam;
-        background:none;
 
-        .flexContainer{
-            @include sbFlexWrap(row, nowrap, space-between, flex-start);
-        }
-    }
+@include hover(".logo, &.homePg .logo, &.portfolioItemPg .logo"){
+    opacity:1;
 }

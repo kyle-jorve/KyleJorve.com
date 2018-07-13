@@ -4,6 +4,10 @@
 .portfolioCatWrp{
     padding-bottom:4em;
 
+    &:last-child{
+        padding-bottom:0;
+    }
+
     & + .portfolioCatWrp{
         padding-top:4em;
         border-top:$borderThickness solid $lightBorderColor;

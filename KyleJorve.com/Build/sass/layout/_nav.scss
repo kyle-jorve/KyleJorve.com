@@ -225,6 +225,7 @@
     position:relative;
 
     .blocksWrp {
+        @include sbFlexWrap(column, nowrap, space-between, stretch);
         width: $sandwichWidth;
         height: $sandwichHeight;
         position:absolute;
@@ -240,10 +241,6 @@
         @include sbFlexWrap(row, nowrap, space-between, center);
         @include transform("none");
         @include transition(all, .5s);
-
-        & + .blockRow{
-            margin-top: $navBtnLineThickness;
-        }
     }
 
     .block{
@@ -297,19 +294,6 @@
 /*==========----------==========*/
 .showMobileNav,
 .showMobileNav.scrolled{
-    header{
-        background:transparent;
-
-        .logo{
-            opacity:.75;
-
-            svg,
-            svg *{
-                fill:$white;
-            }
-        }
-    }
-
     .navBtn{
         background:$navLinkColor;
         border-radius:0 0 $borderRadius 0 !important;
@@ -368,6 +352,7 @@
 .leftNavWrp{
     @include sbFlexWrap(column, nowrap, center, center);
     width:$navBtnDiam;
+    padding-top:$navBtnDiam;
     background:map-get($bgColors, darkCOntentBg);
     overflow:hidden;
     position:fixed;
@@ -460,6 +445,11 @@
             width:$navBtnDiam;
         }
     }
+}
+
+/*---------- PORTFOLIO ITEM PAGE ----------*/
+.portfolioItemPg .leftNavWrp{
+    padding-top:$closeBtnDiam;
 }
 
 /*---------- HOVER EFFECTS ----------*/

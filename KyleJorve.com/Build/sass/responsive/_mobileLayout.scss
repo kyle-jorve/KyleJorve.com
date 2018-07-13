@@ -7,17 +7,21 @@
 /*==========----------==========*/
 /*        NAV BREAKPOINT        */
 /*==========----------==========*/
-@media only screen and (max-width:$navBreakpoint){
-    .portfolioItemPg{
-        header{
-            margin-left:0;
+/*---------- PORTFOLIO ITEM PAGE ----------*/
+.portfolioItemPg header{
+    @media only screen and (max-width:$navBreakpoint),
+    only screen and (max-height:$navBreakpoint){
+        .closeBtn{
+            border-radius:0 0 $borderRadius 0;
         }
+    }
+
+    @media only screen and (max-width:$navBreakpoint){
         .logoWrp{
             padding:.5em;
         }
     }
 }
-
 
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
@@ -93,14 +97,18 @@ footer{
     /*==========----------==========*/
     /*        NAV BREAKPOINT        */
     /*==========----------==========*/
-    @media only screen and (max-width:$navBreakpoint){
-        padding-bottom:$navBtnDiam;
-
+    @media only screen and (max-width:$navBreakpoint),
+    only screen and (max-height:$navBreakpoint){
         .iconContainer{
-            .iconsWrp.commerce{
+            .iconsWrp.commerce,
+            .iconsWrp.social{
                 border-radius:0;
             }
         }
+    }
+
+    @media only screen and (max-width:$navBreakpoint){
+        padding-bottom:$navBtnDiam;
     }
 
     /*==========----------==========*/
@@ -118,6 +126,13 @@ footer{
                 margin-right:0;
             }
         }
+    }
+}
+
+/*---------- PORTFOLIO ITEM PAGE ----------*/
+.portfolioItemPg footer{
+    @media only screen and (max-width:$navBreakpoint){
+        padding-bottom:0;
     }
 }
 
