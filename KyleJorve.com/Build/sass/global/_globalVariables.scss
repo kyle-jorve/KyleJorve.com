@@ -85,10 +85,10 @@ $lightBorderColor: map-get($coolGrays, coolGray3);
 /*===========================
     Wrappers
 ===========================*/
-$wideWidth:1660px;
+$wideWidth:1600px;
 $sectionWidth: 1400px;
 $smallSectionWidth: 1200px;
-$contentWidth: 950px;
+$contentWidth: 700px;
 $narrowWidth:600px;
 
 $sectionPadding: 4em 2em;
@@ -164,23 +164,27 @@ $alignments:(
     Shadows
 ===========================*/
 $shadowColor:rgba($black, .15);
-$mediumShadowColor:rgba($black, .15);
+$mediumShadowColor:rgba($black, .2);
 $darkShadowColor: rgba($black,0.25);
 
-$boxShadow: 0 3px 6px $shadowColor;
-$mediumShadow: 0 6px 12px $mediumShadowColor;
-$longShadow: 0 12px 30px 2px $darkShadowColor;
+$shadowOffset: 3px;
+$medShadowOffset: 6px;
+$longShadowOffset: 12px;
 
-$boxShadowLeft: -3px 0 3px $shadowColor;
-$boxShadowRight: 3px 0 3px $shadowColor;
-$boxShadowUp: 0 -3px 3px $shadowColor;
+$boxShadow: 0 $shadowOffset $shadowOffset * 2 $shadowColor;
+$mediumShadow: 0 $medShadowOffset $medShadowOffset * 2 $mediumShadowColor;
+$longShadow: 0 $longShadowOffset $longShadowOffset * 2 2px $darkShadowColor;
 
-$mediumShadowLeft: -6px 0 12px $mediumShadowColor;
-$mediumShadowRight: 6px 0 12px $mediumShadowColor;
-$mediumShadowUp: 0 -6px 12px $mediumShadowColor;
+$boxShadowLeft: -$shadowOffset 0 $shadowOffset * 2 $shadowColor;
+$boxShadowRight: $shadowOffset 0 $shadowOffset * 2 $shadowColor;
+$boxShadowUp: 0 -$shadowOffset $shadowOffset * 2 $shadowColor;
 
-$insetShadowRight:inset -3px 0 3px $shadowColor;
-$insetShadowLeft: 3px 0 3px $shadowColor;
+$mediumShadowLeft: -$medShadowOffset 0 $medShadowOffset * 2 $mediumShadowColor;
+$mediumShadowRight: $medShadowOffset 0 $medShadowOffset * 2 $mediumShadowColor;
+$mediumShadowUp: 0 -$medShadowOffset $medShadowOffset * 2 $mediumShadowColor;
+
+$insetShadowRight:inset -$shadowOffset 0 $shadowOffset $shadowColor;
+$insetShadowLeft: $shadowOffset 0 $shadowOffset $shadowColor;
 
 $longShadowLeft: -4px 0 8px $darkShadowColor;
 $longShadowRight: 4px 0 8px $darkShadowColor;

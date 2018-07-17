@@ -4,6 +4,11 @@
     left:0;
     z-index:101;
     @include transition;
+
+    & > *{
+        position:relative;
+        z-index:1;
+    }
 }
 
 .mobileNavItem{
@@ -11,8 +16,11 @@
     opacity:1;
     visibility:visible;
     background:none;
+    box-shadow:none;
     padding:.25em;
     @include transition(all, .5s);
+    @include transform-origin("center bottom");
+    @include transform("none");
 
     span{
         display:block;
@@ -48,6 +56,10 @@
     &.active{
         pointer-events:none;
         background:color($navIconBg);
+        box-shadow:0 0 1em 2px $mediumShadowColor;
+        z-index:2;
+        @include transform("scale(1.05)");
+
 
         svg,
         svg *{

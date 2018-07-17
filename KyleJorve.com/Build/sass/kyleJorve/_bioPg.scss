@@ -1,9 +1,18 @@
 ﻿.bioPg{
     /*==========----------==========*/
+    /*            GENERAL           */
+    /*==========----------==========*/
+    .bioSection,
+    .resumeSection{
+        padding-bottom:6em;
+    }
+
+    /*==========----------==========*/
     /*             HERO             */
     /*==========----------==========*/
     .heroWrp{
-        padding-bottom:0;
+        position:relative;
+        z-index:1;
 
         & > *{
             position:relative;
@@ -27,39 +36,15 @@
             bottom:-1em;
             left:-1em;
         }
-
-        .portraitWrp{
-            @include sbFlexWrap(row, nowrap, center, center);
-            position:absolute;
-            left:50%;
-            bottom:0;
-            @include transform("translate(-50%, 50%)");
-        }
-
-        .portrait{
-            border-radius:$borderRadius;
-            overflow:hidden;
-            box-shadow:$longShadow;
-            margin:0 auto;
-        
-            img{
-                max-height:$photoHeight;
-            }
-        }
     }
 
     /*==========----------==========*/
     /*          LOGO ICONS          */
     /*==========----------==========*/
     .logoIcon{
-        @include sbFlexWrap(column, nowrap, center, center);
         width:$logoIconDiam;
         height:$logoIconDiam;
-        padding:.75em;
         margin:0 auto;
-        border-radius:50%;
-        border:3px solid map-get($colorScheme, accentColor);
-        background:$white;
 
         svg{
             max-width:100%;
@@ -71,18 +56,80 @@
     /*          BIO SECTION         */
     /*==========----------==========*/
     .bioSection{
-        padding-top: calc(#{$photoHeight / 2} + 4em);
+        padding-top: 0;
         border-top:$borderThickness solid $lightBorderColor;
         border-bottom:$borderThickness solid $lightBorderColor;
+        position:relative;
+        z-index:2;
+
+        .portraitWrp{
+            @include sbFlexWrap(row, nowrap, center, center);
+            width:100%;
+            padding:0 2em 2em 2em;
+        }
+
+        .portrait{
+            border-radius:$borderRadius;
+            overflow:hidden;
+            box-shadow:$longShadow;
+            margin:-#{$photoHeight / 2} auto 0 auto;
+        
+            img{
+                max-height:$photoHeight;
+            }
+        }
 
         h1{
             @extend %underlineText;
+            margin-bottom:1em;
             text-align:center;
 
             &:before{
                 left:50%;
                 @include transform("translateX(-50%)");
             }
+        }
+
+        .logoIcon{
+            @extend %absolute-center-horizontal;
+            bottom:-#{$logoIconDiam / 2}; 
+        }
+    }
+
+    /*==========----------==========*/
+    /*        RESUME SECTION        */
+    /*==========----------==========*/
+    .resumeSection{
+        padding-top:6em;
+
+        h3{
+            color:map-get($colorScheme, accentColor);
+        }
+
+        .resumeSegment{
+            padding:1em 0;
+            margin:1em 0;
+
+            &:first-child{
+                margin-top:0;
+            }
+            &:last-child{
+                margin-bottom:2em;
+            }
+
+            h4{
+                @include sbFlexWrap(row, wrap, flex-start, flex-end);
+
+                span{
+                    font-weight:$headingThin;
+                    margin-right:1em;
+                }
+            }
+        }
+
+        hr{
+            margin:2em auto;
+            background:map-get($colorScheme, accentColor);
         }
     }
 }

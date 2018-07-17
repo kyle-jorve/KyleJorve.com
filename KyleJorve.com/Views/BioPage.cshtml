@@ -10,34 +10,42 @@
         <div class="photoBgWrp">
             <div class="photoBg" style="background-image:url('@(CurrentPage.heroPhoto.Url)');"></div>
         </div>
+    </section>
+
+    <section class="bioSection whiteBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))">
         <div class="portraitWrp">
             <div class="portrait">
                 <img src="@(CurrentPage.heroPhoto.Url)" />
             </div>
         </div>
-    </section>
-
-    <section class="bioSection whiteBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))">
         <div class="content-wrapper">
             @Umbraco.Field("bio")
         </div>
         <div class="logoIcon">
-            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-circle-icon.svg")))
         </div>
     </section>
 
     <section class="resumeSection lightContentBg" id="@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-").Replace("&eacute;", "e"))">
         <div class="content-wrapper">
+            <h2 class="mobileHeading">@Umbraco.Field("resumeHeading")</h2>
+
             @foreach (var item in resumeItems)
             {
                 <div class="resumeSegment">
-                    <h2>@Umbraco.Field(item, "resumeSectionHeading")</h2>
+                    <h3>@Umbraco.Field(item, "resumeSectionHeading")</h3>
                     @Umbraco.Field(item, "resumeSectionContent")
                 </div>
+
+                if (item != resumeItems.ToArray()[resumeItems.ToArray().Length - 1])
+                {
+                    <hr />
+                }
+
             }
         </div>
         <div class="logoIcon">
-            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-circle-icon.svg")))
         </div>
     </section>
 </div>
