@@ -256,6 +256,7 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="Build\scripts\sources\introScreen.js" />
     <Content Include="Build\scripts\sources\imgSlideshow.js" />
     <Content Include="Build\scripts\sources\socialShare.js" />
     <Content Include="Build\scripts\sources\lightbox.js" />
@@ -356,6 +357,7 @@
     <Content Include="Scripts\copyright.js" />
     <Content Include="Scripts\homePg.js" />
     <Content Include="Scripts\imgSlideshow.js" />
+    <Content Include="Scripts\introScreen.js" />
     <Content Include="Scripts\leftNav.js" />
     <Content Include="Scripts\lightbox.js" />
     <Content Include="Scripts\portfolioItem.js" />
@@ -438,6 +440,7 @@
     <Content Include="Build\sass\responsive\_mobilePortfolioItem.scss" />
     <Content Include="Build\sass\kyleJorve\_bioPg.scss" />
     <Content Include="Build\sass\responsive\_mobileBioPg.scss" />
+    <Content Include="Build\sass\kyleJorve\_introScreen.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />
@@ -464,6 +467,7 @@
     <Content Include="Views\Partials\portfolioGrid.cshtml" />
     <Content Include="Views\Partials\socialMediaIcons.cshtml" />
     <Content Include="Views\Partials\socialShareToast.cshtml" />
+    <Content Include="Views\Partials\introScreen.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

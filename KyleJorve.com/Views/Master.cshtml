@@ -46,9 +46,11 @@
 
     @Umbraco.Field("head")
 </head>
-<body class="preload allowHover @Umbraco.Field("bodyClass")">
+<body class="preload allowHover introBody @Umbraco.Field("bodyClass")">
 
     @{ Html.RenderPartial("loadScreen");}
+
+    @{ Html.RenderPartial("introScreen"); }
 
     @{ Html.RenderPartial("Header");}
 
@@ -62,7 +64,7 @@
 
     @if (isPortfolioItem)
     {
-        { Html.RenderPartial("socialShareToast");}
+        { Html.RenderPartial("socialShareToast"); }
     }
 
     @if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)

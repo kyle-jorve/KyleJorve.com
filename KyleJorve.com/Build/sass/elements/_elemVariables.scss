@@ -26,6 +26,13 @@ $secondaryBtnBorderColor: $linkColor;
 $secondaryBtnHoverBg: $linkColor;
 $secondaryBtnHoverColor: $lightTextColor;
 
+/*Light Border Button*/
+$ltBorderBtnBg: transparent;
+$ltBorderBtnColor:$lightTextColor;
+
+$ltBorderBtnHoverBg: $ltBorderBtnColor;
+$ltBorderBtnHoverColor: color($ltBorderBtnHoverBg);
+
 /*Close Button*/
 $closeBtnDiam: 60px;
 $closeBtnBg: $linkColor;

@@ -60,6 +60,12 @@ a.button {
         color: $secondaryBtnTextColor;
         border:$borderThickness solid $secondaryBtnBorderColor;
     }
+    /*---------- LIGHT BORDER BUTTON ----------*/
+    &.ltBorderBtn{
+        background:$ltBorderBtnBg;
+        border:$borderThickness solid $ltBorderBtnColor;
+        color:$ltBorderBtnColor;
+    }
 }
 
 /*---------- CLOSE BUTTON ----------*/
@@ -133,6 +139,11 @@ input {
     &.secondary {
         color: $secondaryBtnHoverColor;
         background: $secondaryBtnHoverBg;
+    }
+    /*Light Border Button*/
+    &.ltBorderBtn{
+        background:$ltBorderBtnHoverBg;
+        color:$ltBorderBtnHoverColor;
     }
 }
 @include hover(".closeBtn"){

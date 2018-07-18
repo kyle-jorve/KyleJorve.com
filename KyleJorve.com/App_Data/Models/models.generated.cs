@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "12d665e13bcbe9af")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "738077f2d56f5c31")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -229,6 +229,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Intro Background
+		///</summary>
+		[ImplementPropertyType("introBg")]
+		public IPublishedContent IntroBg
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("introBg"); }
+		}
+
+		///<summary>
 		/// Mobile Hero Background
 		///</summary>
 		[ImplementPropertyType("mobileHeroBg")]
@@ -306,50 +315,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public string SocMedType
 		{
 			get { return this.GetPropertyValue<string>("socMedType"); }
-		}
-	}
-
-	/// <summary>Intro Screen</summary>
-	[PublishedContentModel("introScreen")]
-	public partial class IntroScreen : Master
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "introScreen";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public IntroScreen(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<IntroScreen, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Background Image
-		///</summary>
-		[ImplementPropertyType("backgroundImg")]
-		public IPublishedContent BackgroundImg
-		{
-			get { return this.GetPropertyValue<IPublishedContent>("backgroundImg"); }
-		}
-
-		///<summary>
-		/// Heading
-		///</summary>
-		[ImplementPropertyType("heading")]
-		public IHtmlString Heading
-		{
-			get { return this.GetPropertyValue<IHtmlString>("heading"); }
 		}
 	}
 

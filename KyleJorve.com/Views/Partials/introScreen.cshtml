@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var homePgID = 1081;
+    var introBg = Umbraco.Content(homePgID).introBg.Url;
+}
+
+<section class="introWrp" id="introWrp" style="background-image:url('@(introBg)');">
+    <div class="introContent">
+        @Umbraco.Content(homePgID).heading
+        <div class="buttonWrp align-center">
+            <div class="button ltBorderBtn" id="closeIntro">Enter</div>
+        </div>
+    </div>
+</section>
+
+<script src="/Scripts/introScreen.js"></script>
