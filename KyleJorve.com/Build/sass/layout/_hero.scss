@@ -38,6 +38,7 @@
 /*==========----------==========*/
 .homePg .heroWrp{
     @include sbFlexWrap(column, nowrap, flex-end, stretch);
+    padding-bottom:5em;
     background-size:cover;
     background-position:center center;
     background-repeat: no-repeat;
@@ -72,6 +73,71 @@
         h1{
             margin:0;
             font-size:2.4em;
+        }
+    }
+
+    .scrollGraphicWrp{
+        opacity:1;
+        visibility:visible;
+        display:block;
+        width:100px;
+        height:56px;
+        @extend %absolute-center-horizontal;
+        bottom:-1px;
+        z-index:4;
+        @include transition;
+
+        svg{
+            fill:map-get($bgColors, lightContentBg);
+        }
+        
+        .scrollIconWrp{
+            width:20px;
+            height:30px;
+            border-radius:10px;
+            border:2px solid map-get($colorScheme, accentColor);
+            @extend %absolute-center;
+        }
+
+        .scrollTrack{
+            height: 6px;
+            top:4px;
+            @extend %absolute-center-horizontal;
+        }
+
+        .scrollBall{
+            width:4px;
+            height:4px;
+            border-radius:50%;
+            background:map-get($colorScheme, accentColor);
+            top:0;
+            @extend %absolute-center-horizontal;
+            @include animation(slideDown, 1s, ease, 0s, normal, infinite){
+                0%{
+                    top:0;
+                    opacity:1;
+                }
+                70%{
+                    opacity:1;
+                }
+                100%{
+                    opacity:0;
+                    top:6px;
+                }
+            }
+        }
+    }
+}
+
+/*---------- PORTFOLIO GRID IN VIEW ----------*/
+
+.pView{
+    &.homePg .heroWrp .scrollGraphicWrp{
+        opacity:0;
+        visibility:hidden;
+
+        .scrollBall{
+            animation:none !important;
         }
     }
 }

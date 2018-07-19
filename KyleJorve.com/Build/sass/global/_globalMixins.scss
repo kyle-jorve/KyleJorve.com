@@ -333,22 +333,14 @@
 }
 
 @mixin animation($name, $duration, $timing-function:ease, $delay:0s, $direction:normal, $iteration-count:1, $fill-mode:none, $play-state:running) {
-    -webkit-animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
-       -moz-animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
-         -o-animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
-            animation: $name $duration $timing-function $delay $direction $iteration-count $fill-mode $play-state;
-
-    @-webkit-keyframes #{$name} {
-        @content;
-    }
-
-    @-moz-keyframes #{$name} {
-        @content;
-    }
-
-    @-o-keyframes #{$name} {
-        @content;
-    }
+    animation-name: $name;
+    animation-duration:$duration;
+    animation-timing-function:$timing-function;
+    animation-delay:$delay;
+    animation-direction:$direction;
+    animation-iteration-count:$iteration-count;
+    animation-fill-mode:$fill-mode;
+    animation-play-state:$play-state;
 
     @keyframes #{$name} {
         @content;

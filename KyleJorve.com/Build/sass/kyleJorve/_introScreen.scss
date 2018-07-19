@@ -1,10 +1,6 @@
 ﻿.introWrp{
     overflow:hidden;
     @include sbFlexWrap(column, nowrap, flex-end, center);
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center bottom;
-    background-attachment:fixed;
     padding:1em;
     text-align:center;
     position:fixed;
@@ -13,6 +9,7 @@
     bottom:0;
     left:0;
     z-index:300;
+    @include clip-path("inset(0 0 0 0)");
     @include transition(all, 1s, ease-in-out);
 
     &:before{
@@ -25,11 +22,30 @@
         left:0;
         right:0;
         bottom:0;
+        z-index:2;
+    }
+
+    .introBg,
+    .mobileIntroBg{
+        background-repeat:no-repeat;
+        background-size:cover;
+        @extend %absolute-cover;
+        z-index:1;
+    }
+
+    .introBg{
+        background-position:center bottom;
+        background-attachment:fixed;
+    }
+
+    .mobileIntroBg{
+        display:none;
+        background-position:center center;
     }
 
     .introContent{
         position:relative;
-        z-index:2;
+        z-index:3;
 
         h1{
             margin:0;
@@ -46,6 +62,20 @@
 
     /*---------- HIDDEN INTRO ----------*/
     &.inactive{
-        top:100%;
+        @include clip-path("inset(100% 0 0 0)");
+    }
+
+    /*==========----------==========*/
+    /*         MEDIA QUERIES        */
+    /*==========----------==========*/
+
+    /*---------- 800PX WIDTH ----------*/
+    @media only screen and (max-width:800px){
+        .introBg{
+            display:none;
+        }
+        .mobileIntroBg{
+            display:block;
+        }
     }
 }

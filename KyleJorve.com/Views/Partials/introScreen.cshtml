@@ -3,15 +3,18 @@
 @{
     var homePgID = 1081;
     var introBg = Umbraco.Content(homePgID).introBg.Url;
+    var mobileIntroBg = Umbraco.Content(homePgID).mobileIntroBg.Url;
 }
 
-<section class="introWrp" id="introWrp" style="background-image:url('@(introBg)');">
+<section class="introWrp" id="introWrp">
     <div class="introContent">
         @Umbraco.Content(homePgID).heading
         <div class="buttonWrp align-center">
             <div class="button ltBorderBtn" id="closeIntro">Enter</div>
         </div>
     </div>
+    <div class="introBg" style="background-image:url('@(introBg)');"></div>
+    <div class="mobileIntroBg" style="background-image:url('@(mobileIntroBg)');"></div>
 </section>
 
 <script src="/Scripts/introScreen.js"></script>

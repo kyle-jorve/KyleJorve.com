@@ -4,19 +4,31 @@
 	Layout = "Master.cshtml";
     var bioLink = Umbraco.Content(1083).Url;
     var portfolioLink = Umbraco.Content(1082).Url;
+    var scrollHref = "portfolio-section";
 }
 
 <div class="leftBuffer">
-    <section class="heroWrp" >
+    <section class="heroWrp">
         <div class="heroContent">
             @Umbraco.Field("heading")
         </div>
 
         <div class="heroBg parallaxBg" style="background-image:url('@(CurrentPage.heroBg.Url)');"></div>
         <div class="mobileHeroBg" style="background-image:url('@(CurrentPage.mobileHeroBg.Url)');"></div>
+
+        <a class="scrollGraphicWrp" div="scrollIcon" href="@("#" + scrollHref)">
+            <div class="scrollIconWrp">
+                <div class="mouseIcon">
+                    <div class="scrollTrack">
+                        <div class="scrollBall"></div>
+                    </div>
+                </div>
+            </div>
+            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/scroll-icon-bg.svg")))
+        </a>
     </section>
 
-    <section class="portfolioSection lightContentBg">
+    <section class="portfolioSection lightContentBg" id="@scrollHref">
         <h2 class="mobileHeading">@Umbraco.Field("portfolioHeading")</h2>
         @{ Html.RenderPartial("portfolioGrid");}
         <div class="buttonWrp">

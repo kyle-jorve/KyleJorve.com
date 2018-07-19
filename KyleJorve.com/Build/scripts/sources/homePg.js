@@ -1,6 +1,14 @@
-﻿$(document).ready(function () {
+﻿var nodes = {
+    portfolioGrid: $('#recent-work'),
+    scrollIcon: $('#scrollIcon')
+}
+
+$(document).ready(function () {
+    scrollDisapparate();
+
     $(window).scroll(function () {
         toggleLeftNav();
+        scrollDisapparate();
     });
 });
 
@@ -15,6 +23,10 @@ $(window).on('load resize orientationchange',  function() {
     toggleLeftNav();
 });
 
+$(window).on('resize orientationchange', function () {
+    scrollDisapparate();
+})
+
 //Detect when top of window meets bottom of hero
 //toggle "revealLeftNav" class
 function toggleLeftNav() {
@@ -26,5 +38,14 @@ function toggleLeftNav() {
     }
     else if ($(window).scrollTop() < heroBottom && $('body').hasClass('revealLeftNav') && $(window).outerWidth() > breakpoint) {
         $('body').removeClass('revealLeftNav');
+    }
+}
+
+//Disapparate scrolly icon when portfolio grid is reached
+function scrollDisapparate() {
+    var pOffset = nodes.portfolioGrid.offset().top + 200;
+
+    if ($(window).scrollTop() + $(window).outerHeight() > pOffset) {
+        $('body').addClass('pView');
     }
 }

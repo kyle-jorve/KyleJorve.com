@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "738077f2d56f5c31")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "c754287ade4ee1af")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -260,6 +260,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IPublishedContent MobileHeroBg
 		{
 			get { return this.GetPropertyValue<IPublishedContent>("mobileHeroBg"); }
+		}
+
+		///<summary>
+		/// Mobile Intro Background
+		///</summary>
+		[ImplementPropertyType("mobileIntroBg")]
+		public IPublishedContent MobileIntroBg
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("mobileIntroBg"); }
 		}
 
 		///<summary>

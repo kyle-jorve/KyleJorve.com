@@ -299,6 +299,7 @@
     <Content Include="images\logo-solid.svg" />
     <Content Include="images\logo-warm.svg" />
     <Content Include="images\portfolio-icon.svg" />
+    <Content Include="images\scroll-icon-bg.svg" />
     <Content Include="Media\1001\mobile-home-hero.jpg" />
     <Content Include="Media\1002\home-hero.jpg" />
     <Content Include="Media\1003\intro-bg.jpg" />
@@ -353,6 +354,19 @@
     <Content Include="Media\1052\rose-label.jpg" />
     <Content Include="Media\1053\bio-hero.jpg" />
     <Content Include="Media\1054\bio-bg.jpg" />
+    <Content Include="Media\1055\seamless-ux.jpg" />
+    <Content Include="Media\1056\checkout-process.jpg" />
+    <Content Include="Media\1057\design-phase.jpg" />
+    <Content Include="Media\1058\features-and-benefits.jpg" />
+    <Content Include="Media\1059\how-it-works.jpg" />
+    <Content Include="Media\1060\pos-integration.jpg" />
+    <Content Include="Media\1061\production-support.jpg" />
+    <Content Include="Media\1062\cv-icon.svg" />
+    <Content Include="Media\1063\portfolio-icon.svg" />
+    <Content Include="Media\1064\bio-square-photo.jpg" />
+    <Content Include="Media\1065\mobile-intro-bg.jpg" />
+    <Content Include="Media\1065\mobile-intro-bg_big-thumb.jpg" />
+    <Content Include="Media\1065\mobile-intro-bg_thumb.jpg" />
     <Content Include="Scripts\bundle.min.js" />
     <Content Include="Scripts\copyright.js" />
     <Content Include="Scripts\homePg.js" />
