@@ -1,14 +1,20 @@
-﻿var nodes = {
+﻿var portScrollBuffer = 200,
+    portScrollBreakpoint = 600;
+var nodes = {
     portfolioGrid: $('#recent-work'),
     scrollIcon: $('#scrollIcon')
-}
+};
 
 $(document).ready(function () {
-    scrollDisapparate();
+    if (!$('body').hasClass('touchDevice')) {
+        scrollDisapparate();
+    }
 
     $(window).scroll(function () {
         toggleLeftNav();
-        scrollDisapparate();
+        if (!$('body').hasClass('touchDevice')) {
+            scrollDisapparate();
+        }
     });
 });
 
@@ -16,7 +22,7 @@ $(document).ready(function () {
 parallaxBg('.heroWrp', '.heroBg', -.3, 800, 'center');
 
 //Animated content
-animateContent('#recent-work', '.animatedEl', 100, 600, "top", 200);
+animateContent('#recent-work', '.animatedEl', 100, portScrollBreakpoint, "top", portScrollBuffer);
 
 //Left nav apparate
 $(window).on('load resize orientationchange',  function() {
@@ -24,14 +30,16 @@ $(window).on('load resize orientationchange',  function() {
 });
 
 $(window).on('resize orientationchange', function () {
-    scrollDisapparate();
-})
+    if ($(window).outerWidth() > portScrollBreakpoint && !$('body').hasClass('touchDevice')) {
+        scrollDisapparate();
+    }
+});
 
 //Detect when top of window meets bottom of hero
 //toggle "revealLeftNav" class
 function toggleLeftNav() {
     var heroBottom = ($('.heroWrp').offset().top + $('.heroWrp').outerHeight()) * .5,
-        breakpoint = 600;
+        breakpoint = 500;
 
     if ($(window).scrollTop() >= heroBottom && !$('body').hasClass('revealLeftNav') && $(window).outerWidth() > breakpoint) {
         $('body').addClass('revealLeftNav');
@@ -43,7 +51,7 @@ function toggleLeftNav() {
 
 //Disapparate scrolly icon when portfolio grid is reached
 function scrollDisapparate() {
-    var pOffset = nodes.portfolioGrid.offset().top + 200;
+    var pOffset = nodes.portfolioGrid.offset().top + portScrollBuffer;
 
     if ($(window).scrollTop() + $(window).outerHeight() > pOffset) {
         $('body').addClass('pView');

@@ -56,7 +56,7 @@
     &.active{
         pointer-events:none;
         background:color($navIconBg);
-        box-shadow:0 0 1em 2px $mediumShadowColor;
+        box-shadow:0 4px 1em 2px $mediumShadowColor;
         z-index:2;
         @include transform("scale(1.05)");
 

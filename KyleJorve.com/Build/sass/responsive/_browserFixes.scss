@@ -1,0 +1,99 @@
+﻿/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                       EDGE                       //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@supports (-ms-ime-align: auto) {
+    
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                INTERNET EXPLORER                 //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active){
+    .mobileHeading{
+        display:block !important;
+    }
+
+    .leftBuffer,
+    .homePg.revealLeftNav .leftBuffer{
+        margin-left:0 !important;
+    }
+
+    .leftNavWrp{
+        display:none !important;
+    }
+
+    .navBtn{
+        border-radius: 0 0 $borderRadius 0 !important;
+    }
+
+   .heroWrp{
+        height:$heroHeight;
+    }
+   .shortHero{
+        height:$shortHeroHeight;
+    }
+
+   .homePg .portfolioSection .portfolioGrid{
+       margin-top:0;
+   }
+
+   .portfolioItem{
+       min-width:calc(33.33% - 1em);
+   }
+
+   .homePg .bioSection .mobileHeading{
+       text-align:left;
+
+       &:before{
+           display:none;
+       }
+   }
+}
+
+/*---------- 900PX WIDTH ----------*/
+@media all and (-ms-high-contrast: none) and (max-width:900px),
+(-ms-high-contrast: active)  and (max-width:900px){
+    .homePg .bioSection .mobileHeading{
+        text-align:center;
+    }
+}
+
+/*---------- 800PX WIDTH ----------*/
+@media all and (-ms-high-contrast: none) and (max-width:800px),
+(-ms-high-contrast: active)  and (max-width:800px){
+    .portfolioItem{
+        min-width:calc(50% - 1em);
+    }
+}
+
+/*---------- NAV BREAKPOINT ----------*/
+@media all and (-ms-high-contrast: none) and (max-width:$navBreakpoint),
+(-ms-high-contrast: active)  and (max-width:$navBreakpoint){
+    .navBtn{
+        border-radius: 0 !important;
+    }
+}
+
+/*---------- 500PX WIDTH ----------*/
+@media all and (-ms-high-contrast: none) and (max-width:500px),
+(-ms-high-contrast: active)  and (max-width:500px){
+    .shortHero{
+        height:18em;
+    }
+}
+
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                     FIREFOX                      //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+@-moz-document url-prefix() {
+    
+}

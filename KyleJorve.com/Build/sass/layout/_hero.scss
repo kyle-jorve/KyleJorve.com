@@ -141,3 +141,14 @@
         }
     }
 }
+
+/*---------- TOUCH DEVICE ----------*/
+.touchDevice{
+    .scrollGraphicWrp{
+        display:none !important;
+
+        .scrollBall{
+            animation:none !important;
+        }
+    }
+}

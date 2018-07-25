@@ -455,6 +455,7 @@
     <Content Include="Build\sass\kyleJorve\_bioPg.scss" />
     <Content Include="Build\sass\responsive\_mobileBioPg.scss" />
     <Content Include="Build\sass\kyleJorve\_introScreen.scss" />
+    <Content Include="Build\sass\responsive\_browserFixes.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />

@@ -209,6 +209,19 @@ footer{
     }
 
     /*==========----------==========*/
+    /*          600PX WIDTH         */
+    /*==========----------==========*/
+    @media only screen and (max-width:600px){
+        .scrollGraphicWrp{
+            display:none;
+
+            .scrollBall{
+                animation:none !important;
+            }
+        }
+    }
+
+    /*==========----------==========*/
     /*        NAV BREAKPOINT        */
     /*==========----------==========*/
     @media only screen and (max-width:$navBreakpoint){
