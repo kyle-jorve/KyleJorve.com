@@ -22,9 +22,6 @@
             padding-top:6em;
             padding-bottom:0;
         }
-        .descSection .buttonWrp{
-            @include sbFlexWrap(row, nowrap, flex-end, center);
-        }
     }
 
     /*==========----------==========*/
@@ -47,7 +44,7 @@
         right:1em;
     }
     .sliderDots{
-        padding-bottom:4em;
+        padding:1em 0 4em 0;
     }
 }
 

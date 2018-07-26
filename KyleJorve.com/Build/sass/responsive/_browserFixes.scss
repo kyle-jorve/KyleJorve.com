@@ -4,7 +4,16 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @supports (-ms-ime-align: auto) {
-    
+    .introWrp{
+        @include clip-path("none");
+        opacity:1;
+        visibility:visible;
+
+        &.inactive{
+            opacity:0;
+            visibility:hidden;
+        }
+    }
 }
 
 /*//////////////////////////////////////////////////////*/
@@ -32,6 +41,17 @@
         border-radius: 0 0 $borderRadius 0 !important;
     }
 
+    .introWrp{
+        @include clip-path("none");
+        opacity:1;
+        visibility:visible;
+
+        &.inactive{
+            opacity:0;
+            visibility:hidden;
+        }
+    }
+
    .heroWrp{
         height:$heroHeight;
     }
@@ -54,6 +74,46 @@
            display:none;
        }
    }
+
+   .portfolioItemPg header .closeBtn{
+       border-radius:0 0 $borderRadius 0;
+   }
+
+   .slick-slide > div{
+       display:block;
+   }
+
+   .imgSlide img{
+       margin:0 auto;
+   }
+
+    .bioPg{
+        .heroWrp{
+            .photoBg{
+                display:none;
+            }
+            .photoBgWrp{
+                background:#eaedf1;
+            }
+        }
+
+        .bioSection{
+            .portrait{
+                overflow:visible;
+                box-shadow:none;
+
+                img{
+                    margin:0 auto;
+                    border-radius:$borderRadius;
+                    box-shadow:$longShadow;
+                }
+            }
+
+            .portraitWrp{
+                display:block;
+            }
+        }
+    }
 }
 
 /*---------- 900PX WIDTH ----------*/

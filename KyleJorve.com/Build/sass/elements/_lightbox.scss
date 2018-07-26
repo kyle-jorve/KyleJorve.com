@@ -62,7 +62,7 @@
 /*      LIGHTBOX SLIDESHOW      */
 /*==========----------==========*/
 .lightboxSlider{
-    @include sbFlexWrap(column, nowrap, center, stretch);
+    @include sbFlexWrap(column, nowrap, center, center);
     width:100%;
     height:100%;
 

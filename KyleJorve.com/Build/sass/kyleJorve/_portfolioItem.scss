@@ -71,6 +71,7 @@
     img{
         border-radius:$borderRadius;
         max-height:1000px;
+        /*margin:0 auto;*/
         position:relative;
         z-index:1;
     }
@@ -106,16 +107,21 @@
 
 /*---------- NAVIGATION ----------*/
 .sliderNav{
+    pointer-events:none;
     @include sbFlexWrap(row, nowrap, space-between, center);
     @extend %absolute-center-vertical;
     left:1em;
     right:-2.5em;
     z-index:3;
+
+    .arrowBtn{
+        pointer-events:auto;
+    }
 }
 
 .sliderDots{
     width:100%;
-    padding:1em 0;
+    padding:1em 0 1em 3.5em;
     position:relative;
     z-index:3;
 

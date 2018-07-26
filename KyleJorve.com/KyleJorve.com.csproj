@@ -289,7 +289,6 @@
     <Content Include="config\Lang\ru-RU.user.xml" />
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
-    <Content Include="css\umbracostyles.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\cart-icon.svg" />
@@ -347,6 +346,8 @@
     <Content Include="Media\1045\alans-product-flat.jpg" />
     <Content Include="Media\1046\captive-content-screen-mockup.jpg" />
     <Content Include="Media\1047\captive-content-flat.jpg" />
+    <Content Include="Media\1047\captive-content-flat_big-thumb.jpg" />
+    <Content Include="Media\1047\captive-content-flat_thumb.jpg" />
     <Content Include="Media\1048\white-label.jpg" />
     <Content Include="Media\1049\luna-de-sangre-label.jpg" />
     <Content Include="Media\1050\red-bottle.jpg" />
@@ -355,6 +356,8 @@
     <Content Include="Media\1053\bio-hero.jpg" />
     <Content Include="Media\1054\bio-bg.jpg" />
     <Content Include="Media\1055\seamless-ux.jpg" />
+    <Content Include="Media\1055\seamless-ux_big-thumb.jpg" />
+    <Content Include="Media\1055\seamless-ux_thumb.jpg" />
     <Content Include="Media\1056\checkout-process.jpg" />
     <Content Include="Media\1057\design-phase.jpg" />
     <Content Include="Media\1058\features-and-benefits.jpg" />
@@ -367,6 +370,14 @@
     <Content Include="Media\1065\mobile-intro-bg.jpg" />
     <Content Include="Media\1065\mobile-intro-bg_big-thumb.jpg" />
     <Content Include="Media\1065\mobile-intro-bg_thumb.jpg" />
+    <Content Include="Media\1066\captive-content-flat.jpg" />
+    <Content Include="Media\1067\alans-product-flat.jpg" />
+    <Content Include="Media\1068\alans-brand-flat.jpg" />
+    <Content Include="Media\1069\alans-home-flat.jpg" />
+    <Content Include="Media\1070\theater-toolkit-landing-flat.jpg" />
+    <Content Include="Media\1071\theater-toolkit-contact-flat.jpg" />
+    <Content Include="Media\1072\theater-toolkit-content-flat.jpg" />
+    <Content Include="Media\1073\theater-toolkit-home-flat.jpg" />
     <Content Include="Scripts\bundle.min.js" />
     <Content Include="Scripts\copyright.js" />
     <Content Include="Scripts\homePg.js" />
@@ -481,7 +492,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Views\Partials\portfolioGrid.cshtml" />
     <Content Include="Views\Partials\socialMediaIcons.cshtml" />
-    <Content Include="Views\Partials\socialShareToast.cshtml" />
     <Content Include="Views\Partials\introScreen.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

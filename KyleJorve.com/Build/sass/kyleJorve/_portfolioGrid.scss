@@ -108,8 +108,7 @@
 }
 /*---------- PORTFOLIO PAGE -----------*/
 .itemShowcase .iconCol{
-    @include sbFlexWrap(column, nowrap, space-between, center);
-    @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), horizontal);
+    @include sbFlexWrap(column, nowrap, flex-end, flex-end);
     padding:1em 1em 1em 3em;
     border-radius:0 $borderRadius $borderRadius 0;
     position:absolute;
@@ -117,6 +116,10 @@
     top:0;
     bottom:0;
     @include transform("translateX(100%)");
+
+    i{
+        text-shadow:0 0 .5em rgba(0,0,0,.65);
+    }
 }
 
 
@@ -158,8 +161,9 @@
 /*==========----------==========*/
 
 .touchDevice{
-    .portfolioItem .iconRow,
     .itemShowcase .iconCol{
+        opacity:1;
+        visibility:visible;
         @include transform("none");
     }
 }

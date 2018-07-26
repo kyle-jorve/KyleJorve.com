@@ -17,9 +17,6 @@
                         <div class="imgSlide">
                             <img id="@("img-" + i)" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
                             <div class="iconCol">
-                                <div class="shareBtn">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
                                 <div class="full-screen openLightbox">
                                     <i class="fas fa-expand"></i>
                                 </div>
@@ -49,8 +46,7 @@
             <div class="content-wrapper">
                 <h1>@Umbraco.Field("portfolioItemTitle")</h1>
                 @Umbraco.Field("portfolioItemDesc")
-                <div class="buttonWrp @(string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()) ? "flex-justify-right" : null)">
-                    <div class="button secondary shareBtn"><span>Share</span></div>
+                <div class="buttonWrp align-left">
                     @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
                     {
                         <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime" target="_blank" rel="noreferrer noopener"><span>Purchase</span></a>

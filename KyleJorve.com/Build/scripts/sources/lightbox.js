@@ -24,7 +24,8 @@
         //open lightbox
         nodes.buttons.open.forEach(function (cur) {
             cur.addEventListener('click', function () {
-                var thisImgSrc = window.getComputedStyle(findAncestor(cur, 'portfolioItem')).getPropertyValue('background-image').split('"')[1];
+                //var thisImgSrc = window.getComputedStyle(findAncestor(cur, 'portfolioItem')).getPropertyValue('background-image').split('"')[1];
+                var thisImgSrc = cur.getAttribute('data-src');
 
                 nodes.img.src = thisImgSrc;
                 nodes.bg.style.backgroundImage = "url('" + thisImgSrc + "')";
