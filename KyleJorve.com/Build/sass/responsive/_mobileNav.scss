@@ -201,7 +201,7 @@ only screen and (max-height:$navBreakpoint){
         margin-left:0 !important;
     }
     .navBtn{
-        border-radius:0 0 $borderRadius 0 !important;
+        border-radius:0 0 $mobileBorderRadius 0 !important;
     }
 }
 
@@ -229,7 +229,7 @@ only screen and (max-height:$navBreakpoint){
     .showMobileNav,
     .showMobileNav.scrolled{
         .navBtn{
-            border-radius:$borderRadius 0 0 0 !important;
+            border-radius:$mobileBorderRadius 0 0 0 !important;
         }
 
         .mobileNavContainer{

@@ -71,6 +71,9 @@ header {
 svg.logo-solid{
     fill:$solidLogoColor;
 }
+svg.logo-solid-red{
+    fill:map-get($colorScheme, accentColor);
+}
 
 /*==========----------==========*/
 /*   PORTFOLIO PAGE, BIO PAGE   */

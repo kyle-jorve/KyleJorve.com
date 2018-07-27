@@ -3,6 +3,16 @@
 /*//                      HEADER                      //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
+/*==========----------==========*/
+/*         600PX WIDTH          */
+/*==========----------==========*/
+@media only screen and (max-width:600px){
+    .logo{
+        width:$logoMobileWidth;
+        height:$logoMobileHeight;
+    }
+}
+
 
 /*==========----------==========*/
 /*        NAV BREAKPOINT        */
@@ -12,7 +22,7 @@
     @media only screen and (max-width:$navBreakpoint),
     only screen and (max-height:$navBreakpoint){
         .closeBtn{
-            border-radius:0 0 $borderRadius 0;
+            border-radius:0 0 $mobileBorderRadius 0;
         }
     }
 
@@ -149,6 +159,15 @@ footer{
     .contentBox{
         max-width:$contentBoxWidthMobile;
         padding:$contentBoxPaddingMobile;
+    }
+}
+
+/*==========----------==========*/
+/*         NAV BREAKPOINT       */
+/*==========----------==========*/
+@media only screen and (max-width:$navBreakpoint){
+    .contentBox{
+        border-radius:$mobileBorderRadius;
     }
 }
 

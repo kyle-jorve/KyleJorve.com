@@ -78,6 +78,8 @@ $thickBorderThickness: 1em;
 
 $borderRadius:12px;
 
+$mobileBorderRadius: 8px;
+
 /*Border Colors*/
 $darkBorderColor: map-get($colorScheme, accentColor);
 $lightBorderColor: map-get($coolGrays, coolGray3);

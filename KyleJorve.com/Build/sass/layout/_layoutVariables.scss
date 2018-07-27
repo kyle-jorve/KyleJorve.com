@@ -72,7 +72,8 @@ $activeNavBtnColor: $lightTextColor;
 /*===========================
     Responsive
 ===========================*/
-$logoMobileWidth: 88px;
+$logoMobileWidth: 68px;
+$logoMobileHeight: $logoMobileWidth * 0.6115;
 
 $socialIconMobileDiam: 30px; 
 $socialIconMobileFontSize: 22px;

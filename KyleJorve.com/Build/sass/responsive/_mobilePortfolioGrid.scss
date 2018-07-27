@@ -9,11 +9,8 @@
     /*        NAV BREAKPOINT        */
     /*==========----------==========*/
     @media only screen and (max-width:$navBreakpoint){
-        padding:1em 0 !important;
-
         & + .portfolioCatWrp{
-            margin-top:2em;
-            border-top:none;
+            padding-top:3em;
         }
     }
 }
@@ -47,6 +44,19 @@
         .portfolioItem.wide,
         .portfolioItem.tall{
             height:200px;
+        }
+    }
+
+    /*==========----------==========*/
+    /*        NAV BREAKPOINT        */
+    /*==========----------==========*/
+    @media only screen and (max-width:$navBreakpoint){
+        .portfolioItem{
+            border-radius:$mobileBorderRadius;
+        }
+
+        .itemShowcase .iconCol{
+            border-radius:0 $mobileBorderRadius $mobileBorderRadius 0;
         }
     }
 

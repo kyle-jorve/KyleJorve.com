@@ -138,6 +138,21 @@
     .navBtn{
         border-radius: 0 !important;
     }
+
+    .showMobileNav,
+    .showMobileNav.scrolled{
+        .navBtn{
+            border-radius:$mobileBorderRadius 0 0 0 !important;
+        }
+    }
+
+    .portfolioItemPg header .closeBtn{
+        border-radius:0 0 $mobileBorderRadius 0;
+    }
+
+    .bioSection img{
+        border-radius:$mobileBorderRadius;
+    }
 }
 
 /*---------- 500PX WIDTH ----------*/

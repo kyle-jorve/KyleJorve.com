@@ -38,12 +38,17 @@
 
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
-/*//                   400PX WIDTH                    //*/
+/*//                  NAV BREAKPOINT                  //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:400px){
+@media only screen and (max-width:$navBreakpoint){
     .closeBtn{
         width:$mobileCloseBtnDiam;
         height:$mobileCloseBtnDiam;
+        border-radius: 0 0 $mobileBorderRadius 0;
+    }
+
+    .lightbox img{
+        border-radius:$mobileBorderRadius;
     }
 }

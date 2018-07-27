@@ -161,26 +161,18 @@ iframe{
     background-attachment:fixed;
     background-position:center center;
 }
-@supports (-ms-ime-align: auto) {
-    //Edge fixes
-    .parallaxBg.heroSlide {
-        background-position: center center !important;
-        background-attachment: scroll !important;
-    }
-}
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    //IE fixes
-    .parallaxBg.heroSlide {
-        background-position: center center !important;
-        background-attachment: scroll !important;
-    }
-}
 .parallaxBgContainer{
     @extend %absolute-cover;
     overflow:hidden;
 }
 .hasParallaxBg{
     overflow:hidden;
+}
+
+/*---------- TOUCH DEVICES ----------*/
+.touchDevice .parallaxBg{
+    background-attachment:scroll !important;
+    background-position:center center !important;
 }
 
 /*===========================

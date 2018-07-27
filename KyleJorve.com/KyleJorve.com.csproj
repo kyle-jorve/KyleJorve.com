@@ -258,7 +258,6 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
     <Content Include="Build\scripts\sources\introScreen.js" />
     <Content Include="Build\scripts\sources\imgSlideshow.js" />
-    <Content Include="Build\scripts\sources\socialShare.js" />
     <Content Include="Build\scripts\sources\lightbox.js" />
     <Content Include="Build\scripts\sources\portfolioItem.js" />
     <Content Include="Build\scripts\sources\leftNav.js" />
@@ -295,6 +294,8 @@
     <Content Include="images\cv-icon.svg" />
     <Content Include="images\logo-circle-icon.svg" />
     <Content Include="images\logo-cool.svg" />
+    <Content Include="images\logo-solid-red.svg" />
+    <Content Include="images\logo-solid-gradient.svg" />
     <Content Include="images\logo-solid.svg" />
     <Content Include="images\logo-warm.svg" />
     <Content Include="images\portfolio-icon.svg" />
@@ -387,7 +388,6 @@
     <Content Include="Scripts\lightbox.js" />
     <Content Include="Scripts\portfolioItem.js" />
     <Content Include="Scripts\slick.js" />
-    <Content Include="Scripts\socialShare.js" />
     <Content Include="Styles\bundle.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
