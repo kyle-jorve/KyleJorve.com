@@ -120,9 +120,6 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:600px){
-    .socialWrp{
-        padding:1em;
-    }
     .topNavWrp{
         @include sbFlexWrap(column, nowrap, center, stretch);
         padding:1em;
@@ -165,15 +162,6 @@
                 }
             }
         }
-        .socialWrp{
-            .socialIcon{
-                width:$socialIconMobileDiam;
-                height:$socialIconMobileDiam;
-                &:before{
-                    font-size:$socialIconMobileFontSize;
-                }
-            }
-        }
     }
 
     /*---------- HOVER EFFECTS ----------*/
@@ -182,6 +170,29 @@
         &:before{
             bottom:auto;
             right:0;
+        }
+    }
+
+    /*==========----------==========*/
+    /*         SOCIAL MEDIA         */
+    /*==========----------==========*/
+    .topNavWrp .iconContainer{
+        position:absolute;
+        bottom:0;
+        left:0;
+        right:0;
+
+        a{
+            width:$socialIconDiam * .8;
+            height:$socialIconDiam * .8;
+
+            i{
+                font-size:1em;
+            }
+            svg{
+                max-width:1em;
+                max-height:1em;
+            }
         }
     }
 }
@@ -206,6 +217,20 @@ only screen and (max-height:$navBreakpoint){
 }
 
 @media only screen and (max-width:$navBreakpoint){
+    .topNavWrp{
+        padding:$logoMobileHeight + 32px 1em $navBtnDiam + 16px 1em;
+        max-height:100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        nav{
+            max-height:none;
+            overflow-x:visible;
+            overflow-y:visible;
+            padding:2em 0;
+        }
+    }
+
     .navBtn{
         border-radius:0 !important;
         min-width:$navBtnDiam;
@@ -242,6 +267,58 @@ only screen and (max-height:$navBreakpoint){
             visibility:hidden;
         }
     }
+
+    /*==========----------==========*/
+    /*         SOCIAL MEDIA         */
+    /*==========----------==========*/
+    .topNavWrp .iconContainer{
+        display:block;
+        padding:2em 0 $navBtnDiam + 16px 0;
+        position:relative;
+
+        .iconsWrp + .iconsWrp{
+            margin-top:1em;
+        }
+
+        ul{
+            @include sbFlexWrap(row, nowrap, flex-end, center);
+        }
+
+        li{
+            margin:0 .5em;
+
+            &:first-child{
+                margin-left:0;
+            }
+
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }
+
+    /*.topNavWrp .iconContainer{
+        padding:1em $navBtnDiam 1em 1em;
+        display:block;
+
+        .iconsWrp + .iconsWrp{
+            margin-top:1em;
+        }
+
+        ul{
+            @include sbFlexWrap(row, nowrap, flex-start, center);
+        }
+
+        li{
+            &:first-child{
+                margin-left:0;
+            }
+
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }*/
 }
 
 /*//////////////////////////////////////////////////////*/

@@ -4,11 +4,9 @@
 
 /*---------- TOP LEVEL ----------*/
 .topNavWrp {
+    @include sbFlexWrap(column, nowrap, space-between, stretch);
     opacity: 0;
     visibility: hidden;
-    max-height:100%;
-    overflow-x: hidden;
-    overflow-y: auto;
     padding:2em;
     background:$navBg;
     position:fixed;
@@ -22,6 +20,9 @@
     nav {
         width: 100%;
         padding:4em 0 6em 0;
+        max-height:100%;
+        overflow-x: hidden;
+        overflow-y: auto;
         text-align: center;
         position: relative;
         z-index: 2;
@@ -137,7 +138,9 @@
 
 /*---------- GENERAL ----------*/
 .iconContainer {
+    @include sbFlexWrap(row, nowrap, center, stretch);
     padding:2em;
+
     ul,
     li {
         list-style:none;
@@ -150,21 +153,13 @@
 
     li {
         display: block;
-        margin: 0 1.5em;
-
-        &:first-child {
-            margin-left: 0;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
+        margin: 0 .75em;
     }
 
     a {
         display:block;
         text-decoration: none !important;
-        border-radius:6px;
+        border-radius:50%;
         position:relative;
         @include transition;
 
@@ -188,26 +183,120 @@
 /*---------- MAIN NAV ----------*/
 .topNavWrp .iconContainer{
     background:rgba($navBg, .85);
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
+    position:relative;
     z-index:3;
+
     ul{
         @include sbFlexWrap(row, nowrap, center, center);
     }
+
     a{
         width: $socialIconDiam;
         height: $socialIconDiam;
-        background: $medTextColor;
-        &:before{
-            color: $navLinkColor;
+        background:$white;
+
+        i{
+            color: $navBg;
+            font-size:$largeFontSize;
         }
 
-        svg,
-        svg *{
-            fill:$navLinkColor;
+        svg{
+            max-width:$largeFontSize;
+            max-height:$largeFontSize;
+            fill:$navBg;
+            @include transition;
         }
+    }
+}
+
+/*---------- FOOTER ----------*/
+footer{
+    .iconContainer{
+        padding:0;
+
+        li{
+            margin: 0 1.5em;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        a{
+            width:$socialIconDiam;
+            height:$socialIconDiam;
+
+            i{
+                font-size:$socialIconFontSize;
+            }
+        }
+
+        .iconsWrp{
+            padding:4em;
+
+            &.social{
+                @include sbFlexWrap(row, nowrap, flex-end, center);
+                background:map-get($bgColors, whiteBg);
+                border-radius:0 0 0 1em;
+                @include sbFlexItem(2,1,60%);
+
+                a{
+                    i{
+                        color:$linkColor;
+                    }
+                    svg{
+                        fill:$linkColor;
+                    }
+                }
+            }
+
+            &.commerce{
+                @include sbFlexWrap(row, nowrap, flex-start, center);
+                background:map-get($colorScheme, accentColor);
+                @include sbFlexItem(2,1,40%);
+
+                a{
+                    i{
+                        color:$white;
+                    }
+
+                    svg{
+                        fill: $white;
+                    }
+                }
+            }
+        }
+
+        ul{
+            @include sbFlexWrap(row, nowrap, center, center);
+        }
+    }
+}
+
+/*---------- HOVER EFFECTS ----------*/
+@include hover("footer .iconContainer a") {
+    i {
+        color: $linkHoverColor;
+    }
+
+    svg{
+        fill: $linkHoverColor;
+    }
+}
+
+@include hover (".topNavWrp .iconContainer a"){
+    background: $linkHoverColor;
+
+    i{
+        color:$white;
+    }
+
+    svg{
+        fill:$white;
     }
 }
 
