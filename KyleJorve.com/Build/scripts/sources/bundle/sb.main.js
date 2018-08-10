@@ -10,6 +10,11 @@ $(document).ready(function () {
         $('body').removeClass('allowHover').addClass('touchDevice');
     };
 
+    //Detect if mobile
+    if (detectMobile()) {
+        $('body').addClass('mobile');
+    }
+
     //Hover events for touchscreens
     $('.button, button, a, .toTopBtn, li.hasSubnav').hover(function () {
         if ($('body').hasClass('touchDevice')) {
@@ -65,3 +70,7 @@ function bodyScroll(limit) {
         $('body').removeClass('scrolled');
     }
 };
+
+function detectMobile() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}

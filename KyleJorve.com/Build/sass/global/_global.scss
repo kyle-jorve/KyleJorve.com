@@ -259,6 +259,20 @@ hr{
     background:$lightBorderColor;
 }
 
+.flexLine{
+    @include sbFlexWrap(row, nowrap, initial, center);
+
+    .line{
+        @include sbFlexGrow(1);
+        height:$borderThickness;
+        background:map-get($colorScheme, accentColor);
+    }
+
+    .lineContent{
+        padding:0 1em;
+    }
+}
+
 /*===========================
     Animated Elements
 ===========================*/

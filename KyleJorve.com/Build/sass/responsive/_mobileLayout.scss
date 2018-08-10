@@ -232,7 +232,7 @@ footer{
     /*==========----------==========*/
     @media only screen and (max-width:600px){
         .scrollGraphicWrp{
-            display:none;
+            display:none !important;
 
             .scrollBall{
                 animation:none !important;
@@ -244,7 +244,8 @@ footer{
     /*        NAV BREAKPOINT        */
     /*==========----------==========*/
     @media only screen and (max-width:$navBreakpoint){
-        padding:4em 1em calc(#{$navBtnDiam} + 1em) 1em;
+        padding:2em 1em;
+        min-height: calc(100vh - #{$navBtnDiam});
 
         &:after{
             height:400px;

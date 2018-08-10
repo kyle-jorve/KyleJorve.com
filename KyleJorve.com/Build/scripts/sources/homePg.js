@@ -1,18 +1,19 @@
 ﻿var portScrollBuffer = 200,
     portScrollBreakpoint = 600;
+
 var nodes = {
     portfolioGrid: $('#recent-work'),
     scrollIcon: $('#scrollIcon')
 };
 
 $(document).ready(function () {
-    if (!$('body').hasClass('touchDevice')) {
+    if ($(window).outerWidth() > portScrollBreakpoint) {
         scrollDisapparate();
     }
 
     $(window).scroll(function () {
         toggleLeftNav();
-        if (!$('body').hasClass('touchDevice')) {
+        if ($(window).outerWidth() > portScrollBreakpoint) {
             scrollDisapparate();
         }
     });
@@ -30,7 +31,7 @@ $(window).on('load resize orientationchange',  function() {
 });
 
 $(window).on('resize orientationchange', function () {
-    if ($(window).outerWidth() > portScrollBreakpoint && !$('body').hasClass('touchDevice')) {
+    if ($(window).outerWidth() > portScrollBreakpoint) {
         scrollDisapparate();
     }
 });

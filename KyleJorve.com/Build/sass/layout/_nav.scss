@@ -7,8 +7,12 @@
     @include sbFlexWrap(column, nowrap, space-between, stretch);
     opacity: 0;
     visibility: hidden;
-    padding:2em;
+    padding:2em 2em 122px 2em;
     background:$navBg;
+    max-height:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling:touch;
     position:fixed;
     top:0;
     right:0;
@@ -19,10 +23,7 @@
 
     nav {
         width: 100%;
-        padding:4em 0 6em 0;
-        max-height:100%;
-        overflow-x: hidden;
-        overflow-y: auto;
+        padding:4em 0;
         text-align: center;
         position: relative;
         z-index: 2;
@@ -118,9 +119,6 @@
     }
 }
 
-/*---------- SCROLL BARS ----------*/
-@include scrollBar(".topNav.navWrp", vertical);
-
 /*---------- HOVER EFFECTS ----------*/
 @include hover(".topNavWrp nav li a,.topNavWrp nav li a:visited") {
     color:$navLinkColor;
@@ -129,6 +127,53 @@
     &:before{
         opacity:1;
         bottom:.5em;
+    }
+}
+
+/*==========----------==========*/
+/*          RECENT WORK         */
+/*==========----------==========*/
+.topNavWrp .recentWorkContainer{
+    opacity:0;
+    visibility:hidden;
+    @include transition(all, .5s, ease);
+
+    &.active{
+        opacity:1;
+        visibility:visible;
+    }
+
+    h2{
+        @extend h3;
+        text-align:center;
+        color:$navLinkColor;
+        
+        .line{
+            background:$navLinkColor;
+        }
+    }
+
+    .portfolioItem{
+        opacity:0;
+        visibility:hidden;
+        position:relative;
+        right:2em;
+        @include transition(all, .5s, ease);
+
+        &,
+        &.wide,
+        &.tall{
+            @include sbFlexItem(1, 1, calc(33.33% - 1em));
+            height:300px;
+            min-height:0;
+            max-height:none;
+        }
+
+        &.active{
+            opacity:1;
+            visibility:visible;
+            right:0;
+        }
     }
 }
 
@@ -182,12 +227,29 @@
 
 /*---------- MAIN NAV ----------*/
 .topNavWrp .iconContainer{
-    background:rgba($navBg, .85);
-    position:relative;
+    background:$navBg;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
     z-index:3;
 
     ul{
         @include sbFlexWrap(row, nowrap, center, center);
+    }
+
+    li{
+        opacity:0;
+        visibility:hidden;
+        position:relative;
+        left:2em;
+        @include transition(all, .5s, ease);
+
+        &.active{
+            opacity: 1;
+            visibility:visible;
+            left:0;
+        }
     }
 
     a{

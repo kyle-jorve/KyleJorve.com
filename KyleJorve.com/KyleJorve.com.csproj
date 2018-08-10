@@ -493,6 +493,7 @@
     <Content Include="Views\Partials\portfolioGrid.cshtml" />
     <Content Include="Views\Partials\socialMediaIcons.cshtml" />
     <Content Include="Views\Partials\introScreen.cshtml" />
+    <Content Include="Views\Partials\recentWork.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

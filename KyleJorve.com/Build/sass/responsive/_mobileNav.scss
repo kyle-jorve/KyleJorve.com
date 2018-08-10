@@ -177,11 +177,6 @@
     /*         SOCIAL MEDIA         */
     /*==========----------==========*/
     .topNavWrp .iconContainer{
-        position:absolute;
-        bottom:0;
-        left:0;
-        right:0;
-
         a{
             width:$socialIconDiam * .8;
             height:$socialIconDiam * .8;
@@ -218,16 +213,12 @@ only screen and (max-height:$navBreakpoint){
 
 @media only screen and (max-width:$navBreakpoint){
     .topNavWrp{
-        padding:$logoMobileHeight + 32px 1em $navBtnDiam + 16px 1em;
-        max-height:100%;
-        overflow-x: hidden;
-        overflow-y: auto;
+        @include sbFlexWrap(column, nowrap, space-between, stretch);
+        padding:1em;
 
         nav{
-            max-height:none;
-            overflow-x:visible;
-            overflow-y:visible;
-            padding:2em 0;
+            padding:$logoMobileHeight + 32px 0 2em 0;
+            margin:auto 0;
         }
     }
 
@@ -297,28 +288,13 @@ only screen and (max-height:$navBreakpoint){
         }
     }
 
-    /*.topNavWrp .iconContainer{
-        padding:1em $navBtnDiam 1em 1em;
-        display:block;
-
-        .iconsWrp + .iconsWrp{
-            margin-top:1em;
-        }
-
-        ul{
-            @include sbFlexWrap(row, nowrap, flex-start, center);
-        }
-
-        li{
-            &:first-child{
-                margin-left:0;
-            }
-
-            &:last-child{
-                margin-right:0;
-            }
-        }
-    }*/
+    /*==========----------==========*/
+    /*          RECENT WORK         */
+    /*==========----------==========*/
+    .topNavWrp .recentWorkContainer{
+        padding-bottom:2em;
+        border-bottom:$borderThickness solid $navLinkColor;
+    }
 }
 
 /*//////////////////////////////////////////////////////*/
