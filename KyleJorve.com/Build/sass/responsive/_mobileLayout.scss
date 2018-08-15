@@ -32,6 +32,23 @@
         }
     }
 }
+/*---------- PORTFOLIO PAGE, BIO PAGE ----------*/
+.portfolioPg,
+.bioPg{
+    @media only screen and (max-width:$navBreakpoint){
+        header{
+            @include gradient(rgba($white, .85), rgba($white, 0), vertical);
+            background-repeat:no-repeat;
+            background-size:contain;
+            background-position:center -100px;
+        }
+
+        /*----- scrolled ------*/
+        &.scrolled header{
+            background-position:center 0;
+        }
+    }
+}
 
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/

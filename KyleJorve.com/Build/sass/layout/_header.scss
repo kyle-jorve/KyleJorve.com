@@ -66,13 +66,16 @@ header {
             z-index:1;
         }
     }
+
+    @media (any-hover:hover){
+        &:hover{
+            opacity:1 !important;
+        }
+    }
 }
 
 svg.logo-solid{
     fill:$solidLogoColor;
-}
-svg.logo-solid-red{
-    fill:map-get($colorScheme, accentColor);
 }
 
 /*==========----------==========*/
@@ -81,7 +84,19 @@ svg.logo-solid-red{
 .portfolioPg,
 .bioPg{
     header{
-        background-position:center -100px;
+        /*@include gradient(rgba($white, .85), rgba($white, 0), vertical);
+        background-repeat:no-repeat;
+        background-size:100% $navBtnDiam;
+        background-position:center -#{$navBtnDiam};*/
+        background:none;
+
+        .logo{
+            opacity:.85;
+
+            svg.logo-solid{
+                fill:map-get($colorScheme, accentColor);
+            }
+        }
     }
 }
 
@@ -119,7 +134,7 @@ svg.logo-solid-red{
     &.portfolioPg,
     &.bioPg {
         header{
-            background-position:center 0;
+            /*background-position:center 0;*/
 
             .logo{
                 opacity:1;
@@ -154,23 +169,9 @@ svg.logo-solid-red{
     &.bioPg,
     &.portfolioPg{
         header .logo{
-            svg,
-            img{
-                opacity:0;
-                
-                & + svg,
-                & + img{
-                    opacity:1;
-                }
+            svg.logo-solid{
+                fill:$solidLogoColor;
             }
         }
     }
-}
-
-/*==========----------==========*/
-/*         HOVER EFFECTS        */
-/*==========----------==========*/
-
-@include hover(".logo, &.homePg .logo, &.portfolioItemPg .logo"){
-    opacity:1;
 }

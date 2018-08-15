@@ -18,6 +18,8 @@
     background:none;
     box-shadow:none;
     padding:.25em;
+    padding-bottom:constant(safe-area-inset-bottom); /*iOS 11*/
+    padding-bottom:env(safe-area-inset-bottom); /*iOS 11.2*/
     @include transition(all, .5s);
     @include transform-origin("center bottom");
     @include transform("none");
@@ -72,22 +74,6 @@
     }
 }
 
-
-/*//////////////////////////////////////////////////////*/
-/*//====================----------====================//*/
-/*//                   1200PX WIDTH                   //*/
-/*//====================----------====================//*/
-/*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:1200px){
-    footer .socialWrp{
-        padding:1.5em 0 0 0;
-
-        li{
-            margin:0 1em;
-        }
-    }
-}
-
 /*//////////////////////////////////////////////////////*/
 /*//====================----------====================//*/
 /*//                   700PX HEIGHT                   //*/
@@ -121,7 +107,7 @@
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:600px){
     .topNavWrp{
-        @include sbFlexWrap(column, nowrap, center, stretch);
+        /*@include sbFlexWrap(column, nowrap, center, stretch);*/
         padding:1em;
         nav{
             padding:4em 0;
@@ -148,6 +134,18 @@
                         bottom:auto !important;
                         @include transform("translateY(-50%) !important");
                     }
+
+                    /*---------- HOVER EFFECTS ----------*/
+                    @media (any-hover:hover){
+                        &:hover{
+                            padding-right:.75em;
+
+                            &:before{
+                                bottom:auto;
+                                right:0;
+                            }
+                        }
+                    }
                 }
 
                 &.current{
@@ -161,15 +159,6 @@
                     }
                 }
             }
-        }
-    }
-
-    /*---------- HOVER EFFECTS ----------*/
-    @include hover(".topNavWrp nav li a,.topNavWrp nav li a:visited"){
-        padding-right:.75em;
-        &:before{
-            bottom:auto;
-            right:0;
         }
     }
 
@@ -213,7 +202,7 @@ only screen and (max-height:$navBreakpoint){
 
 @media only screen and (max-width:$navBreakpoint){
     .topNavWrp{
-        @include sbFlexWrap(column, nowrap, space-between, stretch);
+        /*@include sbFlexWrap(column, nowrap, space-between, stretch);*/
         padding:1em;
 
         nav{
@@ -265,7 +254,6 @@ only screen and (max-height:$navBreakpoint){
     .topNavWrp .iconContainer{
         display:block;
         padding:2em 0 $navBtnDiam + 16px 0;
-        position:relative;
 
         .iconsWrp + .iconsWrp{
             margin-top:1em;

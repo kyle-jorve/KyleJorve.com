@@ -66,6 +66,27 @@ a.button {
         border:$borderThickness solid $ltBorderBtnColor;
         color:$ltBorderBtnColor;
     }
+
+    /*---------- HOVER EFFECTS ----------*/
+    @media (any-hover:hover){
+        &:hover{
+            /*Primary Button*/
+            &.prime {
+                color: $primeBtnHoverColor;
+                background-position:100% center;
+            }
+            /*Secondary Button*/
+            &.secondary {
+                color: $secondaryBtnHoverColor;
+                background: $secondaryBtnHoverBg;
+            }
+            /*Light Border Button*/
+            &.ltBorderBtn{
+                background:$ltBorderBtnHoverBg;
+                color:$ltBorderBtnHoverColor;
+            }
+        }
+    }
 }
 
 /*---------- CLOSE BUTTON ----------*/
@@ -96,6 +117,12 @@ a.button {
             @include transform("translate(-50%, -50%) rotate(-45deg)");
         }
     }
+
+    @media (any-hover:hover){
+        &:hover{
+            background:$closeBtnHoverBg;
+        }
+    }
 }
 
 /*---------- ARROW BUTTON ----------*/
@@ -116,36 +143,4 @@ a.button {
         line-height:1;
         color:$arrowBtnColor;
     }
-}
-
-input {
-    & + .button,
-    & + button,
-    & + input[type="submit"],
-    & + a.button{
-        padding:$inputPadding;
-        height:$inputHeight;
-        margin:0;
-    }
-}
-/*---------- HOVER EFFECTS ----------*/
-@include hover(".button, button, input[type='submit'],a.button") {
-    /*Primary Button*/
-    &.prime {
-        color: $primeBtnHoverColor;
-        background-position:100% center;
-    }
-    /*Secondary Button*/
-    &.secondary {
-        color: $secondaryBtnHoverColor;
-        background: $secondaryBtnHoverBg;
-    }
-    /*Light Border Button*/
-    &.ltBorderBtn{
-        background:$ltBorderBtnHoverBg;
-        color:$ltBorderBtnHoverColor;
-    }
-}
-@include hover(".closeBtn"){
-    background:$closeBtnHoverBg;
 }

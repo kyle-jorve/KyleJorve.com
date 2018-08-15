@@ -158,14 +158,16 @@ a:visited {
     &:after {
         @include transition;
     }
-}
-/*---------- HOVER EFFECTS ----------*/
-@include hover("a, a:visited") {
-    color: $linkHoverColor;
-    text-decoration: $linkHoverTextDecoration;
 
-    &:before,
-    &:after {
-        color: $linkHoverColor;
+    @media (any-hover:hover){
+        &:hover{
+            color: $linkHoverColor;
+            text-decoration: $linkHoverTextDecoration;
+
+            &:before,
+            &:after {
+                color: $linkHoverColor;
+            }
+        }
     }
 }

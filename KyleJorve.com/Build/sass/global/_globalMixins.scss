@@ -372,22 +372,6 @@
     }
 }
 
-@mixin hover($el) {
-    .allowHover {
-        #{$el}{
-            &:hover {
-                @content;
-            }
-        }
-    }
-
-    #{$el} {
-        &.hover {
-            @content;
-        }
-    }
-}
-
 @mixin scrollBar($el, $orientation){
     #{$el}{
         -webkit-overflow-scrolling: touch;

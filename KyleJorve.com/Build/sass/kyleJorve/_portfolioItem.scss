@@ -60,7 +60,7 @@
 
 /*---------- SLIDES ----------*/
 
-.imgSlide{
+.itemShowcase .imgSlide{
     display:block !important;
     width: auto !important;
     overflow:hidden;
@@ -73,6 +73,16 @@
         max-height:800px;
         position:relative;
         z-index:1;
+    }
+
+    @media (any-hover:hover){
+        &:hover{
+            .iconCol{
+                opacity:1;
+                visibility:visible;
+                @include transform("none");
+            }
+        }
     }
 }
 

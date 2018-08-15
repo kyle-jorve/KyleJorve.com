@@ -5,9 +5,8 @@ $(document).ready(function () {
     //                   GENERAL                      //
     //========------------------------------==========//
     //Detect if touch device
-    var isTouchDevice = 'ontouchstart' in document.documentElement;
-    if (isTouchDevice && $('body').hasClass('allowHover')) {
-        $('body').removeClass('allowHover').addClass('touchDevice');
+    if (detectTouchDevice()) {
+        $('body').addClass('touchDevice');
     };
 
     //Detect if mobile
@@ -70,6 +69,10 @@ function bodyScroll(limit) {
         $('body').removeClass('scrolled');
     }
 };
+
+function detectTouchDevice() {
+    return 'ontouchstart' in document.documentElement;
+}
 
 function detectMobile() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);

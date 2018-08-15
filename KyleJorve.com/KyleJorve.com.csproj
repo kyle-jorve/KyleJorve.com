@@ -406,7 +406,6 @@
     <Content Include="Build\sass\elements\_base.scss" />
     <Content Include="Build\sass\elements\_buttons.scss" />
     <Content Include="Build\sass\elements\_elemVariables.scss" />
-    <Content Include="Build\sass\elements\_inputsAndForms.scss" />
     <Content Include="Build\sass\global\_base.scss" />
     <Content Include="Build\sass\global\_global.scss" />
     <Content Include="Build\sass\global\_globalFunctions.scss" />

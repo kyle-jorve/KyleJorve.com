@@ -24,28 +24,12 @@
                 <span></span>
                 <span></span>
             </a>
-            <div class="logoWrp">
-                <a class="logo" href="/">
-                    @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
-                </a>
-            </div>
         }
-        else
-        {
-            <div class="logoWrp">
-                <a class="logo" href="/">
-                    @if (CurrentPage.Id == homePgID)
-                    {
-                        @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
-                    }
-                    else
-                    {
-                        @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid-red.svg")))
-                        @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
-                    }
-                </a>
-            </div>
-        }
+        <div class="logoWrp">
+            <a class="logo" href="/">
+                @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
+            </a>
+        </div>
     </div>
 </header>
 

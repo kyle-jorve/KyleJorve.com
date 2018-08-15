@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "c754287ade4ee1af")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "8e2ceb80c48f3a9d")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -120,7 +120,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Meta Title: Page Name | Kyle Jorve | Illustration and Design
+		/// Meta Title: Page Name | Kyle Jorve | Art, Illustration, and Design
 		///</summary>
 		[ImplementPropertyType("metaTitle")]
 		public string MetaTitle

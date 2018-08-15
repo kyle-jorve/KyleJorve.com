@@ -35,7 +35,7 @@
     cursor:pointer;
     height:50vh;
     min-height:400px;
-    max-height:600px;
+    max-height:500px;
     margin:.5em;
     border-radius:$borderRadius;
     box-shadow:$mediumShadow;
@@ -82,6 +82,24 @@
         @extend %absolute-cover;
         z-index:2;
     }
+
+    @media (any-hover:hover){
+        &:hover{
+            box-shadow:$longShadow;
+            z-index:2;
+            @include transform("scale(1.015)");
+
+            &:before{
+                opacity:0;
+            }
+
+            .iconRow{
+                opacity:1;
+                visibility:visible;
+                @include transform("none");
+            }
+        }
+    }
 }
 
 /*==========----------==========*/
@@ -123,38 +141,14 @@
     }
 }
 
-
-/*==========----------==========*/
-/*        HOVER EFFECTS         */
-/*==========----------==========*/
-
-@include hover(".portfolioItem"){
-    box-shadow:$longShadow;
-    z-index:2;
-    @include transform("scale(1.015)");
-
-    &:before{
-        opacity:0;
+.iconRow i,
+.iconCol i{
+    @media (any-hover:hover){
+        &:hover{
+            color:$linkColor;
+            @include transform("scale(1.1)");
+        }
     }
-
-    .iconRow{
-        opacity:1;
-        visibility:visible;
-        @include transform("none");
-    }
-}
-
-@include hover(".itemShowcase .imgSlide"){
-    .iconCol{
-        opacity:1;
-        visibility:visible;
-        @include transform("none");
-    }
-}
-
-@include hover(".iconRow i, .iconCol i"){
-    color:$linkColor;
-    @include transform("scale(1.1)");
 }
 
 /*==========----------==========*/

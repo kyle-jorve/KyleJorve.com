@@ -4,10 +4,10 @@
 
 /*---------- TOP LEVEL ----------*/
 .topNavWrp {
-    @include sbFlexWrap(column, nowrap, space-between, stretch);
+    /*@include sbFlexWrap(column, nowrap, space-between, stretch);*/
     opacity: 0;
     visibility: hidden;
-    padding:2em 2em 122px 2em;
+    padding:2em;
     background:$navBg;
     max-height:100%;
     overflow-x: hidden;
@@ -64,6 +64,19 @@
                 bottom:0;
                 @include transition;
             }
+
+            /*---------- HOVER EFFECTS ----------*/
+            @media (any-hover:hover){
+                &:hover{
+                    color:$navLinkColor;
+                    opacity:1 !important;
+
+                    &:before{
+                        opacity:1;
+                        bottom:.5em;
+                    }
+                }
+            }
         }
 
         li {
@@ -116,17 +129,6 @@
 
     &.showMobileNav header .logo{
         opacity:1;
-    }
-}
-
-/*---------- HOVER EFFECTS ----------*/
-@include hover(".topNavWrp nav li a,.topNavWrp nav li a:visited") {
-    color:$navLinkColor;
-    opacity:1;
-
-    &:before{
-        opacity:1;
-        bottom:.5em;
     }
 }
 
@@ -227,12 +229,8 @@
 
 /*---------- MAIN NAV ----------*/
 .topNavWrp .iconContainer{
+    @include sbFlexWrap(row, nowrap, center, center);
     background:$navBg;
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    z-index:3;
 
     ul{
         @include sbFlexWrap(row, nowrap, center, center);
@@ -268,6 +266,21 @@
             fill:$navBg;
             @include transition;
         }
+
+        /*---------- HOVER ----------*/
+        @media (any-hover:hover){
+            &:hover{
+                background: $linkHoverColor;
+
+                i{
+                    color:$white;
+                }
+
+                svg{
+                    fill:$white;
+                }
+            }
+        }
     }
 }
 
@@ -294,6 +307,19 @@ footer{
 
             i{
                 font-size:$socialIconFontSize;
+            }
+
+            /*---------- HOVER EFFECTS ----------*/
+            @media (any-hover:hover){
+                &:hover{
+                    i {
+                        color: $linkHoverColor !important;
+                    }
+
+                    svg{
+                        fill: $linkHoverColor !important;
+                    }
+                }
             }
         }
 
@@ -339,29 +365,6 @@ footer{
     }
 }
 
-/*---------- HOVER EFFECTS ----------*/
-@include hover("footer .iconContainer a") {
-    i {
-        color: $linkHoverColor;
-    }
-
-    svg{
-        fill: $linkHoverColor;
-    }
-}
-
-@include hover (".topNavWrp .iconContainer a"){
-    background: $linkHoverColor;
-
-    i{
-        color:$white;
-    }
-
-    svg{
-        fill:$white;
-    }
-}
-
 /*==========----------==========*/
 /*          NAV BUTTON          */
 /*==========----------==========*/
@@ -402,24 +405,21 @@ footer{
         @include transition;
     }
 
-    /*---------- ACTIVE ----------*/
-    &.active {
-        
-    }
-}
+    /*---------- HOVER EFFECTS ----------*/
+    @media (any-hover:hover){
+        &:hover{
+            background:$linkHoverColor;
 
-/*---------- HOVER EFFECTS ----------*/
-@include hover(".navBtn"){
-    background:$linkHoverColor;
-
-    .blockRow{
-        @include transform("translateX(-4px)");
-
-        & + .blockRow{
-            @include transform("translateX(4px)");
-
-            & + .blockRow{
+            .blockRow{
                 @include transform("translateX(-4px)");
+
+                & + .blockRow{
+                    @include transform("translateX(4px)");
+
+                    & + .blockRow{
+                        @include transform("translateX(-4px)");
+                    }
+                }
             }
         }
     }
@@ -460,32 +460,34 @@ footer{
         .blockRow:last-child .block:nth-child(2){
             opacity:0;
         }
+
+        /*---------- HOVER EFFECTS ----------*/
+        @media (any-hover:hover){
+            &:hover{
+                background:$linkHoverColor;
+
+                .block{
+                    background:$navLinkColor;
+                }
+
+                .blockRow{
+                    @include transform("none");
+
+                    & + .blockRow{
+                        @include transform("none");
+
+                        & + .blockRow{
+                            @include transform("none");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .topNavWrp{
         opacity:1;
         visibility:visible;
-    }
-}
-
-/*---------- HOVER EFFECTS ----------*/
-@include hover("&.showMobileNav .navBtn"){
-    background:$linkHoverColor;
-
-    .block{
-        background:$navLinkColor;
-    }
-
-    .blockRow{
-        @include transform("none");
-
-        & + .blockRow{
-            @include transform("none");
-
-            & + .blockRow{
-                @include transform("none");
-            }
-        }
     }
 }
 
@@ -559,8 +561,14 @@ footer{
             @include transition;
         }
 
-        /*---------- ACTIVE ----------*/
+        /*---------- HOVER EFFECTS ----------*/
+        @media (any-hover:hover){
+            &:hover{
+                color:$linkHoverColor !important;
+            }
+        }
 
+        /*---------- ACTIVE ----------*/
         &.active{
             cursor:auto;
             color:$lightTextColor;
@@ -571,8 +579,19 @@ footer{
         }
     }
 
-    div span{
-        @include transition;
+    div{ 
+        span{
+            @include transition;
+        }
+
+        /*---------- HOVER EFFECTS ----------*/
+        @media (any-hover:hover){
+            &:not(.active):hover{
+                span{
+                    color:$linkHoverColor !important;
+                }
+            }
+        }
     }
 }
 
@@ -601,12 +620,4 @@ footer{
 /*---------- PORTFOLIO ITEM PAGE ----------*/
 .portfolioItemPg .leftNavWrp{
     padding-top:$closeBtnDiam;
-}
-
-/*---------- HOVER EFFECTS ----------*/
-
-@include hover(".leftNavWrp li div:not(.active)"){
-    span{
-        color:$linkHoverColor !important;
-    }
 }
