@@ -170,5 +170,206 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @-moz-document url-prefix() {
-    
+    .button,
+    button,
+    input[type="submit"],
+    a.button {
+        /*---------- HOVER EFFECTS ----------*/
+        &:hover{
+            /*Primary Button*/
+            &.prime {
+                color: $primeBtnHoverColor;
+                background-position:100% center;
+            }
+            /*Secondary Button*/
+            &.secondary {
+                color: $secondaryBtnHoverColor;
+                background: $secondaryBtnHoverBg;
+            }
+            /*Light Border Button*/
+            &.ltBorderBtn{
+                background:$ltBorderBtnHoverBg;
+                color:$ltBorderBtnHoverColor;
+            }
+        }
+    }
+
+    /*---------- CLOSE BUTTON ----------*/
+    .closeBtn{
+        &:hover{
+            background:$closeBtnHoverBg;
+        }
+    }
+
+    a,
+    a:visited {
+        &:hover{
+            color: $linkHoverColor;
+            text-decoration: $linkHoverTextDecoration;
+
+            &:before,
+            &:after {
+                color: $linkHoverColor;
+            }
+        }
+    }
+
+    .portfolioItem{
+        &:hover{
+            box-shadow:$longShadow;
+            z-index:2;
+            @include transform("scale(1.015)");
+
+            &:before{
+                opacity:0;
+            }
+
+            .iconRow{
+                opacity:1;
+                visibility:visible;
+                @include transform("none");
+            }
+        }
+    }
+
+    .iconRow i,
+    .iconCol i{
+        &:hover{
+            color:$linkColor;
+            @include transform("scale(1.1)");
+        }
+    }
+
+    .itemShowcase .imgSlide{
+        &:hover{
+            .iconCol{
+                opacity:1;
+                visibility:visible;
+                @include transform("none");
+            }
+        }
+    }
+
+    .logo{
+        &:hover{
+            opacity:1 !important;
+        }
+    }
+
+    .topNavWrp nav{
+        a,
+        a:visited {
+            &:hover{
+                color:$navLinkColor;
+                opacity:1 !important;
+
+                &:before{
+                    opacity:1;
+                    bottom:.5em;
+                }
+            }
+        }
+    }
+
+    .topNavWrp .iconContainer a{
+        &:hover{
+            background: $linkHoverColor;
+
+            i{
+                color:$white;
+            }
+
+            svg{
+                fill:$white;
+            }
+        }
+    }
+
+    footer .iconContainer a{
+        &:hover{
+            i {
+                color: $linkHoverColor !important;
+            }
+
+            svg{
+                fill: $linkHoverColor !important;
+            }
+        }
+    }
+
+    .navBtn {
+        &:hover{
+            background:$linkHoverColor;
+
+            .blockRow{
+                @include transform("translateX(-4px)");
+
+                & + .blockRow{
+                    @include transform("translateX(4px)");
+
+                    & + .blockRow{
+                        @include transform("translateX(-4px)");
+                    }
+                }
+            }
+        }
+    }
+
+    .showMobileNav,
+    .showMobileNav.scrolled{
+        .navBtn{
+            &:hover{
+                background:$linkHoverColor;
+
+                .block{
+                    background:$navLinkColor;
+                }
+
+                .blockRow{
+                    @include transform("none");
+
+                    & + .blockRow{
+                        @include transform("none");
+
+                        & + .blockRow{
+                            @include transform("none");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .leftNavWrp{
+        a,
+        a:visited,
+        div{
+            &:hover{
+                color:$linkHoverColor !important;
+            }
+        }
+        div{ 
+            &:not(.active):hover{
+                span{
+                    color:$linkHoverColor !important;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width:600px){
+        .topNavWrp nav li{
+            a,
+            a:visited{
+                &:hover{
+                    padding-right:.75em;
+
+                    &:before{
+                        bottom:auto;
+                        right:0;
+                    }
+                }
+            }
+        }
+    }
 }

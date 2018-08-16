@@ -33,15 +33,17 @@
             }
 
             <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
-                <div class="iconRow">
-                    <a href="@portfolioItems[i].Url" class="description">
-                        <i class="fas fa-align-left"></i>
-                    </a>
-                    <div class="full-screen openLightbox" data-src="@img.Url">
-                        <i class="fas fa-expand"></i>
+                <div class="itemContents">
+                    <div class="iconRow">
+                        <a href="@portfolioItems[i].Url" class="description">
+                            <i class="fas fa-align-left"></i>
+                        </a>
+                        <div class="full-screen openLightbox" data-src="@img.Url">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </div>
+                    <a class="portfolioLink" href="@portfolioItems[i].Url"></a>
                 </div>
-                <a class="portfolioLink" href="@portfolioItems[i].Url"></a>
             </div>
         }
     }

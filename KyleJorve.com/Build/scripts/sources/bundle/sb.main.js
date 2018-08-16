@@ -14,31 +14,12 @@ $(document).ready(function () {
         $('body').addClass('mobile');
     }
 
-    //Hover events for touchscreens
-    $('.button, button, a, .toTopBtn, li.hasSubnav').hover(function () {
-        if ($('body').hasClass('touchDevice')) {
-            $(this).addClass('hover');
-        }
-    }, function () {
-        if ($('body').hasClass('touchDevice')) {
-            $(this).removeClass('hover');
-        }
-    });
-    $('.button, button, a, .toTopBtn').on('tap', function () {
+    $('.button, button, a').on('tap', function () {
         var $this = $(this);
         setTimeout(function () {
             $this.removeClass('hover');
         }, 300);
     });
-    
-    $('img').each(function () {
-        //Remove wrapping paragraph tags from images (Umbraco automatically wraps them)
-        if ($(this).parent().is('p')) {
-            $(this).unwrap();
-        };
-    });
-    //Remove styles from images (Umbraco likes to tack on width and height styles)
-    $('img').removeAttr('style');
 
     //========------------------------------==========//
     //                 SCROLL STUFF                   //

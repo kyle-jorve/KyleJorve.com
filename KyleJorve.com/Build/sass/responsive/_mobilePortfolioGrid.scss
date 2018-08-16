@@ -31,9 +31,10 @@
         .portfolioItem.wide,
         .portfolioItem.tall{
             @include sbFlexItem(1, 1, calc(50% - 1em));
-            height:300px;
-            min-height:0;
-            max-height:none;
+        }
+
+        .portfolioItem{
+            min-height:240px;
         }
     }
 
@@ -41,12 +42,14 @@
     /*          600PX WIDTH         */
     /*==========----------==========*/
     @media only screen and (max-width:600px){
-        .portfolioItem,
-        .portfolioItem.wide,
-        .portfolioItem.tall{
-            height:200px;
+        .portfolioItem{
+            min-height:180px;
+
+            &:after{
+                display:none;
+            }
         }
-    }
+    }    
 
     /*==========----------==========*/
     /*        NAV BREAKPOINT        */
@@ -77,10 +80,8 @@
     /*          400PX WIDTH         */
     /*==========----------==========*/
     @media only screen and (max-width:400px){
-        .portfolioItem,
-        .portfolioItem.wide,
-        .portfolioItem.tall{
-            height:160px;
+        .portfolioItem{
+            min-height:150px;
         }
     }
 
@@ -88,10 +89,8 @@
     /*          350PX WIDTH         */
     /*==========----------==========*/
     @media only screen and (max-width:350px){
-        .portfolioItem,
-        .portfolioItem.wide,
-        .portfolioItem.tall{
-            height:120px;
+        .portfolioItem{
+            min-height:120px;
         }
-    }
+    }  
 }

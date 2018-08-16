@@ -33,16 +33,13 @@
 
 .portfolioItem{
     cursor:pointer;
-    height:50vh;
-    min-height:400px;
-    max-height:500px;
+    min-height:300px;
     margin:.5em;
     border-radius:$borderRadius;
     box-shadow:$mediumShadow;
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center center;
-    @include sbFlexWrap(column, nowrap, flex-end, stretch);
     @include sbFlexItem(2, 1, calc(38.2% - 2em));
     overflow:hidden;
     position:relative;
@@ -69,12 +66,34 @@
         @include transition;
     }
 
+    &:after{
+        display:block;
+        content:'';
+        padding-bottom:70%;
+        position:relative;
+        z-index:1;
+    }
+
+    .itemContents{
+        @include sbFlexWrap(column, nowrap, flex-end, stretch);
+        @extend %absolute-cover;
+        z-index:2;
+    }
+
     &.wide{
         @include sbFlexItem(3, 1, calc(61.8% - 1em));
+
+        &:after{
+            padding-bottom:35%;
+        }
     }
 
     &.tall{
         @include sbFlexItem(1, 1, calc(23.6% - 1em));
+
+        &:after{
+            padding-bottom:125%;
+        }
     }
 
     a.portfolioLink{
