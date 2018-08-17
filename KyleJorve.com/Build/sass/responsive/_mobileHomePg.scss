@@ -59,7 +59,7 @@
         /*         BIO SECTION          */
         /*==========----------==========*/
         .bioSection{
-            background:none;
+            background:darken(map-get($bgColors, lightContentBg), 2%) !important;
 
             .mobilePhoto{
                 display:block;

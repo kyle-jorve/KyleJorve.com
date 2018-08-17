@@ -42,6 +42,7 @@
         }
 
         .photoBg{
+            opacity:.5;
             @include filter("blur(60px)");
             background-repeat:no-repeat;
             background-position:center 20%;

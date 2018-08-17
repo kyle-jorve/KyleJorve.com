@@ -5,7 +5,8 @@
         bg: document.querySelector('#lightboxBg'),
         buttons: {
             open: Array.prototype.slice.call(document.querySelectorAll('.openLightbox')),
-            close: document.querySelector('#closeLightbox')
+            close: document.querySelector('#closeLightbox'),
+            toItem: document.querySelector('#toItem')
         }
     };
     var lightboxTrans = parseFloat(window.getComputedStyle(nodes.lightbox).getPropertyValue('transition-duration')) * 1000;
@@ -24,10 +25,11 @@
         //open lightbox
         nodes.buttons.open.forEach(function (cur) {
             cur.addEventListener('click', function () {
-                //var thisImgSrc = window.getComputedStyle(findAncestor(cur, 'portfolioItem')).getPropertyValue('background-image').split('"')[1];
-                var thisImgSrc = cur.getAttribute('data-src');
+                var thisImgSrc = cur.getAttribute('data-src'),
+                    thisItemUrl = cur.getAttribute('data-url');
 
                 nodes.img.src = thisImgSrc;
+                nodes.buttons.toItem.setAttribute('href', thisItemUrl);
                 nodes.bg.style.backgroundImage = "url('" + thisImgSrc + "')";
                 nodes.lightbox.classList.add('active');
             });
@@ -38,6 +40,7 @@
             nodes.lightbox.classList.remove('active');
             setTimeout(function () {
                 nodes.img.src = '';
+                nodes.buttons.toItem.setAttribute('href', '');
                 nodes.bg.style.background = '';
             }, lightboxTrans);
         });

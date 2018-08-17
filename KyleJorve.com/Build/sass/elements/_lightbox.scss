@@ -55,6 +55,22 @@
         max-height:100%;
         border-radius:$borderRadius;
         box-shadow:$longShadow;
+        position:relative;
+        z-index:1;
+    }
+
+    .button,
+    a.button{
+        margin:0;
+        box-shadow:$mediumShadow;
+        position:absolute;
+        bottom:0;
+        right:0;
+        z-index:2;
+
+        i{
+            margin-left:.25em;
+        }
     }
 }
 

@@ -34,6 +34,13 @@
     .buttonWrp{
         padding:1em 0;
     }
+
+    .button,
+    button,
+    input[type="submit"],
+    a.button{
+        font-size:$buttonFontSize * .85;
+    }
 }
 
 /*//////////////////////////////////////////////////////*/
