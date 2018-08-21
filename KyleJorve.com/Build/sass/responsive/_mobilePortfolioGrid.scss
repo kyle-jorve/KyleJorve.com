@@ -34,7 +34,8 @@
         }
 
         .portfolioItem{
-            min-height:240px;
+            min-height:0;
+            height:240px;
         }
     }
 
@@ -43,7 +44,7 @@
     /*==========----------==========*/
     @media only screen and (max-width:600px){
         .portfolioItem{
-            min-height:180px;
+            height:180px;
 
             &:after{
                 display:none;
@@ -81,7 +82,7 @@
     /*==========----------==========*/
     @media only screen and (max-width:400px){
         .portfolioItem{
-            min-height:150px;
+            height:150px;
         }
     }
 
@@ -90,7 +91,7 @@
     /*==========----------==========*/
     @media only screen and (max-width:350px){
         .portfolioItem{
-            min-height:120px;
+            height:120px;
         }
     }  
 }

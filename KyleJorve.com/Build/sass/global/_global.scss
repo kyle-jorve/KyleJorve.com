@@ -24,6 +24,12 @@ body{
         left:0;
         right:0;
     }
+
+    /*Fixed body (for when nav is revealed)*/
+    /*&.fixed{
+        position:fixed;
+        overflow:hidden;
+    }*/
 }
 .preload *{
     @include transition(none, null, null, !important);

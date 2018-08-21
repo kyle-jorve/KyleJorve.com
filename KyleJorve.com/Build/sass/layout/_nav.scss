@@ -444,6 +444,8 @@ footer{
 /*==========----------==========*/
 .showMobileNav,
 .showMobileNav.scrolled{
+    overflow:hidden;
+
     .navBtn{
         background:$navLinkColor;
         border-radius:0 0 $borderRadius 0 !important;

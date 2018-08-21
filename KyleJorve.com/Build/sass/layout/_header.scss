@@ -84,7 +84,10 @@ svg.logo-solid{
 .portfolioPg,
 .bioPg{
     header{
-        background:none;
+         @include gradient(rgba($white, .85), rgba($white, 0), vertical);
+        background-repeat:no-repeat;
+        background-size:100% 60px;
+        background-position:center -60px;
 
         .logo{
             opacity:.85;
@@ -130,7 +133,7 @@ svg.logo-solid{
     &.portfolioPg,
     &.bioPg {
         header{
-            /*background-position:center 0;*/
+            background-position:center 0;
 
             .logo{
                 opacity:1;

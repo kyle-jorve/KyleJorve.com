@@ -75,6 +75,7 @@
                             thisItem.addClass('active');
                         }, animDelay);
                     });
+
                 }, navTrans);
             }
             //Close the mobile nav
