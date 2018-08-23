@@ -26,12 +26,19 @@ body{
 strong {
     font-weight: $primaryBold;
 }
+.thin{
+    font-weight:$primaryFontWeight;
+}
 
 /*===========================
     Styles
 ===========================*/
 em{
     font-style:$primaryItalic;
+}
+small{
+    font-weight:$primaryFontWeight;
+    font-size:$smallFontSize;
 }
 
 /*===========================
@@ -60,6 +67,9 @@ h1, h2, h3, h4 {
 
     strong {
         font-weight: $headingBold;
+    }
+    .thin{
+        font-weight:$headingThin;
     }
 }
 
