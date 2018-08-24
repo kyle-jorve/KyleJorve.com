@@ -38,8 +38,8 @@
 
         $('#navBtn').on('click tap', function () {
             //Open the mobile nav
-            if (!$('body').hasClass('showMobileNav')) {
-                $('body').addClass('showMobileNav');
+            if (!$('html').hasClass('showMobileNav')) {
+                $('html').addClass('showMobileNav');
                 $(this).addClass('active');
 
                 setTimeout(function () {
@@ -119,7 +119,7 @@
                 });
 
                 setTimeout(function () {
-                    $('body').removeClass('showMobileNav');
+                    $('html').removeClass('showMobileNav');
                 }, delayClose);
             }
         });

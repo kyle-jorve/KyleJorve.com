@@ -59,9 +59,13 @@
         pointer-events:none;
         background:color($navIconBg);
         box-shadow:0 4px 1em 2px $mediumShadowColor;
+        border-radius: .25em .25em 0 0;
         z-index:2;
         @include transform("scale(1.05)");
 
+        &:first-child{
+            border-radius:0 .25em 0 0;
+        }
 
         svg,
         svg *{
@@ -107,7 +111,6 @@
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:600px){
     .topNavWrp{
-        /*@include sbFlexWrap(column, nowrap, center, stretch);*/
         padding:1em;
         nav{
             padding:4em 0;
@@ -202,7 +205,6 @@ only screen and (max-height:$navBreakpoint){
 
 @media only screen and (max-width:$navBreakpoint){
     .topNavWrp{
-        /*@include sbFlexWrap(column, nowrap, space-between, stretch);*/
         padding:1em;
 
         nav{
@@ -232,7 +234,7 @@ only screen and (max-height:$navBreakpoint){
 
     /*---------- NAV REVEALED ----------*/
     .showMobileNav,
-    .showMobileNav.scrolled{
+    .showMobileNav .scrolled{
         .navBtn{
             border-radius:$mobileBorderRadius 0 0 0 !important;
         }

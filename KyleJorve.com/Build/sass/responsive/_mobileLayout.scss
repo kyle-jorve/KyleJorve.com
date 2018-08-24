@@ -42,9 +42,14 @@
             background-size:contain;
             background-position:center -100px;
         }
+    }
+}
 
-        /*----- scrolled ------*/
-        &.scrolled header{
+/*----- scrolled ------*/
+.scrolled{
+    .portfolioPg,
+    .bioPg{
+        header{
             background-position:center 0;
         }
     }

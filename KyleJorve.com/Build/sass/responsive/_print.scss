@@ -53,12 +53,28 @@
         padding:2em 0 !important;
     }
 
-    .navBtn{
+    .navBtn,
+    .leftNavWrp,
+    .heroWrp,
+    .iconContainer,
+    .topNavWrp,
+    .portraitWrp,
+    .logoIcon{
         display:none !important;
     }
+    .leftBuffer{
+        margin-left:0 !important;
+    }
+    .bioPg .resumeSection .resumeSegment h4 span{
+        margin-right: 1em !important;
+    }
 
-    header .logo svg{
-        fill:map-get($colorScheme, accentColor);
+    header .logo{
+        opacity:1 !important;
+        
+        svg{
+            fill:map-get($colorScheme, accentColor) !important;
+        }
     }
 
     .animatedEl{

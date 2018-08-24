@@ -86,7 +86,7 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:600px){
-    .imgSlide img{
+    .itemShowcase .imgSlide img{
         border-radius: $mobileBorderRadius;
         max-height:300px;
     }
@@ -105,13 +105,12 @@
         .imgSection{
             padding:6em .5em 0 .5em;
         }
-    }
-
-    .imgSlide{
-        border-radius: $mobileBorderRadius;
-
-        img{
+        .imgSlide{
             border-radius: $mobileBorderRadius;
+
+            img{
+                border-radius: $mobileBorderRadius;
+            }
         }
     }
 }

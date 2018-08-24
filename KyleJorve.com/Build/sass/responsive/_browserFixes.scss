@@ -140,7 +140,7 @@
     }
 
     .showMobileNav,
-    .showMobileNav.scrolled{
+    .showMobileNav .scrolled{
         .navBtn{
             border-radius:$mobileBorderRadius 0 0 0 !important;
         }
@@ -316,7 +316,7 @@
     }
 
     .showMobileNav,
-    .showMobileNav.scrolled{
+    .showMobileNav .scrolled{
         .navBtn{
             &:hover{
                 background:$linkHoverColor;

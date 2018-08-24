@@ -154,10 +154,10 @@ svg.logo-solid{
 /*         NAV REVEALED         */
 /*==========----------==========*/
 .showMobileNav,
-.showMobileNav.scrolled{
+.showMobileNav .scrolled{
     /*---------- GENERAL ----------*/
     header{
-        background-position:center -100px;
+        background-position:center -100px !important;
 
         .logo{
             opacity:.75;

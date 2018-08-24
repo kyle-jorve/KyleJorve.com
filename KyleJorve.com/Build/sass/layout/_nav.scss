@@ -125,10 +125,10 @@
             }
         }
     }
+}
 
-    &.showMobileNav header .logo{
-        opacity:1;
-    }
+.showMobileNav .touchDevice header .logo{
+    opacity:1;
 }
 
 /*==========----------==========*/
@@ -443,9 +443,11 @@ footer{
 /*         NAV REVEALED         */
 /*==========----------==========*/
 .showMobileNav,
-.showMobileNav.scrolled{
+.showMobileNav body{
     overflow:hidden;
-
+}
+.showMobileNav,
+.showMobileNav .scrolled{
     .navBtn{
         background:$navLinkColor;
         border-radius:0 0 $borderRadius 0 !important;
