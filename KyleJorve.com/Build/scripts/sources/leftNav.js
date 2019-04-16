@@ -23,8 +23,6 @@
         }
     };
 
-    setVars();
-
     var scrollFn = function () {
         vpMid = window.scrollY + (window.innerHeight / 2);
 
@@ -45,6 +43,7 @@
     };
 
     // Init
+    setVars();
     scrollFn();
     window.addEventListener('scroll', scrollFn);    
     window.addEventListener('resize', function () {
