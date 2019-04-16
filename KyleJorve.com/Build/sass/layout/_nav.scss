@@ -324,12 +324,13 @@ footer{
 
         .iconsWrp{
             padding:4em;
+            flex-shrink:1;
 
             &.social{
                 @include sbFlexWrap(row, nowrap, flex-end, center);
                 background:map-get($bgColors, whiteBg);
                 border-radius:0 0 0 1em;
-                @include sbFlexItem(2,1,60%);
+                flex-basis:60%;
 
                 a{
                     i{
@@ -344,7 +345,7 @@ footer{
             &.commerce{
                 @include sbFlexWrap(row, nowrap, flex-start, center);
                 background:map-get($colorScheme, accentColor);
-                @include sbFlexItem(2,1,40%);
+                flex-basis:40%;
 
                 a{
                     i{

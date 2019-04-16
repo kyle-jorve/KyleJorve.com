@@ -5,7 +5,8 @@
     var comIcons = Umbraco.Content(1081).GetPropertyValue<IEnumerable<IPublishedContent>>("commerceIcons");
 }
 
-<div class="iconsWrp social">
+
+<div class="iconsWrp social" style="flex-grow:@(socialIcons.Count)">
     <ul>
         @foreach (var item in socialIcons)
         {
@@ -16,6 +17,10 @@
                     @if (socMedType == "facebook")
                     {
                         <i class="fab fa-facebook-f"></i>
+                    }
+                    else if (socMedType == "artstation")
+                    {
+                        <i class="fab fa-artstation"></i>
                     }
                     else if (socMedType == "instagram")
                     {
@@ -29,6 +34,10 @@
                     {
                         <i class="fab fa-deviantart"></i>
                     }
+                    else if (socMedType == "linkedin")
+                    {
+                        <i class="fab fa-linkedin-in"></i>
+                    }
                     else if (socMedType == "email")
                     {
                         <i class="fas fa-at"></i>
@@ -38,7 +47,7 @@
         }
     </ul>
 </div>
-<div class="iconsWrp commerce">
+<div class="iconsWrp commerce" style="flex-grow:@(comIcons.Count);">
     <ul>
         @foreach (var item in comIcons)
         {

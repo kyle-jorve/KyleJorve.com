@@ -6,15 +6,25 @@
     var mobileIntroBg = Umbraco.Content(homePgID).mobileIntroBg.Url;
 }
 
-<section class="introWrp" id="introWrp">
-    <div class="introContent">
-        @Umbraco.Content(homePgID).heading
-        <div class="buttonWrp align-center">
-            <div class="button ltBorderBtn" id="closeIntro">Enter</div>
+@if (CurrentPage.Id == homePgID)
+{
+    <section class="introWrp" id="introWrp">
+        <div class="introContent">
+            @Umbraco.Content(homePgID).heading
+            <div class="buttonWrp align-center">
+                <div class="button ltBorderBtn" id="closeIntro">Enter</div>
+            </div>
         </div>
-    </div>
-    <div class="introBg" style="background-image:url('@(introBg)');"></div>
-    <div class="mobileIntroBg" style="background-image:url('@(mobileIntroBg)');"></div>
-</section>
-
-<script src="/Scripts/introScreen.js"></script>
+        <div class="introBg" style="background-image:url('@(introBg)');"></div>
+        <div class="mobileIntroBg" style="background-image:url('@(mobileIntroBg)');"></div>
+    </section>
+    <script src="/Scripts/introScreen.js"></script>
+}
+else
+{
+    <script>
+        (function () {
+            sessionStorage.setItem('introScreenShown', 'true');
+        })();
+    </script>
+}

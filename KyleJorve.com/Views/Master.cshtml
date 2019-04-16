@@ -38,10 +38,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link href="/Styles/bundle.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="/Styles/bundle.min.css?v=1.1.1" rel="stylesheet" />
 
-    <script src="/Scripts/bundle.min.js"></script>
+    <script src="/Scripts/bundle.min.js?v=1.1.0"></script>
 
     @Umbraco.Field("head")
 </head>
@@ -63,7 +63,7 @@
 
     @if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
     {
-        <script src="/Scripts/leftNav.js"></script>
+        <script src="/Scripts/leftNav.js?v=1.1.0"></script>
     }
     else if (CurrentPage.Parent.Id == portfolioPgID)
     {
