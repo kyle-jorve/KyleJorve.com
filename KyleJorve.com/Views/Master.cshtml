@@ -3,6 +3,7 @@
 @{
     Layout = null;
     var hasMetaImage = CurrentPage.HasValue("metaImage");
+    var homePgID = 1081;
     var portfolioPgID = 1082;
     bool isPortfolioItem = CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID;
 
@@ -45,7 +46,7 @@
 
     @Umbraco.Field("head")
 </head>
-<body class="preload introBody @Umbraco.Field("bodyClass")">
+<body class="preload @(CurrentPage.Id == homePgID ? "introBody" : "") @Umbraco.Field("bodyClass")">
 
     @{ Html.RenderPartial("loadScreen");}
 
