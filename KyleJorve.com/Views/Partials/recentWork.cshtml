@@ -3,7 +3,7 @@
 @{
     var homePgID = 1081;
     var portfolioPgID = 1082;
-    var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("pubDate desc");
+    var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("createDate desc");
     int recentWorkLimit = Umbraco.Content(homePgID).portfolioLimit;
 }
 

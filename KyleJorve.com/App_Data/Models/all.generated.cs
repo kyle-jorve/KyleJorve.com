@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "8e2ceb80c48f3a9d")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "f4770adb10472967")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -591,12 +591,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Publication Date
+		/// Sort Order
 		///</summary>
-		[ImplementPropertyType("pubDate")]
-		public DateTime PubDate
+		[ImplementPropertyType("sortNumber")]
+		public int SortNumber
 		{
-			get { return this.GetPropertyValue<DateTime>("pubDate"); }
+			get { return this.GetPropertyValue<int>("sortNumber"); }
 		}
 	}
 

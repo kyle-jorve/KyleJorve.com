@@ -16,7 +16,7 @@
 
     $(slideshow).slick({
         asNavFor: lightboxSlideshow,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 5000,
         appendArrows: '#sliderNav',
         appendDots: '#sliderDots',
@@ -29,7 +29,7 @@
 
     $(lightboxSlideshow).slick({
         asNavFor: slideshow,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 5000,
         appendArrows: '#lightboxSliderNav',
         prevArrow: '<div class="arrowBtn prevArrow"><i class="fas fa-angle-left"></i></div>',

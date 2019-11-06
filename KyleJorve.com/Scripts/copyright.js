@@ -1,1 +1,1 @@
-!function(){for(var e,n=document.querySelector("#copyright"),t=n.textContent.split(" "),r=(new Date).getFullYear(),a=0;a<t.length;a++)4===t[a].length&&!isNaN(parseInt(t[a]))&&t[a][0].indexOf("2")>-1&&(a,e=parseInt(t[a]));r!==e&&(n.innerHTML=n.innerHTML.replace(e,e+"-"+r))}();
+!function(){for(var e,n=document.querySelector("#copyright"),t=n.textContent.split(" "),r=(new Date).getFullYear(),a=0;a<t.length;a++)4===t[a].length&&!isNaN(parseInt(t[a]))&&-1<t[a][0].indexOf("2")&&(a,e=parseInt(t[a]));r!==e&&(n.innerHTML=n.innerHTML.replace(e,e+"-"+r))}();
