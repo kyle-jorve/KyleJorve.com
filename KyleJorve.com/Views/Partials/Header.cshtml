@@ -3,7 +3,6 @@
 @{
     var portfolioPgID = 1082;
     var bioPgID = 1083;
-    var homePgID = 1081;
     var closeLink = Umbraco.Content(portfolioPgID).Url;
     var portfolioPg = Umbraco.Content(portfolioPgID);
     var bioPg = Umbraco.Content(bioPgID);
@@ -27,7 +26,7 @@
         }
         <div class="logoWrp">
             <a class="logo" href="/">
-                @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-solid.svg")))
+                @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-circle.svg")))
             </a>
         </div>
     </div>

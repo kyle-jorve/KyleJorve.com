@@ -20,7 +20,7 @@ $(document).ready(function () {
 });
 
 //Parallax effects
-parallaxBg('.heroWrp', '.heroBg', -.3, 800, 'center');
+//parallaxBg('.heroWrp', '.heroBg', -.3, 800, 'center');
 
 //Animated content
 animateContent('#recent-work', '.animatedEl', 100, portScrollBreakpoint, "top", portScrollBuffer);

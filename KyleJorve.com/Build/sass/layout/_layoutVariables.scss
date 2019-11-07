@@ -27,7 +27,7 @@ $logo: url('/images/logo-warm.svg');
 $solidLogo: url('/images/logo-solid.svg');
 
 $logoWidth: 80px;
-$logoHeight: $logoWidth * 0.6115;
+$logoHeight: $logoWidth;
 
 $solidLogoColor: $white;
 
@@ -70,7 +70,7 @@ $activeNavBtnColor: $lightTextColor;
     Responsive
 ===========================*/
 $logoMobileWidth: 68px;
-$logoMobileHeight: $logoMobileWidth * 0.6115;
+$logoMobileHeight: $logoMobileWidth;
 
 $socialIconMobileDiam: 30px; 
 $socialIconMobileFontSize: 22px;

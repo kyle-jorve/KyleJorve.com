@@ -89,13 +89,13 @@ svg.logo-solid{
         background-size:100% 60px;
         background-position:center -60px;
 
-        .logo{
+        /*.logo{
             opacity:.85;
 
             svg.logo-solid{
                 fill:map-get($colorScheme, accentColor);
             }
-        }
+        }*/
     }
 }
 
@@ -103,12 +103,12 @@ svg.logo-solid{
 /*   HOME PAGE, PORTFOLIO ITEM PAGE   */
 /*=============----------=============*/
 
-.homePg,
+/*.homePg,
 .portfolioItemPg {
     header .logo{
         opacity: .35;
     }
-}
+}*/
 
 /*==========----------==========*/
 /*     PORTFOLIO ITEM PAGE      */
@@ -135,19 +135,19 @@ svg.logo-solid{
         header{
             background-position:center 0;
 
-            .logo{
+            /*.logo{
                 opacity:1;
-            }
+            }*/
         }
     }
 
     /*---------- HOME and PORTFOLIO ITEM PAGES ----------*/
-    &.homePg,
+    /*&.homePg,
     &.portfolioItemPg{
         header .logo{
             opacity: .65;
         }
-    }
+    }*/
 }
 
 /*==========----------==========*/
@@ -159,9 +159,9 @@ svg.logo-solid{
     header{
         background-position:center -100px !important;
 
-        .logo{
+        /*.logo{
             opacity:.75;
-        }
+        }*/
     }
 
     /*---------- BIO and PORTFOLIO PAGES ----------*/

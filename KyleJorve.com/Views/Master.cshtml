@@ -46,7 +46,7 @@
 
     @Umbraco.Field("head")
 </head>
-<body class="preload @(CurrentPage.Id == homePgID ? "introBody" : "") @Umbraco.Field("bodyClass")">
+<body class="preload @(CurrentPage.Id == homePgID ? "introBody" : "") @Umbraco.Field("bodyClass") @ViewData["BodyClass"]">
 
     @{ Html.RenderPartial("loadScreen");}
 

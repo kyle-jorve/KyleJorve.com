@@ -2,6 +2,8 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Master.cshtml";
+    ViewData["BodyClass"] = "portfolioItemPg";
+
     var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
     var i = 0;
 }

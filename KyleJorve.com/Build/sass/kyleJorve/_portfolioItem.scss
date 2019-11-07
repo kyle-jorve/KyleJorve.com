@@ -195,6 +195,7 @@
 /*---------- BACKGROUNDS ----------*/
 .imgBg{
     opacity:.15;
+    filter:blur(16px);
     @extend %absolute-cover;
     z-index:1;
     @include transition;

@@ -19,7 +19,7 @@
         }
         else if (CurrentPage.Id == portfolioPgID)
         {
-            var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("pubDate desc");
+            var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("sortOrder desc");
             var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
             var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
 

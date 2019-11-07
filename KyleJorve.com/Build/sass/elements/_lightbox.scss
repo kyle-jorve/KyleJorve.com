@@ -28,6 +28,7 @@
     z-index:1;
     
     .lightboxBg{
+        filter:blur(16px);
         opacity:.2;
         background-repeat:no-repeat;
         background-position:center center;

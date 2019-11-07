@@ -34,6 +34,7 @@
 .portfolioItem{
     cursor:pointer;
     min-height:300px;
+    max-height:40vw;
     margin:.5em;
     border-radius:$borderRadius;
     box-shadow:$mediumShadow;
