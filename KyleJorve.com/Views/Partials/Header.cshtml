@@ -3,7 +3,6 @@
 @{
     var portfolioPgID = 1082;
     var bioPgID = 1083;
-    var closeLink = Umbraco.Content(portfolioPgID).Url;
     var portfolioPg = Umbraco.Content(portfolioPgID);
     var bioPg = Umbraco.Content(bioPgID);
     bool isPortfolioItem = CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID;
@@ -17,56 +16,57 @@
 
 <header>
     <div class="flexContainer noRespond">
-        @if (isPortfolioItem)
-        {
-            <a href="@closeLink" class="closeBtn">
-                <span></span>
-                <span></span>
-            </a>
-        }
         <div class="logoWrp">
             <a class="logo" href="/">
                 @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-circle.svg")))
             </a>
         </div>
+
+        @if (isPortfolioItem)
+        {
+            <div class="closeBtn" id="closePage">
+                <span></span>
+                <span></span>
+            </div>
+        }
     </div>
 </header>
 
 @if (!isPortfolioItem)
 {
-<div class="mobileNavContainer">
-    <a class="mobileNavItem bioItem @(CurrentPage.Id == bioPgID ? "active" : null)" href="@bioPg.Url">
-        <div class="navItemIcon">
-            @bioIcon
-        </div>
-        <span>CV and Bio</span>
-    </a>
-    <a class="mobileNavItem workItem @(CurrentPage.Id == portfolioPgID ? "active" : null)" href="@portfolioPg.Url">
-        <div class="navItemIcon">
-            @portfolioIcon
-        </div>
-        <span>Portfolio</span>
-    </a>
-    <div id="navBtn" class="navBtn">
-        <div class="blocksWrp">
-            <div class="blockRow">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
+    <div class="mobileNavContainer">
+        <a class="mobileNavItem bioItem @(CurrentPage.Id == bioPgID ? "active" : null)" href="@bioPg.Url">
+            <div class="navItemIcon">
+                @bioIcon
             </div>
-            <div class="blockRow">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
+            <span>CV and Bio</span>
+        </a>
+        <a class="mobileNavItem workItem @(CurrentPage.Id == portfolioPgID ? "active" : null)" href="@portfolioPg.Url">
+            <div class="navItemIcon">
+                @portfolioIcon
             </div>
-            <div class="blockRow">
-                <div class="block"></div>
-                <div class="block"></div>
-                <div class="block"></div>
+            <span>Portfolio</span>
+        </a>
+        <div id="navBtn" class="navBtn">
+            <div class="blocksWrp">
+                <div class="blockRow">
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                </div>
+                <div class="blockRow">
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                </div>
+                <div class="blockRow">
+                    <div class="block"></div>
+                    <div class="block"></div>
+                    <div class="block"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 }
 
 <div class="topNavWrp" id="topNav">

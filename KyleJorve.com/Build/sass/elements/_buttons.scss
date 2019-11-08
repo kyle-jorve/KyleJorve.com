@@ -94,7 +94,7 @@ a.button {
     cursor:pointer;
     width:$closeBtnDiam;
     height:$closeBtnDiam;
-    border-radius:0 0 $borderRadius 0;
+    border-radius:0 0 0 $borderRadius;
     background:$closeBtnBg;
     box-shadow:$boxShadow;
     position:relative;

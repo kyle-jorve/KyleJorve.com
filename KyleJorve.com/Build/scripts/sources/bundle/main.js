@@ -58,3 +58,50 @@ function detectTouchDevice() {
 function detectMobile() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
+
+(function () {
+    var cssClasses = {
+        buffer: 'headerBuffer',
+        extra: 'headerBuffer--extra'
+    };
+    var els;
+    var headerHeight;
+    var extra = 32;
+
+    // define that header height
+    var howHigh = function () {
+        headerHeight = els.header.offsetHeight;
+    };
+
+    // buffer those els, baby!
+    var buffer = function () {
+        els.buffers.forEach(function (cur) {
+            var bufferExtra = cur.classList.contains(cssClasses.extra);
+
+            cur.style.paddingTop = (bufferExtra ? headerHeight + extra : headerHeight) + 'px';
+        });
+    };
+
+    var both = function () {
+        howHigh();
+        buffer();
+    };
+
+    var eventListeners = function () {
+        // on document load...
+        window.addEventListener('DOMContentLoaded', function () {
+            // define els
+            els = {
+                buffers: Array.prototype.slice.call(document.querySelectorAll('.' + cssClasses.buffer)),
+                header: document.querySelector('header')
+            };
+        });
+
+        // on window load and resize, do all the stuff
+        window.addEventListener('load', both);
+        window.addEventListener('resize', both);
+    };
+
+    // -- iNIT -- //
+    eventListeners();
+})();

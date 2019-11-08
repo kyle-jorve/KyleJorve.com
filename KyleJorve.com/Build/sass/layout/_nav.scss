@@ -22,7 +22,7 @@
 
     nav {
         width: 100%;
-        padding:4em 0;
+        padding:6em 0 4em 0;
         text-align: center;
         position: relative;
         z-index: 2;
@@ -58,6 +58,7 @@
                 content:'';
                 height:$navBtnLineWidth;
                 width:$navBtnLineWidth;
+                border-radius:50%;
                 background:$navLinkColor;
                 @extend %absolute-center-horizontal;
                 bottom:0;
@@ -329,7 +330,6 @@ footer{
             &.social{
                 @include sbFlexWrap(row, nowrap, flex-end, center);
                 background:map-get($bgColors, whiteBg);
-                border-radius:0 0 0 1em;
                 flex-basis:60%;
 
                 a{
@@ -373,8 +373,9 @@ footer{
     width: $navBtnDiam;
     height: $navBtnDiam;
     border:$navBtnBorder;
+    border-radius:0 0 0 $borderRadius;
+    box-shadow:$mediumShadow;
     background:$navBtnColor;
-    border-radius: 0;
     @include transition(all, .5s);
     position:relative;
 
@@ -401,6 +402,7 @@ footer{
         opacity:1;
         width:$navBtnLineWidth;
         height:$navBtnLineThickness;
+        border-radius:50%;
         background:$navBtnLineColor;
         @include transition;
     }
@@ -425,21 +427,6 @@ footer{
     }
 }
 
-/*---------- HOME PAGE ----------*/
-
-.homePg{
-    .navBtn{
-        border-radius:0 0 $borderRadius 0;
-        box-shadow:$mediumShadow;
-    }
-
-    /*----- LEFT NAV REVEALED -----*/
-    &.revealLeftNav .navBtn{
-        border-radius:0;
-        box-shadow:none;
-    }
-}
-
 /*==========----------==========*/
 /*         NAV REVEALED         */
 /*==========----------==========*/
@@ -451,8 +438,6 @@ footer{
 .showMobileNav .scrolled{
     .navBtn{
         background:$navLinkColor;
-        border-radius:0 0 $borderRadius 0 !important;
-        box-shadow:none !important;
 
         .block{
             background:$navBg;
@@ -493,135 +478,4 @@ footer{
         opacity:1;
         visibility:visible;
     }
-}
-
-/*==========----------==========*/
-/*       LEFT SECTION NAV       */
-/*==========----------==========*/
-
-.leftBuffer{
-    margin-left:$navBtnDiam;
-    position:relative;
-    z-index:1;
-    @include transition;
-}
-
-.leftNavWrp{
-    @include sbFlexWrap(column, nowrap, center, center);
-    width:$navBtnDiam;
-    padding-top:$navBtnDiam;
-    background:map-get($bgColors, darkCOntentBg);
-    overflow:hidden;
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    z-index:10;
-
-    ul,
-    li{
-        padding:0;
-        margin:0;
-        list-style:none;
-    }
-
-    ul{
-        @include sbFlexWrap(row-reverse, nowrap, center, center);
-        writing-mode:vertical-rl;
-        @include transform("rotate(180deg)");
-    }
-
-    li{
-        display:block;
-        margin-top:4em;
-
-        &:last-child{
-            margin-top:0;
-        }
-    }
-
-    a,
-    a:visited,
-    div{
-        cursor:pointer;
-        display:block;
-        padding:.25em;
-        text-transform:$headingTextTransform;
-        letter-spacing:$headingLetterSpacing;
-        font-weight:$primaryBold;
-        color:$medTextColor;
-        position:relative;
-
-        &:before{
-            display:block;
-            content:'';
-            width:0;
-            height:$borderThickness;
-            background:$lightTextColor;
-            position:absolute;
-            right:100%;
-            top:50%;
-            @include transform("translateY(-50%)");
-            @include transition;
-        }
-
-        /*---------- HOVER EFFECTS ----------*/
-        @media (any-hover:hover){
-            &:hover{
-                color:$linkHoverColor !important;
-            }
-        }
-
-        /*---------- ACTIVE ----------*/
-        &.active{
-            cursor:auto;
-            color:$lightTextColor;
-
-            &:before{
-                width:16px;
-            }
-        }
-    }
-
-    div{ 
-        span{
-            @include transition;
-        }
-
-        /*---------- HOVER EFFECTS ----------*/
-        @media (any-hover:hover){
-            &:not(.active):hover{
-                span{
-                    color:$linkHoverColor !important;
-                }
-            }
-        }
-    }
-}
-
-/*---------- HOME PAGE ----------*/
-
-.homePg{
-    .leftBuffer{
-        margin-left:0;
-    }
-    .leftNavWrp{
-        width:0;
-        @include transition;
-    }
-
-    /*----- REVEAL LEFT NAV -----*/
-    &.revealLeftNav{
-        .leftBuffer{
-            margin-left:$navBtnDiam;
-        }
-        .leftNavWrp{
-            width:$navBtnDiam;
-        }
-    }
-}
-
-/*---------- PORTFOLIO ITEM PAGE ----------*/
-.portfolioItemPg .leftNavWrp{
-    padding-top:$closeBtnDiam;
 }

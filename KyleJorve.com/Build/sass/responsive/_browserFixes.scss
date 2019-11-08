@@ -28,15 +28,6 @@
         display:block !important;
     }
 
-    .leftBuffer,
-    .homePg.revealLeftNav .leftBuffer{
-        margin-left:0 !important;
-    }
-
-    .leftNavWrp{
-        display:none !important;
-    }
-
     .navBtn{
         border-radius: 0 0 $borderRadius 0 !important;
     }
@@ -335,23 +326,6 @@
                             @include transform("none");
                         }
                     }
-                }
-            }
-        }
-    }
-
-    .leftNavWrp{
-        a,
-        a:visited,
-        div{
-            &:hover{
-                color:$linkHoverColor !important;
-            }
-        }
-        div{ 
-            &:not(.active):hover{
-                span{
-                    color:$linkHoverColor !important;
                 }
             }
         }

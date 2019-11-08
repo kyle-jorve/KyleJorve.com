@@ -46,11 +46,11 @@ $navIconBg: desaturate(darken($navBg, 10%), 35%);
 /*----- Nav Button -----*/
 $navBtnDiam:60px;
 
-$sandwichWidth: 40%;
-$sandwichHeight: 40%;
+$sandwichWidth: 42%;
+$sandwichHeight: 42%;
 
-$navBtnLineWidth: 4px;
-$navBtnLineThickness: 4px;
+$navBtnLineWidth: 5px;
+$navBtnLineThickness: 5px;
 $navBtnLineColor: $lightTextColor;
 
 $navBtnColor:map-get($colorScheme, accentColor);

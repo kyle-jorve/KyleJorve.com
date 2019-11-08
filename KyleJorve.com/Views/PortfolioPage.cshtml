@@ -4,11 +4,10 @@
     Layout = "Master.cshtml";
 }
 
-<div class="leftBuffer">
-    <section class="portfolioSection lightContentBg">
-        <div class="pageHeading">
-            <h1>@Umbraco.Field("heading")</h1>
-        </div>
-        @{ Html.RenderPartial("portfolioGrid");}
-    </section>
-</div>
+
+<section class="portfolioSection lightContentBg headerBuffer headerBuffer--extra">
+    <div class="pageHeading">
+        <h1>@Umbraco.Field("heading")</h1>
+    </div>
+    @{ Html.RenderPartial("portfolioGrid");}
+</section>

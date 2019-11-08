@@ -8,53 +8,52 @@
     var i = 0;
 }
 
-<div class="leftBuffer">
-    <div class="itemShowcase">
-        <section class="imgSection darkContentBg">
-            @if (imgs != null)
-            {
-                <div class="imgSlider @(imgs.Count() > 1 ? "imgSlideshow" : null)" id="@(imgs.Count() > 1 ? "imgSlideshow" : null)">
-                    @foreach (var img in imgs)
-                    {
-                        <div class="imgSlide">
-                            <img id="@("img-" + i)" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
-                            <div class="iconCol">
-                                <div class="full-screen openLightbox">
-                                    <i class="fas fa-expand"></i>
-                                </div>
+
+<div class="itemShowcase">
+    <section class="imgSection darkContentBg">
+        @if (imgs != null)
+        {
+            <div class="imgSlider @(imgs.Count() > 1 ? "imgSlideshow" : null)" id="@(imgs.Count() > 1 ? "imgSlideshow" : null)">
+                @foreach (var img in imgs)
+                {
+                    <div class="imgSlide">
+                        <img id="@("img-" + i)" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
+                        <div class="iconCol">
+                            <div class="full-screen openLightbox">
+                                <i class="fas fa-expand"></i>
                             </div>
                         </div>
-                    }
-                </div>
-                if (imgs.Count() > 1)
-                {
-                    <div class="sliderNav" id="sliderNav">
-                        <!--slideshow arrows go here-->
-                    </div>
-                    <div class="sliderDots" id="sliderDots">
-                        <!--slideshow dots go here-->
                     </div>
                 }
-
-                i++;
-                foreach (var img in imgs)
-                {
-                    <div class="imgBg" style="background:url('@img.Url') no-repeat center center / cover"></div>
-                }
-            }
-        </section>
-
-        <section class="descSection lightContentBg">
-            <div class="content-wrapper">
-                <h1>@Umbraco.Field("portfolioItemTitle")</h1>
-                @Umbraco.Field("portfolioItemDesc")
-                <div class="buttonWrp align-left">
-                    @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
-                    {
-                        <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime" target="_blank" rel="noreferrer noopener"><span>Purchase</span></a>
-                    }
-                </div>
             </div>
-        </section>
-    </div>
+            if (imgs.Count() > 1)
+            {
+                <div class="sliderNav" id="sliderNav">
+                    <!--slideshow arrows go here-->
+                </div>
+                <div class="sliderDots" id="sliderDots">
+                    <!--slideshow dots go here-->
+                </div>
+            }
+
+            i++;
+            foreach (var img in imgs)
+            {
+                <div class="imgBg" style="background:url('@img.Url') no-repeat center center / cover"></div>
+            }
+        }
+    </section>
+
+    <section class="descSection lightContentBg">
+        <div class="content-wrapper">
+            <h1>@Umbraco.Field("portfolioItemTitle")</h1>
+            @Umbraco.Field("portfolioItemDesc")
+            <div class="buttonWrp align-left">
+                @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
+                {
+                    <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime" target="_blank" rel="noreferrer noopener"><span>Purchase</span></a>
+                }
+            </div>
+        </div>
+    </section>
 </div>

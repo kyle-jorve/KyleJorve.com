@@ -153,7 +153,7 @@ $linkColor:map-get($colorScheme, accentColor);
 $linkHoverColor:lighten($linkColor, 15%);
 $linkTextDecoration:none;
 $linkHoverTextDecoration:none;
-$linkFontWeight: $primaryFontWeight;
+$linkFontWeight: $primaryBold;
 
 /*----- Alignments -----*/
 $alignments:(

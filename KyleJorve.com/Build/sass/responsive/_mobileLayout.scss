@@ -114,14 +114,6 @@ footer{
                 &.commerce{
                     @include sbFlexWrap(row, nowrap, center, center);
                 }
-
-                &.social{
-                    border-radius:0;
-                }
-
-                &.commerce{
-                    border-radius:0 0 0 1em;
-                }
             }
         }
     }

@@ -262,10 +262,10 @@
     <Content Include="Build\scripts\sources\portfolioItem.js" />
     <Content Include="Build\scripts\sources\leftNav.js" />
     <Content Include="Build\scripts\sources\copyright.js" />
-    <Content Include="Build\scripts\sources\bundle\sb.animate.js" />
-    <Content Include="Build\scripts\sources\bundle\sb.main.js" />
-    <Content Include="Build\scripts\sources\bundle\sb.nav.js" />
-    <Content Include="Build\scripts\sources\bundle\sb.parallax.js" />
+    <Content Include="Build\scripts\sources\bundle\animate.js" />
+    <Content Include="Build\scripts\sources\bundle\main.js" />
+    <Content Include="Build\scripts\sources\bundle\nav.js" />
+    <Content Include="Build\scripts\sources\bundle\parallax.js" />
     <Content Include="Build\scripts\sources\homePg.js" />
     <Content Include="Build\scripts\dependencies\jquery-3.2.1.min.js" />
     <Content Include="Build\scripts\sources\slick.js" />

@@ -1,48 +1,47 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.BioPg>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
     var resumeItems = CurrentPage.GetPropertyValue<IEnumerable<IPublishedContent>>("resumeMain");
 }
 
-<div class="leftBuffer">
-    <section class="heroWrp shortHero lightContentBg">
-        <div class="photoBgWrp">
-            <div class="photoBg" style="background-image:url('@(CurrentPage.heroPhoto.Url)');"></div>
-        </div>
-    </section>
 
-    <section class="bioSection whiteBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))">
-        <div class="portraitWrp">
-            <div class="portrait">
-                <img src="@(CurrentPage.heroPhoto.Url)" />
+<section class="heroWrp shortHero lightContentBg">
+    <div class="photoBgWrp">
+        <div class="photoBg" style="background-image:url('@(CurrentPage.heroPhoto.Url)');"></div>
+    </div>
+</section>
+
+<section class="bioSection whiteBg" id="@(Umbraco.Field("bioHeading").ToString().ToLower().Replace(" ", "-"))">
+    <div class="portraitWrp">
+        <div class="portrait">
+            <img src="@(CurrentPage.heroPhoto.Url)" />
+        </div>
+    </div>
+    <div class="content-wrapper">
+        @Umbraco.Field("bio")
+    </div>
+    <div class="logoIcon">
+        @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-circle-icon.svg")))
+    </div>
+</section>
+
+<section class="resumeSection lightContentBg" id="@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-").Replace("&eacute;", "e"))">
+    <div class="content-wrapper">
+        <h2 class="mobileHeading">@Umbraco.Field("resumeHeading")</h2>
+
+        @foreach (var item in resumeItems)
+        {
+            <div class="resumeSegment">
+                <h3>@Umbraco.Field(item, "resumeSectionHeading")</h3>
+                @Umbraco.Field(item, "resumeSectionContent")
             </div>
-        </div>
-        <div class="content-wrapper">
-            @Umbraco.Field("bio")
-        </div>
-        <div class="logoIcon">
-            @Html.Raw(System.IO.File.ReadAllText(Server.MapPath("/images/logo-circle-icon.svg")))
-        </div>
-    </section>
 
-    <section class="resumeSection lightContentBg" id="@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-").Replace("&eacute;", "e"))">
-        <div class="content-wrapper">
-            <h2 class="mobileHeading">@Umbraco.Field("resumeHeading")</h2>
-
-            @foreach (var item in resumeItems)
+            if (item != resumeItems.ToArray()[resumeItems.ToArray().Length - 1])
             {
-                <div class="resumeSegment">
-                    <h3>@Umbraco.Field(item, "resumeSectionHeading")</h3>
-                    @Umbraco.Field(item, "resumeSectionContent")
-                </div>
-
-                if (item != resumeItems.ToArray()[resumeItems.ToArray().Length - 1])
-                {
-                    <hr />
-                }
-
+                <hr />
             }
-        </div>
-    </section>
-</div>
+
+        }
+    </div>
+</section>

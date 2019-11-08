@@ -1,7 +1,7 @@
 ﻿.mobileNavContainer{
     position:fixed;
     top:0;
-    left:0;
+    right:0;
     z-index:101;
     @include transition;
 
@@ -74,32 +74,6 @@
 
         span{
             color:$navIconBg;
-        }
-    }
-}
-
-/*//////////////////////////////////////////////////////*/
-/*//====================----------====================//*/
-/*//                   700PX HEIGHT                   //*/
-/*//====================----------====================//*/
-/*//////////////////////////////////////////////////////*/
-@media only screen and (max-height:700px){
-    .leftNavWrp{
-        li{
-            margin-top:2em;
-
-            &:last-child{
-                margin-top:0;
-            }
-        }
-        a,
-        a:visited,
-        div{
-            font-size:$smallFontSize;
-
-            &.active:before{
-                width:20px;
-            }
         }
     }
 }
@@ -191,13 +165,6 @@
 /*//////////////////////////////////////////////////////*/
 @media only screen and (max-width:$navBreakpoint),
 only screen and (max-height:$navBreakpoint){
-    .leftNavWrp{
-        display:none;
-    }
-
-    .leftBuffer{
-        margin-left:0 !important;
-    }
     .navBtn{
         border-radius:0 0 $mobileBorderRadius 0 !important;
     }
@@ -225,6 +192,7 @@ only screen and (max-height:$navBreakpoint){
         top:auto;
         bottom:0;
         right:0;
+        left:0;
     }
 
     .mobileNavItem{

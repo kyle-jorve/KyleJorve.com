@@ -54,7 +54,7 @@
 
     @{ Html.RenderPartial("Header");}
 
-    @{ Html.RenderPartial("leftSectionNav");}
+    @*@{ Html.RenderPartial("leftSectionNav");}*@
 
     @RenderBody()
 
@@ -62,11 +62,11 @@
 
     @{ Html.RenderPartial("lightbox");}
 
-    @if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
+    @*@if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
     {
         <script src="/Scripts/leftNav.js?v=1.1.0"></script>
-    }
-    else if (CurrentPage.Parent.Id == portfolioPgID)
+    }*@
+    @if (CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID)
     {
         <script src="/Scripts/portfolioItem.js"></script>
     }

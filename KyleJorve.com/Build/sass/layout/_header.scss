@@ -19,7 +19,8 @@ header {
     z-index: 100;
     @include transition;
 
-    a{
+    a,
+    .closeBtn{
         pointer-events:auto;
     }
 
@@ -28,13 +29,13 @@ header {
     }
 
     .flexContainer {
-        @include sbFlexWrap(row, nowrap, flex-end, flex-start, stretch);
+        @include sbFlexWrap(row, nowrap, flex-start, flex-start, stretch);
         padding: 0;
     }
 }
 
 .logoWrp{
-    padding:1em;
+    padding:.5em 1em;
 }
 
 .logo{
@@ -88,27 +89,8 @@ svg.logo-solid{
         background-repeat:no-repeat;
         background-size:100% 60px;
         background-position:center -60px;
-
-        /*.logo{
-            opacity:.85;
-
-            svg.logo-solid{
-                fill:map-get($colorScheme, accentColor);
-            }
-        }*/
     }
 }
-
-/*=============----------=============*/
-/*   HOME PAGE, PORTFOLIO ITEM PAGE   */
-/*=============----------=============*/
-
-/*.homePg,
-.portfolioItemPg {
-    header .logo{
-        opacity: .35;
-    }
-}*/
 
 /*==========----------==========*/
 /*     PORTFOLIO ITEM PAGE      */
@@ -117,9 +99,6 @@ svg.logo-solid{
     header{
         .flexContainer{
             @include sbFlexWrap(row, nowrap, space-between, flex-start);
-        }
-        .closeBtn{
-            border-radius:0;
         }
     }
 }
@@ -134,20 +113,8 @@ svg.logo-solid{
     &.bioPg {
         header{
             background-position:center 0;
-
-            /*.logo{
-                opacity:1;
-            }*/
         }
     }
-
-    /*---------- HOME and PORTFOLIO ITEM PAGES ----------*/
-    /*&.homePg,
-    &.portfolioItemPg{
-        header .logo{
-            opacity: .65;
-        }
-    }*/
 }
 
 /*==========----------==========*/
@@ -158,10 +125,6 @@ svg.logo-solid{
     /*---------- GENERAL ----------*/
     header{
         background-position:center -100px !important;
-
-        /*.logo{
-            opacity:.75;
-        }*/
     }
 
     /*---------- BIO and PORTFOLIO PAGES ----------*/

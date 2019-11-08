@@ -1,6 +1,29 @@
 ﻿/*==========----------==========*/
 /*          CATEGORIES          */
 /*==========----------==========*/
+
+.portfolio{
+    &__titleRow{
+        @include sbFlexWrap(row, wrap, space-between, flex-end);
+    }
+
+    &__titleCol{
+        padding:0 1rem;
+
+        &:first-child{
+            padding-left:0;
+        }
+        
+        &:last-child{
+            padding-right:0;
+        }
+    }
+
+    &__rowTitle{
+        margin:0;
+    }
+}
+
 .portfolioCatWrp{
     padding-bottom:4em;
     position:relative;
