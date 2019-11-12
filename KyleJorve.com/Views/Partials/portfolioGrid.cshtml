@@ -68,21 +68,25 @@ else
     for (int ix = 0; ix < cats.Count(); ix++)
     {
         var catID = cats[ix].Value.ToLower().Replace(' ', '-');
+        bool lastCat = cats[ix] == cats.Last();
+        var nextCat = lastCat ? cats[ix - 1].Value : cats[ix + 1].Value;
+        var nextID = nextCat.ToLower().Replace(' ', '-');
 
         <div class="portfolioCatWrp" id="@catID">
-            @if (cats[ix] != cats.Last())
-            {
-                var nextID = cats[ix + 1].Value.ToLower().Replace(' ', '-');
-
-                <div class="portfolio__titleRow">
-                    <h2 class="portfolio__titleCol portfolio__rowTitle">@cats[ix].Value</h2>
-                    <a class="portfolio__titleCol portfolio__rowLink" href="#@nextID"><i class="fas fa-arrow-down"></i>&nbsp;Jump to @cats[ix + 1].Value</a>
-                </div>
-            }
-            else
-            {
-                <h2>@cats[ix].Value</h2>
-            }
+            <div class="portfolio__titleRow">
+                <h2 class="portfolio__titleCol portfolio__rowTitle">@cats[ix].Value</h2>
+                <a class="portfolio__titleCol portfolio__rowLink" href="#@nextID">
+                    @if (!lastCat)
+                    {
+                        <i class="fas fa-arrow-down"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-arrow-up"></i>
+                    }
+                    &nbsp;Jump to @nextCat
+                </a>
+            </div>
 
             <div class="portfolioGrid">
                 @for (var i = 0; i < portfolioOrdered.Count(); i++)

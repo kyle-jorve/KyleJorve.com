@@ -466,6 +466,9 @@
     <Content Include="Build\sass\responsive\_mobileBioPg.scss" />
     <Content Include="Build\sass\kyleJorve\_introScreen.scss" />
     <Content Include="Build\sass\responsive\_browserFixes.scss" />
+    <Content Include="Build\sass\global\_font-awesome-5.scss" />
+    <Content Include="Build\sass\global\_normalize.scss" />
+    <Content Include="Build\sass\global\_fonts.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />

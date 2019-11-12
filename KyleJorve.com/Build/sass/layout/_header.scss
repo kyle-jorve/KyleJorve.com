@@ -6,7 +6,6 @@ header {
     pointer-events:none;
     opacity: 1;
     visibility: visible;
-    @include gradient(rgba(map-get($bgColors, darkContentBg), .5), rgba(map-get($bgColors, darkContentBg), 0), vertical);
     background-repeat:no-repeat;
     background-size:contain;
     background-position:center 0;
@@ -80,39 +79,12 @@ svg.logo-solid{
 }
 
 /*==========----------==========*/
-/*   PORTFOLIO PAGE, BIO PAGE   */
-/*==========----------==========*/
-.portfolioPg,
-.bioPg{
-    header{
-         @include gradient(rgba($white, .85), rgba($white, 0), vertical);
-        background-repeat:no-repeat;
-        background-size:100% 60px;
-        background-position:center -60px;
-    }
-}
-
-/*==========----------==========*/
 /*     PORTFOLIO ITEM PAGE      */
 /*==========----------==========*/
 .portfolioItemPg{
     header{
         .flexContainer{
             @include sbFlexWrap(row, nowrap, space-between, flex-start);
-        }
-    }
-}
-
-/*==========----------==========*/
-/*         BODY SCROLLED        */
-/*==========----------==========*/
-
-.scrolled{
-    /*---------- PORTFOLIO PAGE, BIO PAGE ----------*/
-    &.portfolioPg,
-    &.bioPg {
-        header{
-            background-position:center 0;
         }
     }
 }

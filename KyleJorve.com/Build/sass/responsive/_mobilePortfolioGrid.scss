@@ -4,13 +4,13 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 
-.portfolioCatWrp{
+.portfolioCatWrp {
     /*==========----------==========*/
     /*        NAV BREAKPOINT        */
     /*==========----------==========*/
-    @media only screen and (max-width:$navBreakpoint){
-        & + .portfolioCatWrp{
-            padding-top:3em;
+    @media only screen and (max-width:$navBreakpoint) {
+        & + .portfolioCatWrp {
+            padding-top: 3em;
         }
     }
 }
@@ -21,78 +21,124 @@
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
 
-.portfolioGrid,
-.topNavWrp .recentWorkContainer .portfolioGrid{
-    /*==========----------==========*/
-    /*          800PX WIDTH         */
-    /*==========----------==========*/
-    @media only screen and (max-width:800px){
+
+/*==========----------==========*/
+/*          800PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:800px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid {
         .portfolioItem,
         .portfolioItem.wide,
-        .portfolioItem.tall{
+        .portfolioItem.tall {
             @include sbFlexItem(1, 1, calc(50% - 1em));
         }
 
-        .portfolioItem{
-            min-height:0;
-            height:240px;
+        .portfolioItem {
+            min-height: 0;
+            height: 240px;
         }
     }
+}
 
-    /*==========----------==========*/
-    /*          600PX WIDTH         */
-    /*==========----------==========*/
-    @media only screen and (max-width:600px){
-        .portfolioItem{
-            max-height:none;
-            height:180px;
+/*==========----------==========*/
+/*          600PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:600px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid {
+        .portfolioItem {
+            max-height: none;
+            height: 180px;
 
-            &:after{
-                display:none;
+            &:after {
+                display: none;
             }
         }
-    }    
-
-    /*==========----------==========*/
-    /*        NAV BREAKPOINT        */
-    /*==========----------==========*/
-    @media only screen and (max-width:$navBreakpoint){
-        .portfolioItem{
-            border-radius:$mobileBorderRadius;
-        }
-
-        .itemShowcase .iconCol{
-            border-radius:0 $mobileBorderRadius $mobileBorderRadius 0;
-        }
     }
 
-    /*==========----------==========*/
-    /*          500PX WIDTH         */
-    /*==========----------==========*/
-    @media only screen and (max-width:500px){
+    .portfolio{
+        &__titleRow{
+            margin:1em 0 .5em 0;
+            padding:0 0 .5em 0;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*        NAV BREAKPOINT        */
+/*==========----------==========*/
+@media only screen and (max-width:$navBreakpoint) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid {
+        .portfolioItem {
+            border-radius: $mobileBorderRadius;
+        }
+
+        .itemShowcase .iconCol {
+            border-radius: 0 $mobileBorderRadius $mobileBorderRadius 0;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*          500PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:500px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid {
         .portfolioItem,
         .portfolioItem.wide,
-        .portfolioItem.tall{
+        .portfolioItem.tall {
             @include sbFlexItem(1, 1, calc(50% - .5em));
-            margin:.25em;
+            margin: .25em;
         }
     }
+}
 
-    /*==========----------==========*/
-    /*          400PX WIDTH         */
-    /*==========----------==========*/
-    @media only screen and (max-width:400px){
-        .portfolioItem{
-            height:150px;
+/*==========----------==========*/
+/*          450PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:450px) {
+    .portfolio {
+        &__titleRow {
+            display: block;
+        }
+
+        &__titleCol {
+            padding-right: 0;
+
+            &:first-child{
+                padding-top:0;
+            }
+        }
+
+        &__rowLink{
+            display:inline-block;
         }
     }
+}
 
-    /*==========----------==========*/
-    /*          350PX WIDTH         */
-    /*==========----------==========*/
-    @media only screen and (max-width:350px){
-        .portfolioItem{
-            height:120px;
+/*==========----------==========*/
+/*          400PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:400px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid {
+        .portfolioItem {
+            height: 150px;
         }
-    }  
+    }
+}
+
+/*==========----------==========*/
+/*          350PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:350px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid {
+        .portfolioItem {
+            height: 120px;
+        }
+    }
 }

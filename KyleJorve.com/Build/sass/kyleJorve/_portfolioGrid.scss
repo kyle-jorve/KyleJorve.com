@@ -5,15 +5,14 @@
 .portfolio{
     &__titleRow{
         @include sbFlexWrap(row, wrap, space-between, flex-end);
+        margin:$headingTypeMargin;
+        padding:0 0 1em 0;
     }
 
     &__titleCol{
-        padding:0 1rem;
+        display:block;
+        padding:1rem 1rem 0 0;
 
-        &:first-child{
-            padding-left:0;
-        }
-        
         &:last-child{
             padding-right:0;
         }

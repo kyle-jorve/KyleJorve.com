@@ -66,11 +66,14 @@ function detectMobile() {
     };
     var els;
     var headerHeight;
-    var extra = 32;
+    var breakpoint = 600;
+    var extra;
 
     // define that header height
     var howHigh = function () {
         headerHeight = els.header.offsetHeight;
+
+        extra = window.innerWidth > breakpoint ? 32 : 16;
     };
 
     // buffer those els, baby!

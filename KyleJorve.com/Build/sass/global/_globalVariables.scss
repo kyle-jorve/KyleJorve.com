@@ -99,14 +99,13 @@ $contentSectionPadding: 6em 2em;
 /*===========================
     Type
 ===========================*/
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,700');
 
 /*Heading Font*/
 $headingFont: 'Montserrat', Helvetica, Arial, sans-serif;
 $headingTextTransform: uppercase;
-$headingFontWeight:700;
-$headingBold:700;
-$headingThin:300;
+$headingFontWeight:800;
+$headingBold:800;
+$headingThin:600;
 $headingLetterSpacing:.3em;
 $headingLineHeight:1.35;
 $headingTypeMargin:1.5em 0 .85em;
@@ -114,8 +113,8 @@ $headingTypeMargin:1.5em 0 .85em;
 /*Main Font*/
 $primaryFont: 'Montserrat', sans-serif;
 $primaryTextTransform: none;
-$primaryFontWeight:300;
-$primaryBold: 500;
+$primaryFontWeight:400;
+$primaryBold: 600;
 $primaryItalic: normal;
 $primaryLetterSpacing:.015em;
 $primaryLineHeight:1.5;

@@ -17,12 +17,27 @@
     visibility:visible;
     background:none;
     box-shadow:none;
-    padding:.25em;
+    padding:.5em .25em .25em .25em;
     padding-bottom:constant(safe-area-inset-bottom); /*iOS 11*/
     padding-bottom:env(safe-area-inset-bottom); /*iOS 11.2*/
     @include transition(all, .5s);
-    @include transform-origin("center bottom");
-    @include transform("none");
+    position:relative;
+
+    &::before{
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        display:block;
+        content:'';
+        background:$navIconBg;
+        width:40%;
+        height:.35em;
+        border-radius:0 0 .35em .35em;
+        position:absolute;
+        top:0;
+        left:50%;
+        transform:translateX(-50%);
+    }
 
     span{
         display:block;
@@ -58,13 +73,11 @@
     &.active{
         pointer-events:none;
         background:color($navIconBg);
-        box-shadow:0 4px 1em 2px $mediumShadowColor;
-        border-radius: .25em .25em 0 0;
         z-index:2;
-        @include transform("scale(1.05)");
 
-        &:first-child{
-            border-radius:0 .25em 0 0;
+        &::before{
+            opacity:1;
+            visibility:visible;
         }
 
         svg,
