@@ -1,7 +1,8 @@
 ﻿/*==========----------==========*/
 /*            GENERAL           */
 /*==========----------==========*/
-.lightboxWrp{
+.lightboxWrp,
+.lightbox__wrapper{
     opacity:0;
     visibility:hidden;
     @include sbFlexWrap(column, nowrap, center, center);
@@ -23,7 +24,8 @@
     }
 }
 
-.lightboxOverlay{
+.lightboxOverlay,
+.lightbox__overlay{
     @extend %absolute-cover;
     z-index:1;
     
@@ -73,7 +75,64 @@
             margin-left:.25em;
         }
     }
+
+    // for testing--remove
+    &__wrapper{
+        opacity:1;
+        visibility:visible;
+    }
+    // end for testing
+
+    &__wrapper--content{
+        padding:1em;
+        background:none;
+    }
+
+    &__overlay{
+        background:rgba(map-get($bgColors, lightContentBg), .9);
+    }
+
+    &__close--content{
+        border-radius:50%;
+        top:-.5em !important;
+        right:-.5em !important;
+    }
+
+    &__inner{
+        padding:3em 2em 2em 2em;
+        max-height:calc(100vh - 2em);
+        overflow-x:hidden;
+        overflow-y:auto;
+
+        &--center{
+            text-align:center;
+        }
+    }
+
+    &--content{
+        display:block;
+        max-width:$narrowWidth;
+        margin:0 auto;
+        height:auto;
+        background:map-get($bgColors, whiteBg);
+        border-radius:$borderRadius;
+        box-shadow:$softShadow;
+        color:$darkTextColor;
+
+        h2{
+            @extend %underlineText;
+            text-align:center;
+            color:$darkTextColor;
+
+            &::before{
+                left:50%;
+                transform:translateX(-50%);
+            }
+        }
+    }
 }
+
+@scrollBar(".lightbox__inner", vertical);
 
 /*==========----------==========*/
 /*      LIGHTBOX SLIDESHOW      */

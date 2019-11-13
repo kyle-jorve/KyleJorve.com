@@ -29,7 +29,7 @@
         pointer-events:none;
         display:block;
         content:'';
-        background:$navIconBg;
+        background:color($navIconBg);
         width:40%;
         height:.35em;
         border-radius:0 0 .35em .35em;
@@ -72,21 +72,11 @@
     /*----- Active Nav Item -----*/
     &.active{
         pointer-events:none;
-        background:color($navIconBg);
         z-index:2;
 
         &::before{
             opacity:1;
             visibility:visible;
-        }
-
-        svg,
-        svg *{
-            fill:$navIconBg;
-        }
-
-        span{
-            color:$navIconBg;
         }
     }
 }
@@ -176,12 +166,6 @@
 /*//                  NAV BREAKPOINT                  //*/
 /*//====================----------====================//*/
 /*//////////////////////////////////////////////////////*/
-@media only screen and (max-width:$navBreakpoint),
-only screen and (max-height:$navBreakpoint){
-    .navBtn{
-        border-radius:0 0 $mobileBorderRadius 0 !important;
-    }
-}
 
 @media only screen and (max-width:$navBreakpoint){
     .topNavWrp{
@@ -194,10 +178,15 @@ only screen and (max-height:$navBreakpoint){
     }
 
     .navBtn{
-        border-radius:0 !important;
-        min-width:$navBtnDiam;
-        box-shadow:none !important;
+        border-radius:50% !important;
+        width: $navBtnDiam * 1.15;
+        min-width:$navBtnDiam * 1.15;
+        height: $navBtnDiam * 1.15;
+        position:relative;
+        top:-.5em;
+        left:-.5em;
     }
+
     .mobileNavContainer{
         @include sbFlexWrap(row, nowrap, inherit, stretch);
         background:$navIconBg;
@@ -216,10 +205,6 @@ only screen and (max-height:$navBreakpoint){
     /*---------- NAV REVEALED ----------*/
     .showMobileNav,
     .showMobileNav .scrolled{
-        .navBtn{
-            border-radius:$mobileBorderRadius 0 0 0 !important;
-        }
-
         .mobileNavContainer{
             background:transparent;
             box-shadow:none;

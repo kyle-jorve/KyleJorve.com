@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "583855eb7c8b4f2e")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "ae746d5a9428fa88")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 
 // FILE: models.generated.cs
@@ -245,6 +245,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Internet Exploder Warning
+		///</summary>
+		[ImplementPropertyType("ieWarning")]
+		public IHtmlString IeWarning
+		{
+			get { return this.GetPropertyValue<IHtmlString>("ieWarning"); }
+		}
+
+		///<summary>
 		/// Intro Background
 		///</summary>
 		[ImplementPropertyType("introBg")]
@@ -446,6 +455,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IPublishedContent PageIcon
 		{
 			get { return this.GetPropertyValue<IPublishedContent>("pageIcon"); }
+		}
+
+		///<summary>
+		/// Resume Download
+		///</summary>
+		[ImplementPropertyType("resumeDownload")]
+		public IPublishedContent ResumeDownload
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("resumeDownload"); }
 		}
 
 		///<summary>

@@ -411,18 +411,6 @@ footer{
     @media (any-hover:hover){
         &:hover{
             background:$linkHoverColor;
-
-            .blockRow{
-                @include transform("translateX(-4px)");
-
-                & + .blockRow{
-                    @include transform("translateX(4px)");
-
-                    & + .blockRow{
-                        @include transform("translateX(-4px)");
-                    }
-                }
-            }
         }
     }
 }

@@ -395,12 +395,12 @@
             }
             @if $orientation == horizontal {
                 &::-webkit-scrollbar{
-                    height:10px;
+                    height:5px;
                 }
             }
             @else if $orientation == vertical {
                 &::-webkit-scrollbar {
-                    width: 10px;
+                    width: 5px;
                 }
             }
         }

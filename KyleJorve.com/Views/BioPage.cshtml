@@ -28,8 +28,10 @@
 
 <section class="resumeSection lightContentBg" id="@(Umbraco.Field("resumeHeading").ToString().ToLower().Replace(" ", "-").Replace("&eacute;", "e"))">
     <div class="content-wrapper">
-        <h2 class="mobileHeading">@Umbraco.Field("resumeHeading")</h2>
-
+        <h2 class="bio__heading">@Umbraco.Field("resumeHeading")</h2>
+        <div class="buttonWrp buttonWrp--center bio__buttonWrp">
+            <a class="button prime bio__dlBtn" href="@(Model.Content.GetPropertyValue<IPublishedContent>("resumeDownload").Url)" download><i class="fas fa-save"></i>&nbsp;Download</a>
+        </div>
         @foreach (var item in resumeItems)
         {
             <div class="resumeSegment">

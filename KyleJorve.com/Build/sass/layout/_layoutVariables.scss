@@ -41,7 +41,7 @@ $navLinkColor: $lightTextColor;
 /*----- Nav Icons -----*/
 $navIconWidth:36px;
 $navIconHeight: $navIconWidth * .8;
-$navIconBg: desaturate(darken($navBg, 10%), 35%);
+$navIconBg: desaturate(darken($navBg, 15%), 40%);
 
 /*----- Nav Button -----*/
 $navBtnDiam:60px;

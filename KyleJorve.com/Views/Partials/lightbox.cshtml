@@ -3,6 +3,8 @@
 @{
     var homePgID = 1081;
     var portfolioPgID = 1082;
+
+    var ieWarning = Umbraco.Content(homePgID).GetPropertyValue("ieWarning");
 }
 
 @if (CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID)
@@ -75,3 +77,18 @@ else if (CurrentPage.Id == homePgID || CurrentPage.Id == portfolioPgID)
 
     <script src="/Scripts/lightbox.js"></script>
 }
+
+<div class="lightbox__wrapper lightbox__wrapper--content" id="ieLbWrp">
+    <div class="lightbox lightbox--content" id="ieLb">
+        <div class="lightbox__close lightbox__close--content closeBtn" id="closeIELb">
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="lightbox__inner lightbox__inner--center">
+            @ieWarning
+        </div>
+    </div>
+
+    <div class="lightbox__overlay" id="ieLbOverlay"></div>
+</div>

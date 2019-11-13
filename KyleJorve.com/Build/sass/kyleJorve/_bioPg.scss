@@ -14,6 +14,23 @@
     }
 }
 
+.bio{
+    &__heading{
+        @extend %underlineText;
+        color:$darkTextColor;
+        text-align:center;
+
+        &::before{
+            left:50%;
+            transform:translateX(-50%);
+        }
+    }
+
+    &__dlBtn{
+        margin:0 !important;
+    }
+}
+
 .bioPg{
     /*==========----------==========*/
     /*            GENERAL           */
