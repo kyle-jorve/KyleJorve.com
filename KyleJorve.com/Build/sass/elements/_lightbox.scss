@@ -76,16 +76,19 @@
         }
     }
 
-    // for testing--remove
-    &__wrapper{
-        opacity:1;
-        visibility:visible;
+    &__button--content{
+        position:static !important;
     }
-    // end for testing
 
     &__wrapper--content{
         padding:1em;
         background:none;
+        z-index:400;
+        
+        &.active{
+            opacity:1;
+            visibility:visible;
+        }
     }
 
     &__overlay{
@@ -111,6 +114,7 @@
 
     &--content{
         display:block;
+        opacity:0;
         max-width:$narrowWidth;
         margin:0 auto;
         height:auto;
@@ -128,6 +132,11 @@
                 left:50%;
                 transform:translateX(-50%);
             }
+        }
+
+        &.active{
+            top:0;
+            opacity:1;
         }
     }
 }

@@ -5,9 +5,19 @@
     ViewData["BodyClass"] = "portfolioItemPg";
 
     var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
-    var i = 0;
+    int i = 0;
+    var portfolioPgID = 1082;
+    var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children;
+    var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
+    var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
+    var thisCat = Model.Content.GetPropertyValue<string>("portfolioItemType");
+    var thisSortNumber = Model.Content.GetPropertyValue<int>("sortNumber");
+    var thisCatCollection = portfolioItems.Where(p => p.GetPropertyValue<string>("portfolioItemType") == thisCat).OrderBy(p => p.GetPropertyValue<int>("sortNumber")).ToList();
+    var otherCatCollection = portfolioItems.Where(p => p.GetPropertyValue<string>("portfolioItemType") != thisCat).OrderBy(p => p.GetPropertyValue<int>("sortNumber")).ToList();
+    bool isLastInCat = CurrentPage == thisCatCollection.Last();
+    bool isLastItem = isLastInCat && thisCat == cats[cats.Count() - 1].ToString();
+    var nextItem = isLastInCat ? otherCatCollection[0] : thisCatCollection[thisSortNumber];
 }
-
 
 <div class="itemShowcase">
     <section class="imgSection darkContentBg">
@@ -24,6 +34,8 @@
                             </div>
                         </div>
                     </div>
+
+                    i++;
                 }
             </div>
             if (imgs.Count() > 1)
@@ -54,6 +66,13 @@
                     <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime" target="_blank" rel="noreferrer noopener"><span>Purchase</span></a>
                 }
             </div>
+
+            @if (!isLastItem)
+            {
+                <a class="portfolio__nextBlock" href="@nextItem.Url">
+                    <span class="portfolio__nextBlockText">Next Item</span>
+                </a>
+            }
         </div>
     </section>
 </div>

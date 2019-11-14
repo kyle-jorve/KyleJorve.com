@@ -97,6 +97,38 @@ a.button {
     }
 }
 
+.button{
+    &__img{
+        box-shadow:none !important;
+        max-width:4em !important;
+        max-height:4em !important;
+        margin:0 auto;
+    }
+
+    &__text{
+        display:block;
+        margin-top:1em;
+    }
+
+    &--img{
+        margin:0 1em 0 0 !important;
+        padding:1em !important;
+        border-radius:$borderRadius !important;
+        background:map-get($bgColors, whiteBg);
+
+        &:last-child{
+            margin-right:0 !important;
+        }
+
+        @media (any-hover:hover){
+            &:hover{
+                background:$linkColor;
+                color:$lightTextColor !important;
+            }
+        }
+    }
+}
+
 /*---------- CLOSE BUTTON ----------*/
 .closeBtn{
     cursor:pointer;

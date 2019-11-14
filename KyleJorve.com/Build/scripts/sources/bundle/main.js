@@ -59,6 +59,7 @@ function detectMobile() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
 
+// add buffer to elements for header
 (function () {
     var cssClasses = {
         buffer: 'headerBuffer',
@@ -105,6 +106,74 @@ function detectMobile() {
         window.addEventListener('resize', both);
     };
 
-    // -- iNIT -- //
+    // -- INIT -- //
+    eventListeners();
+})();
+
+// IE warning
+(function () {
+    var activeClass = 'active';
+    var detectIE = (function() {
+        var agent = window.navigator.userAgent.toLowerCase();
+        var isIE = agent.indexOf('msie') > -1 || agent.indexOf('trident') > -1;
+
+        return isIE;
+    })();
+    var els;
+    var lbTrans;
+    var lbWrpTrans;
+
+    console.log(detectIE);
+
+    var closeLb = function () {
+        // hide lightbox
+        els.lb.classList.remove(activeClass);
+
+        // wait for lightbox to transition out, then...
+        setTimeout(function () {
+            // hide lightbox wrapper
+            els.lbWrp.classList.remove(activeClass);
+        }, lbTrans);
+    };
+
+    var eventListeners = function () {
+        // on document load...
+        window.addEventListener('DOMContentLoaded', function () {
+            // define els
+            els = {
+                lbWrp: document.querySelector('#ieLbWrp'),
+                lb: document.querySelector('#ieLb'),
+                close: document.querySelector('#closeIELb'),
+                overlay: document.querySelector('#ieLbOverlay')
+            };
+
+            // define lbWrpTrans
+            lbWrpTrans = parseFloat(window.getComputedStyle(els.lbWrp).getPropertyValue('transition-duration')) * 1000;
+
+            // define lbTrans
+            lbTrans = parseFloat(window.getComputedStyle(els.lb).getPropertyValue('transition-duration')) * 1000;
+
+            // add click events
+            els.close.addEventListener('click', closeLb);
+            els.overlay.addEventListener('click', closeLb);
+        });
+
+        // on window load...
+        window.addEventListener('load', function () {
+            // if user is on IE...
+            if (detectIE) {
+                // show lightbox wrapper
+                els.lbWrp.classList.add(activeClass);
+
+                // wait for it to transition in, then...
+                setTimeout(function () {
+                    // show lightbox
+                    els.lb.classList.add(activeClass);
+                }, lbWrpTrans);
+            }
+        })
+    };
+
+    // init
     eventListeners();
 })();
