@@ -1,6 +1,9 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
+    var query = Request.QueryString.ToString().ToLower();
+    var closeURL = query.Contains("home") ? "/" : "/portfolio";
+
     var portfolioPgID = 1082;
     var bioPgID = 1083;
     var portfolioPg = Umbraco.Content(portfolioPgID);
@@ -24,10 +27,10 @@
 
         @if (isPortfolioItem)
         {
-            <div class="closeBtn" id="closePage">
+            <a href="@closeURL" class="closeBtn">
                 <span></span>
                 <span></span>
-            </div>
+            </a>
         }
     </div>
 </header>

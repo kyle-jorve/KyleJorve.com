@@ -4,38 +4,95 @@
     Layout = "Master.cshtml";
     ViewData["BodyClass"] = "portfolioItemPg";
 
-    var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
-    int i = 0;
+    var fromQuery = Request.QueryString["from"].ToString().ToLower();
+    bool hasFrom = fromQuery != null && fromQuery != "" && fromQuery.Length > 0;
+    bool fromHome = fromQuery.Contains("home");
+
+    var nextQuery = Request.QueryString["next"];
+    bool hasNext = nextQuery != null && nextQuery != "" && nextQuery.Length > 0;
+    bool hasNextNext = true;
+
     var portfolioPgID = 1082;
     var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children;
-    var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
-    var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
-    var thisCat = Model.Content.GetPropertyValue<string>("portfolioItemType");
-    var thisSortNumber = Model.Content.GetPropertyValue<int>("sortNumber");
-    var thisCatCollection = portfolioItems.Where(p => p.GetPropertyValue<string>("portfolioItemType") == thisCat).OrderBy(p => p.GetPropertyValue<int>("sortNumber")).ToList();
-    var otherCatCollection = portfolioItems.Where(p => p.GetPropertyValue<string>("portfolioItemType") != thisCat).OrderBy(p => p.GetPropertyValue<int>("sortNumber")).ToList();
-    bool isLastInCat = CurrentPage == thisCatCollection.Last();
-    bool isLastItem = isLastInCat && thisCat == cats[cats.Count() - 1].ToString();
-    var nextItem = isLastInCat ? otherCatCollection[0] : thisCatCollection[thisSortNumber];
+
+    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.OrderBy(i => i.GetPropertyValue("sortNumber")).ToList();
+
+    var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").ToList();
+
+    var nextItem = Umbraco.Content(nextQuery.AsInt());
+    string nextUrl1 = nextItem.Url + (hasFrom ? "?from=" + fromQuery : "");
+    string nextUrl2 = string.Empty;
+
+    //var nextUrl = nextItem.Url + "?from=" + fromQuery + (hasNextNext ? "&next=" + nextNextItem.ToString() : "");
+
+    // define next next item
+    if (fromHome)
+    {
+        for (int i = 0; i < theseItems.Count(); i++)
+        {
+            if (theseItems[i].Id == CurrentPage.Id)
+            {
+                if (theseItems[i + 2] != null)
+                {
+                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + theseItems[i + 2].Id.ToString();
+                }
+                else
+                {
+                    hasNextNext = false;
+                }
+
+                break;
+            }
+        }
+    }
+    else
+    {
+        var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
+        var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
+
+        for (int ix = 0; ix < cats.Count(); ix++)
+        {
+            var thisGroup = theseItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == cats[ix].ToString()).ToList();
+
+            for (int i = 0; i < thisGroup.Count(); i++)
+            {
+                if (thisGroup[i].Id == CurrentPage.Id)
+                {
+                    if (thisGroup[i + 2] != null)
+                    {
+                        nextUrl2 = (hasFrom ? "&" : "?") + "next=" + thisGroup[i + 2].Id.ToString();
+                    }
+                    else
+                    {
+                        hasNextNext = false;
+                    }
+
+                    break;
+                }
+            }
+        }
+    }
 }
+
+<script>
+    console.log("@(nextUrl1 + nextUrl2)");
+</script>
 
 <div class="itemShowcase">
     <section class="imgSection darkContentBg">
         @if (imgs != null)
         {
             <div class="imgSlider @(imgs.Count() > 1 ? "imgSlideshow" : null)" id="@(imgs.Count() > 1 ? "imgSlideshow" : null)">
-                @foreach (var img in imgs)
+                @for (int i = 0; i < imgs.Count(); i++)
                 {
                     <div class="imgSlide">
-                        <img id="@("img-" + i)" src="@img.Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
+                        <img id="@("img-" + i)" src="@imgs[i].Url" alt="@(Umbraco.Field("portfolioItemTitle") + " Image " + i)" />
                         <div class="iconCol">
                             <div class="full-screen openLightbox">
                                 <i class="fas fa-expand"></i>
                             </div>
                         </div>
                     </div>
-
-                    i++;
                 }
             </div>
             if (imgs.Count() > 1)
@@ -48,7 +105,6 @@
                 </div>
             }
 
-            i++;
             foreach (var img in imgs)
             {
                 <div class="imgBg" style="background:url('@img.Url') no-repeat center center / cover"></div>
@@ -67,10 +123,11 @@
                 }
             </div>
 
-            @if (!isLastItem)
+            @if (hasNext)
             {
-                <a class="portfolio__nextBlock" href="@nextItem.Url">
-                    <span class="portfolio__nextBlockText">Next Item</span>
+                <a class="button button--secondary" href="@(nextUrl1 + nextUrl2)">
+                    <span class="portfolio__nextBlockText">Next Item</span>&nbsp;
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             }
         </div>

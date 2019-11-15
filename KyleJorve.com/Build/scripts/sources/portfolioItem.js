@@ -3,17 +3,11 @@
         lightbox: document.querySelector('#lightboxWrp'),
         buttons: {
             open: Array.prototype.slice.call(document.querySelectorAll('.openLightbox')),
-            close: document.querySelector('#closeLightbox'),
-            closePage: document.querySelector('#closePage')
+            close: document.querySelector('#closeLightbox')
         }
     };
 
     var eventListeners = function () {
-        // close page
-        nodes.buttons.closePage.addEventListener('click', function () {
-            window.history.back();
-        });
-
         //open lightbox
         nodes.buttons.open.forEach(function (cur) {
             cur.addEventListener('click', function () {

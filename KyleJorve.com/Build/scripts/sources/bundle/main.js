@@ -123,8 +123,6 @@ function detectMobile() {
     var lbTrans;
     var lbWrpTrans;
 
-    console.log(detectIE);
-
     var closeLb = function () {
         // hide lightbox
         els.lb.classList.remove(activeClass);

@@ -19,13 +19,6 @@
 /*==========----------==========*/
 /*---------- PORTFOLIO ITEM PAGE ----------*/
 .portfolioItemPg header{
-    @media only screen and (max-width:$navBreakpoint),
-    only screen and (max-height:$navBreakpoint){
-        .closeBtn{
-            border-radius:0 0 $mobileBorderRadius 0;
-        }
-    }
-
     @media only screen and (max-width:$navBreakpoint){
         .logoWrp{
             padding:.5em;
