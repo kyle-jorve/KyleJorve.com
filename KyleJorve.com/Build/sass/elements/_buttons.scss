@@ -55,6 +55,11 @@ a.button {
     &:focus {
         outline: 0;
     }
+
+    &.noMargin{
+        margin:0;
+    }
+
     /*---------- PRIMARY BUTTON ----------*/
     &.prime {
         color: $primeBtnTextColor;
@@ -74,6 +79,26 @@ a.button {
         border:$borderThickness solid $ltBorderBtnColor;
         color:$ltBorderBtnColor;
     }
+    /*---------- UNDERLINE BUTTON ----------*/
+    &.underline{
+        background:none;
+        border-radius:0;
+        color:$linkColor;
+        position:relative;
+        padding:1em 0;
+
+        &::before{
+            display:block;
+            content:'';
+            height:$borderThickness;
+            background:$linkColor;
+            position:absolute;
+            bottom:0;
+            right:0;
+            left:0;
+            @include transition;
+        }
+    }
 
     /*---------- HOVER EFFECTS ----------*/
     @media (any-hover:hover){
@@ -92,6 +117,12 @@ a.button {
             &.ltBorderBtn{
                 background:$ltBorderBtnHoverBg;
                 color:$ltBorderBtnHoverColor;
+            }
+            /*Underline Button*/
+            &.underline{
+                &::before{
+                    bottom:.25em;
+                }
             }
         }
     }

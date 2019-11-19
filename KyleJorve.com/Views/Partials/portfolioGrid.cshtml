@@ -71,17 +71,19 @@ else
         <div class="portfolioCatWrp" id="@catID">
             <div class="portfolio__titleRow">
                 <h2 class="portfolio__titleCol portfolio__rowTitle">@cats[ix].Value</h2>
-                <a class="portfolio__titleCol portfolio__rowLink" href="#@nextID">
-                    @if (!lastCat)
-                    {
-                        <i class="fas fa-arrow-down"></i>
-                    }
-                    else
-                    {
-                        <i class="fas fa-arrow-up"></i>
-                    }
-                    &nbsp;Jump to @nextCat
-                </a>
+                <div class="portfolio__titleCol portfolio__rowLink">
+                    <a class="button underline noMargin" href="#@nextID">
+                        @if (!lastCat)
+                        {
+                            <i class="fas fa-arrow-down"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-arrow-up"></i>
+                        }
+                        &nbsp;Jump to @nextCat
+                    </a>
+                </div>
             </div>
 
             <div class="portfolioGrid">
@@ -92,7 +94,7 @@ else
                         var itemType = portfolioOrdered[i].GetPropertyValue<string>("portfolioItemType").ToLower().Replace(' ', '-');
                         var imgCollection = portfolioOrdered[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
                         var yPos = portfolioOrdered[i].GetPropertyValue<string>("imgVertPos");
-                        var next = i + 1 < portfolioOrdered.Count() ? "&next=" + portfolioOrdered[i + 1].Id : "";
+                        var next = i + 2 < portfolioOrdered.Count() ? "&next=" + portfolioOrdered[i + 1].Id : "";
                         var url = portfolioOrdered[i].Url + "?from=portfolio" + next;
 
                         if (imgCollection != null)

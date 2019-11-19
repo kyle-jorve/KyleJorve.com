@@ -10,12 +10,14 @@
 
     var nextQuery = Request.QueryString["next"];
     bool hasNext = nextQuery != null && nextQuery != "" && nextQuery.Length > 0;
-    bool hasNextNext = true;
+
+    var homePgID = 1081;
+    int homePgLimit = Umbraco.Content(homePgID).portfolioLimit;
 
     var portfolioPgID = 1082;
     var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children;
 
-    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.OrderBy(i => i.GetPropertyValue("sortNumber")).ToList();
+    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.ToList();
 
     var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").ToList();
 
@@ -23,22 +25,16 @@
     string nextUrl1 = nextItem.Url + (hasFrom ? "?from=" + fromQuery : "");
     string nextUrl2 = string.Empty;
 
-    //var nextUrl = nextItem.Url + "?from=" + fromQuery + (hasNextNext ? "&next=" + nextNextItem.ToString() : "");
-
     // define next next item
     if (fromHome)
     {
-        for (int i = 0; i < theseItems.Count(); i++)
+        for (int i = 0; i < homePgLimit; i++)
         {
             if (theseItems[i].Id == CurrentPage.Id)
             {
-                if (theseItems[i + 2] != null)
+                if (i + 3 <= homePgLimit && theseItems[i + 2] != null)
                 {
                     nextUrl2 = (hasFrom ? "&" : "?") + "next=" + theseItems[i + 2].Id.ToString();
-                }
-                else
-                {
-                    hasNextNext = false;
                 }
 
                 break;
@@ -49,26 +45,30 @@
     {
         var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
         var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
+        var thisCat = Model.Content.GetPropertyValue<string>("portfolioItemType");
+        var thisGroup = theseItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == thisCat).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
 
-        for (int ix = 0; ix < cats.Count(); ix++)
+        <script>
+            console.log("@(thisCat)");
+            console.log("@thisGroup.Count()");
+        </script>
+
+        for (int i = 0; i < thisGroup.Count(); i++)
         {
-            var thisGroup = theseItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == cats[ix].ToString()).ToList();
-
-            for (int i = 0; i < thisGroup.Count(); i++)
+            if (thisGroup[i].Id == CurrentPage.Id)
             {
-                if (thisGroup[i].Id == CurrentPage.Id)
+                if (i + 3 <= thisGroup.Count() && thisGroup[i + 2] != null)
                 {
-                    if (thisGroup[i + 2] != null)
-                    {
-                        nextUrl2 = (hasFrom ? "&" : "?") + "next=" + thisGroup[i + 2].Id.ToString();
-                    }
-                    else
-                    {
-                        hasNextNext = false;
-                    }
-
-                    break;
+                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + thisGroup[i + 2].Id.ToString();
                 }
+                else if (thisCat != cats.Last().Value)
+                {
+                    var nextGroup = theseItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") == cats.Last().Value).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList();
+
+                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + nextGroup[0].Id.ToString();
+                }
+
+                break;
             }
         }
     }
@@ -121,15 +121,15 @@
                 {
                     <a href="@(Umbraco.Field("portfolioItemPurchaseLink"))" class="button prime" target="_blank" rel="noreferrer noopener"><span>Purchase</span></a>
                 }
+
+                @if (hasNext)
+                {
+                    <a class="button secondary" href="@(nextUrl1 + nextUrl2)">
+                        Next Item&nbsp;<i class="fas fa-arrow-right"></i>
+                    </a>
+                }
             </div>
 
-            @if (hasNext)
-            {
-                <a class="button button--secondary" href="@(nextUrl1 + nextUrl2)">
-                    <span class="portfolio__nextBlockText">Next Item</span>&nbsp;
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            }
         </div>
     </section>
 </div>

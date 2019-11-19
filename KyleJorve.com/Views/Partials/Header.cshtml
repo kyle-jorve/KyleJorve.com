@@ -2,7 +2,7 @@
 
 @{
     var query = Request.QueryString.ToString().ToLower();
-    var closeURL = query.Contains("home") ? "/" : "/portfolio";
+    var closeURL = query.Contains("home") ? "/#featured-work" : "/portfolio";
 
     var portfolioPgID = 1082;
     var bioPgID = 1083;
