@@ -6,6 +6,7 @@
 
     var fromQuery = Request.QueryString["from"].ToString().ToLower();
     bool hasFrom = fromQuery != null && fromQuery != "" && fromQuery.Length > 0;
+    bool fromRecent = fromQuery.Contains("recent");
     bool fromHome = fromQuery.Contains("home");
 
     var nextQuery = Request.QueryString["next"];
@@ -13,11 +14,12 @@
 
     var homePgID = 1081;
     int homePgLimit = Umbraco.Content(homePgID).portfolioLimit;
+    int recentWorkLimit = Umbraco.Content(homePgID).portfolioLimit;
 
     var portfolioPgID = 1082;
     var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children;
 
-    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.ToList();
+    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : fromRecent ? portfolioItems.OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.ToList();
 
     var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").ToList();
 
@@ -41,17 +43,28 @@
             }
         }
     }
+    else if (fromRecent)
+    {
+        for (int i = 0; i < recentWorkLimit; i++)
+        {
+            if (theseItems[i].Id == CurrentPage.Id)
+            {
+                if (i + 3 <= recentWorkLimit && theseItems[i + 2] != null)
+                {
+                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + theseItems[i + 2].Id.ToString();
+                }
+
+                break;
+            }
+        }
+    }
     else
     {
         var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
         var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
         var thisCat = Model.Content.GetPropertyValue<string>("portfolioItemType");
         var thisGroup = theseItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == thisCat).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
-
-        <script>
-            console.log("@(thisCat)");
-            console.log("@thisGroup.Count()");
-        </script>
+        var otherGroup = theseItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") != thisCat).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList();
 
         for (int i = 0; i < thisGroup.Count(); i++)
         {
@@ -61,11 +74,13 @@
                 {
                     nextUrl2 = (hasFrom ? "&" : "?") + "next=" + thisGroup[i + 2].Id.ToString();
                 }
-                else if (thisCat != cats.Last().Value)
+                else if (thisCat != cats.Last().Value && i + 3 == thisGroup.Count() + 1 && otherGroup != null && otherGroup.Count() > 0)
                 {
-                    var nextGroup = theseItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") == cats.Last().Value).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList();
-
-                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + nextGroup[0].Id.ToString();
+                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + otherGroup[0].Id.ToString();
+                }
+                else if (thisCat != cats.Last().Value && i + 3 > thisGroup.Count() + 1 && otherGroup != null && otherGroup.Count() > 1)
+                {
+                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + otherGroup[1].Id.ToString();
                 }
 
                 break;
@@ -73,10 +88,6 @@
         }
     }
 }
-
-<script>
-    console.log("@(nextUrl1 + nextUrl2)");
-</script>
 
 <div class="itemShowcase">
     <section class="imgSection darkContentBg">
@@ -114,7 +125,7 @@
 
     <section class="descSection lightContentBg">
         <div class="content-wrapper">
-            <h1>@Umbraco.Field("portfolioItemTitle")</h1>
+            <h1 class="portfolioItem__title">@Umbraco.Field("portfolioItemTitle")</h1>
             @Umbraco.Field("portfolioItemDesc")
             <div class="buttonWrp align-left">
                 @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
@@ -124,7 +135,7 @@
 
                 @if (hasNext)
                 {
-                    <a class="button secondary" href="@(nextUrl1 + nextUrl2)">
+                    <a class="button secondary" href="@Html.Raw(nextUrl1 + nextUrl2)">
                         Next Item&nbsp;<i class="fas fa-arrow-right"></i>
                     </a>
                 }

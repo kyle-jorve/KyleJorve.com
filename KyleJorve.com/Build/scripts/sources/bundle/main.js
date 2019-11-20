@@ -65,9 +65,9 @@ function detectMobile() {
         buffer: 'headerBuffer',
         extra: 'headerBuffer--extra'
     };
+    var breakpoint = 600;
     var els;
     var headerHeight;
-    var breakpoint = 600;
     var extra;
 
     // define that header height

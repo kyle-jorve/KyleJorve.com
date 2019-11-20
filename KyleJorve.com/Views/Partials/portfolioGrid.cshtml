@@ -59,7 +59,6 @@ else
 {
     var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
     var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
-    var portfolioOrdered = portfolioItems.OrderBy(i => i.GetPropertyValue("sortNumber")).ToList();
 
     for (int ix = 0; ix < cats.Count(); ix++)
     {
@@ -67,6 +66,7 @@ else
         bool lastCat = cats[ix] == cats.Last();
         var nextCat = lastCat ? cats[ix - 1].Value : cats[ix + 1].Value;
         var nextID = nextCat.ToLower().Replace(' ', '-');
+        var thisGroup = portfolioItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == cats[ix].Value).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
 
         <div class="portfolioCatWrp" id="@catID">
             <div class="portfolio__titleRow">
@@ -87,48 +87,45 @@ else
             </div>
 
             <div class="portfolioGrid">
-                @for (var i = 0; i < portfolioOrdered.Count(); i++)
+                @for (var i = 0; i < thisGroup.Count(); i++)
                 {
-                    if (portfolioOrdered[i].GetPropertyValue<string>("portfolioItemType") == cats[ix].Value)
+                    var itemType = thisGroup[i].GetPropertyValue<string>("portfolioItemType").ToLower().Replace(' ', '-');
+                    var imgCollection = thisGroup[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
+                    var yPos = thisGroup[i].GetPropertyValue<string>("imgVertPos");
+                    var next = i + 2 <= thisGroup.Count() ? "&next=" + thisGroup[i + 1].Id : cats[ix] != cats.Last() ? "&next=" + portfolioItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") == cats[ix + 1].Value).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList()[0].Id : "";
+                    var url = thisGroup[i].Url + "?from=portfolio" + next;
+
+                    if (imgCollection != null)
                     {
-                        var itemType = portfolioOrdered[i].GetPropertyValue<string>("portfolioItemType").ToLower().Replace(' ', '-');
-                        var imgCollection = portfolioOrdered[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
-                        var yPos = portfolioOrdered[i].GetPropertyValue<string>("imgVertPos");
-                        var next = i + 2 < portfolioOrdered.Count() ? "&next=" + portfolioOrdered[i + 1].Id : "";
-                        var url = portfolioOrdered[i].Url + "?from=portfolio" + next;
+                        var img = Umbraco.Media(imgCollection.ToArray()[0].Id);
+                        decimal imgWidth = img.GetPropertyValue<decimal>("umbracoWidth");
+                        decimal imgHeight = img.GetPropertyValue<decimal>("umbracoHeight");
+                        var aspect = imgWidth / imgHeight;
+                        string itemClass = string.Empty;
 
-                        if (imgCollection != null)
+                        //define itemClass
+                        if (aspect > 1.333M)
                         {
-                            var img = Umbraco.Media(imgCollection.ToArray()[0].Id);
-                            decimal imgWidth = img.GetPropertyValue<decimal>("umbracoWidth");
-                            decimal imgHeight = img.GetPropertyValue<decimal>("umbracoHeight");
-                            var aspect = imgWidth / imgHeight;
-                            string itemClass = string.Empty;
-
-                            //define itemClass
-                            if (aspect > 1.333M)
-                            {
-                                itemClass = "wide";
-                            }
-                            else if (aspect < 0.875M)
-                            {
-                                itemClass = "tall";
-                            }
-
-                            <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
-                                <div class="itemContents">
-                                    <div class="iconRow">
-                                        <a href="@url" class="icon description">
-                                            <i class="fas fa-align-left"></i>
-                                        </a>
-                                        <div class="icon full-screen openLightbox" data-src="@img.Url" data-url="@url">
-                                            <i class="fas fa-expand"></i>
-                                        </div>
-                                    </div>
-                                    <a class="portfolioLink" href="@url"></a>
-                                </div>
-                            </div>
+                            itemClass = "wide";
                         }
+                        else if (aspect < 0.875M)
+                        {
+                            itemClass = "tall";
+                        }
+
+                        <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
+                            <div class="itemContents">
+                                <div class="iconRow">
+                                    <a href="@url" class="icon description">
+                                        <i class="fas fa-align-left"></i>
+                                    </a>
+                                    <div class="icon full-screen openLightbox" data-src="@img.Url" data-url="@url">
+                                        <i class="fas fa-expand"></i>
+                                    </div>
+                                </div>
+                                <a class="portfolioLink" href="@url"></a>
+                            </div>
+                        </div>
                     }
                 }
             </div>

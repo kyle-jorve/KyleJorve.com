@@ -5,6 +5,7 @@
     var portfolioPgID = 1082;
     var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("createDate desc");
     int recentWorkLimit = Umbraco.Content(homePgID).portfolioLimit;
+    var from = "?from=" + CurrentPage.Id;
 }
 
 <div class="portfolioGrid">
@@ -13,6 +14,8 @@
         var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
         var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
         var yPos = portfolioItems[i].imgVertPos;
+        var next = i + 1 < recentWorkLimit ? "&next=" + portfolioItems[i + 1].Id : "";
+        var url = portfolioItems[i].Url + from + next;
 
         if (imgCollection != null)
         {
@@ -42,7 +45,7 @@
                             <i class="fas fa-expand"></i>
                         </div>
                     </div>
-                    <a class="portfolioLink" href="@portfolioItems[i].Url"></a>
+                    <a class="portfolioLink" href="@url"></a>
                 </div>
             </div>
         }

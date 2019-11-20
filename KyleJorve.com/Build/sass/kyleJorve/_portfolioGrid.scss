@@ -166,6 +166,11 @@
     @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), vertical);
     padding:3em 1em 1em 1em;
     @include transform("translateY(100%)");
+    pointer-events:none;
+
+    & > *{
+        pointer-events:auto;
+    }
 }
 /*---------- PORTFOLIO PAGE -----------*/
 .itemShowcase .iconCol{
