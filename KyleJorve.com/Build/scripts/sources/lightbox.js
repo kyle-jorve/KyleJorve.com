@@ -11,16 +11,6 @@
     };
     var lightboxTrans = parseFloat(window.getComputedStyle(nodes.lightbox).getPropertyValue('transition-duration')) * 1000;
 
-    var findAncestor = function (el, ancestorClass) {
-        for ( ; el && el !== document; el = el.parentNode) {
-            if (el.classList.contains(ancestorClass)) {
-                return el;
-                break;
-            }
-        }
-        return null;
-    };
-
     var eventListeners = function () {
         //open lightbox
         nodes.buttons.open.forEach(function (cur) {

@@ -182,18 +182,19 @@ function detectMobile() {
 // smooth loader transition for local links on other pages,
 // smooth scrolling to hash links on same page
 (function () {
+    var links;
+    var samePageHashes;
+    var header;
+    var scrollAnchors;
+    var loader;
+    var loadTrans;
     var locHref = window.location.href.replace(window.location.hash, '');
     var trimmedLocHref = locHref.charAt(locHref.length - 1) === '/' ? locHref.substring(0, locHref.length - 1) : locHref;
     var host = window.location.host;
     var origin = window.location.origin;
-    var transClasses = {
-        in: 'loadScreen--transIn',
-        out: 'loadScreen--transOut'
-    };
-    var els;
-    var loadTrans;
+    var path = window.location.pathname;
 
-    // determine if link is local
+    // determine if link is a local link
     var isLocal = function (link) {
         var local = link.indexOf(host) > -1;
 
@@ -205,30 +206,26 @@ function detectMobile() {
         var hash = link.hash;
         var homePage = trimmedLocHref === origin;
         var samePageTest1 = locHref + hash === href;
-        var samePageTest2 = homePage ? href.replace(locHref, '').charAt(0) === "#" : href.replace(trimmedLocHref, '').charAt(0) === "#";
-        var samePage = samePageTest1 || samePageTest2;
+        var samePageTest2 = homePage ? href.replace(locHref, '').charAt(0) === '#' : href.replace(trimmedLocHref, '').charAt(0) === '#';
+        var samePage = samePageTest1 || samePageTest2 ? true : false;
 
         return samePage;
     };
 
     var eventListeners = function () {
-        // on document load...
-        window.addEventListener('DOMContentLoaded', function () {
-            // define els
-            els = {
-                header: document.querySelector('header'),
-                links: Array.prototype.slice.call(document.querySelectorAll('a')),
-                loader: document.querySelector('#loadScreen'),
-                samePageHashes: [],
-                scrollAnchors: $('html, body')
-            };
+        // on window load
+        window.addEventListener('load', function () {
+            // define links
+            links = Array.prototype.slice.call(document.querySelectorAll('a'));
+            samePageHashes = [];
 
             // filter out # and non-local links
-            els.links = els.links.filter(function (cur) {
+            links = links.filter(function (cur) {
                 var href = cur.href;
                 var hasHash = href.indexOf('#') > -1;
                 var samePage = isSamePageHash(cur, href);
                 var local = isLocal(href);
+                var download = cur.hasAttribute('download') || cur.classList.contains('download');
 
                 if (local) {
                     if (hasHash) {
@@ -236,20 +233,66 @@ function detectMobile() {
                             return cur;
                         }
                         else {
-                            els.samePageHashes.push(cur);
+                            samePageHashes.push(cur);
                         }
                     }
                     else {
-                        return cur;
+                        if (!download) {
+                            return cur;
+                        }
                     }
                 }
             });
-        });
 
-        // on window load...
-        window.addEventListener('load', function () {
-            // define loadTrans
-            loadTrans = parseFloat(window.getComputedStyle(els.loader).getPropertyValue('transition-duration')) * 1000;
+            // define header
+            header = document.querySelector('header');
+
+            // define scrollAnchors
+            scrollAnchors = $('html, body');
+
+            // define loader
+            loader = document.querySelector('#loader');
+
+            // define loader transition
+            loadTrans = parseFloat(window.getComputedStyle(loader).getPropertyValue('transition-duration')) * 1000;
+
+            // add event listeners to local links
+            links.forEach(function (cur) {
+                cur.addEventListener('click', function (event) {
+                    var href = event.currentTarget.href;
+
+                    // stop from moving to new page
+                    event.preventDefault();
+
+                    // fade in loader
+                    showLoader();
+
+                    // go to target page
+                    setTimeout(function () {
+                        window.location = href;
+                    }, loadTrans);
+                });
+            });
+
+            // event listeners for same page hash links
+            samePageHashes.forEach(function (cur) {
+                cur.addEventListener('click', function (event) {
+                    var headerBuffer = header.offsetHeight + 16;
+                    var target = document.querySelector(event.currentTarget.hash);
+                    var targetOffset = target.getBoundingClientRect().top + window.scrollY;
+
+                    event.preventDefault();
+
+                    // close mobile nav
+                    if (document.querySelector('body').classList.contains('showMobileNav')) {
+                        document.querySelector('#navBtn').click();
+                    }
+
+                    scrollAnchors.animate({
+                        scrollTop: targetOffset - headerBuffer
+                    }, 1000);
+                });
+            });
         });
     };
 

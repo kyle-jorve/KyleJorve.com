@@ -5,7 +5,6 @@
     var portfolioPgID = 1082;
     var portfolioItems = Umbraco.Content(portfolioPgID).Children.OrderBy("createDate desc");
     int recentWorkLimit = Umbraco.Content(homePgID).portfolioLimit;
-    var from = "?from=" + CurrentPage.Id;
 }
 
 <div class="portfolioGrid">
@@ -14,8 +13,6 @@
         var itemType = portfolioItems[i].portfolioItemType.ToString().ToLower().Replace(' ', '-');
         var imgCollection = portfolioItems[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
         var yPos = portfolioItems[i].imgVertPos;
-        var next = i + 1 < recentWorkLimit ? "&next=" + portfolioItems[i + 1].Id : "";
-        var url = portfolioItems[i].Url + from + next;
 
         if (imgCollection != null)
         {
@@ -35,19 +32,7 @@
                 itemClass = "tall";
             }
 
-            <div class="portfolioItem @itemType @itemClass" style="background-image:url('@(img.Url)'); background-position:center @yPos;">
-                <div class="itemContents">
-                    <div class="iconRow">
-                        <a href="@portfolioItems[i].Url" class="description">
-                            <i class="fas fa-align-left"></i>
-                        </a>
-                        <div class="full-screen openLightbox" data-src="@img.Url" data-url="@portfolioItems[i].Url">
-                            <i class="fas fa-expand"></i>
-                        </div>
-                    </div>
-                    <a class="portfolioLink" href="@url"></a>
-                </div>
-            </div>
+            <div class="portfolioItem @itemType @itemClass openLightbox" style="background-image:url('@(img.Url)'); background-position:center @yPos;" data-src="@img.Url" data-url="@portfolioItems[i].Url"></div>
         }
     }
 </div>

@@ -4,27 +4,30 @@
     Layout = "Master.cshtml";
     ViewData["BodyClass"] = "portfolioItemPg";
 
-    var fromQuery = Request.QueryString["from"].ToString().ToLower();
+    var homePgID = 1081;
+    var portfolioPgID = 1082;
+
+    var fromQuery = Request.QueryString["from"];
     bool hasFrom = fromQuery != null && fromQuery != "" && fromQuery.Length > 0;
-    bool fromRecent = fromQuery.Contains("recent");
-    bool fromHome = fromQuery.Contains("home");
+    bool fromHome = hasFrom ? fromQuery.AsInt() == homePgID ? true : false : false;
+
+    var sectionQuery = Request.QueryString["section"];
+    bool hasSection = sectionQuery != null && sectionQuery != "" && sectionQuery.Length > 0;
 
     var nextQuery = Request.QueryString["next"];
     bool hasNext = nextQuery != null && nextQuery != "" && nextQuery.Length > 0;
-
-    var homePgID = 1081;
+    
     int homePgLimit = Umbraco.Content(homePgID).portfolioLimit;
     int recentWorkLimit = Umbraco.Content(homePgID).portfolioLimit;
 
-    var portfolioPgID = 1082;
     var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children;
 
-    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : fromRecent ? portfolioItems.OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.ToList();
+    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.ToList();
 
     var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").ToList();
 
     var nextItem = Umbraco.Content(nextQuery.AsInt());
-    string nextUrl1 = nextItem.Url + (hasFrom ? "?from=" + fromQuery : "");
+    string nextUrl1 = nextItem.Url + (hasFrom ? "?from=" + fromQuery : "") + (hasSection ? (hasFrom ? "&" : "?") + "section=" + sectionQuery : "");
     string nextUrl2 = string.Empty;
 
     // define next next item
@@ -35,21 +38,6 @@
             if (theseItems[i].Id == CurrentPage.Id)
             {
                 if (i + 3 <= homePgLimit && theseItems[i + 2] != null)
-                {
-                    nextUrl2 = (hasFrom ? "&" : "?") + "next=" + theseItems[i + 2].Id.ToString();
-                }
-
-                break;
-            }
-        }
-    }
-    else if (fromRecent)
-    {
-        for (int i = 0; i < recentWorkLimit; i++)
-        {
-            if (theseItems[i].Id == CurrentPage.Id)
-            {
-                if (i + 3 <= recentWorkLimit && theseItems[i + 2] != null)
                 {
                     nextUrl2 = (hasFrom ? "&" : "?") + "next=" + theseItems[i + 2].Id.ToString();
                 }

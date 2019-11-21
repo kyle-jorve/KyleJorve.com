@@ -1,14 +1,18 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
-    var query = Request.QueryString.ToString().ToLower();
-    var closeURL = query.Contains("home") ? "/#featured-work" : "/portfolio";
+    var fromQuery = Request.QueryString["from"].AsInt();
+    var sectionQuery = Request.QueryString["section"];
+    var fromPg = Umbraco.Content(fromQuery);
 
+    var homePgID = 1081;
     var portfolioPgID = 1082;
     var bioPgID = 1083;
     var portfolioPg = Umbraco.Content(portfolioPgID);
     var bioPg = Umbraco.Content(bioPgID);
     bool isPortfolioItem = CurrentPage.Parent != null && CurrentPage.Parent.Id == portfolioPgID;
+
+    var closeURL = fromQuery == homePgID ? "/#featured-work" : fromPg.Url + (!string.IsNullOrEmpty(sectionQuery) ? "#" + sectionQuery : "");
 
     var portfolioIconUrl = portfolioPg.GetPropertyValue<IPublishedContent>("pageIcon").Url;
     var portfolioIcon = Html.Raw(System.IO.File.ReadAllText(Server.MapPath(portfolioIconUrl)));

@@ -2,16 +2,16 @@
     //========------------------------------==========//
     //                   ID LINKS                     //
     //========------------------------------==========//
-    $('a[href^="#"]').on('click', function (event) {
-        var thisTarget = $(this).attr('href'),
-            targetOffset = $(thisTarget).offset().top - $('header').outerHeight();
+    //$('a[href^="#"]').on('click', function (event) {
+    //    var thisTarget = $(this).attr('href'),
+    //        targetOffset = $(thisTarget).offset().top - $('header').outerHeight();
 
-        event.preventDefault();
+    //    event.preventDefault();
 
-        $('html, body').animate({
-            scrollTop: targetOffset
-        }, 1000, 'swing');
-    });
+    //    $('html, body').animate({
+    //        scrollTop: targetOffset
+    //    }, 1000, 'swing');
+    //});
 
     //========------------------------------==========//
     //             MOBILE TOP NAVIGATION              //

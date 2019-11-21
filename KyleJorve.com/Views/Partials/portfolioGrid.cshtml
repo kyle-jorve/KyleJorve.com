@@ -18,7 +18,7 @@
             var imgCollection = portfolioOrdered[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
             var yPos = portfolioOrdered[i].GetPropertyValue<string>("imgVertPos");
             var next = i + 1 < homePgLimit ? "&next=" + portfolioOrdered[i + 1].Id : "";
-            var url = portfolioOrdered[i].Url + "?from=home" + next;
+            var url = portfolioOrdered[i].Url + "?from=" + CurrentPage.Id + next;
 
             if (imgCollection != null)
             {
@@ -93,7 +93,7 @@ else
                     var imgCollection = thisGroup[i].GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages");
                     var yPos = thisGroup[i].GetPropertyValue<string>("imgVertPos");
                     var next = i + 2 <= thisGroup.Count() ? "&next=" + thisGroup[i + 1].Id : cats[ix] != cats.Last() ? "&next=" + portfolioItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") == cats[ix + 1].Value).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList()[0].Id : "";
-                    var url = thisGroup[i].Url + "?from=portfolio" + next;
+                    var url = thisGroup[i].Url + "?from=" + CurrentPage.Id + "&section=" + catID + next;
 
                     if (imgCollection != null)
                     {

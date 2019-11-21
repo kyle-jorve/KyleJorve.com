@@ -256,10 +256,10 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
+    <Content Include="Build\scripts\sources\bundle\main_old.js" />
     <Content Include="Build\scripts\sources\introScreen.js" />
     <Content Include="Build\scripts\sources\imgSlideshow.js" />
     <Content Include="Build\scripts\sources\lightbox.js" />
-    <Content Include="Build\scripts\sources\portfolioItem.js" />
     <Content Include="Build\scripts\sources\leftNav.js" />
     <Content Include="Build\scripts\sources\copyright.js" />
     <Content Include="Build\scripts\sources\bundle\animate.js" />
