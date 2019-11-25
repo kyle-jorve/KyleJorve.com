@@ -1,3 +1,13 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
-<div class="loadScreen active" id="loadScreen"></div>
+@{ 
+    var homePgID = 1081;
+}
+
+@*@if (CurrentPage.Id == homePgID)
+{
+    <div class="loadScreen active" id="loadScreen"></div>
+}*@
+
+<div class="overlay" id="overlay"></div>
+<div class="overlay__click" id="overlayClick"></div>

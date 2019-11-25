@@ -37,7 +37,7 @@ $(window).on('load', function () {
 
 window.addEventListener('load', function () {
     //Transition load screen out
-    document.querySelector('#loadScreen').classList.remove('active');
+    document.querySelector('#overlay').classList.add('overlay--loaded');
 });
 
 function bodyScroll(limit) {
@@ -182,14 +182,14 @@ function detectMobile() {
 // smooth loader transition for local links on other pages,
 // smooth scrolling to hash links on same page
 (function () {
+    var cssClasses = {
+        active: 'active',
+        transIn: 'loadScreen--transIn'
+    };
     var locHref = window.location.href.replace(window.location.hash, '');
     var trimmedLocHref = locHref.charAt(locHref.length - 1) === '/' ? locHref.substring(0, locHref.length - 1) : locHref;
     var host = window.location.host;
     var origin = window.location.origin;
-    var transClasses = {
-        in: 'loadScreen--transIn',
-        out: 'loadScreen--transOut'
-    };
     var els;
     var loadTrans;
 
@@ -218,7 +218,7 @@ function detectMobile() {
             els = {
                 header: document.querySelector('header'),
                 links: Array.prototype.slice.call(document.querySelectorAll('a')),
-                loader: document.querySelector('#loadScreen'),
+                overlayClick: document.querySelector('#overlayClick'),
                 samePageHashes: [],
                 scrollAnchors: $('html, body')
             };
@@ -249,7 +249,25 @@ function detectMobile() {
         // on window load...
         window.addEventListener('load', function () {
             // define loadTrans
-            loadTrans = parseFloat(window.getComputedStyle(els.loader).getPropertyValue('transition-duration')) * 1000;
+            loadTrans = parseFloat(window.getComputedStyle(els.overlayClick).getPropertyValue('transition-duration')) * 1000;
+
+            // add event listeners to local links
+            els.links.forEach(function (cur) {
+                cur.addEventListener('click', function () {
+                    var href = cur.href;
+
+                    // stop from moving to a new page immediately
+                    event.preventDefault();
+
+                    // fade loader in
+                    els.overlayClick.classList.add(cssClasses.active);
+
+                    // go to target page
+                    setTimeout(function () {
+                        window.location = href;
+                    }, loadTrans);
+                });
+            });
         });
     };
 

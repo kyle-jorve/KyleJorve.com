@@ -1,17 +1,47 @@
-﻿.loadScreen {
-    opacity:0;
-    visibility:hidden;
-    background: map-get($bgColors, lightContentBg);
+﻿.loadScreen,
+.overlay,
+.overlay__click{
     position: fixed;
-    top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
     z-index: 1000;
-    @include transition(all, .1s, ease);
+}
 
-    &.active{
+.loadScreen {
+    @include transition(all, .1s);
+    background: map-get($bgColors, lightContentBg);
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    bottom: 0;
+
+    &.active {
         opacity:1;
         visibility:visible;
+    }
+}
+
+.overlay{
+    $overlay: &;
+    height:100%;
+    bottom:0;
+
+    &,
+    &__click{
+        @include transition(all, .5s, ease-in-out);
+        background: map-get($bgColors, darkContentBg);
+    }
+
+    &--loaded{
+        height:0;
+    }
+
+    &__click{
+        top:0;
+        height:0;
+
+        &.active{
+            height:100%;
+        }
     }
 }

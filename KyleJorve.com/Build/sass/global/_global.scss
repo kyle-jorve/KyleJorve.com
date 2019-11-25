@@ -24,9 +24,9 @@ body{
         right:0;
     }
 }
-.preload *{
+/*.preload *{
     @include transition(none, null, null, !important);
-}
+}*/
 section{
     padding:$sectionPadding;
     position:relative;
