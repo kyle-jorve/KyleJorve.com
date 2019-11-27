@@ -16,13 +16,15 @@
 
     var nextQuery = Request.QueryString["next"];
     bool hasNext = nextQuery != null && nextQuery != "" && nextQuery.Length > 0;
-    
+
     int homePgLimit = Umbraco.Content(homePgID).portfolioLimit;
     int recentWorkLimit = Umbraco.Content(homePgID).portfolioLimit;
 
-    var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children;
+    var portfolioItems = Umbraco.TypedContent(portfolioPgID).Children.ToList();
 
-    var theseItems = fromHome ? portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList() : portfolioItems.ToList();
+    var homeItems = portfolioItems.Where(i => i.GetPropertyValue<bool>("featuredWork")).OrderByDescending(i => i.CreateDate).ToList();
+
+    var theseItems = fromHome ? homeItems : portfolioItems;
 
     var imgs = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("portfolioItemImages").ToList();
 
@@ -114,7 +116,9 @@
     <section class="descSection lightContentBg">
         <div class="content-wrapper">
             <h1 class="portfolioItem__title">@Umbraco.Field("portfolioItemTitle")</h1>
-            @Umbraco.Field("portfolioItemDesc")
+            <div class="portfolioItem__desc" id="portfolioItemDesc">
+                @Umbraco.Field("portfolioItemDesc")
+            </div>
             <div class="buttonWrp align-left">
                 @if (!string.IsNullOrWhiteSpace(Umbraco.Field("portfolioItemPurchaseLink").ToString()))
                 {
@@ -132,3 +136,15 @@
         </div>
     </section>
 </div>
+
+<script src="/Scripts/portfolioItem.js?v=1.0.0"></script>
+
+<!-- update JS data -->
+<script>
+    (function () {
+        portfolioItemData.update({
+            nextItem: @nextQuery.AsInt(),
+            thisItem: @CurrentPage.Id
+        });
+    })();
+</script>

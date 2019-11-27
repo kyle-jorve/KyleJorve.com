@@ -1,19 +1,5 @@
 ﻿$(document).ready(function () {
     //========------------------------------==========//
-    //                   ID LINKS                     //
-    //========------------------------------==========//
-    //$('a[href^="#"]').on('click', function (event) {
-    //    var thisTarget = $(this).attr('href'),
-    //        targetOffset = $(thisTarget).offset().top - $('header').outerHeight();
-
-    //    event.preventDefault();
-
-    //    $('html, body').animate({
-    //        scrollTop: targetOffset
-    //    }, 1000, 'swing');
-    //});
-
-    //========------------------------------==========//
     //             MOBILE TOP NAVIGATION              //
     //========------------------------------==========//
     var topNav = '#topNav',

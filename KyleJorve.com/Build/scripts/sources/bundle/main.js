@@ -181,7 +181,7 @@ function detectMobile() {
 //========------------------------------==========//
 // smooth loader transition for local links on other pages,
 // smooth scrolling to hash links on same page
-(function () {
+var localLinks = (function () {
     var cssClasses = {
         active: 'active',
         transIn: 'loadScreen--transIn'
@@ -190,6 +190,7 @@ function detectMobile() {
     var trimmedLocHref = locHref.charAt(locHref.length - 1) === '/' ? locHref.substring(0, locHref.length - 1) : locHref;
     var host = window.location.host;
     var origin = window.location.origin;
+    var headerBuffer;
     var els;
     var loadTrans;
 
@@ -211,6 +212,37 @@ function detectMobile() {
         return samePage;
     };
 
+    // filter links
+    var returnLocalLinks = function (links) {
+        var filteredLinks = {
+            samePage: [],
+            hashes: []
+        };
+
+        links.forEach(function (cur) {
+            var href = cur.href;
+            var hasHash = href.indexOf('#') > -1;
+            var samePage = isSamePageHash(cur, href);
+            var local = isLocal(href);
+
+            if (local) {
+                if (hasHash) {
+                    if (!samePage) {
+                        filteredLinks.samePage.push(cur);
+                    }
+                    else {
+                        filteredLinks.hashes.push(cur);
+                    }
+                }
+                else {
+                    filteredLinks.samePage.push(cur);
+                }
+            }
+        });
+
+        return filteredLinks;
+    };
+
     var eventListeners = function () {
         // on document load...
         window.addEventListener('DOMContentLoaded', function () {
@@ -224,26 +256,7 @@ function detectMobile() {
             };
 
             // filter out # and non-local links
-            els.links = els.links.filter(function (cur) {
-                var href = cur.href;
-                var hasHash = href.indexOf('#') > -1;
-                var samePage = isSamePageHash(cur, href);
-                var local = isLocal(href);
-
-                if (local) {
-                    if (hasHash) {
-                        if (!samePage) {
-                            return cur;
-                        }
-                        else {
-                            els.samePageHashes.push(cur);
-                        }
-                    }
-                    else {
-                        return cur;
-                    }
-                }
-            });
+            els.links = returnLocalLinks(els.links);
         });
 
         // on window load...
@@ -251,8 +264,11 @@ function detectMobile() {
             // define loadTrans
             loadTrans = parseFloat(window.getComputedStyle(els.overlayClick).getPropertyValue('transition-duration')) * 1000;
 
+            // define header buffer
+            headerBuffer = els.header.offsetHeight + 16;
+
             // add event listeners to local links
-            els.links.forEach(function (cur) {
+            els.links.samePage.forEach(function (cur) {
                 cur.addEventListener('click', function () {
                     var href = cur.href;
 
@@ -268,9 +284,34 @@ function detectMobile() {
                     }, loadTrans);
                 });
             });
+
+            // event listeners for same page hash links
+            els.links.hashes.forEach(function (cur) {
+                cur.addEventListener('click', function () {
+                    var target = document.querySelector(cur.hash);
+                    var targetOffset = target.getBoundingClientRect().top + window.pageYOffset;
+
+                    event.preventDefault();
+
+                    els.scrollAnchors.animate({
+                        scrollTop: targetOffset - headerBuffer
+                    }, 1000);
+                });
+            });
         });
     };
+
+    // -- PUBLIC -- //
+    return {
+        init: function () {
+            eventListeners();
+        },
+        returnLocalLinks: returnLocalLinks
+    }
 
     // -- INIT -- //
     eventListeners();
 })();
+
+// initialize localLinks
+localLinks.init();
