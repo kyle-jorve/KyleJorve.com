@@ -144,6 +144,7 @@ a.button {
     &--img{
         margin:0 1em 0 0 !important;
         padding:1em !important;
+        border:$borderThickness solid $linkColor !important;
         border-radius:$borderRadius !important;
         background:map-get($bgColors, whiteBg);
 

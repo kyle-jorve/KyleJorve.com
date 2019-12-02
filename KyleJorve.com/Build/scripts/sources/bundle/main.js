@@ -29,6 +29,14 @@ $(document).ready(function () {
     });
 });
 
+// on window load, if the previous state persists, reload the page
+// (this is typically only a problem in Safari)
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
+
 $(window).on('load', function () {
     bodyScroll(bodyScrollLim);
     //Allow CSS transitions after page has loaded
@@ -225,7 +233,7 @@ var localLinks = (function () {
             var samePage = isSamePageHash(cur, href);
             var local = isLocal(href);
 
-            if (local) {
+            if (local && cur.getAttribute('download') === null) {
                 if (hasHash) {
                     if (!samePage) {
                         filteredLinks.samePage.push(cur);
@@ -250,10 +258,25 @@ var localLinks = (function () {
             els = {
                 header: document.querySelector('header'),
                 links: Array.prototype.slice.call(document.querySelectorAll('a')),
+                portfolioLinks: [],
                 overlayClick: document.querySelector('#overlayClick'),
                 samePageHashes: [],
                 scrollAnchors: $('html, body')
             };
+
+            // define portfolioLinks
+            els.links.forEach(function (cur) {
+                var href = cur.href.substring(0, cur.href.lastIndexOf('/'));
+
+                if (href.includes('/portfolio/')) {
+                    els.portfolioLinks.push(cur);
+                }
+            });
+
+            // append "from" query string to all portfolioLinks
+            els.portfolioLinks.forEach(function (cur) {
+                cur.href += '?from=' + window.curPgID;
+            });
 
             // filter out # and non-local links
             els.links = returnLocalLinks(els.links);
@@ -303,15 +326,9 @@ var localLinks = (function () {
 
     // -- PUBLIC -- //
     return {
-        init: function () {
-            eventListeners();
-        },
+        init: eventListeners,
         returnLocalLinks: returnLocalLinks
     }
-
-    // -- INIT -- //
-    eventListeners();
 })();
 
-// initialize localLinks
 localLinks.init();

@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "ae746d5a9428fa88")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "9f5a95e9769bef40")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 namespace Umbraco.Web.PublishedContentModels
@@ -608,6 +608,50 @@ namespace Umbraco.Web.PublishedContentModels
 		public int SortNumber
 		{
 			get { return this.GetPropertyValue<int>("sortNumber"); }
+		}
+	}
+
+	/// <summary>Sitemap</summary>
+	[PublishedContentModel("sitemap")]
+	public partial class Sitemap : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "sitemap";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public Sitemap(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Sitemap, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Hide In Sitemap: Excludes this document from the XML sitemap
+		///</summary>
+		[ImplementPropertyType("hideInSitemap")]
+		public bool HideInSitemap
+		{
+			get { return this.GetPropertyValue<bool>("hideInSitemap"); }
+		}
+
+		///<summary>
+		/// Hide From Main Nav
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return this.GetPropertyValue<bool>("umbracoNaviHide"); }
 		}
 	}
 

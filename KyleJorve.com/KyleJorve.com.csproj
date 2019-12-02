@@ -496,6 +496,7 @@
     <Content Include="Views\Partials\socialMediaIcons.cshtml" />
     <Content Include="Views\Partials\introScreen.cshtml" />
     <Content Include="Views\Partials\recentWork.cshtml" />
+    <Content Include="Views\Sitemap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

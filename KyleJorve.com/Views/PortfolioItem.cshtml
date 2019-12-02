@@ -32,6 +32,12 @@
     string nextUrl1 = nextItem.Url + (hasFrom ? "?from=" + fromQuery : "") + (hasSection ? (hasFrom ? "&" : "?") + "section=" + sectionQuery : "");
     string nextUrl2 = string.Empty;
 
+    var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
+    var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
+    var thisCat = Model.Content.GetPropertyValue<string>("portfolioItemType");
+    var thisGroup = theseItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == thisCat).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
+    var otherGroup = theseItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") != thisCat).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList();
+
     // define next next item
     if (fromHome)
     {
@@ -50,12 +56,6 @@
     }
     else
     {
-        var catsDropdown = ApplicationContext.Services.DataTypeService.GetDataTypeDefinitionByName("Portfolio Type Dropdown List");
-        var cats = ApplicationContext.Services.DataTypeService.GetPreValuesCollectionByDataTypeId(catsDropdown.Id).PreValuesAsDictionary.Select(x => x.Value).ToList();
-        var thisCat = Model.Content.GetPropertyValue<string>("portfolioItemType");
-        var thisGroup = theseItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == thisCat).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
-        var otherGroup = theseItems.Where(item => item.GetPropertyValue<string>("portfolioItemType") != thisCat).OrderBy(item => item.GetPropertyValue<int>("sortNumber")).ToList();
-
         for (int i = 0; i < thisGroup.Count(); i++)
         {
             if (thisGroup[i].Id == CurrentPage.Id)
@@ -143,8 +143,27 @@
 <script>
     (function () {
         portfolioItemData.update({
+            fromHome: @fromHome.ToString().ToLower(),
+            thisCat: "@thisCat.ToLower().Replace(" ", "-")",
             nextItem: @nextQuery.AsInt(),
-            thisItem: @CurrentPage.Id
+            thisItem: @CurrentPage.Id,
+            items: {
+                @foreach (var cat in cats)
+                {
+                    var catItems = portfolioItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == cat.Value).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
+
+                    <text>
+                        @cat.Value.ToLower().Replace(" ", "-"): [
+                            @foreach (var item in catItems)
+                            {
+                                <text>
+                                    "@item.Id"@(item != catItems.Last() ? "," : "")
+                                </text>
+                            }
+                        ]@(cat.Value != cats.Last().Value ? "," : "")
+                    </text>
+                }
+            }
         });
     })();
 </script>

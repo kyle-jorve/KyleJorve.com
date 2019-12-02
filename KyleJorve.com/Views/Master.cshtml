@@ -28,7 +28,9 @@
     <meta name="description" content="@Umbraco.Field("metaDescription")" />
     @if (hasMetaImage)
     {
-        <meta property="og:image" content="@Umbraco.Media(CurrentPage.metaImage).Url" />
+        var url = Url.GetAbsoluteMediaUrl(Model.Content.GetPropertyValue<IPublishedContent>("metaImage"));
+
+        <meta property="og:image" content="@url" />
     }
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -38,6 +40,10 @@
     <meta property="og:description" content="@Umbraco.Field("metaDescription")" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+
+    <script>
+        window.curPgID = @CurrentPage.Id;
+    </script>
 
     <link href="/Styles/bundle.min.css?v=1.1.1" rel="stylesheet" />
 
