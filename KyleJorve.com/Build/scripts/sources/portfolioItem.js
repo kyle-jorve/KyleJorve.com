@@ -1,27 +1,13 @@
-﻿var portfolioItemData = (function () {
-    var data = {
-        fromHome: false,
-        thisCat: '',
-        nextItem: 0,
-        thisItem: 0,
-        items: {}
+﻿(function () {
+    var els = {
+        buttons: {
+            open: Array.prototype.slice.call(document.querySelectorAll('.openLightbox')),
+            close: document.querySelector('#closeLightbox')
+        },
+        lightbox: document.querySelector('#lightboxWrp'),
+        links: Array.prototype.slice.call(document.querySelectorAll('#portfolioItemDesc a'))
     };
-
-    // -- PUBLIC -- //
-    return {
-        data: data,
-        update: function (options) {
-            for (var key in options) {
-                data[key] = options[key];
-            }
-        }
-    }
-})();
-
-var portfolioItemMain = (function () {
-    var data = portfolioItemData.data;
-    var links = Array.prototype.slice.call(document.querySelectorAll('#portfolioItemDesc a'));
-    var filteredLinks = localLinks.returnLocalLinks(links);
+    var filteredLinks = localLinks.returnLocalLinks(els.links);
     var queries = window.location.search;
     var queriesArr = queries.substring(1).split('&');
     var queriesObj = {};
@@ -37,5 +23,27 @@ var portfolioItemMain = (function () {
     filteredLinks.samePage.forEach(function (cur) {
         // append "from" query
         cur.href += '?from=' + queriesObj.from;
+
+        // append "section" query if it exists
+        if (queriesObj.section !== undefined) {
+            cur.href += '&section=' + queriesObj.section;
+        }
     });
+
+    var eventListeners = function () {
+        //open lightbox
+        els.buttons.open.forEach(function (cur) {
+            cur.addEventListener('click', function () {
+                els.lightbox.classList.add('active');
+            });
+        });
+
+        //close lightbox
+        els.buttons.close.addEventListener('click', function () {
+            els.lightbox.classList.remove('active');
+        });
+    };
+
+    // -- INIT -- //
+    eventListeners();
 })();

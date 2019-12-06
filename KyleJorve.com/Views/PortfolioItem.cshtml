@@ -137,33 +137,4 @@
     </section>
 </div>
 
-<script src="/Scripts/portfolioItem.js?v=1.0.0"></script>
-
-<!-- update JS data -->
-<script>
-    (function () {
-        portfolioItemData.update({
-            fromHome: @fromHome.ToString().ToLower(),
-            thisCat: "@thisCat.ToLower().Replace(" ", "-")",
-            nextItem: @nextQuery.AsInt(),
-            thisItem: @CurrentPage.Id,
-            items: {
-                @foreach (var cat in cats)
-                {
-                    var catItems = portfolioItems.Where(i => i.GetPropertyValue<string>("portfolioItemType") == cat.Value).OrderBy(i => i.GetPropertyValue<int>("sortNumber")).ToList();
-
-                    <text>
-                        @cat.Value.ToLower().Replace(" ", "-"): [
-                            @foreach (var item in catItems)
-                            {
-                                <text>
-                                    "@item.Id"@(item != catItems.Last() ? "," : "")
-                                </text>
-                            }
-                        ]@(cat.Value != cats.Last().Value ? "," : "")
-                    </text>
-                }
-            }
-        });
-    })();
-</script>
+<script src="/Scripts/portfolioItem.js?v=1.1.1"></script>

@@ -48,11 +48,11 @@
         if (imgs.Count() > 1)
         {
             <script src="/Scripts/slick.js"></script>
-            <script src="/Scripts/imgSlideshow.js?v=1.0.1"></script>
+            <script src="/Scripts/imgSlideshow.js?v=1.0.2"></script>
         }
     }
 }
-else if (CurrentPage.Id == homePgID || CurrentPage.Id == portfolioPgID)
+else if (CurrentPage.Parent == null || CurrentPage.Parent.Id != portfolioPgID)
 {
     <div class="lightboxWrp" id="lightboxWrp">
         <div class="closeBtn" id="closeLightbox">
@@ -75,7 +75,7 @@ else if (CurrentPage.Id == homePgID || CurrentPage.Id == portfolioPgID)
         </div>
     </div>
 
-    <script src="/Scripts/lightbox.js"></script>
+    <script src="/Scripts/lightbox.js?v=1.0.0"></script>
 }
 
 <div class="lightbox__wrapper lightbox__wrapper--content" id="ieLbWrp">

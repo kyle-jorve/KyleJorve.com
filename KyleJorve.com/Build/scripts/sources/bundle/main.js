@@ -39,8 +39,6 @@ window.addEventListener('pageshow', function(event) {
 
 $(window).on('load', function () {
     bodyScroll(bodyScrollLim);
-    //Allow CSS transitions after page has loaded
-    $('body').removeClass('preload');
 });
 
 window.addEventListener('load', function () {
@@ -192,6 +190,9 @@ function detectMobile() {
 var localLinks = (function () {
     var cssClasses = {
         active: 'active',
+        button: 'button',
+        pDesc: 'descSection',
+        pLink: 'portfolioLink',
         transIn: 'loadScreen--transIn'
     };
     var locHref = window.location.href.replace(window.location.hash, '');
@@ -268,14 +269,25 @@ var localLinks = (function () {
             els.links.forEach(function (cur) {
                 var href = cur.href.substring(0, cur.href.lastIndexOf('/'));
 
-                if (href.includes('/portfolio/')) {
+                if (href.includes('/portfolio/') && !cur.classList.contains(cssClasses.pLink) && cur.closest('.' + cssClasses.pDesc) === null) {
                     els.portfolioLinks.push(cur);
                 }
             });
 
             // append "from" query string to all portfolioLinks
             els.portfolioLinks.forEach(function (cur) {
+                var closestSection = cur.closest('section');
+                var sectionID;
+
                 cur.href += '?from=' + window.curPgID;
+
+                if (closestSection !== null) {
+                    sectionID = closestSection.id;
+
+                    if (sectionID.length) {
+                        cur.href += '&section=' + sectionID;
+                    }
+                }
             });
 
             // filter out # and non-local links

@@ -3,9 +3,10 @@
 /*==========----------==========*/
 .lightboxWrp,
 .lightbox__wrapper{
+    @include sbFlexWrap(column, nowrap, center, center);
     opacity:0;
     visibility:hidden;
-    @include sbFlexWrap(column, nowrap, center, center);
+    pointer-events:none;
     padding:2em;
     background:map-get($bgColors, darkContentBg);
     position:fixed;
@@ -86,6 +87,7 @@
         z-index:400;
         
         &.active{
+            pointer-events:auto;
             opacity:1;
             visibility:visible;
         }
@@ -191,6 +193,7 @@
 .lightboxWrp.active{
     opacity:1;
     visibility:visible;
+    pointer-events:auto;
 
     .lightbox{
         top:0;
