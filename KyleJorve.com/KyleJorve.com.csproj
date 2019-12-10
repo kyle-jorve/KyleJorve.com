@@ -469,6 +469,7 @@
     <Content Include="Build\sass\global\_font-awesome-5.scss" />
     <Content Include="Build\sass\global\_normalize.scss" />
     <Content Include="Build\sass\global\_fonts.scss" />
+    <Content Include="Build\sass\kyleJorve\_errorPg.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\topNavigation.cshtml" />
@@ -497,6 +498,7 @@
     <Content Include="Views\Partials\introScreen.cshtml" />
     <Content Include="Views\Partials\recentWork.cshtml" />
     <Content Include="Views\Sitemap.cshtml" />
+    <Content Include="Views\ErrorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

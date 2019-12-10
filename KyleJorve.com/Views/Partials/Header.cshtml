@@ -38,43 +38,46 @@
     </div>
 </header>
 
-@if (!isPortfolioItem)
+@if (ViewData["Nav.Hide"] == null || (bool)ViewData["Nav.Hide"] != true)
 {
-    <div class="mobileNavContainer">
-        <a class="mobileNavItem bioItem @(CurrentPage.Id == bioPgID ? "active" : null)" href="@bioPg.Url">
-            <div class="navItemIcon">
-                @bioIcon
-            </div>
-            <span>CV and Bio</span>
-        </a>
-        <a class="mobileNavItem workItem @(CurrentPage.Id == portfolioPgID ? "active" : null)" href="@portfolioPg.Url">
-            <div class="navItemIcon">
-                @portfolioIcon
-            </div>
-            <span>Portfolio</span>
-        </a>
-        <div id="navBtn" class="navBtn">
-            <div class="blocksWrp">
-                <div class="blockRow">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
+    if (!isPortfolioItem)
+    {
+        <div class="mobileNavContainer">
+            <a class="mobileNavItem bioItem @(CurrentPage.Id == bioPgID ? "active" : null)" href="@bioPg.Url">
+                <div class="navItemIcon">
+                    @bioIcon
                 </div>
-                <div class="blockRow">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
+                <span>CV and Bio</span>
+            </a>
+            <a class="mobileNavItem workItem @(CurrentPage.Id == portfolioPgID ? "active" : null)" href="@portfolioPg.Url">
+                <div class="navItemIcon">
+                    @portfolioIcon
                 </div>
-                <div class="blockRow">
-                    <div class="block"></div>
-                    <div class="block"></div>
-                    <div class="block"></div>
+                <span>Portfolio</span>
+            </a>
+            <div id="navBtn" class="navBtn">
+                <div class="blocksWrp">
+                    <div class="blockRow">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="blockRow">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="blockRow">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
                 </div>
             </div>
         </div>
+    }
+
+    <div class="topNavWrp" id="topNav">
+        @{ Html.RenderPartial("topNavigation");}
     </div>
 }
-
-<div class="topNavWrp" id="topNav">
-    @{ Html.RenderPartial("topNavigation");}
-</div>

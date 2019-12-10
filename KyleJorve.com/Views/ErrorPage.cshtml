@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ErrorPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+
+    ViewData["BodyClass"] = "error__page";
+    ViewData["Nav.Hide"] = true;
+}
+
+<section class="heroWrp error">
+    <div class="error__content content-wrapper">
+        @Umbraco.Field("content")
+    </div>
+</section>

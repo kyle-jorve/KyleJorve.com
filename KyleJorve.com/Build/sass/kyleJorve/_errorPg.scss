@@ -1,0 +1,11 @@
+﻿/*==========----------==========*/
+/*          ERROR PAGES         */
+/*==========----------==========*/
+
+.error{
+    @include sbFlexWrap(column, nowrap, center, center);
+
+    h1{
+        color:map-get($colorScheme, accentColor);
+    }
+}
