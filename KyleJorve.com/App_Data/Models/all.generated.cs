@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "738bc4adf45ffaf0")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b606ba87ee31068d")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -215,15 +215,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public IEnumerable<IPublishedContent> CommerceIcons
 		{
 			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("commerceIcons"); }
-		}
-
-		///<summary>
-		/// Copyright
-		///</summary>
-		[ImplementPropertyType("copyright")]
-		public IHtmlString Copyright
-		{
-			get { return this.GetPropertyValue<IHtmlString>("copyright"); }
 		}
 
 		///<summary>
