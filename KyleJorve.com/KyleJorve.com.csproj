@@ -265,7 +265,6 @@
     <Content Include="Build\scripts\sources\imgSlideshow.js" />
     <Content Include="Build\scripts\sources\lightbox.js" />
     <Content Include="Build\scripts\sources\leftNav.js" />
-    <Content Include="Build\scripts\sources\copyright.js" />
     <Content Include="Build\scripts\sources\bundle\animate.js" />
     <Content Include="Build\scripts\sources\bundle\main.js" />
     <Content Include="Build\scripts\sources\bundle\nav.js" />
@@ -384,7 +383,6 @@
     <Content Include="Media\1072\theater-toolkit-content-flat.jpg" />
     <Content Include="Media\1073\theater-toolkit-home-flat.jpg" />
     <Content Include="Scripts\bundle.min.js" />
-    <Content Include="Scripts\copyright.js" />
     <Content Include="Scripts\homePg.js" />
     <Content Include="Scripts\imgSlideshow.js" />
     <Content Include="Scripts\introScreen.js" />
