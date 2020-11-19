@@ -1,0 +1,196 @@
+﻿/*==========----------==========*/
+/*          CATEGORIES          */
+/*==========----------==========*/
+
+.portfolio{
+    &__titleRow{
+        @include sbFlexWrap(row, wrap, space-between, flex-end);
+        margin:$headingTypeMargin;
+        padding:0 0 1em 0;
+    }
+
+    &__titleCol{
+        display:block;
+        padding:1rem 1rem 0 0;
+
+        &:last-child{
+            padding-right:0;
+        }
+    }
+
+    &__rowTitle{
+        margin:0;
+    }
+}
+
+.portfolioCatWrp{
+    padding-bottom:4em;
+    position:relative;
+
+    &:last-child{
+        padding-bottom:0;
+    }
+
+    & + .portfolioCatWrp{
+        padding-top:4em;
+        border-top:$borderThickness solid $lightBorderColor;
+    }
+
+    .mobileHeading{
+        padding:0;
+        text-align:left;
+
+        &:before{
+            display:none;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*             GRID             */
+/*==========----------==========*/
+.portfolioGrid{
+    display:grid;
+    grid-template: repeat(2, minmax(200px, 30vw)) / repeat(3, 1fr);
+    grid-gap:1em;
+    grid-auto-flow: row dense;
+    grid-auto-columns: minmax(200px, 1fr);
+    grid-auto-rows: minmax(200px, 30vw);
+}
+
+.portfolioItem{
+    cursor:pointer;
+    border-radius:$borderRadius;
+    box-shadow:$mediumShadow;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    overflow:hidden;
+    position:relative;
+    z-index:1;
+    @include transition;
+    @include transform("none");
+
+    & > *{
+        position:relative;
+        z-index:2;
+    }
+
+    &:before{
+        display:block;
+        content:'';
+        opacity:.2;
+        background:$white;
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:1;
+        @include transition;
+    }
+
+    .itemContents{
+        @include sbFlexWrap(column, nowrap, flex-end, stretch);
+        @extend %absolute-cover;
+        z-index:2;
+    }
+
+    &.wide{
+        grid-column: span 2;
+    }
+
+    &.tall{
+        grid-row:span 2;
+    }
+
+    a.portfolioLink{
+        display:block;
+        @extend %absolute-cover;
+        z-index:2;
+    }
+
+    @media (any-hover:hover){
+        &:hover{
+            box-shadow:$longShadow;
+            z-index:2;
+            @include transform("scale(1.015)");
+
+            &:before{
+                opacity:0;
+            }
+
+            .iconRow{
+                opacity:1;
+                visibility:visible;
+                @include transform("none");
+            }
+        }
+    }
+}
+
+/*==========----------==========*/
+/*            ICONS             */
+/*==========----------==========*/
+.portfolioItem .iconRow,
+.itemShowcase .iconCol{
+    opacity:0;
+    visibility:hidden;
+    position:relative;
+    z-index:3;
+    @include transition;
+
+    i{
+        @extend %portfolioPieceIcon;
+    }
+}
+
+/*---------- PORTFOLIO GRID -----------*/
+.portfolioItem .iconRow{
+    @include sbFlexWrap(row, nowrap, space-between, flex-end);
+    @include gradient(rgba(map-get($coolGrays, coolGray9), 0), rgba(map-get($coolGrays, coolGray9), .65), vertical);
+    padding:3em 1em 1em 1em;
+    @include transform("translateY(100%)");
+    pointer-events:none;
+
+    & > *{
+        pointer-events:auto;
+    }
+}
+/*---------- PORTFOLIO PAGE -----------*/
+.itemShowcase .iconCol{
+    @include sbFlexWrap(column, nowrap, flex-end, flex-end);
+    padding:1em 1em 1em 3em;
+    border-radius:0 $borderRadius $borderRadius 0;
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    @include transform("translateX(100%)");
+
+    i{
+        text-shadow:0 0 .5em rgba(0,0,0,.65);
+    }
+}
+
+.iconRow i,
+.iconCol i{
+    @media (any-hover:hover){
+        &:hover{
+            color:$linkColor;
+            @include transform("scale(1.1)");
+        }
+    }
+}
+
+/*==========----------==========*/
+/*        TOUCH SCREENS         */
+/*==========----------==========*/
+
+.touchDevice{
+    .itemShowcase .iconCol{
+        opacity:1;
+        visibility:visible;
+        @include transform("none");
+    }
+}

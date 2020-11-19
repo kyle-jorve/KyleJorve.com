@@ -1,0 +1,106 @@
+﻿/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                    CATEGORIES                    //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+
+.portfolioCatWrp {
+    /*==========----------==========*/
+    /*        NAV BREAKPOINT        */
+    /*==========----------==========*/
+    @media only screen and (max-width:$navBreakpoint) {
+        & + .portfolioCatWrp {
+            padding-top: 3em;
+        }
+    }
+}
+
+/*//////////////////////////////////////////////////////*/
+/*//====================----------====================//*/
+/*//                       GRID                       //*/
+/*//====================----------====================//*/
+/*//////////////////////////////////////////////////////*/
+
+
+/*==========----------==========*/
+/*          800PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:800px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid{
+        grid-template-columns: repeat(2, 1fr); 
+        grid-gap:.5em;
+    }
+
+    .portfolioItem{
+        border-radius: $borderRadius / 2;
+    }
+}
+
+/*==========----------==========*/
+/*          600PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:600px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid{
+        grid-template-rows: repeat(2, minmax(180px, 30vw));
+        grid-auto-rows: minmax(180px, 30vw);
+    }
+
+    .portfolio{
+        &__titleRow{
+            margin:1em 0 .5em 0;
+            padding:0 0 .5em 0;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*        NAV BREAKPOINT        */
+/*==========----------==========*/
+@media only screen and (max-width:$navBreakpoint) {
+    .portfolioItem {
+        border-radius: $mobileBorderRadius;
+    }
+
+    .itemShowcase .iconCol {
+        border-radius: 0 $mobileBorderRadius $mobileBorderRadius 0;
+    }
+}
+
+/*==========----------==========*/
+/*          450PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:450px) {
+    .portfolio {
+        &__titleCol {
+            padding:.5rem .5rem 0 0;
+
+            &:last-child{
+                padding-right:0;
+            }
+        }
+    }
+}
+
+/*==========----------==========*/
+/*          400PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:400px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid{
+        grid-template-rows: repeat(2, minmax(150px, 30vw));
+        grid-auto-rows: minmax(150px, 30vw);
+    }
+}
+
+/*==========----------==========*/
+/*          350PX WIDTH         */
+/*==========----------==========*/
+@media only screen and (max-width:350px) {
+    .portfolioGrid,
+    .topNavWrp .recentWorkContainer .portfolioGrid{
+        grid-template-rows: repeat(2, minmax(120px, 30vw));
+        grid-auto-rows: minmax(120px, 30vw);
+    }
+}

@@ -1,0 +1,450 @@
+﻿/*==========----------==========*/
+/*          HEADER NAV          */
+/*==========----------==========*/
+
+/*---------- TOP LEVEL ----------*/
+.topNavWrp {
+    opacity: 0;
+    visibility: hidden;
+    padding:2em;
+    background:$navBg;
+    max-height:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling:touch;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:99;
+    @include transition(all, .5s);
+
+    nav {
+        width: 100%;
+        padding:6em 0 4em 0;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+
+        ul,
+        li{
+            list-style: none;
+            padding: 0;
+        }
+
+        ul{
+            margin: 0;
+        }
+
+        a,
+        a:visited {
+            opacity:.65;
+            display: inline-block;
+            padding: 1em;
+            font-size: $largeFontSize;
+            font-family: $headingFont;
+            font-weight: $headingFontWeight;
+            text-transform: $headingTextTransform;
+            color: $navLinkColor;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            @include transition;
+
+            &:before{
+                opacity:0;
+                display:block;
+                content:'';
+                height:$navBtnLineWidth;
+                width:$navBtnLineWidth;
+                border-radius:50%;
+                background:$navLinkColor;
+                @extend %absolute-center-horizontal;
+                bottom:0;
+                @include transition;
+            }
+
+            /*---------- HOVER EFFECTS ----------*/
+            @media (any-hover:hover){
+                &:hover{
+                    color:$navLinkColor;
+                    opacity:1 !important;
+
+                    &:before{
+                        opacity:1;
+                        bottom:.5em;
+                    }
+                }
+            }
+        }
+
+        li {
+            opacity: 0;
+            visibility: hidden;
+            display: block;
+            margin:1em 0;
+            text-align: center;
+            position:relative;
+            top:2em;
+            @include transition(all, .5s, ease);
+
+            &.current {
+                & > a,
+                & > a:visited {
+                    pointer-events: none;
+                    opacity:1;
+
+                    &:before{
+                        opacity:1;
+                        bottom:.5em;
+                    }
+                }
+            }
+
+            &.active{
+                opacity:1;
+                visibility:visible;
+                top:0;
+            }
+        }
+    }
+}
+
+/*---------- TOUCH DEVICE ----------*/
+.touchDevice{
+    .topNavWrp nav li{
+        a,
+        a:visited{
+            opacity:.65;
+        }
+
+        &.current{
+            a,
+            a:visited{
+                opacity:1;
+            }
+        }
+    }
+}
+
+.showMobileNav .touchDevice header .logo{
+    opacity:1;
+}
+
+/*==========----------==========*/
+/*          RECENT WORK         */
+/*==========----------==========*/
+.topNavWrp .recentWorkContainer{
+    opacity:0;
+    visibility:hidden;
+    @include transition(all, .5s, ease);
+
+    &.active{
+        opacity:1;
+        visibility:visible;
+    }
+
+    h2{
+        @extend h3;
+        text-align:center;
+        color:$navLinkColor;
+        
+        .line{
+            background:$navLinkColor;
+        }
+    }
+
+    .portfolioGrid{
+        grid-template-rows: repeat(2, minmax(300px, 15vw));
+    }
+}
+
+/*==========----------==========*/
+/*         SOCIAL MEDIA         */
+/*==========----------==========*/
+
+/*---------- GENERAL ----------*/
+.iconContainer {
+    @include sbFlexWrap(row, nowrap, center, stretch);
+    padding:2em;
+
+    ul,
+    li {
+        list-style:none;
+        padding: 0;
+    }
+
+    ul {
+        margin: 0;
+    }
+
+    li {
+        display: block;
+        margin: 0 .75em;
+    }
+
+    a {
+        display:block;
+        text-decoration: none !important;
+        border-radius:50%;
+        position:relative;
+        @include transition;
+
+        i{
+            @extend %absolute-center;
+
+            &:before{
+                @include transition;
+            }
+        }
+
+        svg{
+            width:auto;
+            height:$socialIconFontSize;
+            @include transition;
+            @extend %absolute-center;
+        }
+    }
+}
+
+/*---------- MAIN NAV ----------*/
+.topNavWrp .iconContainer{
+    @include sbFlexWrap(row, nowrap, center, center);
+    background:$navBg;
+
+    ul{
+        @include sbFlexWrap(row, nowrap, center, center);
+    }
+
+    li{
+        opacity:0;
+        visibility:hidden;
+        position:relative;
+        left:2em;
+        @include transition(all, .5s, ease);
+
+        &.active{
+            opacity: 1;
+            visibility:visible;
+            left:0;
+        }
+    }
+
+    a{
+        width: $socialIconDiam;
+        height: $socialIconDiam;
+        background:$white;
+
+        i{
+            color: $navBg;
+            font-size:$largeFontSize;
+        }
+
+        svg{
+            max-width:$largeFontSize;
+            max-height:$largeFontSize;
+            fill:$navBg;
+            @include transition;
+        }
+
+        /*---------- HOVER ----------*/
+        @media (any-hover:hover){
+            &:hover{
+                background: $linkHoverColor;
+
+                i{
+                    color:$white;
+                }
+
+                svg{
+                    fill:$white;
+                }
+            }
+        }
+    }
+}
+
+/*---------- FOOTER ----------*/
+footer{
+    .iconContainer{
+        padding:0;
+
+        li{
+            margin: 0 1.5em;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        a{
+            width:$socialIconDiam;
+            height:$socialIconDiam;
+
+            i{
+                font-size:$socialIconFontSize;
+            }
+
+            /*---------- HOVER EFFECTS ----------*/
+            @media (any-hover:hover){
+                &:hover{
+                    i {
+                        color: $linkHoverColor !important;
+                    }
+
+                    svg{
+                        fill: $linkHoverColor !important;
+                    }
+                }
+            }
+        }
+
+        .iconsWrp{
+            padding:4em;
+            flex-shrink:1;
+
+            &.social{
+                @include sbFlexWrap(row, nowrap, flex-end, center);
+                background:map-get($bgColors, whiteBg);
+                flex-basis:60%;
+
+                a{
+                    i{
+                        color:$linkColor;
+                    }
+                    svg{
+                        fill:$linkColor;
+                    }
+                }
+            }
+
+            &.commerce{
+                @include sbFlexWrap(row, nowrap, flex-start, center);
+                background:map-get($colorScheme, accentColor);
+                flex-basis:40%;
+
+                a{
+                    i{
+                        color:$white;
+                    }
+
+                    svg{
+                        fill: $white;
+                    }
+                }
+            }
+        }
+
+        ul{
+            @include sbFlexWrap(row, nowrap, center, center);
+        }
+    }
+}
+
+/*==========----------==========*/
+/*          NAV BUTTON          */
+/*==========----------==========*/
+.navBtn {
+    cursor: pointer;
+    width: $navBtnDiam;
+    height: $navBtnDiam;
+    border:$navBtnBorder;
+    border-radius:0 0 0 $borderRadius;
+    box-shadow:$mediumShadow;
+    background:$navBtnColor;
+    @include transition(all, .5s);
+    position:relative;
+
+    .blocksWrp {
+        @include sbFlexWrap(column, nowrap, space-between, stretch);
+        width: $sandwichWidth;
+        height: $sandwichHeight;
+        position:absolute;
+        top:50%;
+        left:50%;
+        @include transform("translate(-50%, -50%)");
+        @include transition(all, .5s);
+    }
+
+    .blockRow{
+        height:$navBtnLineThickness;
+        width:100%;
+        @include sbFlexWrap(row, nowrap, space-between, center);
+        @include transform("none");
+        @include transition(all, .5s);
+    }
+
+    .block{
+        opacity:1;
+        width:$navBtnLineWidth;
+        height:$navBtnLineThickness;
+        border-radius:50%;
+        background:$navBtnLineColor;
+        @include transition;
+    }
+
+    /*---------- HOVER EFFECTS ----------*/
+    @media (any-hover:hover){
+        &:hover{
+            background:$linkHoverColor;
+        }
+    }
+}
+
+/*==========----------==========*/
+/*         NAV REVEALED         */
+/*==========----------==========*/
+.showMobileNav,
+.showMobileNav body{
+    overflow:hidden;
+}
+.showMobileNav,
+.showMobileNav .scrolled{
+    .navBtn{
+        background:$navLinkColor;
+
+        .block{
+            background:$navBg;
+        }
+
+        .blockRow:first-child .block:nth-child(2),
+        .blockRow:nth-child(2) .block:first-child,
+        .blockRow:nth-child(2) .block:last-child,
+        .blockRow:last-child .block:nth-child(2){
+            opacity:0;
+        }
+
+        /*---------- HOVER EFFECTS ----------*/
+        @media (any-hover:hover){
+            &:hover{
+                background:$linkHoverColor;
+
+                .block{
+                    background:$navLinkColor;
+                }
+
+                .blockRow{
+                    @include transform("none");
+
+                    & + .blockRow{
+                        @include transform("none");
+
+                        & + .blockRow{
+                            @include transform("none");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .topNavWrp{
+        opacity:1;
+        visibility:visible;
+    }
+}
