@@ -158,6 +158,20 @@
     .portfolioGrid{
         grid-template-rows: repeat(2, minmax(300px, 15vw));
     }
+
+    .portfolioItem{
+        opacity:0;
+        visibility:hidden;
+        position:relative;
+        right:2em;
+        @include transition(all, .5s, ease);
+
+        &.active{
+            opacity:1;
+            visibility:visible;
+            right:0;
+        }
+    }
 }
 
 /*==========----------==========*/
