@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b606ba87ee31068d")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "e613cc03dbda72bd")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -606,15 +606,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public string PortfolioItemType
 		{
 			get { return this.GetPropertyValue<string>("portfolioItemType"); }
-		}
-
-		///<summary>
-		/// Sort Order
-		///</summary>
-		[ImplementPropertyType("sortNumber")]
-		public int SortNumber
-		{
-			get { return this.GetPropertyValue<int>("sortNumber"); }
 		}
 	}
 
